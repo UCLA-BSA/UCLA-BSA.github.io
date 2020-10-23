@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emilie Campos | UCLA Biostatistics Student Association</title>
+    <link>/author/emilie-campos/</link>
+      <atom:link href="/author/emilie-campos/index.xml" rel="self" type="application/rss+xml" />
+    <description>Emilie Campos</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Emilie Campos</title>
+      <link>/author/emilie-campos/</link>
+    </image>
+    
+  </channel>
+</rss>

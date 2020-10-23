@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tina Arputhasamy | UCLA Biostatistics Student Association</title>
+    <link>/author/tina-arputhasamy/</link>
+      <atom:link href="/author/tina-arputhasamy/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tina Arputhasamy</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <image>
+      <url>/img/icon.png</url>
+      <title>Tina Arputhasamy</title>
+      <link>/author/tina-arputhasamy/</link>
+    </image>
+    
+  </channel>
+</rss>
