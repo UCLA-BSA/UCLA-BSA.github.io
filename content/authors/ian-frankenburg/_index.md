@@ -6,13 +6,13 @@ email: ""
 interests:
 title: Ian Frankenburg
 organizations:
-- name: Chair of Doctoral Affairs
+- name:
   url: ""
-role:
+role: Doctoral Student Affairs
 social:
 superuser: true
 user_groups:
-- Chair of Doctoral Affairs
+- Student Affairs
 ---
 
 I’m a fourth-year PhD student, and I joined BSA because I like a happy department.

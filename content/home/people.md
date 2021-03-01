@@ -16,9 +16,12 @@ subtitle = ""
   user_groups = ["Co-Presidents", 
                "VP of Financial Affairs", 
                "Social Chair", 
+               "Student Affairs", 
                "Chair of Doctoral Affairs", 
                "Co-Chairs of Master's Student Affairs", 
                "Chair of Outreach & Communication", 
+               "Chair of First Year Student Affairs", 
+               "Chair of Master's of Public Health (MPH) Student Affairs",
                "Historian"]
 
 [design]
