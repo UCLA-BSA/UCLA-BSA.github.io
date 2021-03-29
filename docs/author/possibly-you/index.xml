@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Possibly you! | UCLA Biostatistics Student Association</title>
-    <link>/author/possibly-you/</link>
-      <atom:link href="/author/possibly-you/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://ucla-bsa.netlify.app/author/possibly-you/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/possibly-you/index.xml" rel="self" type="application/rss+xml" />
     <description>Possibly you!</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
     <image>
-      <url>/img/icon.png</url>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
       <title>Possibly you!</title>
-      <link>/author/possibly-you/</link>
+      <link>https://ucla-bsa.netlify.app/author/possibly-you/</link>
     </image>
     
   </channel>

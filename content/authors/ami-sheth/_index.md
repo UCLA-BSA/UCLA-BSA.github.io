@@ -7,13 +7,13 @@ email: ""
 interests:
 title: Ami Sheth
 organizations:
-- name: Co-Chair of Master's Student Affairs
+- name:
   url: ""
-role: 
+role: Master's Student Affairs
 social:
 superuser: true
 user_groups:
-- Co-Chairs of Master's Student Affairs
+- Student Affairs
 ---
 
 Hi! I’m Ami Sheth, a second-year M.S student in the Biostat department. This is my first year on BSA and I am one of the Master’s Student Affairs Chair. I joined BSA to strengthen communication amongst Biostat students and faculty and improve within student relationships. I am excited to create plenty of opportunities for Masters and PhD students to interact in this upcoming year! 

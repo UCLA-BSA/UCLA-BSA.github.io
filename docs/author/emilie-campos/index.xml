@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emilie Campos | UCLA Biostatistics Student Association</title>
-    <link>/author/emilie-campos/</link>
-      <atom:link href="/author/emilie-campos/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://ucla-bsa.netlify.app/author/emilie-campos/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/emilie-campos/index.xml" rel="self" type="application/rss+xml" />
     <description>Emilie Campos</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
     <image>
-      <url>/img/icon.png</url>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
       <title>Emilie Campos</title>
-      <link>/author/emilie-campos/</link>
+      <link>https://ucla-bsa.netlify.app/author/emilie-campos/</link>
     </image>
     
   </channel>

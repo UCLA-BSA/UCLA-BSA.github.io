@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>John Shamshoian | UCLA Biostatistics Student Association</title>
-    <link>/author/john-shamshoian/</link>
-      <atom:link href="/author/john-shamshoian/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://ucla-bsa.netlify.app/author/john-shamshoian/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/john-shamshoian/index.xml" rel="self" type="application/rss+xml" />
     <description>John Shamshoian</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
     <image>
-      <url>/img/icon.png</url>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
       <title>John Shamshoian</title>
-      <link>/author/john-shamshoian/</link>
+      <link>https://ucla-bsa.netlify.app/author/john-shamshoian/</link>
     </image>
     
   </channel>

@@ -6,13 +6,13 @@ email: ""
 interests:
 title: Tina Arputhasamy
 organizations:
-- name: Co-Chair of Master's Student Affairs
+- name:
   url: ""
-role:
+role: Master's Student Affairs
 social:
 superuser: true
 user_groups:
-- Co-Chairs of Master's Student Affairs
+- Student Affairs
 ---
 
 Hi! My name is Tina, and I’m entering my second year as a masters student in the Biostatistics department. I’m excited to start my first year as a Co-Chair of Master’s Affairs for BSA!

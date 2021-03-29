@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Doug Morrison | UCLA Biostatistics Student Association</title>
-    <link>/author/doug-morrison/</link>
-      <atom:link href="/author/doug-morrison/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://ucla-bsa.netlify.app/author/doug-morrison/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/doug-morrison/index.xml" rel="self" type="application/rss+xml" />
     <description>Doug Morrison</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
     <image>
-      <url>/img/icon.png</url>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
       <title>Doug Morrison</title>
-      <link>/author/doug-morrison/</link>
+      <link>https://ucla-bsa.netlify.app/author/doug-morrison/</link>
     </image>
     
   </channel>

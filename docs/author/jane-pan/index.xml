@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jane Pan | UCLA Biostatistics Student Association</title>
-    <link>/author/jane-pan/</link>
-      <atom:link href="/author/jane-pan/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://ucla-bsa.netlify.app/author/jane-pan/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/jane-pan/index.xml" rel="self" type="application/rss+xml" />
     <description>Jane Pan</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2020</copyright>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
     <image>
-      <url>/img/icon.png</url>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
       <title>Jane Pan</title>
-      <link>/author/jane-pan/</link>
+      <link>https://ucla-bsa.netlify.app/author/jane-pan/</link>
     </image>
     
   </channel>

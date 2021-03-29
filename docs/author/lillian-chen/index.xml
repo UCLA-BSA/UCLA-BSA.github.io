@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lillian Chen | UCLA Biostatistics Student Association</title>
+    <link>https://ucla-bsa.netlify.app/author/lillian-chen/</link>
+      <atom:link href="https://ucla-bsa.netlify.app/author/lillian-chen/index.xml" rel="self" type="application/rss+xml" />
+    <description>Lillian Chen</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2021</copyright>
+    <image>
+      <url>https://ucla-bsa.netlify.app/img/icon.png</url>
+      <title>Lillian Chen</title>
+      <link>https://ucla-bsa.netlify.app/author/lillian-chen/</link>
+    </image>
+    
+  </channel>
+</rss>
