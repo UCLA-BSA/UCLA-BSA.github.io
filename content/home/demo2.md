@@ -16,3 +16,4 @@ Our departmental newsletter comes out every quarter. If you would like to submit
 
 - [Vol 1: October 2020](files/newsletter/vol001.pdf)
 - [Vol 2: January 2021](files/newsletter/vol002.pdf)
+- [Vol 3: June 2021](files/newsletter/vol003.pdf)
