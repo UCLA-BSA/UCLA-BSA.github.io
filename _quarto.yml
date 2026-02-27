@@ -5,12 +5,14 @@ project:
     - "!*.md"
     - "*.qmd"
 website:
-  title: "UCLA-BSA.github.io"
+  title: "UCLA Biostatistics Student Association"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - events.qmd
+      - newsletter/newsletter.qmd
 
 format:
   html:

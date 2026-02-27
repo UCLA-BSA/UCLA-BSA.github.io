@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "UCLA-BSA.github.io",
+    "objectID": "newsletter/newsletter.html",
+    "href": "newsletter/newsletter.html",
+    "title": "Newsletter",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Past Newsletters:\nFall 2020\nWinter 2021\nSpring 2021"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Biostatistics Student Association",
+    "section": "",
+    "text": "Connecting students, research, and careers in biostatistics & data science for public health.\nEvents"
+  },
+  {
+    "objectID": "index.html#biostatistics-student-association-bsa-at-ucla",
+    "href": "index.html#biostatistics-student-association-bsa-at-ucla",
+    "title": "Biostatistics Student Association",
+    "section": "",
+    "text": "Connecting students, research, and careers in biostatistics & data science for public health.\nEvents"
   }
 ]

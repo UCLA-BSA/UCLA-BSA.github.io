@@ -1,7 +1,28 @@
 ---
-title: "UCLA-BSA.github.io"
+title: "Biostatistics Student Association"
+page-layout: full
+toc: false
+search: true
+format:
+  html:
+    theme: cosmo
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
+    css: styles.css
 ---
 
-This is a Quarto website.
+::: {.hero-banner}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+![](images/hero.png)
+
+<div class="hero-content">
+
+## Biostatistics Student Association (BSA) at UCLA
+
+Connecting students, research, and careers in biostatistics & data science for public health.
+
+[Events](events.qmd){.btn .btn-primary .btn-lg}
+
+</div>
+:::
