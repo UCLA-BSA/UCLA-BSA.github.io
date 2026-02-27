@@ -13,6 +13,10 @@ website:
       - about.qmd
       - events.qmd
       - newsletter/newsletter.qmd
+    right:
+      - href: https://ph.ucla.edu/departments/biostatistics
+        text: UCLA Biostatistics
+    
 
 format:
   html:
