@@ -1,0 +1,12 @@
+---
+title: "Milan Filipovic"
+subtitle: "First Year Student Affairs"
+image: ../images/milan-filipovic.jpg
+about:
+  template: trestles
+  links: []
+---
+
+Hello! I’m Milan Filipovic, a first year M.S student in the Biostats department. This is my first year with BSA as the biostat first year rep. I look forward to helping people in the department connect and assisting with events.
+
+Hobbies: Board games, cello, hiking. I’m also a big fan of Studio Ghibli movies.

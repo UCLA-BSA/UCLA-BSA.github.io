@@ -1,0 +1,8 @@
+---
+title: "Lillian Chen"
+subtitle: "Master's of Public Health Student Affairs"
+image: ../images/lillian-chen.jpg
+about:
+  template: trestles
+  links: []
+---

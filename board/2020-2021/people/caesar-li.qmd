@@ -1,0 +1,8 @@
+---
+title: "Caesar Li"
+subtitle: "Chair of Outreach & Communication"
+image: ../images/caesar-li.png
+about:
+  template: trestles
+  links: []
+---

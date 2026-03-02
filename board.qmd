@@ -1,0 +1,6 @@
+---
+title: "Current Board Members"
+list: default
+---
+
+[2021-2022 Board](board/2020-2021/team.qmd)

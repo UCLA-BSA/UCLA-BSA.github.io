@@ -1,0 +1,16 @@
+---
+title: "Doug Morrison"
+subtitle: "VP of Financial Affairs"
+image: ../images/doug-morrison.jpg
+about:
+  template: trestles
+  links: []
+---
+
+Hi! I'm Doug Morrison, a sixth year PhD student. I joined BSA to help organize the monthly department lunches and help out however else I can.
+
+Faculty advisors: Ron Brookmeyer, Tom Belin
+
+Academic interests: causal inference, system dynamics, data fusion
+
+Hobbies: cooking, tango, piano, tennis, wing chun, board games, console/PC gaming

@@ -1,0 +1,20 @@
+---
+title: "Crystal Shaw"
+subtitle: "Co-President"
+image: ../images/crystal-shaw.jpg
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      href: mailto:c.shaw@ucla.edu
+    - icon: twitter
+      href: https://twitter.com/cshawsome
+    - icon: github
+      href: https://github.com/cshawsome
+---
+
+Hello! I'm Crystal Shaw, a fourth year PhD student in the Biostats department. I joined BSA as Co-President during my third year because I wanted to help create the best student experience within the department. I love working with other students and faculty to come up with fun and creative ways to build a sense of community in our department.
+
+- Faculty advisor: Tom Belin
+- Hobbies: cooking, getting lost in fantasy novels, drinking strong coffee
+- A few of my favorite things: Schitt's Creek, podcasts (Hidden Brain, Freakonomics, Revisionist History), and R
