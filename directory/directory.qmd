@@ -1,0 +1,16 @@
+---
+title: "Student Directory"
+# css: styles.css
+listing:
+  type: grid
+  contents:
+    - profiles/*.qmd
+  sort-ui: [title, description]
+  sort: false
+  filter-ui: true
+  image-height: 300px
+  fields: [image, title, subtitle, description]
+  grid-item-align: left
+  categories: true
+---
+

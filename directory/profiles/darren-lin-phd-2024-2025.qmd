@@ -1,0 +1,36 @@
+---
+title: "**Darren Lin**"
+subtitle: "PhD Student"
+description: "Cohort: 2024-2025"
+image: ../images/darren-lin-phd-2024.jpg
+categories: [PhD, 2024-2025]
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      href: mailto:darresl1@ucla.edu
+    - icon: globe
+      href: https://darrenlingit.github.io/
+    - icon: linkedin
+      href: https://www.linkedin.com/in/darrenselin/
+    - icon: github
+      href: https://github.com/darrenlingit
+---
+# Darren Lin
+
+**PhD Student, Biostatistics**  
+University of California, Los Angeles  
+**Research Advisor(s):** Falco J. Bargagli Stoffi  
+**Cohort:** 2024-2025 
+
+### Education:
+
+**ScM in Biostatistics**, 2024  
+Johns Hopkins University — Baltimore, MD
+
+**BS in Applied Mathematics and Statistics/Public Health Studies**, 2022  
+Johns Hopkins University — Baltimore, MD
+
+### Bio:
+
+I am a PhD student in the Department of Biostatistics at UCLA. Previously, I completed my BS and ScM degrees at Johns Hopkins University. In my free time, I enjoy bouldering, running, and trying new restaurants.

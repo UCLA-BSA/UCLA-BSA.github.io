@@ -11,7 +11,9 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - board.qmd
+      - board/board.qmd
+      - href: directory/directory.qmd
+        text: Student Directory
       - events.qmd
       - newsletter/newsletter.qmd
     right:

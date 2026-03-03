@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Newsletter – UCLA Biostatistics Student Association</title>
+<title>Student Directory – UCLA Biostatistics Student Association</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -66,7 +68,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -101,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Board Members</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../directory/directory.html"> 
+    <a class="nav-link active" href="../directory/directory.html" aria-current="page"> 
 <span class="menu-text">Student Directory</span></a>
   </li>  
   <li class="nav-item">
@@ -109,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Events</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../newsletter/newsletter.html" aria-current="page"> 
+    <a class="nav-link" href="../newsletter/newsletter.html"> 
 <span class="menu-text">Newsletter</span></a>
   </li>  
 </ul>
@@ -129,15 +189,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="MjAyNC0yMDI1">2024-2025 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="MjAyNS0yMDI2">2025-2026 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UGhE">PhD <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Newsletter</h1>
+<h1 class="title">Student Directory</h1>
 </div>
 
 
@@ -154,14 +214,96 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Past Newsletters:</p>
-<p><a href="articles/vol003.pdf">Spring 2021</a></p>
-<p><a href="articles/vol002.pdf">Winter 2021</a></p>
-<p><a href="articles/vol001.pdf">Fall 2020</a></p>
 
 
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title" data-direction="asc">
+          Title
+        </option>
+         <option value="listing-description" data-direction="asc">
+          Description
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="UGhEJTJDMjAyNS0yMDI2" data-listing-file-modified-sort="1772503616049" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<a href="../directory/profiles/bowen-zhang-phd-2025-2026.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/bowen-zhang-phd-2025.jpg" class="thumbnail-image card-img" style="height: 300px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Bowen Zhang</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+PhD Student
+</div>
+<div class="card-text listing-description">
+Cohort: 2025-2026
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UGhEJTJDMjAyNC0yMDI1" data-listing-file-modified-sort="1772503616048" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<a href="../directory/profiles/darren-lin-phd-2024-2025.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/darren-lin-phd-2024.jpg" class="thumbnail-image card-img" style="height: 300px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Darren Lin</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+PhD Student
+</div>
+<div class="card-text listing-description">
+Cohort: 2024-2025
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="UGhEJTJDMjAyNC0yMDI1" data-listing-file-modified-sort="1772503616047" data-listing-reading-time-sort="1" data-listing-word-count-sort="30">
+<a href="../directory/profiles/timothy-shen-phd-2024-2025.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/anon.jpg" class="thumbnail-image card-img" style="height: 300px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Timothy Shen</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+PhD Student
+</div>
+<div class="card-text listing-description">
+Cohort: 2024-2025
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
