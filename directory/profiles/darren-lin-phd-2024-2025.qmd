@@ -3,7 +3,7 @@ title: "**Darren Lin**"
 subtitle: "PhD Student"
 description: "Cohort: 2024-2025"
 image: ../images/darren-lin-phd-2024.jpg
-categories: [PhD, 2024-2025]
+categories: ["Program: PhD", "Cohort: 2024-2025", "Advisor: Falco J. Bargagli Stoffi"]
 about:
   template: trestles
   links:
@@ -16,9 +16,9 @@ about:
     - icon: github
       href: https://github.com/darrenlingit
 ---
-# Darren Lin
 
-**PhD Student, Biostatistics**  
+
+### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Falco J. Bargagli Stoffi  
 **Cohort:** 2024-2025 
@@ -30,6 +30,8 @@ Johns Hopkins University — Baltimore, MD
 
 **BS in Applied Mathematics and Statistics/Public Health Studies**, 2022  
 Johns Hopkins University — Baltimore, MD
+
+
 
 ### Bio:
 

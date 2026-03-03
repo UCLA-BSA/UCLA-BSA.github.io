@@ -45,13 +45,15 @@ df_clean <- df %>%
     filename = paste0(here("directory/profiles/"), filename, ".qmd")
   ) %>%
   separate_wider_delim(year, delim = "-", names = c("start_year", "start_year_end"), cols_remove = FALSE) %>%
+  mutate(
+    advisor = advisor |>
+      str_replace_all("\\s+and\\s+", ",") |> # replace " and " with comma
+      str_replace_all("\\s*,\\s*", ",") |> # remove all spaces around commas
+      str_trim() # trim leading/trailing whitespace
+  ) %>%
   mutate(image_file = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(start_year)}"),
-         image_file = paste0(image_file, ".jpg"))
-
-
-df_clean <- df_clean %>%
+         image_file = paste0(image_file, ".jpg")) %>%
   # sections to actually be used in the profile
-  # mutate(across(everything(), ~ifelse(is.na(.), "", .)))
   mutate(
     image_file = if_else(
       file.exists(paste0(here("directory/images/"), image_file)),
@@ -59,7 +61,7 @@ df_clean <- df_clean %>%
       "anon.jpg"),
     bio = if_else(
       !is.na(description) & description != "",
-      paste0(description),
+      paste0("### Bio:", "\n\n", description),
       ""
     ),
     candidacy = if_else(
@@ -87,12 +89,44 @@ df_clean <- df_clean %>%
       advisor_type,
       ""
     )
-  )
+  ) %>%
+  separate_wider_delim(
+    advisor,
+    delim = ",",
+    names = c("advisor1", "advisor2"),
+    too_few = "align_start",
+    cols_remove = FALSE
+  ) %>%
+  mutate(advisor1 = ifelse(!is.na(advisor1), advisor1, "Not Listed"),
+         advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
+  unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
+  mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
 
 
 
 # use this template to build each person's profile
 template <- function(df) {
+  # build categories cleanly
+  # categories_vec <- c(
+  #   df$current_program,
+  #   df$year,
+  #   df$advisor1,
+  #   df$advisor2
+  # ) %>%
+  #   unlist() %>%
+  #   as.character() %>%
+  #   discard(~ is.na(.) || . == "")   # remove NA and blanks
+  
+  categories_vec <- c(
+    paste0("Program: ", df$current_program),
+    paste0("Cohort: ", df$year),
+    if(!is.na(df$advisor1) && df$advisor1 != "") {paste0("Advisor: ", df$advisor1)},
+    if(!is.na(df$advisor2) && df$advisor2 != "") {paste0("Advisor: ", df$advisor2)}
+  ) %>%
+    discard(~ is.na(.) || . == "" || . == "Advisor: NA")
+  
+  # categories_yaml <- paste(categories_vec, collapse = ", ")
+  categories_yaml <- paste0('"', categories_vec, '"', collapse = ", ")
   
   # build links conditionally on if they exist
   links <- c(
@@ -118,17 +152,17 @@ title: \"**{df$first} {df$last}**\"
 subtitle: \"{df$current_program} {df$candidacy}\"
 description: \"Cohort: {df$year}\"
 image: ../images/{df$image_file}
-categories: [{df$current_program}, {df$year}]
+categories: [{categories_yaml}]
 about:
   template: trestles
   links:
 {links_yaml}
 ---
-# {df$first} {df$last}
 
-**{df$current_program} {df$candidacy}, Biostatistics**  
+
+### {df$current_program} {df$candidacy}, Biostatistics
 University of California, Los Angeles  
-**{df$advisor_type} Advisor(s):** {df$advisor}  
+**{df$advisor_type} Advisor(s):** {df$advisor_full}  
 **Cohort:** {df$year} 
 
 ### Education:
@@ -137,7 +171,7 @@ University of California, Los Angeles
 
 {df$bach_edu}
 
-### Bio:
+
 
 {df$bio}
 "

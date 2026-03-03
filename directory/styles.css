@@ -1,0 +1,11 @@
+.about-contents {
+  flex-grow: 3 !important;
+  flex-shrink: 0 !important;
+  flex-basis: 80% !important;
+}
+
+.about-entity {
+  flex-grow: 0 !important;
+  flex-shrink: 3 !important;
+  flex-basis: 20% !important;
+}
