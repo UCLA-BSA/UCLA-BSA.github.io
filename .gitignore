@@ -7,4 +7,6 @@ public/
 
 /.quarto/
 
+.claude/
+
 **/*.quarto_ipynb
