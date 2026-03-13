@@ -22,15 +22,19 @@
   {
     "listing": "/directory/mdsh-students.html",
     "items": [
-      "/directory/profiles/karen-harrison-mdsh-2025-2026.html"
+      "/directory/profiles/karen-harrison-mdsh-fall-2025.html",
+      "/directory/profiles/michael-zaychikov-mdsh-fall-2025.html",
+      "/directory/profiles/rica-mae-pitogo-mdsh-fall-2025.html"
     ]
   },
   {
     "listing": "/directory/phd-students.html",
     "items": [
-      "/directory/profiles/bowen-zhang-phd-2025-2026.html",
-      "/directory/profiles/darren-lin-phd-2024-2025.html",
-      "/directory/profiles/timothy-shen-phd-2024-2025.html"
+      "/directory/profiles/carolyn-winskill-phd-fall-2022.html",
+      "/directory/profiles/darren-lin-phd-fall-2024.html",
+      "/directory/profiles/jasen-zhang-phd-fall-2022.html",
+      "/directory/profiles/puyuan-liu-phd-fall-2025.html",
+      "/directory/profiles/timothy-shen-phd-fall-2024.html"
     ]
   }
 ]

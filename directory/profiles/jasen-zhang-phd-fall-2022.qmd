@@ -1,0 +1,36 @@
+---
+title: "**Jasen Zhang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2022"
+image: ../images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      href: mailto:jasenzhang@g.ucla.edu
+    - icon: linkedin
+      href: https://www.linkedin.com/in/jasen-zhang/
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2022 
+
+### Education:
+
+**MS in Biostatistics**, NA  
+University of California, San Diego — San Diego, CA
+
+**BS in NA**, NA  
+Johns Hopkins University — Baltimore, MD
+
+
+
+### Bio:
+
+My research interests broadly span stochastic processes, machine learning, and computational approaches to model noisy datasets. 
+
+I'm originally from New Jersey and moved to California for grad school. I enjoy a nice workout, tennis, pickleball, and the outdoors/camping. Previously, I also did content creation for modular origami.

@@ -1,9 +1,9 @@
 ---
 title: "**Karen Harrison**"
 subtitle: "MDSH Student"
-description: "Cohort: 2025-2026"
+description: "Cohort: Fall 2025"
 image: ../images/karen-harrison-mdsh-2025.jpg
-categories: ["Program: MDSH", "Cohort: 2025-2026", "Advisor: Thomas Belin"]
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Thomas Belin"]
 about:
   template: trestles
   links:
@@ -19,7 +19,7 @@ about:
 ### MDSH Student, Biostatistics
 University of California, Los Angeles  
 **Academic Advisor(s):** Thomas Belin  
-**Cohort:** 2025-2026 
+**Cohort:** Fall 2025 
 
 ### Education:
 

@@ -1,9 +1,9 @@
 ---
 title: "**Darren Lin**"
 subtitle: "PhD Student"
-description: "Cohort: 2024-2025"
+description: "Cohort: Fall 2024"
 image: ../images/darren-lin-phd-2024.jpg
-categories: ["Program: PhD", "Cohort: 2024-2025", "Advisor: Falco J. Bargagli Stoffi"]
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Falco J. Bargagli Stoffi"]
 about:
   template: trestles
   links:
@@ -21,7 +21,7 @@ about:
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Falco J. Bargagli Stoffi  
-**Cohort:** 2024-2025 
+**Cohort:** Fall 2024 
 
 ### Education:
 

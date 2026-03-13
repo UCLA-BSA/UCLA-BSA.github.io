@@ -7,11 +7,11 @@ here::i_am("directory/make_profiles.R")
 
 student_directory_form <- here("directory/Biostatistics Student Directory Form (Responses).xlsx") # replace as needed
 df <- readxl::read_xlsx(student_directory_form) %>%
-  select(-1) %>%
-  rename(email = 1,
-         first = 2,
-         last = 3,
-         preferred = 4,
+  select(-c(1, 2, 3, 4)) %>%
+  rename(first = 1,
+         last = 2,
+         preferred = 3,
+         photo = 4,
          ucla_email = 5,
          current_program = 6,
          candidacy = 7,
@@ -29,11 +29,12 @@ df <- readxl::read_xlsx(student_directory_form) %>%
          masters_school = 19,
          masters_location = 20,
          other_edu = 21,
-         description = 22,
-         personal_website = 23,
-         linkedin = 24,
-         github = 25,
-         other_web = 26
+         alumni_opt_out = 22,
+         description = 23,
+         personal_website = 24,
+         linkedin = 25,
+         github = 26,
+         other_web = 27
   ) %>%
   mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"))
 
@@ -45,7 +46,7 @@ df_clean <- df %>%
     filename = str_replace_all(filename, "\\s+", "-"),
     filename = paste0(here("directory/profiles/"), filename, ".qmd")
   ) %>%
-  separate_wider_delim(year, delim = "-", names = c("start_year", "start_year_end"), cols_remove = FALSE) %>%
+  separate_wider_delim(year, delim = " ", names = c("quarter", "start_year"), cols_remove = FALSE) %>%
   mutate(
     advisor = advisor |>
       str_replace_all("\\s+and\\s+", ",") |> # replace " and " with comma
