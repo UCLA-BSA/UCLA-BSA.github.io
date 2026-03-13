@@ -1,0 +1,30 @@
+---
+title: "MS Students"
+page-layout: full
+css: styles.css
+format:
+  html:
+    include-after-body:
+      - category-accordion-script.html
+listing:
+  type: grid
+  contents: profiles/*.qmd
+  include:
+    subtitle: "MS Student"
+  grid-columns: 5
+  sort-ui: [title, description]
+  sort: false
+  filter-ui: true
+  image-height: 300px
+  fields: [image, title, subtitle, description]
+  grid-item-align: left
+  categories: unnumbered
+---
+
+```{=html}
+<p class="mb-4">
+  <a href="directory.html" class="btn btn-outline-secondary btn-sm">
+    &larr; Back to Directory
+  </a>
+</p>
+```

@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/directory/ms-students.html",
+    "items": []
+  },
+  {
     "listing": "/board/2020-2021/team.html",
     "items": [
       "/board/2020-2021/people/crystal-shaw.html",
@@ -16,11 +20,16 @@
     ]
   },
   {
-    "listing": "/directory/directory.html",
+    "listing": "/directory/mdsh-students.html",
+    "items": [
+      "/directory/profiles/karen-harrison-mdsh-2025-2026.html"
+    ]
+  },
+  {
+    "listing": "/directory/phd-students.html",
     "items": [
       "/directory/profiles/bowen-zhang-phd-2025-2026.html",
       "/directory/profiles/darren-lin-phd-2024-2025.html",
-      "/directory/profiles/karen-harrison-mdsh-2025-2026.html",
       "/directory/profiles/timothy-shen-phd-2024-2025.html"
     ]
   }
