@@ -200,6 +200,44 @@ Johns Hopkins University — Baltimore, MD</p>
 </main></div>
 </div>
  <!-- /main -->
+<script>
+(function () {
+  // Detect program from category badges
+  var cats = document.querySelectorAll('.quarto-category');
+  var program = null;
+  for (var i = 0; i < cats.length; i++) {
+    var text = cats[i].textContent.trim().toUpperCase();
+    if (text.startsWith('PROGRAM: ')) {
+      program = text.replace('PROGRAM: ', '');
+      break;
+    }
+  }
+
+  var href, label;
+  if (program === 'PHD') {
+    href = '../phd-students.html';
+    label = 'Back to PhD Students';
+  } else if (program === 'MDSH') {
+    href = '../mdsh-students.html';
+    label = 'Back to MDSH Students';
+  } else if (program === 'MS') {
+    href = '../ms-students.html';
+    label = 'Back to MS Students';
+  }
+
+  if (href) {
+    var btn = document.createElement('a');
+    btn.href = href;
+    btn.className = 'back-to-directory';
+    btn.innerHTML = '&#8592; ' + label;
+
+    var content = document.querySelector('.about-contents');
+    if (content) {
+      content.insertBefore(btn, content.firstChild);
+    }
+  }
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {

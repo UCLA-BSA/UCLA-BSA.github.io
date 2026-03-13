@@ -6,4 +6,4 @@ about:
 format:
   html:
     page-layout: full
-  
+    include-after-body: _back-button.html

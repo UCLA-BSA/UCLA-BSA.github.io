@@ -21,7 +21,28 @@ css: styles.css
       </p>
     </div>
     <div class="directory-hero-photo">
-      <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/ms.jpg" alt="MS Students" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
+        </div>
+        <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
+      </div>
+      <div class="slideshow-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
     </div>
   </div>
 
@@ -57,4 +78,40 @@ css: styles.css
 
   </div>
 </div>
+
+<script>
+(function() {
+  var current = 0;
+  var slides, dots, timer;
+
+  function init() {
+    slides = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+    if (!slides.length) return;
+    startTimer();
+  }
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    timer = setInterval(function() { showSlide(current + 1); }, 4000);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    startTimer();
+  }
+
+  window.changeSlide = function(dir) { showSlide(current + dir); resetTimer(); };
+  window.goToSlide = function(n) { showSlide(n); resetTimer(); };
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
 ```

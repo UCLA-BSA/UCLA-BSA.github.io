@@ -24,13 +24,14 @@
 }
 
 .directory-hero-text {
-  flex: 1 1 0;
+  flex: 1 1 50%;
 }
 
 .directory-hero-title {
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: #003B5C;
 }
 
 .directory-hero-desc {
@@ -41,17 +42,81 @@
 }
 
 .directory-hero-photo {
-  flex: 0 0 380px;
-  height: 260px;
+  flex: 1 1 50%;
+  height: 420px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #e9ecef 0%, #ced4da 100%);
   overflow: hidden;
+  position: relative;
 }
 
-.directory-hero-photo img {
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 59, 92, 0.45);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-btn:hover {
+  background: rgba(0, 59, 92, 0.85);
+}
+
+.slide-prev { left: 10px; }
+.slide-next { right: 10px; }
+
+.slideshow-dots {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin: 0 4px;
+  background: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dot.active {
+  background: #2774AE;
 }
 
 @media (max-width: 768px) {
@@ -59,9 +124,13 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+  .directory-hero-text,
   .directory-hero-photo {
     flex: none;
     width: 100%;
+  }
+  .directory-hero-photo {
+    height: 280px;
   }
 }
 
@@ -80,7 +149,7 @@
 
 .directory-program-card {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   border: 1px solid #dee2e6;
   border-radius: 10px;
   overflow: hidden;
@@ -91,7 +160,23 @@
 
 .directory-program-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 28px rgba(39, 116, 174, 0.18);
+  border-color: #2774AE;
+}
+
+/* Gold accent bar slides in at top of card on hover */
+.directory-program-card::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.directory-program-card:hover::before {
+  transform: scaleX(1);
 }
 
 .card-img-placeholder {
@@ -123,7 +208,7 @@
 }
 
 .category-accordion-header:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(39, 116, 174, 0.08);
 }
 
 .accordion-label {
@@ -155,12 +240,12 @@
 }
 
 .category-accordion-items .category:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(39, 116, 174, 0.08);
 }
 
 .directory-program-card img {
   width: 100%;
-  height: 200px;       /* or whatever fixed height fits your design */
+  height: 200px;
   object-fit: cover;
   object-position: center;
   display: block;
