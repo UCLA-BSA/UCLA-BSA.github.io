@@ -1,0 +1,37 @@
+---
+title: "**Karen Harrison**"
+subtitle: "MDSH Student"
+description: "Cohort: 2025-2026"
+image: ../images/karen-harrison-mdsh-2025.jpg
+categories: ["Program: MDSH", "Cohort: 2025-2026", "Advisor: Thomas Belin"]
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      href: mailto:karenharrison25@g.ucla.edu
+    - icon: linkedin
+      href: https://www.linkedin.com/in/karenlorenaharrison/
+    - icon: github
+      href: https://github.com/karen-harrison
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Thomas Belin  
+**Cohort:** 2025-2026 
+
+### Education:
+
+
+
+**BS in Molecular, Cell, and Developmental Biology**, 2025  
+UCLA — Los Angeles, CA
+
+
+
+### Bio:
+
+Class of 2027 MDSH graduate student interested in the intersection of AI and healthcare and it's applications to entrepreneurship. My experience ranges from biomedical research, health tech startups, to community building.
+
+Some of my hobbies include drumming, playing tennis, and dancing.

@@ -3,6 +3,7 @@
 library(stringr)
 library(magick)
 library(tidyverse)
+library(here)
 
 folder_path <- here("directory/images_raw") # location of the images
 

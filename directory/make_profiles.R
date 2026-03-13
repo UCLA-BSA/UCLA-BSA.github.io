@@ -34,7 +34,8 @@ df <- readxl::read_xlsx(student_directory_form) %>%
          linkedin = 24,
          github = 25,
          other_web = 26
-  )
+  ) %>%
+  mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"))
 
 
 df_clean <- df %>%
