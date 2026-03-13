@@ -1,0 +1,32 @@
+---
+title: "**Andrew Chuang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+image: ../images/andrew-chuang-phd-2024.jpg
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Donatello Telesca"]
+about:
+  template: trestles
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/chuangandrew/
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Donatello Telesca  
+**Cohort:** Fall 2024 
+
+### Education:
+
+**MS in Biostatistics**, NA  
+UCLA — Los Angeles, CA
+
+**BA in Mathematics/Economics**, NA  
+The University of Chicago — Chicago, IL
+
+
+
+### Bio:
+
+I am a PhD student in the Department of Biostatistics at UCLA. I previously completed my MS in the same department and my BA at The University of Chicago. My research interests include Bayesian transfer learning and causal inference. In my free time, I enjoy bouldering outside, reading, and watching movies.

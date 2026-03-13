@@ -21,7 +21,7 @@ css: styles.css
       </p>
     </div>
     <div class="directory-hero-photo">
-      <!-- Replace with an <img> tag when a photo is available -->
+      <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
     </div>
   </div>
 
@@ -30,7 +30,7 @@ css: styles.css
 
     <a href="phd-students.html" class="text-decoration-none">
       <div class="directory-program-card">
-        <div class="card-img-placeholder"></div>
+        <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
         <div class="card-body text-center">
           <h3 class="card-title mt-2">PhD Students</h3>
         </div>
@@ -39,7 +39,7 @@ css: styles.css
 
     <a href="ms-students.html" class="text-decoration-none">
       <div class="directory-program-card">
-        <div class="card-img-placeholder"></div>
+        <img src="./images/directory_home/ms.jpg" alt="MS Students" />
         <div class="card-body text-center">
           <h3 class="card-title mt-2">MS Students</h3>
         </div>
@@ -48,7 +48,7 @@ css: styles.css
 
     <a href="mdsh-students.html" class="text-decoration-none">
       <div class="directory-program-card">
-        <div class="card-img-placeholder"></div>
+        <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
         <div class="card-body text-center">
           <h3 class="card-title mt-2">MDSH Students</h3>
         </div>

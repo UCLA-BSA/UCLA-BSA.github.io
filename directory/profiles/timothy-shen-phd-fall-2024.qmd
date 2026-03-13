@@ -30,4 +30,6 @@ UC Davis — Davis, CA
 
 
 
+### Bio:
 
+I’m a PhD student in Biostatistics working with Dr. Christina Ramirez and Dr. Brunilda Balliu. My research currently broadly focuses on developing scalable, interpretable machine learning methods to identify biological factors driving HIV aging and digital phenotypes associated with mood. In my free time, I am an avid enjoyer riding public transportation and all things food.

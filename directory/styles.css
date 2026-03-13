@@ -157,3 +157,11 @@
 .category-accordion-items .category:hover {
   background: rgba(0, 0, 0, 0.06);
 }
+
+.directory-program-card img {
+  width: 100%;
+  height: 200px;       /* or whatever fixed height fits your design */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
