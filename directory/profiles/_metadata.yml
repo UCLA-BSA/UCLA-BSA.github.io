@@ -1,0 +1,9 @@
+toc: false
+css: profile-styles.css
+about:
+  template: jolla
+  image-shape: round
+format:
+  html:
+    page-layout: full
+    include-after-body: _back-button.html

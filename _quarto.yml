@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "!*.md"
+    - "*.qmd"
+website:
+  title: "UCLA Biostatistics Student Association"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - board/board.qmd
+      - href: directory/directory.qmd
+        text: Student Directory
+      - events.qmd
+      - newsletter/newsletter.qmd
+    right:
+      - href: https://ph.ucla.edu/departments/biostatistics
+        text: UCLA Biostatistics
+    
+
+format:
+  html:
+    theme:
+      - cosmo
+    css: styles.css
+    toc: true
+    grid: 
+      body-width: 2000px
+      sidebar-width: 200px
+      margin-width: 300px
+    include-in-header: directory/scramble_email.html
+    
+
+    

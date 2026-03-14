@@ -1,0 +1,117 @@
+---
+title: "Student Directory"
+page-layout: full
+toc: false
+css: styles.css
+---
+
+```{=html}
+<div class="directory-landing">
+
+  <!-- Hero section: text left, photo right -->
+  <div class="directory-hero">
+    <div class="directory-hero-text">
+      <h2 class="directory-hero-title">The Students</h2>
+      <p class="directory-hero-desc">
+        Meet the students of UCLA Biostatistics! Our community spans three
+        graduate programs: the <strong>Master of Science in Biostatistics</strong>,
+        the <strong>Master of Data Science in Health (MDSH)</strong>, and the
+        <strong>Doctor of Philosophy in Biostatistics</strong> — united by a
+        passion for statistical science and its applications to public health.
+      </p>
+    </div>
+    <div class="directory-hero-photo">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/ms.jpg" alt="MS Students" />
+        </div>
+        <div class="slide">
+          <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
+        </div>
+        <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
+      </div>
+      <div class="slideshow-dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Program cards -->
+  <div class="program-cards-grid">
+
+    <a href="phd-students.html" class="text-decoration-none">
+      <div class="directory-program-card">
+        <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
+        <div class="card-body text-center">
+          <h3 class="card-title mt-2">PhD Students</h3>
+        </div>
+      </div>
+    </a>
+
+    <a href="ms-students.html" class="text-decoration-none">
+      <div class="directory-program-card">
+        <img src="./images/directory_home/ms.jpg" alt="MS Students" />
+        <div class="card-body text-center">
+          <h3 class="card-title mt-2">MS Students</h3>
+        </div>
+      </div>
+    </a>
+
+    <a href="mdsh-students.html" class="text-decoration-none">
+      <div class="directory-program-card">
+        <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
+        <div class="card-body text-center">
+          <h3 class="card-title mt-2">MDSH Students</h3>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var current = 0;
+  var slides, dots, timer;
+
+  function init() {
+    slides = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+    if (!slides.length) return;
+    startTimer();
+  }
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    timer = setInterval(function() { showSlide(current + 1); }, 4000);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    startTimer();
+  }
+
+  window.changeSlide = function(dir) { showSlide(current + dir); resetTimer(); };
+  window.goToSlide = function(n) { showSlide(n); resetTimer(); };
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
+```

@@ -1,0 +1,13 @@
+---
+title: "Newsletter"
+format: html
+---
+
+Past Newsletters:
+
+
+[Spring 2021](articles/vol003.pdf)
+
+[Winter 2021](articles/vol002.pdf)
+
+[Fall 2020](articles/vol001.pdf)

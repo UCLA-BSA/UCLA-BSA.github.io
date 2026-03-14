@@ -1,0 +1,37 @@
+---
+title: "**Fauzan Budi (Fauzan) Prasetya**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../images/fauzan-budi-prasetya-mdsh-2025.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Thomas Belin"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: http://fauzanbudi.github.io/
+    - icon: linkedin
+      href: https://www.linkedin.com/in/fauzan-budi-prasetya/
+    - icon: github
+      href: https://github.com/fauzanbudi
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Thomas Belin  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","fauzan.prasetya");</script>
+
+### Education:
+
+
+
+**BS in Public Health**, 2019  
+University of Indonesia — Depok, Jawa Barat, Indonesia
+
+
+
+### Bio:
+
+I love solving problems to help others reach their goals by utilizing data. I previously worked as analytics engineer in some digital companies in Indonesia, ranging from e-commerce to fintech. To study at UCLA, I am supported by Fulbright scholarship.

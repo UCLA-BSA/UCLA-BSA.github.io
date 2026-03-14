@@ -1,0 +1,54 @@
+[
+  {
+    "listing": "/directory/phd-students.html",
+    "items": [
+      "/directory/profiles/andrew-chuang-phd-fall-2024.html",
+      "/directory/profiles/bowen-zhang-phd-fall-2025.html",
+      "/directory/profiles/carolyn-winskill-phd-fall-2022.html",
+      "/directory/profiles/darren-lin-phd-fall-2024.html",
+      "/directory/profiles/jasen-zhang-phd-fall-2022.html",
+      "/directory/profiles/parsa-jamshidian-phd-fall-2021.html",
+      "/directory/profiles/puyuan-liu-phd-fall-2025.html",
+      "/directory/profiles/timothy-shen-phd-fall-2024.html",
+      "/directory/profiles/yanlong-bai-phd-fall-2023.html",
+      "/directory/profiles/yingxin-zhang-phd-fall-2025.html",
+      "/directory/profiles/zichen-liu-phd-fall-2022.html"
+    ]
+  },
+  {
+    "listing": "/directory/mdsh-students.html",
+    "items": [
+      "/directory/profiles/fauzan-budi-prasetya-mdsh-fall-2025.html",
+      "/directory/profiles/karen-harrison-mdsh-fall-2025.html",
+      "/directory/profiles/michael-zaychikov-mdsh-fall-2025.html",
+      "/directory/profiles/nena-ojukwu-mdsh-fall-2025.html",
+      "/directory/profiles/rica-mae-pitogo-mdsh-fall-2025.html"
+    ]
+  },
+  {
+    "listing": "/board/2020-2021/team.html",
+    "items": [
+      "/board/2020-2021/people/crystal-shaw.html",
+      "/board/2020-2021/people/emilie-campos.html",
+      "/board/2020-2021/people/doug-morrison.html",
+      "/board/2020-2021/people/john-shamshoian.html",
+      "/board/2020-2021/people/ami-sheth.html",
+      "/board/2020-2021/people/ian-frankenburg.html",
+      "/board/2020-2021/people/lillian-chen.html",
+      "/board/2020-2021/people/milan-filipovic.html",
+      "/board/2020-2021/people/tina-arputhasamy.html",
+      "/board/2020-2021/people/caesar-li.html",
+      "/board/2020-2021/people/jane-pan.html"
+    ]
+  },
+  {
+    "listing": "/directory/ms-students.html",
+    "items": [
+      "/directory/profiles/amaan-jogia-sattar-ms-fall-2024.html",
+      "/directory/profiles/julian-gavino-ms-fall-2025.html",
+      "/directory/profiles/kiana-mohammadinik-ms-fall-2024.html",
+      "/directory/profiles/peike-li-ms-fall-2024.html",
+      "/directory/profiles/yutong-wang-ms-fall-2024.html"
+    ]
+  }
+]

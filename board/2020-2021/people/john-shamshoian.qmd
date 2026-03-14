@@ -1,0 +1,9 @@
+---
+title: "John Shamshoian"
+subtitle: "Social Chair"
+image: ../images/john-shamshoian.jpg
+about:
+  template: trestles
+  links: []
+---
+

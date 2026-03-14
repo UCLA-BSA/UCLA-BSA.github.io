@@ -1,0 +1,14 @@
+.quarto-title-block .description {
+  display: none;
+}
+
+/* center the categories */
+.quarto-categories {
+  justify-content: center;
+}
+
+/* remove the main title from under the profile picture */
+
+/* .quarto-title h1.title {
+  display: none;
+} */

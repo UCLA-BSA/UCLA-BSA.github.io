@@ -1,0 +1,15 @@
+---
+title: "Name"
+subtitle: "Co-President"
+image: ../images/crystal-shaw.jpg
+categories: [Co-Presidents]
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      href: mailto:c.shaw@ucla.edu
+    - icon: twitter
+      href: https://twitter.com/cshawsome
+    - icon: github
+      href: https://github.com/cshawsome
+---

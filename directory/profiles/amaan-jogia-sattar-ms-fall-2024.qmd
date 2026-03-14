@@ -1,0 +1,36 @@
+---
+title: "**Amaan Jogia-Sattar**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+image: ../images/amaan-jogia-sattar-ms-2024.jpg
+categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Brunilda Balliu"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://linkedin.com/in/amaanjsattar
+    - icon: github
+      href: https://github.com/amaanjsattar
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Brunilda Balliu  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","amaanjsattar");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2026  
+UCLA — Los Angeles, CA
+
+**BA in Public Health**, 2024  
+UC Berkeley — Berkeley, CA
+
+
+
+### Bio:
+
+I am a second-year MS student in the Department of Biostatistics at UCLA, where I work with Dr. Brunilda Balliu and Dr. Thomas Belin. I previously completed my undergraduate studies in Public Health and Data Science at UC Berkeley. My research focuses on developing scalable statistical methods for analyzing multi-omic data, with an interest in modeling dynamic patterns of gene regulation during cellular differentiation and their role in complex disease. In my spare time, I enjoy playing tennis, exploring the city, and spending time with my dog, Louie.

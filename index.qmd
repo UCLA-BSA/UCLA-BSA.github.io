@@ -1,0 +1,27 @@
+---
+title: "Biostatistics Student Association"
+page-layout: full
+toc: false
+search: true
+format:
+  html:
+    theme: cosmo
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
+    css: styles.css
+---
+
+:::: hero-banner
+![](images/hero.png)
+
+::: hero-content
+## Biostatistics Student Association (BSA) at UCLA
+
+Connecting students, research, and careers in biostatistics & data science for public health.
+
+[Events](events.qmd){.btn .btn-primary .btn-lg}
+:::
+::::
+
+If you are curious to learn more about the UCLA Department of Biostatistics, click [here](https://ph.ucla.edu/departments/biostatistics).
