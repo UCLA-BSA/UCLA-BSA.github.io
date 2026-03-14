@@ -6,9 +6,8 @@ image: ../images/anon.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Andrew Holbrook"]
 about:
   template: trestles
+  image-shape: round
   links:
-    - icon: envelope
-      href: mailto:jasenzhang@g.ucla.edu
     - icon: linkedin
       href: https://www.linkedin.com/in/jasen-zhang/
 ---
@@ -17,14 +16,15 @@ about:
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Andrew Holbrook  
-**Cohort:** Fall 2022 
+**Cohort:** Fall 2022  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jasenzhang");</script>
 
 ### Education:
 
-**MS in Biostatistics**, NA  
+**MS in Biostatistics**  
 University of California, San Diego — San Diego, CA
 
-**BS in NA**, NA  
+**BS**  
 Johns Hopkins University — Baltimore, MD
 
 

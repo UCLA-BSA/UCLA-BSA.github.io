@@ -10,7 +10,7 @@ listing:
   type: grid
   contents: profiles/*.qmd
   include:
-    subtitle: "PhD Student"
+    subtitle: ["PhD Student", "PhD Candidate"]  
   grid-columns: 5
   sort-ui: [title, description]
   sort: false

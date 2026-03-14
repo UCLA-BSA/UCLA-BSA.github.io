@@ -39,7 +39,20 @@ df <- readxl::read_xlsx(student_directory_form) %>%
   mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"))
 
 
+# for previous degree line
+complete_degree <- function(deg, major, grad_year, school, location) {
+  deg <- ifelse(!is.na(deg), deg, "")
+  major <- ifelse(!is.na(major), paste(" in ", major, sep = ""), "")
+  grad_year <- ifelse(!is.na(grad_year), paste(", ", grad_year, sep = ""), "")
+  school <- ifelse(!is.na(school), school, "")
+  location <- ifelse(!is.na(location), paste(" \u2014 ", location, sep = ""), "")
+  paste("**", deg, major, "**", grad_year, "  \n", school, location, sep = "")
+}
+
+# clean data frame
+
 df_clean <- df %>%
+  mutate(preferred = ifelse(!is.na(preferred), paste("(", preferred, ") ", sep = ""), "")) %>%
   mutate(
     filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(year)}"),
     filename = str_replace_all(filename, "[^a-z0-9 -]", ""),
@@ -53,8 +66,30 @@ df_clean <- df %>%
       str_replace_all("\\s*,\\s*", ",") |> # remove all spaces around commas
       str_trim() # trim leading/trailing whitespace
   ) %>%
-  mutate(image_file = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(start_year)}"),
-         image_file = paste0(image_file, ".jpg")) %>%
+  mutate(
+    first_clean = str_replace_all(str_to_lower(first), "\\s+", "-"),
+    last_clean  = str_replace_all(str_to_lower(last),  "\\s+", "-"),
+    image_file  = glue("{first_clean}-{last_clean}-{str_to_lower(current_program)}-{str_to_lower(start_year)}"),
+    image_file  = paste0(image_file, ".jpg")
+  ) %>%
+  mutate(
+    ucla_email = case_when(
+      is.na(ucla_email) ~ NA_character_,
+      str_detect(ucla_email, "@") ~ ucla_email,  # already has @, leave it
+      TRUE ~ paste0(ucla_email, "@ucla.edu")      # missing domain, append it
+    )
+  ) %>%
+  
+  # fixing links
+  mutate(across(
+    c(personal_website, linkedin, github, other_web),
+    ~ case_when(
+      is.na(.) ~ NA_character_,
+      str_detect(., "^https?://") ~ .,
+      TRUE ~ paste0("https://", .)
+    )
+  )) %>%
+  
   # sections to actually be used in the profile
   mutate(
     image_file = if_else(
@@ -73,12 +108,12 @@ df_clean <- df %>%
     ),
     bach_edu = if_else(
       !is.na(bachelors_deg) & bachelors_deg != "",
-      paste0("**", bachelors_deg, " in ", bachelors_major, "**", ", ", bachelors_grad, "  \n", bachelors_school, " \u2014 ", bachelors_location),
+      complete_degree(bachelors_deg, bachelors_major, bachelors_grad, bachelors_school, bachelors_location),
       ""
     ),
     masters_edu = if_else(
       !is.na(masters_deg) & masters_deg != "",
-      paste0("**", masters_deg, " in ", masters_major, "**", ", ", masters_grad, "  \n", masters_school, " \u2014 ", masters_location),
+      complete_degree(masters_deg, masters_major, masters_grad, masters_school, masters_location),
       ""
     ),
     advisor = if_else(
@@ -88,7 +123,7 @@ df_clean <- df %>%
     ),
     advisor_type = if_else(
       !is.na(advisor_type) & advisor_type != "",
-      advisor_type,
+      paste(advisor_type, " ", sep = ""),
       ""
     )
   ) %>%
@@ -103,6 +138,7 @@ df_clean <- df %>%
          advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
   mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
+
 
 
 
@@ -132,8 +168,10 @@ template <- function(df) {
   
   # build links conditionally on if they exist
   links <- c(
-    if (!is.na(df$ucla_email) && df$ucla_email != "")
-      paste0("    - icon: envelope\n      href: mailto:", df$ucla_email),
+    # if (!is.na(df$ucla_email) && df$ucla_email != "")
+    #   paste0("    - icon: envelope\n      href: mailto:", df$ucla_email),
+    # if (!is.na(df$ucla_email) && df$ucla_email != "")
+    #   paste0("    - text: ", str_replace(df$ucla_email, "@", " [at] ")),
     if (!is.na(df$personal_website) && df$personal_website != "")
       paste0("    - icon: globe\n      href: ", df$personal_website),
     if (!is.na(df$linkedin) && df$linkedin != "")
@@ -144,28 +182,42 @@ template <- function(df) {
       paste0("    - icon: camera\n      href: ", df$other_web)
   )
   
-  links_yaml <- if (length(links) > 0) paste(links, collapse = "\n") else "[]"
+  links_section <- if (length(links) > 0) {
+    paste0("  links:\n", paste(links, collapse = "\n"))
+  } else {
+    ""
+  }
   
+  # email scrambler to protect from scrapers; the code (with the scramble_email.html) should only make the email on render
+  email_js <- if (!is.na(df$ucla_email[[1]]) && df$ucla_email[[1]] != "") {
+    parts <- str_split(df$ucla_email[[1]], "@")[[1]]
+    user <- parts[1]
+    domain <- parts[2]
+    paste0('**Email:**', '<script type="text/javascript">scrambleIt("', domain, '","', user, '");</script>')
+  } else {
+    ""
+  }
   # profile template below
   glue(
     "
 ---
-title: \"**{df$first} {df$last}**\"
+title: \"**{df$first} {df$preferred}{df$last}**\"
 subtitle: \"{df$current_program} {df$candidacy}\"
 description: \"Cohort: {df$year}\"
 image: ../images/{df$image_file}
 categories: [{categories_yaml}]
 about:
   template: trestles
-  links:
-{links_yaml}
+  image-shape: round
+{links_section}
 ---
 
 
 ### {df$current_program} {df$candidacy}, Biostatistics
 University of California, Los Angeles  
-**{df$advisor_type} Advisor(s):** {df$advisor_full}  
-**Cohort:** {df$year} 
+**{df$advisor_type}Advisor(s):** {df$advisor_full}  
+**Cohort:** {df$year}  
+{email_js}
 
 ### Education:
 

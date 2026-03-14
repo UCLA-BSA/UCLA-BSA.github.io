@@ -1,0 +1,7 @@
+<!-- this script builds an email only when rendered -->
+<!-- emails are not directly contained in the .html file -->
+<script type="text/javascript">
+function scrambleIt(domain, user) {
+  document.write('<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>');
+}
+</script>

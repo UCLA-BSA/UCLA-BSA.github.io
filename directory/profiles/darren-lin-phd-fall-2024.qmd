@@ -6,9 +6,8 @@ image: ../images/darren-lin-phd-2024.jpg
 categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Falco J. Bargagli Stoffi"]
 about:
   template: trestles
+  image-shape: round
   links:
-    - icon: envelope
-      href: mailto:darresl1@ucla.edu
     - icon: globe
       href: https://darrenlingit.github.io/
     - icon: linkedin
@@ -21,7 +20,8 @@ about:
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Falco J. Bargagli Stoffi  
-**Cohort:** Fall 2024 
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","darresl1");</script>
 
 ### Education:
 

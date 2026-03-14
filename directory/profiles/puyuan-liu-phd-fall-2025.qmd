@@ -6,9 +6,8 @@ image: ../images/puyuan-liu-phd-2025.jpg
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Damla Senturk"]
 about:
   template: trestles
+  image-shape: round
   links:
-    - icon: envelope
-      href: mailto:puyuanliu@ucla.edu
     - icon: linkedin
       href: https://www.linkedin.com/in/puyuan-liu-46b677294/
 ---
@@ -17,7 +16,8 @@ about:
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Damla Senturk  
-**Cohort:** Fall 2025 
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","puyuanliu");</script>
 
 ### Education:
 

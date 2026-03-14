@@ -31,5 +31,7 @@ format:
       body-width: 2000px
       sidebar-width: 200px
       margin-width: 300px
+    include-in-header: directory/scramble_email.html
+    
 
     

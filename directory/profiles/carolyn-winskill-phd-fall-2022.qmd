@@ -6,9 +6,8 @@ image: ../images/carolyn-winskill-phd-2022.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Gang Li"]
 about:
   template: trestles
+  image-shape: round
   links:
-    - icon: envelope
-      href: mailto:cwinskill@ucla.edu
     - icon: linkedin
       href: https://www.linkedin.com/in/carolyn-winskill/
 ---
@@ -17,7 +16,8 @@ about:
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Gang Li  
-**Cohort:** Fall 2022 
+**Cohort:** Fall 2022  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","cwinskill");</script>
 
 ### Education:
 
