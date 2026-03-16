@@ -19,6 +19,8 @@ website:
     right:
       - href: https://ph.ucla.edu/departments/biostatistics
         text: UCLA Biostatistics
+      - icon: github
+        href: https://github.com/UCLA-BSA/UCLA-BSA.github.io
     
 
 format:

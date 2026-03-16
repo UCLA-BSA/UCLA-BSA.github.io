@@ -137,7 +137,8 @@ df_clean <- df %>%
   mutate(advisor1 = ifelse(!is.na(advisor1), advisor1, "Not Listed"),
          advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
-  mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
+  mutate(advisor_full = gsub(", $", "", advisor_full)) %>% # removes trailing comma if advisor2 was ""
+  mutate(masters_edu = ifelse(masters_edu != "" & masters_grad >= 2026 & !is.na(masters_grad), "", masters_edu))
 
 
 

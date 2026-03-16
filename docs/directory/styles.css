@@ -250,3 +250,21 @@
   object-position: center;
   display: block;
 }
+
+
+/* These lines set the width and height for the the directory home page images */
+.quarto-grid-item {
+  max-width: 200px;
+}
+
+.quarto-grid-item .card-img-top img.thumbnail-image {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+}
+
+/* This controls automatic entries per row */
+#listing-listing .list.grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+}

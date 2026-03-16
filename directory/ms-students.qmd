@@ -1,5 +1,5 @@
 ---
-title: "MS Students"
+title: "Master of Science Students"
 page-layout: full
 css: styles.css
 format:
@@ -15,7 +15,6 @@ listing:
   sort-ui: [title, description]
   sort: false
   filter-ui: true
-  image-height: 300px
   fields: [image, title, subtitle, description]
   grid-item-align: left
   categories: unnumbered

@@ -12,3 +12,9 @@
 /* .quarto-title h1.title {
   display: none;
 } */
+
+/* Profile page - crop circle from top */
+img.about-image.round {
+  object-fit: cover !important;
+  object-position: top center !important;
+}
