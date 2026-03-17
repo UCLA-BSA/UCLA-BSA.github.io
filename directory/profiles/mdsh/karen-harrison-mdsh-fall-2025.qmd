@@ -10,8 +10,10 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/karenlorenaharrison/
+      target: _blank
     - icon: github
       href: https://github.com/karen-harrison
+      target: _blank
 ---
 
 

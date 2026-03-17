@@ -229,13 +229,13 @@ template <- function(df) {
     # if (!is.na(df$ucla_email) && df$ucla_email != "")
     #   paste0("    - text: ", str_replace(df$ucla_email, "@", " [at] ")),
     if (!is.na(df$personal_website) && df$personal_website != "")
-      paste0("    - icon: globe\n      href: ", df$personal_website),
+      paste0("    - icon: globe\n      href: ", df$personal_website, "\n      target: _blank"),
     if (!is.na(df$linkedin) && df$linkedin != "")
-      paste0("    - icon: linkedin\n      href: ", df$linkedin),
+      paste0("    - icon: linkedin\n      href: ", df$linkedin, "\n      target: _blank"),
     if (!is.na(df$github) && df$github != "")
-      paste0("    - icon: github\n      href: ", df$github),
+      paste0("    - icon: github\n      href: ", df$github, "\n      target: _blank"),
     if (!is.na(df$other_web) && df$other_web != "")
-      paste0("    - icon: camera\n      href: ", df$other_web)
+      paste0("    - icon: camera\n      href: ", df$other_web, "\n      target: _blank")
   )
   
   links_section <- if (length(links) > 0) {

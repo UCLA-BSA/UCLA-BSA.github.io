@@ -10,10 +10,13 @@ about:
   links:
     - icon: globe
       href: http://fauzanbudi.github.io/
+      target: _blank
     - icon: linkedin
       href: https://www.linkedin.com/in/fauzan-budi-prasetya/
+      target: _blank
     - icon: github
       href: https://github.com/fauzanbudi
+      target: _blank
 ---
 
 

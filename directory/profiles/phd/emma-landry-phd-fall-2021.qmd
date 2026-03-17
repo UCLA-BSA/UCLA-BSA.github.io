@@ -10,6 +10,7 @@ about:
   links:
     - icon: globe
       href: https://emma-landry.github.io
+      target: _blank
 ---
 
 

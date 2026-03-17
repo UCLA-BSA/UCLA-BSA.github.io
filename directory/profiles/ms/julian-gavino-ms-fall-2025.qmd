@@ -10,6 +10,7 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/julian-gavino-72371822a/
+      target: _blank
 ---
 
 

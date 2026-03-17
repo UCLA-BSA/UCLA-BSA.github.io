@@ -10,8 +10,10 @@ about:
   links:
     - icon: linkedin
       href: https://linkedin.com/in/amaanjsattar
+      target: _blank
     - icon: github
       href: https://github.com/amaanjsattar
+      target: _blank
 ---
 
 

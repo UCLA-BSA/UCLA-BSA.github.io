@@ -10,6 +10,7 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/puyuan-liu-46b677294/
+      target: _blank
 ---
 
 

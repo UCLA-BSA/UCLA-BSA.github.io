@@ -6,6 +6,7 @@ project:
     - "*.qmd"
 website:
   title: "UCLA Biostatistics Student Association"
+  favicon: images/icon.png
   navbar:
     left:
       - href: index.qmd
@@ -19,8 +20,12 @@ website:
     right:
       - href: https://ph.ucla.edu/departments/biostatistics
         text: UCLA Biostatistics
+        target: _blank
+  page-footer:
+    right:
       - icon: github
         href: https://github.com/UCLA-BSA/UCLA-BSA.github.io
+        target: _blank
     
 
 format:
@@ -34,6 +39,9 @@ format:
       sidebar-width: 200px
       margin-width: 300px
     include-in-header: directory/scramble_email.html
+    link-external-newwindow: true
+    link-external-filter: '.*'
+
     
 
     

@@ -10,8 +10,10 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/michael-zaychikov-68b16b25b/
+      target: _blank
     - icon: github
       href: https://github.com/m-zaych
+      target: _blank
 ---
 
 

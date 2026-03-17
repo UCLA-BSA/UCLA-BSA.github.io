@@ -10,8 +10,10 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/rica-mae-pitogo-a7aa10193/
+      target: _blank
     - icon: github
       href: https://github.com/ricapitogo-prog
+      target: _blank
 ---
 
 

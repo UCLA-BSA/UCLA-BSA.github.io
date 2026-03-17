@@ -10,8 +10,10 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/timothy-shen213/
+      target: _blank
     - icon: github
       href: https://github.com/timothyzshen
+      target: _blank
 ---
 
 

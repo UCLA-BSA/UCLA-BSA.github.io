@@ -10,6 +10,7 @@ about:
   links:
     - icon: github
       href: https://github.com/kianamonik
+      target: _blank
 ---
 
 

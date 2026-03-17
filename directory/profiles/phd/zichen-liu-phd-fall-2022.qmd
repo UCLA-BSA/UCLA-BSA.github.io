@@ -10,6 +10,7 @@ about:
   links:
     - icon: linkedin
       href: https://www.linkedin.com/in/hellozichenliu/
+      target: _blank
 ---
 
 

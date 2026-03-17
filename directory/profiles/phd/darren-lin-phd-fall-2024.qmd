@@ -10,10 +10,13 @@ about:
   links:
     - icon: globe
       href: https://darrenlingit.github.io/
+      target: _blank
     - icon: linkedin
       href: https://www.linkedin.com/in/darrenselin/
+      target: _blank
     - icon: github
       href: https://github.com/darrenlingit
+      target: _blank
 ---
 
 
