@@ -2,27 +2,29 @@
   {
     "listing": "/directory/phd-students.html",
     "items": [
-      "/directory/profiles/andrew-chuang-phd-fall-2024.html",
-      "/directory/profiles/bowen-zhang-phd-fall-2025.html",
-      "/directory/profiles/carolyn-winskill-phd-fall-2022.html",
-      "/directory/profiles/darren-lin-phd-fall-2024.html",
-      "/directory/profiles/jasen-zhang-phd-fall-2022.html",
-      "/directory/profiles/parsa-jamshidian-phd-fall-2021.html",
-      "/directory/profiles/puyuan-liu-phd-fall-2025.html",
-      "/directory/profiles/timothy-shen-phd-fall-2024.html",
-      "/directory/profiles/yanlong-bai-phd-fall-2023.html",
-      "/directory/profiles/yingxin-zhang-phd-fall-2025.html",
-      "/directory/profiles/zichen-liu-phd-fall-2022.html"
+      "/directory/profiles/phd/andrew-chuang-phd-fall-2024.html",
+      "/directory/profiles/phd/bowen-zhang-phd-fall-2025.html",
+      "/directory/profiles/phd/carolyn-winskill-phd-fall-2022.html",
+      "/directory/profiles/phd/daisy-wang-phd-fall-2025.html",
+      "/directory/profiles/phd/darren-lin-phd-fall-2024.html",
+      "/directory/profiles/phd/emma-landry-phd-fall-2021.html",
+      "/directory/profiles/phd/jasen-zhang-phd-fall-2022.html",
+      "/directory/profiles/phd/parsa-jamshidian-phd-fall-2021.html",
+      "/directory/profiles/phd/puyuan-liu-phd-fall-2025.html",
+      "/directory/profiles/phd/timothy-shen-phd-fall-2024.html",
+      "/directory/profiles/phd/yanlong-bai-phd-fall-2023.html",
+      "/directory/profiles/phd/yingxin-zhang-phd-fall-2025.html",
+      "/directory/profiles/phd/zichen-liu-phd-fall-2022.html"
     ]
   },
   {
     "listing": "/directory/mdsh-students.html",
     "items": [
-      "/directory/profiles/fauzan-budi-prasetya-mdsh-fall-2025.html",
-      "/directory/profiles/karen-harrison-mdsh-fall-2025.html",
-      "/directory/profiles/michael-zaychikov-mdsh-fall-2025.html",
-      "/directory/profiles/nena-ojukwu-mdsh-fall-2025.html",
-      "/directory/profiles/rica-mae-pitogo-mdsh-fall-2025.html"
+      "/directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-fall-2025.html",
+      "/directory/profiles/mdsh/karen-harrison-mdsh-fall-2025.html",
+      "/directory/profiles/mdsh/michael-zaychikov-mdsh-fall-2025.html",
+      "/directory/profiles/mdsh/nena-ojukwu-mdsh-fall-2025.html",
+      "/directory/profiles/mdsh/rica-mae-pitogo-mdsh-fall-2025.html"
     ]
   },
   {
@@ -44,11 +46,11 @@
   {
     "listing": "/directory/ms-students.html",
     "items": [
-      "/directory/profiles/amaan-jogia-sattar-ms-fall-2024.html",
-      "/directory/profiles/julian-gavino-ms-fall-2025.html",
-      "/directory/profiles/kiana-mohammadinik-ms-fall-2024.html",
-      "/directory/profiles/peike-li-ms-fall-2024.html",
-      "/directory/profiles/yutong-wang-ms-fall-2024.html"
+      "/directory/profiles/ms/amaan-jogia-sattar-ms-fall-2024.html",
+      "/directory/profiles/ms/julian-gavino-ms-fall-2025.html",
+      "/directory/profiles/ms/kiana-mohammadinik-ms-fall-2024.html",
+      "/directory/profiles/ms/peike-li-ms-fall-2024.html",
+      "/directory/profiles/ms/yutong-wang-ms-fall-2024.html"
     ]
   }
 ]

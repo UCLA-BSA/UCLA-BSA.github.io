@@ -1,0 +1,32 @@
+---
+title: "**Yingxin Zhang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2025"
+image: ../../images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Gang Li"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Gang Li  
+**Cohort:** Fall 2025  
+
+
+### Education:
+
+**MS in Biostatistics**, 2025  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Statistics**, 2023  
+Peking University — Beijing, China
+
+
+
+### Bio:
+
+My research interests include survival analysis and high-dimensional data analysis. In my free time, I enjoy music and exploring various restaurants.

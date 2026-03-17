@@ -1,0 +1,33 @@
+---
+title: "**Emma Landry**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2021"
+image: ../../images/phd/emma-landry-phd-2021 - Emma Landry.jpg
+categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Donatello Telesca"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://emma-landry.github.io
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Donatello Telesca  
+**Cohort:** Fall 2021  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","emmalandry");</script>
+
+### Education:
+
+
+
+**MSci in Mathematics**, 2021  
+Imperial College London — London, United Kingdom
+
+
+
+### Bio:
+
+In my dissertation, I focus on functional data analysis, analysis of non-Euclidean objects, and Bayesian methodology, which I apply to the study of neuroimaging signals. I also have research interests in covariate shift methodology and transportability of machine learning predictions. In my free time, I enjoy bouldering, playing tennis and beach volleyball, and traveling.

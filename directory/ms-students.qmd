@@ -8,7 +8,7 @@ format:
       - category-accordion-script.html
 listing:
   type: grid
-  contents: profiles/*.qmd
+  contents: profiles/ms/*.qmd
   include:
     subtitle: "MS Student"
   grid-columns: 5

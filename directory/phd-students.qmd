@@ -8,7 +8,7 @@ format:
       - category-accordion-script.html
 listing:
   type: grid
-  contents: profiles/*.qmd
+  contents: profiles/phd/*.qmd
   include:
     subtitle: ["PhD Student", "PhD Candidate"]  
   grid-columns: 5
