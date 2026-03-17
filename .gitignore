@@ -10,3 +10,4 @@ public/
 .claude/
 
 **/*.quarto_ipynb
+.env
