@@ -27,8 +27,6 @@ University of California, Los Angeles
 **MSci in Mathematics**, 2021  
 Imperial College London — London, United Kingdom
 
-
-
 ### Bio:
 
 In my dissertation, I focus on functional data analysis, analysis of non-Euclidean objects, and Bayesian methodology, which I apply to the study of neuroimaging signals. I also have research interests in covariate shift methodology and transportability of machine learning predictions. In my free time, I enjoy bouldering, playing tennis and beach volleyball, and traveling.

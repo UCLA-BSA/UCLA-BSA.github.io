@@ -8,19 +8,17 @@ library(here)
 here::i_am("directory/make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
-download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
-
-dotenv::load_dot_env(file = here(".env"))
-
-if (!drive_has_token()) {
-  drive_auth() # authenticate google
-}
-
-spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
+download_files <- FALSE # set to FALSE if you don't want to download each time you run this script
 
 if (download_files == TRUE) {
+  if (!drive_has_token()) {
+    dotenv::load_dot_env(file = here(".env"))
+    drive_auth() # authenticate google
+  }
+  spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
   drive_download(as_id(spreadsheet_url), path = here("directory/directory_file.xlsx"), overwrite = TRUE)
 }
+
 
 
 # functions to get image id and extensions
@@ -162,7 +160,7 @@ df_clean <- df %>%
       "anon.jpg"),
     bio = if_else(
       !is.na(description) & description != "",
-      paste0("### Bio:", "\n\n", description),
+      description,
       ""
     ),
     candidacy = if_else(
@@ -191,6 +189,9 @@ df_clean <- df %>%
       ""
     )
   ) %>%
+  mutate(masters_edu = ifelse(masters_edu != "" & masters_grad >= 2026 & !is.na(masters_grad), "", masters_edu),
+         education_label = ifelse(masters_edu != "" | bach_edu != "", "### Education:", ""),
+         bio_label = ifelse(bio != "", "### Bio:", "")) %>%
   separate_wider_delim(
     advisor,
     delim = ",",
@@ -201,8 +202,8 @@ df_clean <- df %>%
   mutate(advisor1 = ifelse(!is.na(advisor1), advisor1, "Not Listed"),
          advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
-  mutate(advisor_full = gsub(", $", "", advisor_full)) %>% # removes trailing comma if advisor2 was ""
-  mutate(masters_edu = ifelse(masters_edu != "" & masters_grad >= 2026 & !is.na(masters_grad), "", masters_edu))
+  mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
+  
 
 
 
@@ -275,13 +276,13 @@ University of California, Los Angeles
 **Cohort:** {df$year}  
 {email_js}
 
-### Education:
+{df$education_label}
 
 {df$masters_edu}
 
 {df$bach_edu}
 
-
+{df$bio_label}
 
 {df$bio}
 "

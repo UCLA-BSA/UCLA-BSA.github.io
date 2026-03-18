@@ -30,8 +30,6 @@ University of California, Los Angeles
 **BS in Industrial Engineering**, 2023  
 University of San Carlos — Cebu, Philippines
 
-
-
 ### Bio:
 
 My research interests lie at the intersection of causal AI, real-world evidence, and personalized interventions — particularly as they apply to rare diseases and clinical decision support. I am especially drawn to methodologies that can translate complex patient data into actionable, equitable health insights.

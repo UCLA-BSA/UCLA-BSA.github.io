@@ -28,8 +28,6 @@ University of California, Los Angeles (UCLA) — Los Angeles, CA
 **BS in Mathematics**, 2021  
 Southern University of Science and Technology — Shenzhen, China
 
-
-
 ### Bio:
 
 I am currently pursuing a PhD in Biostatistics at UCLA Fielding School of Public Health, building on a Master's in the same field. My research focuses on longitudinal and functional data analysis.

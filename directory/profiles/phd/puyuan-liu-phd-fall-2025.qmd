@@ -28,8 +28,6 @@ UCLA — Los Angeles, CA
 **BS in Statistics**, 2023  
 Chinese University of Hong Kong, Shenzhen — Shenzhen, China
 
-
-
 ### Bio:
 
 My research interests include functional data analysis and non-Euclidean data analysis with applications to neuroscience and brain signal data. In my free time, I enjoy reading, music, and working out.

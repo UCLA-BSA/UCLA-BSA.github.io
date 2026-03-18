@@ -27,8 +27,6 @@ University of California, Los Angeles
 **BS in Health Informatics**, 2024  
 UCI — Irvine, CA
 
-
-
 ### Bio:
 
 I am a first-year Master of Data Science in Health (MDSH) student at UCLA with a background in health informatics. My interests include biostatistics, machine learning, and biomedical data science, particularly in genomics, medical imaging, electronic health records (EHR), and clinical NLP. I serve as the Biostatistics Ambassador for the UCLA Fielding School of Public Health and am also a Biostatistics Student Association (BSA) board member, supporting student engagement both within the Biostatistics department and across the School of Public Health.

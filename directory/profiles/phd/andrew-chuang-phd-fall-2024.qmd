@@ -28,8 +28,6 @@ UCLA — Los Angeles, CA
 **BA in Mathematics/Economics**  
 The University of Chicago — Chicago, IL
 
-
-
 ### Bio:
 
 I am a PhD student in the Department of Biostatistics at UCLA. I previously completed my MS in the same department and my BA at The University of Chicago. My research interests include Bayesian transfer learning and causal inference. In my free time, I enjoy bouldering outside, reading, and watching movies.

@@ -27,8 +27,6 @@ University of California, Los Angeles
 **BS in Statistics**, 2021  
 UC Davis — Davis, CA
 
-
-
 ### Bio:
 
 I am a PhD candidate in the Department of Biostatistics at UCLA, working with Dr. Donatello Telesca. My current research involves developing Bayesian methods for transfer learning in high-dimensional regression. I previously completed my BS in Statistics at UC Davis. In my free time, I like playing sports (particularly soccer and volleyball), and eating out at unique restaurants with my friends.

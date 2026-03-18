@@ -28,8 +28,6 @@ University of California, San Diego — San Diego, CA
 **BS**  
 Johns Hopkins University — Baltimore, MD
 
-
-
 ### Bio:
 
 My research interests broadly span stochastic processes, machine learning, and computational approaches to model noisy datasets. 
