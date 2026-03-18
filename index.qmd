@@ -12,14 +12,14 @@ format:
 ---
 
 :::: hero-banner
-![](images/hero.png)
+![](home/images/hero.png)
 
 ::: hero-content
 ## Biostatistics Student Association (BSA) at UCLA
 
 Connecting students, research, and careers in biostatistics & data science for public health.
 
-[Events](../events/events.qmd){.btn .btn-primary .btn-lg}
+[Events](./events/events.qmd){.btn .btn-primary .btn-lg}
 :::
 ::::
 
