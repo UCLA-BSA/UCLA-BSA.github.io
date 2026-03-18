@@ -9,7 +9,6 @@ format:
     smooth-scroll: true
     anchor-sections: true
     link-external-newwindow: true
-    css: styles.css
 ---
 
 :::: hero-banner
@@ -20,7 +19,7 @@ format:
 
 Connecting students, research, and careers in biostatistics & data science for public health.
 
-[Events](events.qmd){.btn .btn-primary .btn-lg}
+[Events](../events/events.qmd){.btn .btn-primary .btn-lg}
 :::
 ::::
 

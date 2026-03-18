@@ -9,13 +9,13 @@ website:
   favicon: images/icon.png
   navbar:
     left:
-      - href: index.qmd
+      - href: home/index.qmd
         text: Home
-      - about.qmd
+      - about/about.qmd
       - board/board.qmd
       - href: directory/directory.qmd
         text: Student Directory
-      - events.qmd
+      - events/events.qmd
       - newsletter/newsletter.qmd
     right:
       - href: https://ph.ucla.edu/departments/biostatistics
