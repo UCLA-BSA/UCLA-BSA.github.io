@@ -1,5 +1,28 @@
 ---
 title: "About"
+listing:
+  - id: board-2020-2021
+    contents: ../board/2020-2021/people
+    type: grid
+    sort: false
+    image-height: 300px
+    fields: [image, title, subtitle]
 ---
 
+## About BSA
 
+## Board Members
+
+### 2020-2021 Board
+
+[2020-2021 Board](./board/2020-2021/team.qmd)
+
+## Newsletter
+
+Past Newsletters:
+
+[Spring 2021](./newsletter/articles/vol003.pdf)
+
+[Winter 2021](./newsletter/articles/vol002.pdf)
+
+[Fall 2020](./newsletter/articles/vol001.pdf)

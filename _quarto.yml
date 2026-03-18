@@ -12,11 +12,9 @@ website:
       - href: home/index.qmd
         text: Home
       - about/about.qmd
-      - board/board.qmd
       - href: directory/directory.qmd
         text: Student Directory
       - events/events.qmd
-      - newsletter/newsletter.qmd
     right:
       - href: https://ph.ucla.edu/departments/biostatistics
         text: UCLA Biostatistics

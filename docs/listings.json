@@ -1,20 +1,32 @@
 [
   {
-    "listing": "/directory/phd-students.html",
+    "listing": "/directory/ms-students.html",
     "items": [
-      "/directory/profiles/phd/andrew-chuang-phd-fall-2024.html",
-      "/directory/profiles/phd/bowen-zhang-phd-fall-2025.html",
-      "/directory/profiles/phd/carolyn-winskill-phd-fall-2022.html",
-      "/directory/profiles/phd/daisy-wang-phd-fall-2025.html",
-      "/directory/profiles/phd/darren-lin-phd-fall-2024.html",
-      "/directory/profiles/phd/emma-landry-phd-fall-2021.html",
-      "/directory/profiles/phd/jasen-zhang-phd-fall-2022.html",
-      "/directory/profiles/phd/parsa-jamshidian-phd-fall-2021.html",
-      "/directory/profiles/phd/puyuan-liu-phd-fall-2025.html",
-      "/directory/profiles/phd/timothy-shen-phd-fall-2024.html",
-      "/directory/profiles/phd/yanlong-bai-phd-fall-2023.html",
-      "/directory/profiles/phd/yingxin-zhang-phd-fall-2025.html",
-      "/directory/profiles/phd/zichen-liu-phd-fall-2022.html"
+      "/directory/profiles/ms/amaan-jogia-sattar-ms-fall-2024.html",
+      "/directory/profiles/ms/julian-gavino-ms-fall-2025.html",
+      "/directory/profiles/ms/kiana-mohammadinik-ms-fall-2024.html",
+      "/directory/profiles/ms/peike-li-ms-fall-2024.html",
+      "/directory/profiles/ms/yutong-wang-ms-fall-2024.html"
+    ]
+  },
+  {
+    "listing": "/about/about.html",
+    "items": []
+  },
+  {
+    "listing": "/about/board/2020-2021/team.html",
+    "items": [
+      "/about/board/2020-2021/people/crystal-shaw.html",
+      "/about/board/2020-2021/people/emilie-campos.html",
+      "/about/board/2020-2021/people/doug-morrison.html",
+      "/about/board/2020-2021/people/john-shamshoian.html",
+      "/about/board/2020-2021/people/ami-sheth.html",
+      "/about/board/2020-2021/people/ian-frankenburg.html",
+      "/about/board/2020-2021/people/lillian-chen.html",
+      "/about/board/2020-2021/people/milan-filipovic.html",
+      "/about/board/2020-2021/people/tina-arputhasamy.html",
+      "/about/board/2020-2021/people/caesar-li.html",
+      "/about/board/2020-2021/people/jane-pan.html"
     ]
   },
   {
@@ -30,29 +42,21 @@
     ]
   },
   {
-    "listing": "/board/2020-2021/team.html",
+    "listing": "/directory/phd-students.html",
     "items": [
-      "/board/2020-2021/people/crystal-shaw.html",
-      "/board/2020-2021/people/emilie-campos.html",
-      "/board/2020-2021/people/doug-morrison.html",
-      "/board/2020-2021/people/john-shamshoian.html",
-      "/board/2020-2021/people/ami-sheth.html",
-      "/board/2020-2021/people/ian-frankenburg.html",
-      "/board/2020-2021/people/lillian-chen.html",
-      "/board/2020-2021/people/milan-filipovic.html",
-      "/board/2020-2021/people/tina-arputhasamy.html",
-      "/board/2020-2021/people/caesar-li.html",
-      "/board/2020-2021/people/jane-pan.html"
-    ]
-  },
-  {
-    "listing": "/directory/ms-students.html",
-    "items": [
-      "/directory/profiles/ms/amaan-jogia-sattar-ms-fall-2024.html",
-      "/directory/profiles/ms/julian-gavino-ms-fall-2025.html",
-      "/directory/profiles/ms/kiana-mohammadinik-ms-fall-2024.html",
-      "/directory/profiles/ms/peike-li-ms-fall-2024.html",
-      "/directory/profiles/ms/yutong-wang-ms-fall-2024.html"
+      "/directory/profiles/phd/andrew-chuang-phd-fall-2024.html",
+      "/directory/profiles/phd/bowen-zhang-phd-fall-2025.html",
+      "/directory/profiles/phd/carolyn-winskill-phd-fall-2022.html",
+      "/directory/profiles/phd/daisy-wang-phd-fall-2025.html",
+      "/directory/profiles/phd/darren-lin-phd-fall-2024.html",
+      "/directory/profiles/phd/emma-landry-phd-fall-2021.html",
+      "/directory/profiles/phd/jasen-zhang-phd-fall-2022.html",
+      "/directory/profiles/phd/parsa-jamshidian-phd-fall-2021.html",
+      "/directory/profiles/phd/puyuan-liu-phd-fall-2025.html",
+      "/directory/profiles/phd/timothy-shen-phd-fall-2024.html",
+      "/directory/profiles/phd/yanlong-bai-phd-fall-2023.html",
+      "/directory/profiles/phd/yingxin-zhang-phd-fall-2025.html",
+      "/directory/profiles/phd/zichen-liu-phd-fall-2022.html"
     ]
   }
 ]
