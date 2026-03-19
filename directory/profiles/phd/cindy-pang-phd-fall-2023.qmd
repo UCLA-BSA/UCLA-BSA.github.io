@@ -1,0 +1,35 @@
+---
+title: "**Cindy Pang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2023"
+image: ../../images/phd/IMG_2515 - Cindy Pang.jpeg
+categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Sudipto Banerjee", "Advisor: Falco J. Bargagli Stoffi"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://cindyjpang.github.io
+      target: _blank
+    - icon: linkedin
+      href: https://www.linkedin.com/in/cindyjpang/
+      target: _blank
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Sudipto Banerjee, Falco J. Bargagli Stoffi  
+**Cohort:** Fall 2023  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","cindypang");</script>
+
+### Education:
+
+
+
+**BS in Biostatistics/Mathematics**, 2023  
+University of North Carolina at Chapel Hill — Chapel Hill, NC
+
+### Bio:
+
+I am a PhD student in the Department of Biostatistics at UCLA working with Dr. Sudipto Banerjee and Dr. Falco J. Bargagli Stoffi on all things Bayes and specifically, high-dimensional data analysis, survival/longitudinal data methodology, and causal inference. Outside of academics, I enjoy hiking, swimming, dancing, and exploring different matcha places. I also serve as the President of the Biostatistics Student Association (BSA) and I love hanging out with my (not-so) little golden retriever, Laken.
