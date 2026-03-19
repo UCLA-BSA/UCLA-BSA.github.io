@@ -1,0 +1,30 @@
+---
+title: "**James Papadopoulos**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2022"
+image: ../../images/phd/FSPH_Headshot - JAMES PAPADOPOULOS.jpg
+categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Michele Guindani"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Michele Guindani  
+**Cohort:** Fall 2022  
+
+
+### Education:
+
+**MS in Statistics**, 2022  
+UCI
+
+**BS in Chemical Engineering**, 2016  
+UCLA — Los Angeles, CA
+
+
+
+

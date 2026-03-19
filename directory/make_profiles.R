@@ -39,17 +39,33 @@ safe_ext <- function(meta_name) {
 # download images function
 download_image <- function(file_id, program_lower, meta_name) {
   
+  image_path <- paste(here("directory/images"), program_lower, meta_name, sep = "/")
+  
   if(!dir.exists(here("directory/images", program_lower))) {
     dir.create(here("directory/images", program_lower), showWarnings = FALSE, recursive = TRUE)
   }
   
+  # only download if image exists in Google drive and if it is different from local folder
   if(!is.na(file_id)) {
+    meta <- drive_get(as_id(file_id))
+    drive_md5 <- meta$drive_resource[[1]]$md5Checksum
+    
+    if (file.exists(image_path)) {
+      local_md5 <- tools::md5sum(here(image_path))
+      
+      if (drive_md5 == local_md5) {
+        print(paste("No changes to file ", image_path, ". Will not redownload."))
+        
+        return(invisible(NULL))
+      }
+    }
+    
     drive_download(
       as_id(file_id),
-      path = paste(here("directory/images"), program_lower, meta_name, sep = "/"),
-      overwrite = TRUE
-    )
+      path = image_path,
+      overwrite = TRUE)
   }
+  
 }
 
 ##### clean data frame #####
@@ -86,9 +102,9 @@ df <- readxl::read_xlsx(student_directory_form) %>%
          other_web = 27
   ) %>%
   mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"),
-         program_lower = tolower(current_program),
-         file_id = str_extract(photo, "(?<=id=)[^&]+")) %>%
-  mutate(meta = map(file_id, safe_drive_get)) %>%
+         program_lower = tolower(current_program)) %>%
+  mutate(file_id = str_extract(photo, "(?<=id=)[^&]+"),
+         meta = map(file_id, safe_drive_get)) %>%
   unnest(meta, names_sep = "_") %>%
   mutate(ext = map(meta_name, safe_ext)) %>%
   select(-meta_drive_resource)
@@ -114,7 +130,21 @@ complete_degree <- function(deg, major, grad_year, school, location) {
 
 
 df_clean <- df %>%
-  mutate(preferred = ifelse(!is.na(preferred), paste("(", preferred, ") ", sep = ""), "")) %>%
+  # cleaning names
+  
+  mutate(bachelors_major = tools::toTitleCase(bachelors_major),
+         masters_major = tools::toTitleCase(masters_major)) %>%
+  
+  mutate(
+    first = str_to_title(first),
+    last  = str_to_title(last),
+    preferred = ifelse(preferred == first | preferred == last | preferred == paste(first, last), NA, preferred), # remove duplicated preferred name
+    preferred = ifelse(
+      str_detect(preferred, "\\(.*\\)"),
+      str_extract(preferred, "(?<=\\().*?(?=\\))"), # if someone puts name as first (preferred) last, only extracts preferred
+      preferred),
+    preferred = ifelse(!is.na(preferred), paste("(", preferred, ") ", sep = ""), "")
+  ) %>%
   mutate(
     filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(year)}"),
     filename = str_replace_all(filename, "[^a-z0-9 -]", ""),
@@ -128,19 +158,17 @@ df_clean <- df %>%
       str_replace_all("\\s*,\\s*", ",") |> # remove all spaces around commas
       str_trim() # trim leading/trailing whitespace
   ) %>%
-  mutate(
-    first_clean = str_replace_all(str_to_lower(first), "\\s+", "-"),
-    last_clean  = str_replace_all(str_to_lower(last),  "\\s+", "-")#,
-    # image_file  = glue("{first_clean}-{last_clean}-{str_to_lower(current_program)}-{str_to_lower(start_year)}"),
-    # image_file  = paste0(image_file, ".jpg")
-  ) %>%
+  
   mutate(
     ucla_email = case_when(
       is.na(ucla_email) ~ NA_character_,
       str_detect(ucla_email, "@") ~ ucla_email,  # already has @, leave it
-      TRUE ~ paste0(ucla_email, "@ucla.edu")      # missing domain, append it
+      TRUE ~ paste0(ucla_email, "@ucla.edu") # missing domain, append it
     )
   ) %>%
+  
+  mutate(bachelors_location = str_replace(bachelors_location, "\\b([a-zA-Z]{2})$", toupper),
+         masters_location = str_replace(masters_location, "\\b([a-zA-Z]{2})$", toupper)) %>% # make all two letter words uppercase
   
   # fixing links
   mutate(across(
@@ -203,7 +231,7 @@ df_clean <- df %>%
          advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
   mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
-  
+
 
 
 
