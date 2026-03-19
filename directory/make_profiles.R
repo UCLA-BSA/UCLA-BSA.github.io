@@ -13,7 +13,10 @@ download_files <- TRUE # set to FALSE if you don't want to download each time yo
 if (download_files == TRUE) {
   if (!drive_has_token()) {
     dotenv::load_dot_env(file = here(".env"))
-    drive_auth() # authenticate google
+    
+    # authenticate google
+    options(gargle_oauth_cache = ".secrets")
+    drive_auth(email = Sys.getenv("UCLA_EMAIL")) 
   }
   spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
   drive_download(as_id(spreadsheet_url), path = here("directory/directory_file.xlsx"), overwrite = TRUE)
@@ -54,18 +57,21 @@ download_image <- function(file_id, program_lower, meta_name) {
       local_md5 <- tools::md5sum(here(image_path))
       
       if (drive_md5 == local_md5) {
-        print(paste("No changes to file ", image_path, ". Will not redownload."))
+        print(paste0("No changes to file ", image_path, ". Will not redownload."))
         
         return(invisible(NULL))
       }
     }
     
-    drive_download(
-      as_id(file_id),
-      path = image_path,
-      overwrite = TRUE)
+    print(paste0("Downloading ", image_path, "."))
+    suppressMessages(
+      drive_download(
+        as_id(file_id),
+        path = image_path,
+        overwrite = TRUE
+      )
+    )
   }
-  
 }
 
 ##### clean data frame #####

@@ -1,0 +1,32 @@
+---
+title: "**Sopyda Yin**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/4L8A1489 - Sopyda Yin.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/sopydayin
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","sopydayin");</script>
+
+### Education:
+
+
+
+**BS in Human Biology**  
+University of California, San Diego
+
+
+
+

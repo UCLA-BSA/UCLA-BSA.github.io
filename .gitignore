@@ -11,4 +11,5 @@ public/
 
 **/*.quarto_ipynb
 .env
+.secrets
 /_*.local
