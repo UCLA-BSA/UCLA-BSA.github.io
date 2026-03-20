@@ -13,3 +13,4 @@ public/
 .env
 .secrets
 /_*.local
+.DS_Store
