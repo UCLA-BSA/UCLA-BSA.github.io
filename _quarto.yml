@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  pre-render: directory/make_profiles.R
   render:
     - "!*.md"
     - "*.qmd"

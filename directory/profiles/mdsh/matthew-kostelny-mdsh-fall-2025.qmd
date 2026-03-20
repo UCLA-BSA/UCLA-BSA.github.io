@@ -1,0 +1,32 @@
+---
+title: "**Matthew (Matt) Kostelny**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/matthew-kostelny
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","matthew.kostelny");</script>
+
+### Education:
+
+
+
+**BS in Biotechnology**, 2020  
+California State University, Northridge
+
+
+
+

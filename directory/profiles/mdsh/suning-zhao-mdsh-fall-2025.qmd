@@ -1,0 +1,28 @@
+---
+title: "**Suning (Nyla) Zhao**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Jin Zhou, Hua Zhou  
+**Cohort:** Fall 2025  
+
+
+
+
+
+
+
+
+### Bio:
+
+My work focuses on building scalable and reliable AI systems for clinical data. I develop machine learning pipelines and data workflows that integrate heterogeneous healthcare data and support real-world deployment. I work at the interface of machine learning, data engineering, and clinical applications, and aim to translate large-scale health data into practical, data-driven solutions for improving patient outcomes.

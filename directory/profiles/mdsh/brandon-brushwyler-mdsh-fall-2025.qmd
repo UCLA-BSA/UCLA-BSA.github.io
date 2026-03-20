@@ -1,0 +1,29 @@
+---
+title: "**Brandon Brushwyler**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/B518D365-26F2-456A-B26F-DE1C6864C304 - BRANDON BRUSHWYLER.png
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("gmail.com","brandonbrushwyler");</script>
+
+### Education:
+
+
+
+**BS in Computer Science**, 2021  
+Syracuse University — Syracuse, NY
+
+
+
+

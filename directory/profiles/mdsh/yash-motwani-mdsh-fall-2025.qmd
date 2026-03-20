@@ -1,0 +1,32 @@
+---
+title: "**Yash Motwani**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/IMG_4782 - YASH MOTWANI.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://linkedin.com/in/yashmotwani850
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("gmail.com","yash96.motwani");</script>
+
+### Education:
+
+
+
+**BS in Public Health**, 2019  
+The University of Texas at Austin — Austin, TX
+
+### Bio:
+
+I am a research data analyst at UCLA’s Department of Medicine with a passion for health equity research, involving, identifying the root causes of health disparities and contributing to meaningful interventions that address them. My work has spanned a range of impactful projects, including building UCLA’s COVID-19 data repository, constructing a comprehensive national dataset of diabetic Veterans to support exploratory research, and contributing to multiple studies focused on improving care delivery and linkage to care for Veterans living with HBV or HCV. Outside of work, I enjoy watching and playing sports and exploring new restaurants around the city.

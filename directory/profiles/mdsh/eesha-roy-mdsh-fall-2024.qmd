@@ -1,0 +1,32 @@
+---
+title: "**Eesha Roy**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+image: ../../images/mdsh/IMG_8365 - EESHA ROY.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/eeshar
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","eesharoy");</script>
+
+### Education:
+
+
+
+**BS in Molecular, Cell, and Developmental Biology**, 2024  
+UCLA — Los Angeles, CA
+
+### Bio:
+
+My hobbies are crocheting, playing with my dog, and reading.
