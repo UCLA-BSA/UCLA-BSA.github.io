@@ -8,19 +8,23 @@ library(here)
 here::i_am("directory/make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
-download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
+download_files <- FALSE # set to FALSE if you don't want to download each time you run this script
+dotenv::load_dot_env(file = here(".env"))
+spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
+options(gargle_oauth_cache = ".secrets",
+        gargle_oauth_email = Sys.getenv("UCLA_EMAIL"))
 
-if (download_files == TRUE) {
-  if (!drive_has_token()) {
-    dotenv::load_dot_env(file = here(".env"))
-    
-    # authenticate google
-    options(gargle_oauth_cache = ".secrets")
-    drive_auth(email = Sys.getenv("UCLA_EMAIL")) 
-  }
-  spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
-  drive_download(as_id(spreadsheet_url), path = here("directory/directory_file.xlsx"), overwrite = TRUE)
-}
+
+# if (download_files == TRUE) {
+#   if (!drive_has_token()) {
+#     # dotenv::load_dot_env(file = here(".env"))
+#     
+#     # authenticate google
+#     drive_auth(email = Sys.getenv("UCLA_EMAIL")) 
+#   }
+#   spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
+#   drive_download(as_id(spreadsheet_url), path = here("directory/directory_file.xlsx"), overwrite = TRUE)
+# }
 
 
 
@@ -76,9 +80,15 @@ download_image <- function(file_id, program_lower, meta_name) {
 
 ##### clean data frame #####
 student_directory_form <- here("directory/directory_file.xlsx")
-
-df <- readxl::read_xlsx(student_directory_form) %>%
-  select(-c(1, 2, 3, 4)) %>%
+if (download_files == TRUE) {
+  df <- googlesheets4::read_sheet(spreadsheet_url, range = "E:AE")
+  writexl::write_xlsx(df, student_directory_form)
+  
+} else {
+  df <- readxl::read_xlsx(student_directory_form) #%>%
+    #select(-c(1, 2, 3, 4))
+}
+df <- df %>%
   rename(first = 1,
          last = 2,
          preferred = 3,
@@ -129,19 +139,41 @@ complete_degree <- function(deg, major, grad_year, school, location) {
   major <- ifelse(!is.na(major), paste(" in ", major, sep = ""), "")
   grad_year <- ifelse(!is.na(grad_year), paste(", ", grad_year, sep = ""), "")
   school <- ifelse(!is.na(school), school, "")
-  location <- ifelse(!is.na(location), paste(" \u2014 ", location, sep = ""), "")
+  location <- ifelse(!is.na(location),
+                     ifelse(school != "",
+                            paste(" \u2014 ", location, sep = ""),
+                            location),
+                     "")
   paste("**", deg, major, "**", grad_year, "  \n", school, location, sep = "")
 }
 
+# list of school names to clean up
+standardize_university <- function(x) {
+  case_when(
+    str_detect(x, regex("ucla|university of california.*los angeles", ignore_case = TRUE)) ~ "University of California, Los Angeles",
+    str_detect(x, regex("ucb|uc berkeley|university of california.*berkeley", ignore_case = TRUE)) ~ "University of California, Berkeley",
+    str_detect(x, regex("ucsb|uc santa barbara|university of california.*santa barbara", ignore_case = TRUE)) ~ "University of California, Santa Barbara",
+    str_detect(x, regex("ucsd|uc san diego|university of california.*san diego", ignore_case = TRUE)) ~ "University of California, San Diego",
+    str_detect(x, regex("ucsf|uc san francisco|university of california.*san francisco", ignore_case = TRUE)) ~ "University of California, San Francisco",
+    str_detect(x, regex("ucd|uc davis|university of california.*davis", ignore_case = TRUE)) ~ "University of California, Davis",
+    str_detect(x, regex("uci|uc irvine|university of california.*irvine", ignore_case = TRUE)) ~ "University of California, Irvine",
+    str_detect(x, regex("ucr|uc riverside|university of california.*riverside", ignore_case = TRUE)) ~ "University of California, Riverside",
+    str_detect(x, regex("ucsc|uc santa cruz|university of california.*santa cruz", ignore_case = TRUE)) ~ "University of California, Santa Cruz",
+    str_detect(x, regex("ucm|uc merced|university of california.*merced", ignore_case = TRUE)) ~ "University of California, Merced",
+    str_detect(x, regex("jhu|johns? hopkins( university)?", ignore_case = TRUE)) ~ "Johns Hopkins University",
+    str_detect(x, regex("usc|university of southern california", ignore_case = TRUE)) ~ "University of Southern California",
+    str_detect(x, regex("nyu", ignore_case = TRUE)) ~ "New York University",
+    str_detect(x, regex("usma|west point|united states military academy", ignore_case = TRUE)) ~ "United States Military Academy",
+    .default = x
+  )
+}
 
 
 df_clean <- df %>%
   # cleaning names
   
-  mutate(bachelors_major = tools::toTitleCase(bachelors_major),
-         masters_major = tools::toTitleCase(masters_major)) %>%
-  
   mutate(
+    unique_id = row_number(), # id to assign to each person's file
     first = str_to_title(first),
     last  = str_to_title(last),
     preferred = ifelse(preferred == first | preferred == last | preferred == paste(first, last), NA, preferred), # remove duplicated preferred name
@@ -152,7 +184,7 @@ df_clean <- df %>%
     preferred = ifelse(!is.na(preferred), paste("(", preferred, ") ", sep = ""), "")
   ) %>%
   mutate(
-    filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(year)}"),
+    filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(unique_id)}"),
     filename = str_replace_all(filename, "[^a-z0-9 -]", ""),
     filename = str_replace_all(filename, "\\s+", "-"),
     filename = paste0(here("directory/profiles/"), program_lower, "/", filename, ".qmd")
@@ -170,11 +202,30 @@ df_clean <- df %>%
       is.na(ucla_email) ~ NA_character_,
       str_detect(ucla_email, "@") ~ ucla_email,  # already has @, leave it
       TRUE ~ paste0(ucla_email, "@ucla.edu") # missing domain, append it
-    )
+    ),
+    ucla_email = tolower(ucla_email)
   ) %>%
   
+  # cleaning education
+  ## cleaning the majors
+  mutate(bachelors_major = tools::toTitleCase(bachelors_major),
+         masters_major = tools::toTitleCase(masters_major),
+         bachelors_major = bachelors_major %>% # for double majors, replace "/" with "&"
+           str_replace_all("&", "and") %>% # if "&" is used in one major, replace with "and"
+           str_replace_all("/", " & ")) %>%
+  
+  ## first strip country if USA, then use state abbreviation
+  mutate(bachelors_location = str_remove(bachelors_location, regex(",?\\s*(usa|united states|u\\.s\\.a\\.|u\\.s\\.)\\s*$", ignore_case = TRUE)),
+         masters_location = str_remove(masters_location, regex(",?\\s*(usa|united states|u\\.s\\.a\\.|u\\.s\\.)\\s*$", ignore_case = TRUE)),
+         bachelors_location = str_replace_all(bachelors_location, regex(paste0(",\\s*(", paste(state.name, collapse = "|"), ")"), ignore_case = TRUE), function(x) paste0(", ", state.abb[match(str_to_title(str_trim(str_remove(x, ","))), state.name)])),
+         masters_location = str_replace_all(masters_location, regex(paste0(",\\s*(", paste(state.name, collapse = "|"), ")"), ignore_case = TRUE), function(x) paste0(", ", state.abb[match(str_to_title(str_trim(str_remove(x, ","))), state.name)]))) %>%
+
   mutate(bachelors_location = str_replace(bachelors_location, "\\b([a-zA-Z]{2})$", toupper),
          masters_location = str_replace(masters_location, "\\b([a-zA-Z]{2})$", toupper)) %>% # make all two letter words uppercase
+  
+  
+  mutate(bachelors_school = standardize_university(bachelors_school), # standardize the school names
+         masters_school = standardize_university(masters_school)) %>%
   
   # fixing links
   mutate(across(
@@ -234,7 +285,9 @@ df_clean <- df %>%
     cols_remove = FALSE
   ) %>%
   mutate(advisor1 = ifelse(!is.na(advisor1), advisor1, "Not Listed"),
-         advisor2 = ifelse(!is.na(advisor2), advisor2, "")) %>%
+         advisor2 = ifelse(!is.na(advisor2), advisor2, ""),
+         advisor1 = str_remove(advisor1, regex("^(dr\\.?s?\\.?|professor|prof\\.?)\\s*", ignore_case = TRUE)),
+         advisor2 = str_remove(advisor2, regex("^(dr\\.?s?\\.?|professor|prof\\.?)\\s*", ignore_case = TRUE))) %>%
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
   mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
 
@@ -322,6 +375,11 @@ University of California, Los Angeles
 "
   )
 }
+
+# delete the folders with the profiles first
+unlink(here("directory/profiles/mdsh"), recursive = TRUE)
+unlink(here("directory/profiles/ms"), recursive = TRUE)
+unlink(here("directory/profiles/phd"), recursive = TRUE)
 
 # create the .qmd profiles for each person
 for (i in seq_len(nrow(df_clean))) {

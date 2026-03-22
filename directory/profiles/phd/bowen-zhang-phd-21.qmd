@@ -1,0 +1,30 @@
+---
+title: "**Bowen Zhang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2025"
+image: ../../images/phd/bowen-zhang-phd-2025 - BOWEN ZHANG.jpg
+categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Jin Zhou, Hua Zhou  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","bowenzhangstats");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2025  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Statistics**, 2023  
+Nankai University — Tianjin, China
+
+
+
+

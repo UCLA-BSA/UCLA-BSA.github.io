@@ -1,0 +1,33 @@
+---
+title: "**Yanlong Bai**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2023"
+image: ../../images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg
+categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Damla Senturk"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/yanlongbai/
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Damla Senturk  
+**Cohort:** Fall 2023  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","yanlongbai975");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2023  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Mathematics**, 2021  
+Southern University of Science and Technology — Shenzhen, China
+
+### Bio:
+
+I am currently pursuing a PhD in Biostatistics at UCLA Fielding School of Public Health, building on a Master's in the same field. My research focuses on longitudinal and functional data analysis.

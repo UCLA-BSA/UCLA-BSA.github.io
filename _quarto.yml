@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: docs
-  pre-render: directory/make_profiles.R
+  #pre-render: directory/make_profiles.R # comment out if you don't need to create student profiles each time
   render:
     - "!*.md"
     - "*.qmd"
