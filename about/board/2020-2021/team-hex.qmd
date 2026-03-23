@@ -1,0 +1,45 @@
+---
+title: "2020-2021 Board"
+page-layout: full
+toc: false
+css:
+  - ../../events-styles.css
+  - ../../hex-styles.css
+listing:
+  id: board
+  contents:
+    - ./people/emilie-campos.qmd
+    - ./people/crystal-shaw.qmd
+    - ./people/doug-morrison.qmd
+    - ./people/john-shamshoian.qmd
+    - ./people/ian-frankenburg.qmd
+    - ./people/ami-sheth.qmd
+    - ./people/tina-arputhasamy.qmd
+    - ./people/caesar-li.qmd
+    - ./people/jane-pan.qmd
+  template: ../../../hex-board.ejs.md
+  sort: false
+  template-params:
+    perrow: "3"
+---
+```{=html}
+<div class="events-page">
+<p class="mb-4">
+  <a href="../../about.html" class="btn btn-outline-secondary btn-sm">
+    &larr; Back to About
+  </a>
+</p>
+<div class="events-section-header">
+  <h1>2020–2021 BSA Board</h1>
+</div>
+<div style="text-align:center; margin-bottom:1.5rem; display:flex; gap:0.6rem; justify-content:center;">
+  <button class="year-filter-btn active">Hex View</button>
+  <a href="./team-list.html" class="year-filter-btn">List View</a>
+</div>
+```
+
+::: {#board}
+:::
+```{=html}
+</div>
+```

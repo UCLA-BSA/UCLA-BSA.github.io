@@ -1,0 +1,5 @@
+title: navcard
+version: 1.0.0
+contributes:
+  shortcodes:
+    - navcard.lua
