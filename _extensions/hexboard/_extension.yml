@@ -1,0 +1,6 @@
+title: hexboard
+author: you
+version: 1.0.0
+contributes:
+  shortcodes:
+    - hexboard.lua

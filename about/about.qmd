@@ -15,7 +15,7 @@ We are the Biostatistics Student Association at UCLA.
 ## Board Members
 
 {{< navcard color="#2774AE"
-  href1="./board/2020-2021/team.qmd" label1="2020–2021 Board" meta1="View members →"
+  href1="./board/2020-2021/team-hex.qmd" label1="2020–2021 Board" meta1="View members →"
 >}}
 
 ## Newsletter
