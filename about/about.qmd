@@ -1,28 +1,29 @@
 ---
 title: "About"
-listing:
-  - id: board-2020-2021
-    contents: ../board/2020-2021/people
-    type: grid
-    sort: false
-    image-height: 300px
-    fields: [image, title, subtitle]
+page-layout: full
+toc: false
+css: events-styles.css
 ---
+```{=html}
+<div class="events-page">
+```
 
 ## About BSA
 
+We are the Biostatistics Student Association at UCLA.
+
 ## Board Members
 
-### 2020-2021 Board
-
-[2020-2021 Board](./board/2020-2021/team.qmd)
+{{< navcard color="#2774AE"
+  href1="./board/2020-2021/team.qmd" label1="2020–2021 Board" meta1="View members →"
+>}}
 
 ## Newsletter
 
-Past Newsletters:
+Past issues of the BSA newsletter, published each quarter.
 
-[Spring 2021](./newsletter/articles/vol003.pdf)
-
-[Winter 2021](./newsletter/articles/vol002.pdf)
-
-[Fall 2020](./newsletter/articles/vol001.pdf)
+{{< navcard color="#FFD100" preview="3"
+  href1="./newsletter/articles/vol003.pdf" label1="Spring 2021" meta1="Vol. 3 · PDF ↗"
+  href2="./newsletter/articles/vol002.pdf" label2="Winter 2021" meta2="Vol. 2 · PDF ↗"
+  href3="./newsletter/articles/vol001.pdf" label3="Fall 2020"   meta3="Vol. 1 · PDF ↗"
+>}}
