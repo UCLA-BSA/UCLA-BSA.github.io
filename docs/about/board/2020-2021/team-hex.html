@@ -72,20 +72,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-board .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-language','listing-about','listing-title','listing-subtitle','listing-image','listing-path','listing-outputHref','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-about","listing-title","listing-subtitle","listing-image","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-board'] = new List('listing-board', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -137,6 +137,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../../styles.css">
+<link rel="stylesheet" href="../../events-styles.css">
+<link rel="stylesheet" href="../../hex-styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -186,14 +188,12 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -202,7 +202,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -214,204 +214,171 @@ window.Quarto = {
 </header>
 
 
+<div class="events-page">
+<p class="mb-4">
+  <a href="../../about.html" class="btn btn-outline-secondary btn-sm">
+    ← Back to About
+  </a>
+</p>
+<div class="events-section-header">
+  <h1>2020–2021 BSA Board</h1>
+</div>
+<div style="text-align:center; margin-bottom:1.5rem; display:flex; gap:0.6rem; justify-content:center;">
+  <button class="year-filter-btn active">Hex View</button>
+  <a href="./team-list.html" class="year-filter-btn">List View</a>
+</div>
+<div id="listing-board" class="quarto-listing quarto-listing-container-custom">
+<div class="hex-grid">
 
+  <div class="hex-row ">
 
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/emilie-campos.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/emilie-campos.jpg" alt="Emilie Campos">
+            <div class="hex-label">
+              <div class="hex-name">Emilie Campos</div>
+              <div class="hex-role">Co-President</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/crystal-shaw.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/crystal-shaw.jpg" alt="Crystal Shaw">
+            <div class="hex-label">
+              <div class="hex-name">Crystal Shaw</div>
+              <div class="hex-role">Co-President</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
-<a href="../../../about/board/2020-2021/people/crystal-shaw.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/crystal-shaw.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Crystal Shaw
-</h5>
-<div class="card-subtitle listing-subtitle">
-Co-President
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="120">
-<a href="../../../about/board/2020-2021/people/emilie-campos.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/emilie-campos.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Emilie Campos
-</h5>
-<div class="card-subtitle listing-subtitle">
-Co-President
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="48">
-<a href="../../../about/board/2020-2021/people/doug-morrison.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/doug-morrison.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Doug Morrison
-</h5>
-<div class="card-subtitle listing-subtitle">
-VP of Financial Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1773810721396" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="../../../about/board/2020-2021/people/john-shamshoian.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/john-shamshoian.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-John Shamshoian
-</h5>
-<div class="card-subtitle listing-subtitle">
-Social Chair
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="89">
-<a href="../../../about/board/2020-2021/people/ami-sheth.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/ami-sheth.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Ami Sheth
-</h5>
-<div class="card-subtitle listing-subtitle">
-Master’s Student Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
-<a href="../../../about/board/2020-2021/people/ian-frankenburg.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/ian-frankenburg.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Ian Frankenburg
-</h5>
-<div class="card-subtitle listing-subtitle">
-Doctoral Student Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1773810721396" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="../../../about/board/2020-2021/people/lillian-chen.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/lillian-chen.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Lillian Chen
-</h5>
-<div class="card-subtitle listing-subtitle">
-Master’s of Public Health Student Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1773810721396" data-listing-reading-time-sort="1" data-listing-word-count-sort="53">
-<a href="../../../about/board/2020-2021/people/milan-filipovic.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/milan-filipovic.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Milan Filipovic
-</h5>
-<div class="card-subtitle listing-subtitle">
-First Year Student Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1773810721396" data-listing-reading-time-sort="1" data-listing-word-count-sort="104">
-<a href="../../../about/board/2020-2021/people/tina-arputhasamy.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/tina-arputhasamy.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Tina Arputhasamy
-</h5>
-<div class="card-subtitle listing-subtitle">
-Master’s Student Affairs
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<a href="../../../about/board/2020-2021/people/caesar-li.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/caesar-li.png" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Caesar Li
-</h5>
-<div class="card-subtitle listing-subtitle">
-Chair of Outreach &amp; Communication
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1773810721395" data-listing-reading-time-sort="1" data-listing-word-count-sort="86">
-<a href="../../../about/board/2020-2021/people/jane-pan.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../../../about/board/2020-2021/images/jane-pan.jpg" class="thumbnail-image card-img" style="height: 300px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Jane Pan
-</h5>
-<div class="card-subtitle listing-subtitle">
-Historian
-</div>
-</div>
-</div>
-</a>
-</div>
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/doug-morrison.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/doug-morrison.jpg" alt="Doug Morrison">
+            <div class="hex-label">
+              <div class="hex-name">Doug Morrison</div>
+              <div class="hex-role">VP of Financial Affairs</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hex-row hex-row-offset">
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/john-shamshoian.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/john-shamshoian.jpg" alt="John Shamshoian">
+            <div class="hex-label">
+              <div class="hex-name">John Shamshoian</div>
+              <div class="hex-role">Social Chair</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/ian-frankenburg.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/ian-frankenburg.jpg" alt="Ian Frankenburg">
+            <div class="hex-label">
+              <div class="hex-name">Ian Frankenburg</div>
+              <div class="hex-role">Doctoral Student Affairs</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/ami-sheth.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/ami-sheth.jpg" alt="Ami Sheth">
+            <div class="hex-label">
+              <div class="hex-name">Ami Sheth</div>
+              <div class="hex-role">Master's Student Affairs</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hex-row ">
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/tina-arputhasamy.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/tina-arputhasamy.jpg" alt="Tina Arputhasamy">
+            <div class="hex-label">
+              <div class="hex-name">Tina Arputhasamy</div>
+              <div class="hex-role">Master's Student Affairs</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/caesar-li.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/caesar-li.png" alt="Caesar Li">
+            <div class="hex-label">
+              <div class="hex-name">Caesar Li</div>
+              <div class="hex-role">Chair of Outreach &amp; Communication</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../../../about/board/2020-2021/people/jane-pan.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../../../about/board/2020-2021/images/jane-pan.jpg" alt="Jane Pan">
+            <div class="hex-label">
+              <div class="hex-name">Jane Pan</div>
+              <div class="hex-role">Historian</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,5 +1,5 @@
 ---
-title: "Doctor of Philosophy (PhD) Students"
+title: "Master of Data Science in Health (MDSH) Students"
 page-layout: full
 css:
   - styles.css
@@ -11,9 +11,9 @@ format:
 listing:
   id: phd-listing
   template: ../hex-board.ejs.md
-  contents: profiles/phd/*.qmd
+  contents: profiles/mdsh/*.qmd
   include:
-    subtitle: ["PhD Student", "PhD Candidate"]
+    subtitle: "MDSH Student"
   sort-ui: [title, description]
   sort: false
   filter-ui: true

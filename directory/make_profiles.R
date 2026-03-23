@@ -160,6 +160,7 @@ standardize_university <- function(x) {
     str_detect(x, regex("ucr|uc riverside|university of california.*riverside", ignore_case = TRUE)) ~ "University of California, Riverside",
     str_detect(x, regex("ucsc|uc santa cruz|university of california.*santa cruz", ignore_case = TRUE)) ~ "University of California, Santa Cruz",
     str_detect(x, regex("ucm|uc merced|university of california.*merced", ignore_case = TRUE)) ~ "University of California, Merced",
+    str_detect(x, regex("cal poly pomona", ignore_case = TRUE)) ~ "California State Polytechnic University, Pomona",
     str_detect(x, regex("jhu|johns? hopkins( university)?", ignore_case = TRUE)) ~ "Johns Hopkins University",
     str_detect(x, regex("usc|university of southern california", ignore_case = TRUE)) ~ "University of Southern California",
     str_detect(x, regex("nyu", ignore_case = TRUE)) ~ "New York University",

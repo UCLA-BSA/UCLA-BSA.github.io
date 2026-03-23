@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Master of Data Science in Health (MDSH) Students – UCLA Biostatistics Student Association</title>
+<title>Doctor of Philosophy (PhD) Students – UCLA Biostatistics Student Association</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-phd-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -81,11 +81,11 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-language","listing-toc","listing-css","listing-about","listing-title","listing-subtitle","listing-description","listing-image","listing-categories","listing-path","listing-outputHref","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-phd-listing'] = new List('listing-phd-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -138,6 +138,7 @@ window.Quarto = {
 
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../about/hex-styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -192,13 +193,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QWR2aXNvciUzQSUyMEh1YSUyMFpob3U=">Advisor: Hua Zhou</div><div class="category" data-category="QWR2aXNvciUzQSUyMEppbiUyMFpob3U=">Advisor: Jin Zhou</div><div class="category" data-category="QWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==">Advisor: Not Listed</div><div class="category" data-category="QWR2aXNvciUzQSUyMFJvY2glMjBOaWFub2dv">Advisor: Roch Nianogo</div><div class="category" data-category="QWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGlu">Advisor: Thomas Belin</div><div class="category" data-category="QWR2aXNvciUzQSUyMFdlbmclMjBLZWUlMjBXb25n">Advisor: Weng Kee Wong</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjQ=">Cohort: Fall 2024</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjU=">Cohort: Fall 2025</div><div class="category" data-category="UHJvZ3JhbSUzQSUyME1EU0g=">Program: MDSH</div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r">Advisor: Andrew Holbrook</div><div class="category" data-category="QWR2aXNvciUzQSUyMEJydW5pbGRhJTIwQmFsbGl1">Advisor: Brunilda Balliu</div><div class="category" data-category="QWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp">Advisor: Catherine M. Crespi</div><div class="category" data-category="QWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=">Advisor: Christina Ramirez</div><div class="category" data-category="QWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==">Advisor: Damla Senturk</div><div class="category" data-category="QWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=">Advisor: Donatello Telesca</div><div class="category" data-category="QWR2aXNvciUzQSUyMEZhbGNvJTIwSi4lMjBCYXJnYWdsaSUyMFN0b2ZmaQ==">Advisor: Falco J. Bargagli Stoffi</div><div class="category" data-category="QWR2aXNvciUzQSUyMEdhbmclMjBMaQ==">Advisor: Gang Li</div><div class="category" data-category="QWR2aXNvciUzQSUyMEh1YSUyMFpob3U=">Advisor: Hua Zhou</div><div class="category" data-category="QWR2aXNvciUzQSUyMEppbiUyMFpob3U=">Advisor: Jin Zhou</div><div class="category" data-category="QWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==">Advisor: Michele Guindani</div><div class="category" data-category="QWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==">Advisor: Not Listed</div><div class="category" data-category="QWR2aXNvciUzQSUyMFJvYmVydCUyMFdlaXNz">Advisor: Robert Weiss</div><div class="category" data-category="QWR2aXNvciUzQSUyMFN1ZGlwdG8lMjBCYW5lcmplZQ==">Advisor: Sudipto Banerjee</div><div class="category" data-category="QWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGlu">Advisor: Thomas Belin</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjA=">Cohort: Fall 2020</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjE=">Cohort: Fall 2021</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjI=">Cohort: Fall 2022</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjM=">Cohort: Fall 2023</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjQ=">Cohort: Fall 2024</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjU=">Cohort: Fall 2025</div><div class="category" data-category="UHJvZ3JhbSUzQSUyMFBoRA==">Program: PhD</div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Master of Data Science in Health (MDSH) Students</h1>
+<h1 class="title">Doctor of Philosophy (PhD) Students</h1>
 </div>
 
 
@@ -220,15 +221,11 @@ window.Quarto = {
     ← Back to Directory
   </a>
 </p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div id="listing-phd-listing" class="quarto-listing quarto-listing-container-custom">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
      <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+     <select id="listing-phd-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-phd-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
        <option value="" disabled="" selected="" hidden="">Order By</option>
        <option value="index" data-direction="asc">Default</option>
          <option value="listing-title" data-direction="asc">
@@ -244,412 +241,306 @@ window.Quarto = {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143180" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
-<a href="../directory/profiles/mdsh/brandon-brushwyler-mdsh-35.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/B518D365-26F2-456A-B26F-DE1C6864C304 - BRANDON BRUSHWYLER.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Brandon Brushwyler</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143185" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
-<a href="../directory/profiles/mdsh/eesha-roy-mdsh-43.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_8365 - EESHA ROY.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Eesha Roy</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774303143164" data-listing-reading-time-sort="1" data-listing-word-count-sort="71">
-<a href="../directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-17.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/fauzan-budi-prasetya-mdsh-2025 - FAUZAN BUDI PRASETYA.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Fauzan Budi (Fauzan) Prasetya</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143188" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
-<a href="../directory/profiles/mdsh/han-zheng-mdsh-47.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/46acecf4bc5bc30e5dd601d0881583f4 - Han Zheng.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Han (Emily) Zheng</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143183" data-listing-reading-time-sort="1" data-listing-word-count-sort="171">
-<a href="../directory/profiles/mdsh/jiaye-tian-mdsh-40.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_2059 - JIAYE TIAN.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Jiaye Tian</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143186" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
-<a href="../directory/profiles/mdsh/jinghao-wang-mdsh-44.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_2729 - JINGHAO WANG.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Jinghao Wang</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143183" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
-<a href="../directory/profiles/mdsh/joshua-blackmon-mdsh-39.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_6291 - JOSHUA BLACKMON.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Joshua (Lee) Blackmon</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774303143155" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
-<a href="../directory/profiles/mdsh/karen-harrison-mdsh-1.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/karen-harrison-mdsh-2025 - KAREN HARRISON.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Karen Harrison</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143185" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
-<a href="../directory/profiles/mdsh/matthew-kostelny-mdsh-42.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Matthew (Matt) Kostelny</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143156" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
-<a href="../directory/profiles/mdsh/michael-zaychikov-mdsh-3.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/michael-zaychikov-mdsh-2025 - MICHAEL ZAYCHIKOV.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Michael Zaychikov</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143169" data-listing-reading-time-sort="1" data-listing-word-count-sort="65">
-<a href="../directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-25.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/Nanda_Headshot - NANDA ARUN PAYYAPPILLY.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Nanda Arun (Nanda) Payyappilly</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143160" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<a href="../directory/profiles/mdsh/nena-ojukwu-mdsh-10.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/nena-ojukwu-mdsh-2025 - NENA OJUKWU.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Nena Ojukwu</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143159" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
-<a href="../directory/profiles/mdsh/rica-mae-pitogo-mdsh-7.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Rica Mae Pitogo</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143181" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
-<a href="../directory/profiles/mdsh/rongrong-mo-mdsh-36.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/莫镕榕 - RONGRONG MO.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Rongrong (Emma) Mo</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143180" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
-<a href="../directory/profiles/mdsh/sopyda-yin-mdsh-34.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/4L8A1489 - Sopyda Yin.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Sopyda Yin</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBKaW4lMjBaaG91JTJDQWR2aXNvciUzQSUyMEh1YSUyMFpob3U=" data-listing-file-modified-sort="1774303143184" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
-<a href="../directory/profiles/mdsh/suning-zhao-mdsh-41.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Suning (Nyla) Zhao</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143182" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
-<a href="../directory/profiles/mdsh/wenqiang-ge-mdsh-38.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Wenqiang Ge</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1774303143168" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
-<a href="../directory/profiles/mdsh/xihe-yu-mdsh-24.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/headshot - Xihe Heather Yu.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Xihe (Heather) Yu</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774303143181" data-listing-reading-time-sort="1" data-listing-word-count-sort="129">
-<a href="../directory/profiles/mdsh/yash-motwani-mdsh-37.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_4782 - YASH MOTWANI.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Yash Motwani</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2025
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBSb2NoJTIwTmlhbm9nbw==" data-listing-file-modified-sort="1774303143186" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
-<a href="../directory/profiles/mdsh/yulin-gong-mdsh-45.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/69d0eb2074b5ab1e7b5280afe4ea73b5 - YULIN GONG.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Yulin Gong</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MDSH Student
-</div>
-<div class="card-text listing-description">
-Cohort: Fall 2024
-</div>
-</div>
-</div>
-</a>
-</div>
+<div class="hex-grid">
+
+  <div class="hex-row ">
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/andrew-chuang-phd-9.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/andrew-chuang-phd-2024 - Andrew Chuang.jpg" alt="**Andrew Chuang**">
+            <div class="hex-label">
+              <div class="hex-name">**Andrew Chuang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/bowen-zhang-phd-21.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/bowen-zhang-phd-2025 - BOWEN ZHANG.jpg" alt="**Bowen Zhang**">
+            <div class="hex-label">
+              <div class="hex-name">**Bowen Zhang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/carolyn-winskill-phd-4.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/carolyn-winskill-phd-2022 - CAROLYN WINSKILL.jpg" alt="**Carolyn Winskill**">
+            <div class="hex-label">
+              <div class="hex-name">**Carolyn Winskill**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/cindy-pang-phd-32.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/IMG_2515 - Cindy Pang.jpeg" alt="**Cindy Pang**">
+            <div class="hex-label">
+              <div class="hex-name">**Cindy Pang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/daisy-wang-phd-22.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/daisy-wang-phd-2025 - DAISY WANG.JPG" alt="**Daisy Wang**">
+            <div class="hex-label">
+              <div class="hex-name">**Daisy Wang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hex-row hex-row-offset">
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/danielle-lavine-phd-49.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/IMG_8752 - Danielle LaVine.jpeg" alt="**Danielle Lavine**">
+            <div class="hex-label">
+              <div class="hex-name">**Danielle Lavine**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/darren-lin-phd-8.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/darren-lin-phd-2024 - Darren Lin.jpeg" alt="**Darren Lin**">
+            <div class="hex-label">
+              <div class="hex-name">**Darren Lin**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/emma-landry-phd-23.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/emma-landry-phd-2021 - Emma Landry.jpg" alt="**Emma Landry**">
+            <div class="hex-label">
+              <div class="hex-name">**Emma Landry**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/james-papadopoulos-phd-30.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/FSPH_Headshot - JAMES PAPADOPOULOS.jpg" alt="**James Papadopoulos**">
+            <div class="hex-label">
+              <div class="hex-name">**James Papadopoulos**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/jasen-zhang-phd-5.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/anon.jpg" alt="**Jasen Zhang**">
+            <div class="hex-label">
+              <div class="hex-name">**Jasen Zhang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hex-row ">
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/jonathan-hori-phd-28.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/FullSizeRender copy - Jonathan Hori.jpg" alt="**Jonathan Hori**">
+            <div class="hex-label">
+              <div class="hex-name">**Jonathan Hori**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/kelsey-ishimoto-phd-29.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/IMG_6206 - KELSEY ISHIMOTO.jpeg" alt="**Kelsey Ishimoto**">
+            <div class="hex-label">
+              <div class="hex-name">**Kelsey Ishimoto**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/parsa-jamshidian-phd-14.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/Parsa-Jamshidian-PhD-2021 - Parsa Jamshidian.jpg" alt="**Parsa Jamshidian**">
+            <div class="hex-label">
+              <div class="hex-name">**Parsa Jamshidian**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/puyuan-liu-phd-2.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/puyuan-liu-phd-2025 - PUYUAN LIU.jpg" alt="**Puyuan Liu**">
+            <div class="hex-label">
+              <div class="hex-name">**Puyuan Liu**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/timothy-shen-phd-6.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/timothy-shen-phd-2024 - Timothy Shen.jpg" alt="**Timothy Shen**">
+            <div class="hex-label">
+              <div class="hex-name">**Timothy Shen**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hex-row hex-row-offset">
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/yanlong-bai-phd-12.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg" alt="**Yanlong Bai**">
+            <div class="hex-label">
+              <div class="hex-name">**Yanlong Bai**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/yingxin-zhang-phd-15.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/anon.jpg" alt="**Yingxin Zhang**">
+            <div class="hex-label">
+              <div class="hex-name">**Yingxin Zhang**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/zian-zhuang-phd-33.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/Photo Zian - ZIAN ZHUANG.jpg" alt="**Zian Zhuang**">
+            <div class="hex-label">
+              <div class="hex-name">**Zian Zhuang**</div>
+              <div class="hex-role">PhD Candidate</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap">
+      <a href="../directory/profiles/phd/zichen-liu-phd-19.html" class="hex-link">
+        <div class="hex-border">
+          <div class="hex-shape">
+            <img src="../directory/images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg" alt="**Zichen Liu**">
+            <div class="hex-label">
+              <div class="hex-name">**Zichen Liu**</div>
+              <div class="hex-role">PhD Student</div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hex-wrap" style="visibility:hidden; width:200px; flex-shrink:0;">
+      <div class="hex-border" style="width:200px; height:231px;">
+        <div class="hex-shape" style="width:192px; height:222px;"></div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
-</div></main> <!-- /main -->
+</div>
+
+
+
+
+</main> <!-- /main -->
 <script>
 (function () {
   'use strict';
