@@ -1,0 +1,35 @@
+---
+title: "**Roy Mathew**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+image: ../../images/mdsh/4L8A1930 - ROY MATHEW.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://scholar.google.com/citations?user=ITKfd88AAAAJ&hl=en
+      target: _blank
+    - icon: linkedin
+      href: https://Roy Mathew
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+
+
+### Education:
+
+
+
+**BA in Religion & Biology**, 1997  
+George Washington University — Washington, DC
+
+### Bio:
+
+I really enjoy data science and collaborative research projects in health science. I primarily exercise on my free time.

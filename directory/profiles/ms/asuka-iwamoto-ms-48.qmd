@@ -1,0 +1,29 @@
+---
+title: "**Asuka Iwamoto**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2025"
+image: ../../images/ms/IMG_0952 - ASUKA IWAMOTO.jpeg
+categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Brunilda Balliu"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Brunilda Balliu  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","asukaiwa");</script>
+
+### Education:
+
+
+
+**BS in Statistics & Economics**, 2025  
+University of California, Davis — Davis, CA
+
+
+
+

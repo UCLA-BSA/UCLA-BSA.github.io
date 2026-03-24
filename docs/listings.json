@@ -1,83 +1,96 @@
 [
   {
-    "listing": "/directory/phd-students.html",
+    "listing": "/directory/ms-students.html",
     "items": [
-      "/directory/profiles/phd/andrew-chuang-phd-fall-2024.html",
-      "/directory/profiles/phd/bowen-zhang-phd-fall-2025.html",
-      "/directory/profiles/phd/carolyn-winskill-phd-fall-2022.html",
-      "/directory/profiles/phd/cindy-pang-phd-fall-2023.html",
-      "/directory/profiles/phd/daisy-wang-phd-fall-2025.html",
-      "/directory/profiles/phd/darren-lin-phd-fall-2024.html",
-      "/directory/profiles/phd/emma-landry-phd-fall-2021.html",
-      "/directory/profiles/phd/james-papadopoulos-phd-fall-2022.html",
-      "/directory/profiles/phd/jasen-zhang-phd-fall-2022.html",
-      "/directory/profiles/phd/jonathan-hori-phd-fall-2024.html",
-      "/directory/profiles/phd/kelsey-ishimoto-phd-fall-2020.html",
-      "/directory/profiles/phd/parsa-jamshidian-phd-fall-2021.html",
-      "/directory/profiles/phd/puyuan-liu-phd-fall-2025.html",
-      "/directory/profiles/phd/timothy-shen-phd-fall-2024.html",
-      "/directory/profiles/phd/yanlong-bai-phd-fall-2023.html",
-      "/directory/profiles/phd/yingxin-zhang-phd-fall-2025.html",
-      "/directory/profiles/phd/zian-zhuang-phd-fall-2022.html",
-      "/directory/profiles/phd/zichen-liu-phd-fall-2022.html"
+      "/directory/profiles/ms/amaan-jogia-sattar-ms-13.html",
+      "/directory/profiles/ms/asuka-iwamoto-ms-48.html",
+      "/directory/profiles/ms/fangning-luo-ms-46.html",
+      "/directory/profiles/ms/hanying-xu-ms-27.html",
+      "/directory/profiles/ms/jiale-ni-ms-31.html",
+      "/directory/profiles/ms/julian-gavino-ms-20.html",
+      "/directory/profiles/ms/kiana-mohammadinik-ms-11.html",
+      "/directory/profiles/ms/peike-li-ms-16.html",
+      "/directory/profiles/ms/siddhant-patel-ms-26.html",
+      "/directory/profiles/ms/yutong-wang-ms-18.html"
     ]
   },
   {
-    "listing": "/directory/mdsh-students.html",
+    "listing": "/about/board/2020-2021/team-hex.html",
     "items": [
-      "/directory/profiles/mdsh/brandon-brushwyler-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/eesha-roy-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/jiaye-tian-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/jinghao-wang-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/joshua-blackmon-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/karen-harrison-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/matthew-kostelny-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/michael-zaychikov-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/nena-ojukwu-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/rica-mae-pitogo-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/rongrong-mo-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/sopyda-yin-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/suning-zhao-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/wenqiang-ge-mdsh-fall-2024.html",
-      "/directory/profiles/mdsh/xihe-yu-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/yash-motwani-mdsh-fall-2025.html",
-      "/directory/profiles/mdsh/yulin-gong-mdsh-fall-2024.html"
-    ]
-  },
-  {
-    "listing": "/about/board/2020-2021/team.html",
-    "items": [
-      "/about/board/2020-2021/people/crystal-shaw.html",
       "/about/board/2020-2021/people/emilie-campos.html",
+      "/about/board/2020-2021/people/crystal-shaw.html",
       "/about/board/2020-2021/people/doug-morrison.html",
       "/about/board/2020-2021/people/john-shamshoian.html",
-      "/about/board/2020-2021/people/ami-sheth.html",
       "/about/board/2020-2021/people/ian-frankenburg.html",
-      "/about/board/2020-2021/people/lillian-chen.html",
-      "/about/board/2020-2021/people/milan-filipovic.html",
+      "/about/board/2020-2021/people/ami-sheth.html",
       "/about/board/2020-2021/people/tina-arputhasamy.html",
       "/about/board/2020-2021/people/caesar-li.html",
       "/about/board/2020-2021/people/jane-pan.html"
     ]
   },
   {
-    "listing": "/about/about.html",
-    "items": []
+    "listing": "/about/board/2020-2021/team-list.html",
+    "items": [
+      "/about/board/2020-2021/people/emilie-campos.html",
+      "/about/board/2020-2021/people/crystal-shaw.html",
+      "/about/board/2020-2021/people/doug-morrison.html",
+      "/about/board/2020-2021/people/john-shamshoian.html",
+      "/about/board/2020-2021/people/ian-frankenburg.html",
+      "/about/board/2020-2021/people/ami-sheth.html",
+      "/about/board/2020-2021/people/tina-arputhasamy.html",
+      "/about/board/2020-2021/people/caesar-li.html",
+      "/about/board/2020-2021/people/jane-pan.html"
+    ]
   },
   {
-    "listing": "/directory/ms-students.html",
+    "listing": "/directory/mdsh-students.html",
     "items": [
-      "/directory/profiles/ms/amaan-jogia-sattar-ms-fall-2024.html",
-      "/directory/profiles/ms/fangning-luo-ms-fall-2024.html",
-      "/directory/profiles/ms/hanying-xu-ms-fall-2024.html",
-      "/directory/profiles/ms/jiale-ni-ms-fall-2025.html",
-      "/directory/profiles/ms/julian-gavino-ms-fall-2025.html",
-      "/directory/profiles/ms/kiana-mohammadinik-ms-fall-2024.html",
-      "/directory/profiles/ms/peike-li-ms-fall-2024.html",
-      "/directory/profiles/ms/siddhant-patel-ms-fall-2025.html",
-      "/directory/profiles/ms/yutong-wang-ms-fall-2024.html"
+      "/directory/profiles/mdsh/brandon-brushwyler-mdsh-35.html",
+      "/directory/profiles/mdsh/eesha-roy-mdsh-43.html",
+      "/directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-17.html",
+      "/directory/profiles/mdsh/han-zheng-mdsh-47.html",
+      "/directory/profiles/mdsh/jiaye-tian-mdsh-40.html",
+      "/directory/profiles/mdsh/jinghao-wang-mdsh-44.html",
+      "/directory/profiles/mdsh/joshua-blackmon-mdsh-39.html",
+      "/directory/profiles/mdsh/joshua-price-mdsh-51.html",
+      "/directory/profiles/mdsh/karen-harrison-mdsh-1.html",
+      "/directory/profiles/mdsh/matthew-kostelny-mdsh-42.html",
+      "/directory/profiles/mdsh/michael-zaychikov-mdsh-3.html",
+      "/directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-25.html",
+      "/directory/profiles/mdsh/nena-ojukwu-mdsh-10.html",
+      "/directory/profiles/mdsh/rica-mae-pitogo-mdsh-7.html",
+      "/directory/profiles/mdsh/rongrong-mo-mdsh-36.html",
+      "/directory/profiles/mdsh/roy-mathew-mdsh-50.html",
+      "/directory/profiles/mdsh/sopyda-yin-mdsh-34.html",
+      "/directory/profiles/mdsh/suning-zhao-mdsh-41.html",
+      "/directory/profiles/mdsh/wenqiang-ge-mdsh-38.html",
+      "/directory/profiles/mdsh/xihe-yu-mdsh-24.html",
+      "/directory/profiles/mdsh/yash-motwani-mdsh-37.html",
+      "/directory/profiles/mdsh/yulin-gong-mdsh-45.html"
+    ]
+  },
+  {
+    "listing": "/directory/phd-students.html",
+    "items": [
+      "/directory/profiles/phd/andrew-chuang-phd-9.html",
+      "/directory/profiles/phd/bowen-zhang-phd-21.html",
+      "/directory/profiles/phd/carolyn-winskill-phd-4.html",
+      "/directory/profiles/phd/cindy-pang-phd-32.html",
+      "/directory/profiles/phd/daisy-wang-phd-22.html",
+      "/directory/profiles/phd/danielle-lavine-phd-49.html",
+      "/directory/profiles/phd/darren-lin-phd-8.html",
+      "/directory/profiles/phd/emma-landry-phd-23.html",
+      "/directory/profiles/phd/james-papadopoulos-phd-30.html",
+      "/directory/profiles/phd/jasen-zhang-phd-5.html",
+      "/directory/profiles/phd/jonathan-hori-phd-28.html",
+      "/directory/profiles/phd/kelsey-ishimoto-phd-29.html",
+      "/directory/profiles/phd/parsa-jamshidian-phd-14.html",
+      "/directory/profiles/phd/puyuan-liu-phd-2.html",
+      "/directory/profiles/phd/timothy-shen-phd-6.html",
+      "/directory/profiles/phd/yanlong-bai-phd-12.html",
+      "/directory/profiles/phd/yingxin-zhang-phd-15.html",
+      "/directory/profiles/phd/zian-zhuang-phd-33.html",
+      "/directory/profiles/phd/zichen-liu-phd-19.html"
     ]
   }
 ]

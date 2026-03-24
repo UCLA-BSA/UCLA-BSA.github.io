@@ -1,0 +1,33 @@
+---
+title: "**Jonathan Hori**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+image: ../../images/phd/FullSizeRender copy - Jonathan Hori.jpg
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/jonathanhori/
+      target: _blank
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Jin Zhou, Hua Zhou  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","jonhori");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2024  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Mathematics & Economics**, 2018  
+University of Chicago — Chicago, IL
+
+### Bio:
+
+I am a PhD student in the Department of Biostatistics, where I also earned my MS. I previously completed my BS in Mathematics and Economics at the University of Chicago. My research focuses on developing scalable and interpretable statistical and machine learning methods for multimodal data integration for precision medicine, with applications to electronic health records, multiomics, and wearable devices. In my free time, I enjoy rock climbing, running, meditating, cooking, reading, and watching movies.

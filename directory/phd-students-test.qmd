@@ -20,7 +20,7 @@ listing:
   fields: [image, title, subtitle, description]
   categories: unnumbered
   template-params:
-    perrow: "3"
+    perrow: "5"
 ---
 ```{=html}
 <p class="mb-4">

@@ -31,8 +31,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../images/icon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,35 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-board-2020-2021 .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-subtitle',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-board-2020-2021'] = new List('listing-board-2020-2021', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <!-- this script builds an email only when rendered -->
 <!-- emails are not directly contained in the .html file -->
 <script type="text/javascript">
@@ -106,37 +75,9 @@ function scrambleIt(domain, user) {
 }
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="events-styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -186,25 +127,12 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about-bsa" id="toc-about-bsa" class="nav-link active" data-scroll-target="#about-bsa">About BSA</a></li>
-  <li><a href="#board-members" id="toc-board-members" class="nav-link" data-scroll-target="#board-members">Board Members</a>
-  <ul class="collapse">
-  <li><a href="#board" id="toc-board" class="nav-link" data-scroll-target="#board">2020-2021 Board</a></li>
-  </ul></li>
-  <li><a href="#newsletter" id="toc-newsletter" class="nav-link" data-scroll-target="#newsletter">Newsletter</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -213,7 +141,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -225,34 +153,23 @@ window.Quarto = {
 </header>
 
 
+<div class="events-page">
 <section id="about-bsa" class="level2">
 <h2 class="anchored" data-anchor-id="about-bsa">About BSA</h2>
+<p>We are the Biostatistics Student Association at UCLA.</p>
 </section>
 <section id="board-members" class="level2">
 <h2 class="anchored" data-anchor-id="board-members">Board Members</h2>
-<section id="board" class="level3">
-<h3 class="anchored" data-anchor-id="board">2020-2021 Board</h3>
-<p><a href="../about/board/2020-2021/team.html">2020-2021 Board</a></p>
-</section>
+<div class="navcard-group"><a href="../about/board/2020-2021/team-hex.html" target="_blank" class="important-date-item navcard-item" style="text-decoration:none; border-left:4px solid #2774AE;"><span class="date-item-title">2020–2021 Board</span><span style="color:#666; font-size:0.82rem;">View members →</span></a></div>
 </section>
 <section id="newsletter" class="level2">
 <h2 class="anchored" data-anchor-id="newsletter">Newsletter</h2>
-<p>Past Newsletters:</p>
-<p><a href="./newsletter/articles/vol003.pdf">Spring 2021</a></p>
-<p><a href="./newsletter/articles/vol002.pdf">Winter 2021</a></p>
-<p><a href="./newsletter/articles/vol001.pdf">Fall 2020</a></p>
-
+<p>Past issues of the BSA newsletter, published each quarter.</p>
+<div class="navcard-group"><a href="./newsletter/articles/vol003.pdf" target="_blank" class="important-date-item navcard-item" style="text-decoration:none; border-left:4px solid #FFD100;"><span class="date-item-title">Spring 2021</span><span style="color:#666; font-size:0.82rem;">Vol. 3 · PDF ↗</span></a><a href="./newsletter/articles/vol002.pdf" target="_blank" class="important-date-item navcard-item" style="text-decoration:none; border-left:4px solid #FFD100;"><span class="date-item-title">Winter 2021</span><span style="color:#666; font-size:0.82rem;">Vol. 2 · PDF ↗</span></a><a href="./newsletter/articles/vol001.pdf" target="_blank" class="important-date-item navcard-item" style="text-decoration:none; border-left:4px solid #FFD100;"><span class="date-item-title">Fall 2020</span><span style="color:#666; font-size:0.82rem;">Vol. 1 · PDF ↗</span></a></div>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-board-2020-2021">
-<div class="list grid quarto-listing-cols-3">
-
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

@@ -1,0 +1,34 @@
+---
+title: "Master of Data Science in Health (MDSH) Students"
+page-layout: full
+css:
+  - styles.css
+  - ../about/hex-styles.css
+format:
+  html:
+    include-after-body:
+      - category-accordion-script.html
+listing:
+  id: phd-listing
+  template: ../hex-board.ejs.md
+  contents: profiles/mdsh/*.qmd
+  include:
+    subtitle: "MDSH Student"
+  sort-ui: [title, description]
+  sort: false
+  filter-ui: true
+  fields: [image, title, subtitle, description]
+  categories: unnumbered
+  template-params:
+    perrow: "5"
+---
+```{=html}
+<p class="mb-4">
+  <a href="directory.html" class="btn btn-outline-secondary btn-sm">
+    &larr; Back to Directory
+  </a>
+</p>
+```
+
+::: {#phd-listing}
+:::

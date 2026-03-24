@@ -1,0 +1,35 @@
+---
+title: "**Timothy Shen**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+image: ../../images/phd/timothy-shen-phd-2024 - Timothy Shen.jpg
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Christina Ramirez", "Advisor: Brunilda Balliu"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/timothy-shen213/
+      target: _blank
+    - icon: github
+      href: https://github.com/timothyzshen
+      target: _blank
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Christina Ramirez, Brunilda Balliu  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","tzshen");</script>
+
+### Education:
+
+
+
+**BS in Statistics**, 2024  
+University of California, Davis — Davis, CA
+
+### Bio:
+
+I’m a PhD student in Biostatistics working with Dr. Christina Ramirez and Dr. Brunilda Balliu. My research currently broadly focuses on developing scalable, interpretable machine learning methods to identify biological factors driving HIV aging and digital phenotypes associated with mood. In my free time, I am an avid enjoyer of riding public transportation and all things food.
