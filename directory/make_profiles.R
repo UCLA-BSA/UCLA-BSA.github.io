@@ -8,7 +8,7 @@ library(here)
 here::i_am("directory/make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
-download_files <- FALSE # set to FALSE if you don't want to download each time you run this script
+download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
 dotenv::load_dot_env(file = here(".env"))
 spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
 options(gargle_oauth_cache = ".secrets",
