@@ -6,7 +6,7 @@ library(googlesheets4)
 library(dotenv)
 library(tidyverse)
 library(here)
-here::i_am("directory/make_profiles.R")
+here::i_am("directory/workflow_make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
 download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
@@ -56,28 +56,37 @@ safe_ext <- function(meta_name) {
 
 # download images function
 download_image <- function(file_id, program_lower, meta_name) {
-  if (is.na(file_id)) return(NULL)
   
-  image_path <- here("directory/images", program_lower, meta_name)
+  image_path <- paste(here("directory/images"), program_lower, meta_name, sep = "/")
   
-  if(!dir.exists(dirname(image_path))) {
-    dir.create(dirname(image_path), showWarnings = FALSE, recursive = TRUE)
+  if(!dir.exists(here("directory/images", program_lower))) {
+    dir.create(here("directory/images", program_lower), showWarnings = FALSE, recursive = TRUE)
   }
   
-  # get metadata to check for changes
-  meta <- drive_get(as_id(file_id))
-  drive_md5 <- meta$drive_resource[[1]]$md5Checksum
-  
-  if (file.exists(image_path)) {
-    local_md5 <- tools::md5sum(image_path)
-    if (identical(drive_md5, local_md5)) {
-      message(paste("Skipping", meta_name, "- no changes detected."))
-      return(invisible(NULL))
+  # only download if image exists in Google drive and if it is different from local folder
+  if(!is.na(file_id)) {
+    meta <- drive_get(as_id(file_id))
+    drive_md5 <- meta$drive_resource[[1]]$md5Checksum
+    
+    if (file.exists(image_path)) {
+      local_md5 <- tools::md5sum(here(image_path))
+      
+      if (drive_md5 == local_md5) {
+        print(paste0("No changes to file ", image_path, ". Will not redownload."))
+        
+        return(invisible(NULL))
+      }
     }
+    
+    print(paste0("Downloading ", image_path, "."))
+    suppressMessages(
+      drive_download(
+        as_id(file_id),
+        path = image_path,
+        overwrite = TRUE
+      )
+    )
   }
-  
-  message(paste("Downloading", meta_name, "..."))
-  drive_download(as_id(file_id), path = image_path, overwrite = TRUE)
 }
 
 ##### clean data frame #####
