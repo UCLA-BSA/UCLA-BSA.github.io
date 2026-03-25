@@ -1,0 +1,55 @@
+name: Deploy Quarto Website
+
+on:
+  schedule:
+    # Runs at 09:00 every Monday
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install R packages
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::tidyverse
+            any::googledrive
+            any::googlesheets4
+            any::glue
+            any::dotenv
+            any::here
+            any::writexl
+            any::readxl
+
+      - name: Run R script to generate profiles
+        env:
+          GDRIVE_JSON: ${{ secrets.GDRIVE_JSON }}
+          STUDENT_DIRECTORY_URL: ${{ secrets.STUDENT_DIRECTORY_URL }}
+        run: Rscript directory/workflow_make_profiles.R
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Build Quarto site
+        run: quarto render
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          # Add the newly generated profiles and downloaded images
+          git add directory/profiles/
+          git add directory/images/
+          git add docs/
+          git commit -m "Auto-update student directory profiles" || echo "No changes to commit"
+          git push
