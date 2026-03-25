@@ -1,0 +1,60 @@
+/* css styles */
+
+/* ── UCLA Brand Colors ──────────────────────────────────────────
+   UCLA Blue:    #2774AE
+   Darker Blue:  #003B5C
+   UCLA Gold:    #FFD100  (accent only — never as text)
+──────────────────────────────────────────────────────────────── */
+
+/* Navbar */
+.navbar {
+  background-color: #2774AE !important;
+  border-bottom: 3px solid #FFD100;
+}
+
+.navbar .navbar-brand,
+.navbar-brand:hover,
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+.navbar .nav-link:hover {
+  color: #FFD100 !important;
+  opacity: 1;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link[aria-current] {
+  color: #FFD100 !important;
+  font-weight: 600;
+}
+
+/* Main page background */
+body {
+  background-color: #fff;
+}
+
+/* Back to directory button on profile pages */
+.back-to-directory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #2774AE;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #aac6e0;
+  border-radius: 6px;
+  background: #f0f7fb;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.back-to-directory:hover {
+  background: #003B5C;
+  color: #fff !important;
+  border-color: #003B5C;
+  text-decoration: none;
+}
+
