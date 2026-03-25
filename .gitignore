@@ -12,5 +12,7 @@ public/
 **/*.quarto_ipynb
 .env
 .secrets
+*.json
 /_*.local
 .DS_Store
+docs/
