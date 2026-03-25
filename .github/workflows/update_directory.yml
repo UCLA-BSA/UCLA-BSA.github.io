@@ -1,4 +1,4 @@
-name: Deploy Quarto Website
+name: Update and Build Biostatistics Student Directory
 
 on:
   schedule:
@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # needed for the 'amend' logic to check previous commits
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -30,6 +32,7 @@ jobs:
             any::here
             any::writexl
             any::readxl
+          cache-version: 1
 
       - name: Run R script to generate profiles
         env:
@@ -43,13 +46,23 @@ jobs:
       - name: Build Quarto site
         run: quarto render
 
-      - name: Commit and push changes
+      - name: Commit and push changes (Clean History Mode)
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          # Add the newly generated profiles and downloaded images
-          git add directory/profiles/
-          git add directory/images/
-          git add docs/
-          git commit -m "Auto-update student directory profiles" || echo "No changes to commit"
-          git push
+          git add directory/profiles/ directory/images/ docs/
+          
+          # Check if there are actually changes to commit
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          # If the last commit was also the bot, just update it (keeps history clean)
+          if [ "$(git log -1 --pretty=%an)" = "github-actions[bot]" ]; then
+            git commit --amend --no-edit
+            git push origin main --force
+          else
+            git commit -m "Auto-update student directory profiles"
+            git push origin main
+          fi
