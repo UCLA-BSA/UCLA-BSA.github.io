@@ -42,27 +42,29 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-
+        
       - name: Build Quarto site
         run: quarto render
 
-      - name: Commit and push changes (Clean History Mode)
+      - name: Commit and push .qmd profiles (Clean History)
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add directory/profiles/ directory/images/ docs/
+          git add directory/profiles/ directory/images/
           
-          # Check if there are actually changes to commit
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes to commit"
-            exit 0
-          fi
-
-          # If the last commit was also the bot, just update it (keeps history clean)
-          if [ "$(git log -1 --pretty=%an)" = "github-actions[bot]" ]; then
+          if [ -z "$(git status --porcelain directory/profiles/ directory/images/)" ]; then
+            echo "No new profiles to commit"
+          elif [ "$(git log -1 --pretty=%an)" = "github-actions[bot]" ]; then
             git commit --amend --no-edit
             git push origin main --force
           else
             git commit -m "Auto-update student directory profiles"
             git push origin main
           fi
+
+      - name: Publish to GitHub Pages (Action)
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
