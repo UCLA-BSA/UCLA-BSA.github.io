@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-312a19cffa85631f422f377eeeca163d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-2a8b421bbdd29012a18101aafc001227.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -605,33 +605,56 @@ function scrambleIt(domain, user) {
     }
 
     function idRender(items) {
-      var list = document.getElementById('importantDatesList');
-      if (!list) return;
-      // skip rows with no title or no date
+      var grid    = document.getElementById('importantDatesList');
+      var counter = document.getElementById('importantDatesCount');
+      if (!grid) return;
+
+      // Keep only rows with a title + date that haven't passed
       var upcoming = items.filter(function(d) {
         return d.title && d.date && idNorm(d.date) >= idToday;
       });
       upcoming.sort(function(a, b) { return idNorm(a.date) < idNorm(b.date) ? -1 : 1; });
+
+      // Update stat counter
+      if (counter) counter.textContent = upcoming.length || '—';
+
       if (upcoming.length === 0) {
-        list.innerHTML = '<li class="important-dates-empty">📭 No upcoming dates.</li>';
+        grid.innerHTML = '<p class="id-empty">No upcoming deadlines right now — check back soon.</p>';
         return;
       }
-      list.innerHTML = upcoming.map(function(d) {
+
+      // Urgency → banner gradient (matches .urgency-* colours)
+      var urgencyGradient = {
+        'urgency-red':    'linear-gradient(90deg,#ef5350,#c62828)',
+        'urgency-orange': 'linear-gradient(90deg,#FF9800,#e65100)',
+        'urgency-yellow': 'linear-gradient(90deg,#FFC107,#f9a825)',
+        'urgency-green':  'linear-gradient(90deg,#66BB6A,#2e7d32)'
+      };
+
+      // Build one card per deadline
+      grid.innerHTML = upcoming.map(function(d) {
         var uc  = idUrgency(d.date);
         var day = idDaysUntil(d.date);
-
         var tag = day === 0 ? 'Today!' : day === 1 ? 'Tomorrow' : 'in ' + day + ' days';
+        var grad = urgencyGradient[uc] || urgencyGradient['urgency-green'];
+
         var titleHTML = d.link
-          ? '<a href="' + d.link + '" target="_blank" rel="noopener" class="important-date-link">' + d.title + '</a>'
-          : '<span>' + d.title + '</span>';
-        return '<li class="important-date-item">' +
-          '<span class="date-dot ' + uc + '"></span>' +
-          '<span class="date-item-title">' + titleHTML + '</span>' +
-          '<span class="date-item-meta">' +
-            '<span class="date-item-tag ' + uc + '">' + tag + '</span>' +
-            '<span class="date-item-date">' + idFormatDate(d.date) + '</span>' +
-          '</span>' +
-        '</li>';
+          ? '<a href="' + d.link + '" target="_blank" rel="noopener" class="id-card-title-link">' + d.title + ' ↗</a>'
+          : '<span class="id-card-title-text">' + d.title + '</span>';
+
+        var ctaHTML = d.link
+          ? '<a href="' + d.link + '" target="_blank" rel="noopener" class="id-card-cta">Open Form ↗</a>'
+          : '';
+
+        return '<div class="id-card">' +
+          '<div class="id-card-banner" style="background:' + grad + ';"></div>' +
+          '<div class="id-card-body">' +
+            '<div class="id-urgency-badge ' + uc + '">' + tag + '</div>' +
+            '<div class="id-card-title">' + titleHTML + '</div>' +
+            '<div class="id-card-date">' + idFormatDate(d.date) + '</div>' +
+            ctaHTML +
+          '</div>' +
+        '</div>';
       }).join('');
     }
 
@@ -647,11 +670,33 @@ function scrambleIt(domain, user) {
   document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
+<!-- ══════════════════════════════════════════════════════════════════════════
+     IMPORTANT DATES — data loaded from important-dates.csv
+     CSV columns: title, link (optional), date (M/D/YY or YYYY-MM-DD)
+     Cards are auto-coloured by urgency: red ≤3d · orange ≤7d · yellow ≤14d · green 14d+
+     ══════════════════════════════════════════════════════════════════════════ -->
 <div class="important-dates-section">
-  <h2 class="important-dates-title anchored">Important Dates</h2>
-  <ul class="important-dates-list" id="importantDatesList">
-    <li class="important-dates-loading">Loading…</li>
-  </ul>
+  <div class="id-wrap">
+
+    <!-- Header: title + live deadline count -->
+    <div class="id-top">
+      <div class="id-top-left">
+        <div class="id-logo-tag">BSA · Key Deadlines</div>
+        <div class="id-big-title">Important Dates</div>
+        <p class="id-subtitle">Upcoming deadlines, forms, and academic dates for the UCLA Biostatistics community. Urgency colours update automatically based on today's date.</p>
+      </div>
+      <div class="id-stat">
+        <div class="id-stat-num" id="importantDatesCount">—</div>
+        <div class="id-stat-label">Upcoming</div>
+      </div>
+    </div>
+
+    <!-- Cards injected here by JS idRender() -->
+    <div class="id-cards-grid" id="importantDatesList">
+      <p class="id-loading">Loading…</p>
+    </div>
+
+  </div>
 </div>
 <div class="recurring-section">
   <h2 class="recurring-title anchored">Recurring Events</h2>
