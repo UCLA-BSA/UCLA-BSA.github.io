@@ -2,28 +2,407 @@
 title: "About"
 page-layout: full
 toc: false
-css: events-styles.css
+css: [events-styles.css, hex-styles.css]
 ---
+
 ```{=html}
+<style>
+/* ── About BSA Hero ─────────────────────────────────────────────────────── */
+.about-hero-section {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 3rem 2rem 3.5rem;
+  border-bottom: 3px solid #FFD100;
+}
+.about-hero-inner { display: flex; align-items: flex-start; gap: 4rem; }
+.about-hero-left  { flex: 0 0 auto; display: flex; flex-direction: column; line-height: 1.05; }
+.about-hero-word  { font-size: clamp(2.4rem, 4.5vw, 3.8rem); font-weight: 900; color: #003B5C; letter-spacing: -0.02em; }
+.about-hero-right { flex: 1; padding-top: 0.4rem; border-left: 4px solid #2774AE; padding-left: 2rem; }
+.about-hero-right p { font-size: 1.05rem; line-height: 1.9; color: #333; margin-bottom: 1rem; }
+.about-hero-right p:last-child { margin-bottom: 0; }
+
+/* ── Shared section headers ─────────────────────────────────────────────── */
+.section-block    { max-width: 1100px; margin: 0 auto 4.5rem; padding: 0 2rem; }
+.section-label    { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: #2774AE; margin-bottom: 0.4rem; }
+.section-title-bar{ font-size: 2rem; font-weight: 800; color: #003B5C; margin: 0 0 0.6rem; padding-bottom: 0.65rem; border-bottom: 3px solid #FFD100; display: inline-block; }
+.board-year-tabs  { display: flex; gap: 0.6rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
+
+/* ── Hex placeholder (before photo loads) ───────────────────────────────── */
+.hex-placeholder  { background: var(--hex-color, #2774AE) !important; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.hex-initials     { font-size: 0.9rem; font-weight: 800; color: rgba(255,255,255,0.30); letter-spacing: 0.06em; text-transform: uppercase; }
+.hex-placeholder .hex-label { opacity: 1; background: rgba(0,0,0,0.28); }
+.hex-placeholder .hex-label .hex-name,
+.hex-placeholder .hex-label .hex-role { font-size: 0.62rem; }
+
+/* ── Newsletter ─────────────────────────────────────────────────────────── */
+.newsletter-wrap   { background: #003B5C; border-radius: 20px; padding: 3rem 3rem 3.5rem; color: #fff; }
+.newsletter-top    { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
+.newsletter-logo-tag  { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #FFD100; margin-bottom: 0.5rem; }
+.newsletter-big-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin: 0 0 0.6rem; line-height: 1.1; }
+.newsletter-subtitle  { font-size: 0.97rem; color: #a8c4d8; line-height: 1.75; max-width: 480px; margin: 0; }
+.newsletter-stats     { display: flex; gap: 2rem; flex-shrink: 0; }
+.newsletter-stat-num  { font-size: 2.8rem; font-weight: 900; color: #FFD100; line-height: 1; }
+.newsletter-stat-label{ font-size: 0.72rem; color: #7aa8bf; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
+.newsletter-issues    { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.newsletter-issue-card{ display: block; border-radius: 14px; overflow: hidden; text-decoration: none !important; background: #fff; transition: transform 0.22s, box-shadow 0.22s; box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+.newsletter-issue-card:hover { transform: translateY(-7px); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
+.newsletter-issue-banner { height: 7px; width: 100%; }
+.newsletter-issue-body{ padding: 1.5rem 1.4rem 1.75rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.newsletter-vol-badge { font-size: 0.67rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #2774AE; border: 1.5px solid #2774AE; display: inline-block; padding: 0.12rem 0.5rem; border-radius: 4px; align-self: flex-start; margin-bottom: 0.2rem; }
+.newsletter-issue-quarter { font-size: 1.35rem; font-weight: 800; color: #003B5C; line-height: 1.2; }
+.newsletter-issue-desc    { font-size: 0.85rem; color: #555; line-height: 1.72; flex: 1; }
+.newsletter-issue-cta     { font-size: 0.85rem; font-weight: 700; color: #2774AE; margin-top: 0.85rem; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.15s; }
+.newsletter-issue-card:hover .newsletter-issue-cta { gap: 0.55rem; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-hero-inner { flex-direction: column; gap: 2rem; }
+  .about-hero-right { border-left: none; padding-left: 0; border-top: 4px solid #2774AE; padding-top: 1.5rem; }
+  .newsletter-top   { flex-direction: column; align-items: flex-start; }
+  .newsletter-issues{ grid-template-columns: 1fr; }
+  .newsletter-wrap  { padding: 2rem 1.5rem 2.5rem; }
+}
+@media (max-width: 600px) {
+  .about-hero-word { font-size: 2.2rem; }
+  .newsletter-big-title { font-size: 1.9rem; }
+  .section-block { padding: 0 1rem; }
+}
+</style>
+
+
+<!-- Directory index (auto-generated by scripts/build-directory-index.py) -->
+<script src="directory-index.js"></script>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     ✏️  EDIT YOUR CONTENT HERE — no HTML knowledge needed
+     ════════════════════════════════════════════════════════════════════════ -->
+<script>
+window.BSA_ABOUT = {
+
+  // ── BSA Description ─────────────────────────────────────────────────────
+  // One string per paragraph. Basic HTML (<strong>, <a href="...">) is fine.
+  description: [
+    "The Biostatistics Student Association aims to build community among Biostatistics students through academic, professional, and social events, and to create an environment that supports academic excellence, professional development, collaboration, and networking within the UCLA Biostatistics community."
+  ],
+
+  // ── Board Members ────────────────────────────────────────────────────────
+  // Add a new academic year by adding a new key, e.g. "2026-2027": [...]
+  // Members are displayed left-to-right, top-to-bottom in rows of 3.
+  //
+  // Just provide the name — the photo and profile link are looked up
+  // automatically from the student directory index.
+  //
+  // Use "Coming Soon" for unfilled roles (shows a placeholder hex).
+  // hexColor: background shown while the photo loads.
+  board: {
+    "2025-2026": [
+      { name: "Cindy Pang",       role: "President",              hexColor: "#2774AE" },
+      { name: "Darren Lin",       role: "Vice President",         hexColor: "#2774AE" },
+      { name: "Nena Ojukwu",      role: "Social Chair",           hexColor: "#003B5C" },
+      { name: "Karen Harrison",   role: "Board Member",           hexColor: "#005587" },
+      { name: "Timothy Shen",      role: "Board Member",          hexColor: "#005587" },
+      { name: "Ryan O'Dell",      role: "Board Member",           hexColor: "#005587" },
+      { name: "Jessica Wu",      role: "Treasurer",         hexColor: "#003B5C" }
+    ]
+  },
+
+  // ── Newsletter Issues ────────────────────────────────────────────────────
+  // Most recent first. Add new issues at the TOP of this list.
+  // banner:     CSS gradient for the colored stripe at top of each card.
+  // badgeStyle: optional inline style override for the "Vol. N" badge.
+  newsletter: [
+    {
+      vol:        "Vol. 3",
+      quarter:    "Spring 2021",
+      desc:       "",
+      href:       "./newsletter/articles/vol003.pdf",
+      banner:     "linear-gradient(90deg,#2774AE,#005587)",
+      badgeStyle: ""
+    },
+    {
+      vol:        "Vol. 2",
+      quarter:    "Winter 2021",
+      desc:       "",
+      href:       "./newsletter/articles/vol002.pdf",
+      banner:     "linear-gradient(90deg,#FFD100,#e6b800)",
+      badgeStyle: "color:#b38600;border-color:#b38600;"
+    },
+    {
+      vol:        "Vol. 1",
+      quarter:    "Fall 2020",
+      desc:       "",
+      href:       "./newsletter/articles/vol001.pdf",
+      banner:     "linear-gradient(90deg,#003B5C,#001e30)",
+      badgeStyle: ""
+    }
+  ]
+
+}; // end BSA_ABOUT
+</script>
+<!-- ════════════════════════════════════════════════════════════════════════
+     END OF EDITABLE CONTENT — HTML structure below
+     ════════════════════════════════════════════════════════════════════════ -->
+
+
 <div class="events-page">
+
+<!-- ── About BSA Hero ──────────────────────────────────────────────────── -->
+<section class="about-hero-section">
+  <div class="about-hero-inner">
+    <div class="about-hero-left">
+      <div class="about-hero-word">Biostatistics</div>
+      <div class="about-hero-word">Student</div>
+      <div class="about-hero-word">Association</div>
+    </div>
+    <div class="about-hero-right" id="bsaDescription">
+      <!-- paragraphs injected from BSA_ABOUT.description -->
+    </div>
+  </div>
+</section>
+
+<!-- ── Board Members ───────────────────────────────────────────────────── -->
+<section class="section-block">
+  <div class="section-label">Our Team</div>
+  <h2 class="section-title-bar">Board Members</h2>
+  <div class="board-year-tabs" id="boardYearTabs">
+    <!-- tab buttons injected by script -->
+  </div>
+  <div id="boardPanels">
+    <!-- dynamic panels injected by script -->
+  </div>
+
+  <!-- 2020-2021 is kept as static HTML (photos are local, not in directory) -->
+  <div id="board-2020-2021" class="board-hex-panel" style="display:none;">
+    <div class="hex-grid">
+      <div class="hex-row">
+        <div class="hex-wrap"><a href="./board/2020-2021/people/emilie-campos.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/emilie-campos.jpg" alt="Emilie Campos"><div class="hex-label"><div class="hex-name">Emilie Campos</div><div class="hex-role">Co-President</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/crystal-shaw.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/crystal-shaw.jpg" alt="Crystal Shaw"><div class="hex-label"><div class="hex-name">Crystal Shaw</div><div class="hex-role">Co-President</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/doug-morrison.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/doug-morrison.jpg" alt="Doug Morrison"><div class="hex-label"><div class="hex-name">Doug Morrison</div><div class="hex-role">VP Financial Affairs</div></div></div></div></a></div>
+      </div>
+      <div class="hex-row hex-row-offset">
+        <div class="hex-wrap"><a href="./board/2020-2021/people/john-shamshoian.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/john-shamshoian.jpg" alt="John Shamshoian"><div class="hex-label"><div class="hex-name">John Shamshoian</div><div class="hex-role">Social Chair</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/ian-frankenburg.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/ian-frankenburg.jpg" alt="Ian Frankenburg"><div class="hex-label"><div class="hex-name">Ian Frankenburg</div><div class="hex-role">Doctoral Student Affairs</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/ami-sheth.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/ami-sheth.jpg" alt="Ami Sheth"><div class="hex-label"><div class="hex-name">Ami Sheth</div><div class="hex-role">Master's Student Affairs</div></div></div></div></a></div>
+      </div>
+      <div class="hex-row">
+        <div class="hex-wrap"><a href="./board/2020-2021/people/tina-arputhasamy.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/tina-arputhasamy.jpg" alt="Tina Arputhasamy"><div class="hex-label"><div class="hex-name">Tina Arputhasamy</div><div class="hex-role">Master's Student Affairs</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/caesar-li.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/caesar-li.png" alt="Caesar Li"><div class="hex-label"><div class="hex-name">Caesar Li</div><div class="hex-role">Outreach &amp; Communication</div></div></div></div></a></div>
+        <div class="hex-wrap"><a href="./board/2020-2021/people/jane-pan.qmd" class="hex-link"><div class="hex-border"><div class="hex-shape"><img src="./board/2020-2021/images/jane-pan.jpg" alt="Jane Pan"><div class="hex-label"><div class="hex-name">Jane Pan</div><div class="hex-role">Historian</div></div></div></div></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Newsletter ─────────────────────────────────────────────────────── -->
+<section class="section-block">
+  <div class="section-label">Published Quarterly</div>
+  <h2 class="section-title-bar">Newsletter</h2>
+  <div class="newsletter-wrap">
+    <div class="newsletter-top">
+      <div>
+        <div class="newsletter-logo-tag">BSA Quarterly Publication</div>
+        <div class="newsletter-big-title">The BSA<br>Newsletter</div>
+        <p class="newsletter-subtitle">Perspectives from the UCLA Biostatistics community from 2021— research spotlights, student stories, faculty features, and department news, published each academic quarter. We are in the process of starting this newsletter back up soon, stay tuned! </p>
+      </div>
+      <div class="newsletter-stats">
+        <div>
+          <div class="newsletter-stat-num" id="nlIssueCount">—</div>
+          <div class="newsletter-stat-label">Issues</div>
+        </div>
+      </div>
+    </div>
+    <div class="newsletter-issues" id="newsletterIssues">
+      <!-- cards injected from BSA_ABOUT.newsletter -->
+    </div>
+  </div>
+</section>
+
+</div><!-- /.events-page -->
+
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     RENDER SCRIPT — reads BSA_ABOUT and populates the page
+     You should not need to edit below this line.
+     ════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  var D = window.BSA_ABOUT;
+
+  /* ── Description ─────────────────────────────────────────────────────── */
+  var descEl = document.getElementById('bsaDescription');
+  if (descEl) {
+    descEl.innerHTML = D.description
+      .map(function (p) { return '<p>' + p + '</p>'; })
+      .join('');
+  }
+
+  /* ── Newsletter ───────────────────────────────────────────────────────── */
+  var nlCount = document.getElementById('nlIssueCount');
+  if (nlCount) nlCount.textContent = D.newsletter.length;
+
+  var nlEl = document.getElementById('newsletterIssues');
+  if (nlEl) {
+    nlEl.innerHTML = D.newsletter.map(function (issue) {
+      return '<a href="' + issue.href + '" target="_blank" class="newsletter-issue-card">' +
+        '<div class="newsletter-issue-banner" style="background:' + issue.banner + ';"></div>' +
+        '<div class="newsletter-issue-body">' +
+          '<div class="newsletter-vol-badge" style="' + (issue.badgeStyle || '') + '">' + issue.vol + '</div>' +
+          '<div class="newsletter-issue-quarter">' + issue.quarter + '</div>' +
+          '<div class="newsletter-issue-desc">' + issue.desc + '</div>' +
+          '<div class="newsletter-issue-cta">Read Issue ↗</div>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+  }
+
+  /* ── Build one hex element ────────────────────────────────────────────── */
+  function buildHex(member) {
+    var wrap = document.createElement('div');
+    wrap.className = 'hex-wrap';
+
+    var initials = member.name === 'Coming Soon' ? 'TBD'
+      : member.name.split(' ').map(function (w) { return w[0] || ''; }).join('').toUpperCase().slice(0, 2);
+
+    var shapeHTML =
+      '<div class="hex-border">' +
+        '<div class="hex-shape hex-placeholder" style="--hex-color:' + (member.hexColor || '#2774AE') + ';">' +
+          '<div class="hex-initials">' + initials + '</div>' +
+          '<div class="hex-label">' +
+            '<div class="hex-name">' + member.name + '</div>' +
+            '<div class="hex-role">' + member.role + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Auto-lookup profilePath by name from the generated directory index
+    var profilePath = (window.BSA_DIRECTORY_INDEX && window.BSA_DIRECTORY_INDEX[member.name]) || null;
+
+    if (profilePath) {
+      var profileUrl = '../directory/profiles/' + profilePath + '.html';
+      wrap.innerHTML = '<a href="' + profileUrl + '" class="hex-link">' + shapeHTML + '</a>';
+      loadPhoto(wrap, profilePath);
+    } else {
+      wrap.innerHTML = shapeHTML;
+    }
+    return wrap;
+  }
+
+  /* ── Fetch photo from student directory profile ───────────────────────── */
+  function loadPhoto(hexWrap, profilePath) {
+    var profileUrl = '../directory/profiles/' + profilePath + '.html';
+    var progType   = profilePath.split('/')[0]; // phd | ms | mdsh
+
+    fetch(profileUrl)
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var parser = new DOMParser();
+        var doc    = parser.parseFromString(html, 'text/html');
+        var img    = doc.querySelector('img.about-image');
+        if (!img) return;
+
+        // src is relative to the profile page (e.g. ../../images/phd/file.jpg)
+        var filename = img.getAttribute('src').split('/').pop();
+        var imgUrl   = '../directory/images/' + progType + '/' + filename;
+
+        var shape = hexWrap.querySelector('.hex-shape');
+        if (!shape) return;
+        shape.classList.remove('hex-placeholder');
+        var initialsEl = shape.querySelector('.hex-initials');
+        if (initialsEl) initialsEl.remove();
+
+        var photo  = document.createElement('img');
+        photo.src  = imgUrl;
+        photo.alt  = '';
+        shape.insertBefore(photo, shape.firstChild);
+      })
+      .catch(function () { /* keep placeholder on network error */ });
+  }
+
+  /* ── Compute balanced row sizes ───────────────────────────────────────── */
+  // Rules: no row of 1, rows never decrease toward the bottom.
+  // e.g. 7 → [3,4]  |  5 → [2,3]  |  8 → [2,3,3]  |  10 → [3,3,4]
+  function computeRowSizes(n) {
+    if (n <= 0) return [];
+
+    // 1. Fill rows of 3
+    var rows = [];
+    var rem  = n;
+    while (rem >= 3) { rows.push(3); rem -= 3; }
+    if (rem > 0) rows.push(rem);
+
+    // 2. If last row has exactly 1, absorb it into the previous row → max 4
+    //    e.g. [3,3,1] → [3,4]  |  [3,1] → [4]
+    if (rows.length > 1 && rows[rows.length - 1] === 1) {
+      rows.pop();
+      rows[rows.length - 1]++;
+    }
+
+    // 3. Sort ascending so rows never shrink toward the bottom
+    //    e.g. [3,2] → [2,3]  |  [3,3,2] → [2,3,3]
+    rows.sort(function (a, b) { return a - b; });
+
+    return rows;
+  }
+
+  /* ── Build hex grid with smart row layout ─────────────────────────────── */
+  function buildHexGrid(members) {
+    var grid  = document.createElement('div');
+    grid.className = 'hex-grid';
+
+    var sizes  = computeRowSizes(members.length);
+    var cursor = 0;
+    sizes.forEach(function (size, rowIndex) {
+      var rowEl = document.createElement('div');
+      rowEl.className = 'hex-row' + (rowIndex % 2 === 1 ? ' hex-row-offset' : '');
+      members.slice(cursor, cursor + size).forEach(function (m) {
+        rowEl.appendChild(buildHex(m));
+      });
+      cursor += size;
+      grid.appendChild(rowEl);
+    });
+
+    return grid;
+  }
+
+  /* ── Build board tabs + panels ────────────────────────────────────────── */
+  var tabsEl   = document.getElementById('boardYearTabs');
+  var panelsEl = document.getElementById('boardPanels');
+
+  // Dynamic years from data (newest first) + always append 2020-2021
+  var years = Object.keys(D.board).sort().reverse();
+  years.push('2020-2021');
+
+  years.forEach(function (year, idx) {
+    var isFirst = idx === 0;
+
+    /* Tab button */
+    var btn = document.createElement('button');
+    btn.className   = 'year-filter-btn' + (isFirst ? ' active' : '');
+    btn.textContent = year.replace('-', '–');
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('#boardYearTabs .year-filter-btn')
+        .forEach(function (b) { b.classList.remove('active'); });
+      document.querySelectorAll('.board-hex-panel')
+        .forEach(function (p) { p.style.display = 'none'; });
+      btn.classList.add('active');
+      document.getElementById('board-' + year).style.display = 'block';
+    });
+    tabsEl.appendChild(btn);
+
+    /* Panel — 2020-2021 already exists in the DOM as static HTML */
+    if (year !== '2020-2021') {
+      var panel = document.createElement('div');
+      panel.id        = 'board-' + year;
+      panel.className = 'board-hex-panel';
+      panel.style.display = isFirst ? 'block' : 'none';
+      panel.appendChild(buildHexGrid(D.board[year]));
+      panelsEl.appendChild(panel);
+    } else {
+      var staticPanel = document.getElementById('board-2020-2021');
+      if (staticPanel) staticPanel.style.display = isFirst ? 'block' : 'none';
+    }
+  });
+
+})();
+</script>
 ```
-
-## About BSA
-
-We are the Biostatistics Student Association at UCLA.
-
-## Board Members
-
-{{< navcard color="#2774AE"
-  href1="./board/2020-2021/team-hex.qmd" label1="2020–2021 Board" meta1="View members →"
->}}
-
-## Newsletter
-
-Past issues of the BSA newsletter, published each quarter.
-
-{{< navcard color="#FFD100" preview="3"
-  href1="./newsletter/articles/vol003.pdf" label1="Spring 2021" meta1="Vol. 3 · PDF ↗"
-  href2="./newsletter/articles/vol002.pdf" label2="Winter 2021" meta2="Vol. 2 · PDF ↗"
-  href3="./newsletter/articles/vol001.pdf" label3="Fall 2020"   meta3="Vol. 1 · PDF ↗"
->}}

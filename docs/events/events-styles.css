@@ -394,112 +394,144 @@
   text-decoration: none !important;
 }
 
-/* ── Important Dates Section ── */
+/* ── Important Dates — newsletter-card style ── */
 .important-dates-section {
   max-width: 1100px;
   margin: 3.5rem auto 1rem;
   padding: 0 2rem;
 }
 
-.important-dates-title {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #003B5C;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #FFD100;
-  display: inline-block;
+/* Dark wrapper matching newsletter style */
+.id-wrap {
+  background: #003B5C;
+  border-radius: 20px;
+  padding: 2rem 2.5rem 2.5rem;
+  color: #fff;
 }
 
-.important-dates-list {
-  list-style: none;
-  padding: 0;
+/* Header row */
+.id-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.id-top-left { flex: 1; }
+.id-logo-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #FFD100;
+  margin-bottom: 0.5rem;
+}
+.id-big-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.id-subtitle {
+  font-size: 0.97rem;
+  color: #a8c4d8;
+  line-height: 1.75;
+  max-width: 480px;
   margin: 0;
+}
+
+/* Live count stat */
+.id-stat { flex-shrink: 0; text-align: center; }
+.id-stat-num { font-size: 2.8rem; font-weight: 900; color: #FFD100; line-height: 1; }
+.id-stat-label { font-size: 0.72rem; color: #7aa8bf; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
+
+/* Cards grid — auto-fills columns, min 220px each */
+.id-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Single deadline card */
+.id-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.id-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.38);
+}
+
+/* Coloured stripe at top — gradient set inline by JS */
+.id-card-banner { height: 7px; width: 100%; }
+
+.id-card-body {
+  padding: 1.3rem 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
-.important-date-item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 0.75rem 1.1rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 6px rgba(0,59,92,0.08);
-  border-left: 4px solid transparent;
-  transition: box-shadow 0.2s;
+/* Urgency badge (Today! / Tomorrow / in N days) */
+.id-urgency-badge {
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  align-self: flex-start;
+  margin-bottom: 0.2rem;
 }
 
-.important-date-item:hover {
-  box-shadow: 0 3px 14px rgba(0,59,92,0.13);
-}
-
-.date-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.date-item-title {
-  flex: 1;
-  font-size: 0.96rem;
-  font-weight: 600;
-  color: #1a1a1a;
-}
-
-.important-date-link {
+/* Deadline title */
+.id-card-title { font-size: 1.1rem; font-weight: 800; color: #003B5C; line-height: 1.3; }
+.id-card-title-link {
   color: #2774AE;
   text-decoration: none;
   transition: color 0.15s;
 }
+.id-card-title-link:hover { color: #003B5C; text-decoration: underline; }
+.id-card-title-text { color: #003B5C; }
 
-.important-date-link:hover {
-  color: #003B5C;
-  text-decoration: underline;
-}
+/* Date text */
+.id-card-date { font-size: 0.85rem; color: #666; margin-top: 0.1rem; }
 
-.date-item-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-shrink: 0;
-}
-
-.date-item-tag {
-  font-size: 0.72rem;
+/* CTA link button */
+.id-card-cta {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.18rem 0.6rem;
-  border-radius: 20px;
+  color: #2774AE;
+  text-decoration: none;
+  transition: color 0.15s;
 }
+.id-card-cta:hover { color: #003B5C; text-decoration: underline; }
 
-.date-item-date {
-  font-size: 0.82rem;
-  color: #666;
-  white-space: nowrap;
-}
-
-/* Urgency colours */
+/* Urgency colour tokens — applied to .id-urgency-badge */
 .urgency-red    { background: #ef5350; color: #fff; }
 .urgency-orange { background: #FF9800; color: #fff; }
 .urgency-yellow { background: #FFC107; color: #333; }
 .urgency-green  { background: #66BB6A; color: #fff; }
 
-.date-dot.urgency-red    { background: #ef5350; }
-.date-dot.urgency-orange { background: #FF9800; }
-.date-dot.urgency-yellow { background: #FFC107; }
-.date-dot.urgency-green  { background: #66BB6A; }
+/* Empty / loading states */
+.id-loading,
+.id-empty {
+  color: #a8c4d8;
+  font-size: 0.97rem;
+  padding: 0.5rem 0;
+}
 
-.important-dates-loading,
-.important-dates-empty {
-  color: #888;
-  font-size: 0.95rem;
-  padding: 1rem 0;
-  list-style: none;
+@media (max-width: 768px) {
+  .id-wrap { padding: 2rem 1.5rem 2.5rem; }
+  .id-top { flex-direction: column; align-items: flex-start; }
+  .id-cards-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Recurring Events Section ── */
