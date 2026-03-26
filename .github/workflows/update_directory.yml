@@ -47,6 +47,12 @@ jobs:
           GDRIVE_JSON: ${{ secrets.GDRIVE_JSON }}
           STUDENT_DIRECTORY_URL: ${{ secrets.STUDENT_DIRECTORY_URL }}
         run: Rscript directory/workflow_make_profiles.R
+        
+      - name: Compress images
+        run: |
+          sudo apt-get install -y imagemagick
+          find directory/images/ -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.JPG" -o -iname "*.jpeg" \) \
+            -exec mogrify -quality 75 -resize "800x800>" {} \;
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
