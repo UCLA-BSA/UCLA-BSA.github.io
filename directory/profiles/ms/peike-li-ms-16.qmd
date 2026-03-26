@@ -2,7 +2,9 @@
 title: "**Peike Li**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
-image: ../../images/ms/peike-li-ms-2024 - Peike Li.jpg
+
+advisor: Not Listed
+image: /directory/images/ms/peike-li-ms-2024 - Peike Li.jpg
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

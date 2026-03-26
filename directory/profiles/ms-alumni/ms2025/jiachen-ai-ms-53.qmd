@@ -2,8 +2,10 @@
 title: "**Jiachen Ai**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2023"
-image: ../../images/anon.jpg
-categories: ["Program: MS", "Cohort: Fall 2023", "Advisor: Not Listed"]
+graduation: 2025
+advisor: Not Listed
+image: /directory/images/anon.jpg
+categories: ["Program: MS", "Cohort: Fall 2023", "Alumni", "Class of: 2025", "Advisor: Not Listed"]
 about:
   template: trestles
   image-shape: round

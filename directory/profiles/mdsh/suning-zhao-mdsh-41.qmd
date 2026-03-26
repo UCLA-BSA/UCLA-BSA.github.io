@@ -2,7 +2,9 @@
 title: "**Suning (Nyla) Zhao**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg
+
+advisor: Jin Zhou, Hua Zhou
+image: /directory/images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
 about:
   template: trestles

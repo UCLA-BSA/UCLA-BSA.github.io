@@ -2,7 +2,9 @@
 title: "**Kiana Mohammadinik**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
-image: ../../images/ms/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg
+
+advisor: Catherine Crespi
+image: /directory/images/ms/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Catherine Crespi"]
 about:
   template: trestles

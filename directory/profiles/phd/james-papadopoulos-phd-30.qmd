@@ -2,7 +2,9 @@
 title: "**James Papadopoulos**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2022"
-image: ../../images/phd/FSPH_Headshot - JAMES PAPADOPOULOS.jpg
+
+advisor: Michele Guindani
+image: /directory/images/phd/FSPH_Headshot - JAMES PAPADOPOULOS.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Michele Guindani"]
 about:
   template: trestles

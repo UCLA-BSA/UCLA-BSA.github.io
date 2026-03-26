@@ -1,0 +1,61 @@
+---
+title: "Master of Science Alumni"
+page-layout: full
+css: styles.css
+format:
+  html:
+    include-after-body:
+      - category-accordion-script.html
+      - alumni-toggle-script.html
+listing:
+  - id: ms2025
+    contents: "profiles/ms-alumni/ms2025/*.qmd"
+    type: grid
+    grid-columns: 5
+    fields: [image, title, subtitle, description]
+  - id: ms2024
+    contents: "profiles/ms-alumni/ms2024/*.qmd"
+    type: grid
+    grid-columns: 5
+    fields: [image, title, subtitle, description]
+  - id: alumni-table
+    contents: "profiles/ms-alumni/**/*.qmd"
+    type: table
+    sort-ui: [title, graduation, advisor]
+    filter-ui: true
+    fields: [title, graduation, advisor]
+    field-display-names:
+      title: "Name"
+      graduation: "Graduation Year"
+      advisor: "Advisor"
+    table-hover: true
+---
+
+```{=html}
+<p class="mb-4" style="display:flex; align-items:center; gap:1rem;">
+  <a href="directory.html" class="btn btn-outline-secondary btn-sm">
+    &larr; Back to Directory
+  </a>
+  <span style="margin-left:auto;">
+    <button id="btn-grid" class="btn btn-sm btn-secondary" onclick="setAlumniView('grid')">⊞ Grid</button>
+    <button id="btn-table" class="btn btn-sm btn-outline-secondary" onclick="setAlumniView('table')">☰ List</button>
+  </span>
+</p>
+```
+
+<div id="alumni-grid-view">
+<details open>
+<summary>Class of 2025</summary>
+:::{#ms2025}
+:::
+</details>
+
+<details>
+<summary>Class of 2024</summary>
+:::{#ms2024}
+:::
+</details>
+</div>
+
+:::{#alumni-table}
+:::

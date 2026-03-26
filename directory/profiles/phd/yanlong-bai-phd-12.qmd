@@ -2,7 +2,9 @@
 title: "**Yanlong Bai**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2023"
-image: ../../images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg
+
+advisor: Damla Senturk
+image: /directory/images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg
 categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Damla Senturk"]
 about:
   template: trestles

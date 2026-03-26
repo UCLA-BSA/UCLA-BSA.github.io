@@ -46,8 +46,9 @@ css: styles.css
   </div>
 
   <!-- Program cards -->
+  <!-- Current Students -->
+  <h3 style="margin-bottom: 1rem; color: #003B5C;">Current Students</h3>
   <div class="program-cards-grid">
-
     <a href="phd-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
@@ -56,7 +57,6 @@ css: styles.css
         </div>
       </div>
     </a>
-
     <a href="ms-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/ms.jpg" alt="MS Students" />
@@ -65,7 +65,6 @@ css: styles.css
         </div>
       </div>
     </a>
-
     <a href="mdsh-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
@@ -74,8 +73,37 @@ css: styles.css
         </div>
       </div>
     </a>
-
   </div>
+
+  <!-- Alumni -->
+  <!-- <h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: #003B5C;">Alumni</h3> -->
+  <!-- <div class="program-cards-grid"> -->
+  <!--   <a href="phd-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/phd.jpeg" alt="PhD Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">PhD Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!--   <a href="ms-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/ms.jpg" alt="MS Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">MS Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!--   <a href="mdsh-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/mdsh.jpg" alt="MDSH Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">MDSH Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!-- </div> -->
+  
 </div>
 
 <script>

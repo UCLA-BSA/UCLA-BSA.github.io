@@ -2,7 +2,9 @@
 title: "**Carolyn Winskill**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2022"
-image: ../../images/phd/carolyn-winskill-phd-2022 - CAROLYN WINSKILL.jpg
+
+advisor: Gang Li
+image: /directory/images/phd/carolyn-winskill-phd-2022 - CAROLYN WINSKILL.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Gang Li"]
 about:
   template: trestles

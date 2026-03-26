@@ -1,17 +1,17 @@
 ---
-title: "**Matthew (Matt) Kostelny**"
+title: "**Sofia Landinez**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
 
 advisor: Not Listed
-image: /directory/images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg
+image: /directory/images/mdsh/Sofia Escalante Headshot - SOFIA LANDINEZ.png
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles
   image-shape: round
   links:
     - icon: linkedin
-      href: https://www.linkedin.com/in/matthew-kostelny
+      href: https://www.linkedin.com/in/sofiadriana
       target: _blank
 ---
 
@@ -20,14 +20,14 @@ about:
 University of California, Los Angeles  
 **Advisor(s):** Not Listed  
 **Cohort:** Fall 2025  
-**Email:**<script type="text/javascript">scrambleIt("ucla.edu","matthew.kostelny");</script>
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","sofialandinez");</script>
 
 ### Education:
 
 
 
-**BS in Biotechnology**, 2020  
-California State University, Northridge
+**BA in Public Health Policy**, 2022  
+University of California, Irvine — Irvine, CA
 
 
 

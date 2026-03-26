@@ -1,0 +1,198 @@
+<script>
+let currentPrefix = '';
+let gridListId = '';
+let tableListId = '';
+let tableObserver = null;
+
+function initListingIds() {
+  const gridContainer = document.querySelector('[id^="listing-"][id$="-grid"]');
+  const tableContainer = document.querySelector('[id^="listing-"][id$="-table"]');
+
+  if (gridContainer) gridListId = gridContainer.id;
+  if (tableContainer) tableListId = tableContainer.id;
+
+  currentPrefix = window.location.pathname.split('/').pop().replace('.html', '');
+}
+
+function applyTableView() {
+  if (!tableListId) return;
+  const table = document.getElementById(tableListId);
+  if (!table || table.style.display === 'none') return;
+
+  if (tableObserver) tableObserver.disconnect();
+
+  // Hide image column by class, not position
+  table.querySelectorAll('th:not([data-hidden])').forEach(el => {
+    if (el.textContent.trim() === '') {
+      el.style.display = 'none';
+      el.setAttribute('data-hidden', '1');
+    }
+  });
+  table.querySelectorAll('td .listing-image:not([data-hidden])').forEach(el => {
+    const td = el.closest('td');
+    if (td) { td.style.display = 'none'; td.setAttribute('data-hidden', '1'); }
+  });
+
+  table.querySelectorAll('td .listing-description:not([data-trimmed])').forEach(el => {
+    if (el.textContent.startsWith('Cohort: ')) {
+      el.textContent = el.textContent.slice(8);
+    }
+    el.setAttribute('data-trimmed', '1');
+  });
+
+  const tbody = table.querySelector('tbody');
+  if (tbody && tableObserver) {
+    tableObserver.observe(tbody, { childList: true });
+  }
+}
+
+function setView(view) {
+  if (!gridListId || !tableListId) return;
+
+  const grid = document.getElementById(gridListId);
+  const table = document.getElementById(tableListId);
+  const btnGrid = document.getElementById('btn-grid');
+  const btnTable = document.getElementById('btn-table');
+  const sidebar = document.getElementById('quarto-margin-sidebar');
+
+  if (!grid || !table) return;
+
+  if (view === 'grid') {
+    grid.style.display = 'block';
+    table.style.display = 'none';
+    if (sidebar) sidebar.style.display = 'block';
+
+    if (btnGrid) { btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary'); }
+    if (btnTable) { btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary'); }
+
+    if (tableObserver) { tableObserver.disconnect(); tableObserver = null; }
+  } else {
+    grid.style.display = 'none';
+    table.style.display = 'block';
+    if (sidebar) sidebar.style.display = 'none';
+
+    if (btnTable) { btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary'); }
+    if (btnGrid) { btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary'); }
+
+    const gridInstance = window['quarto-listings']?.[gridListId];
+    if (gridInstance) {
+      gridInstance.filter();
+      gridInstance.search();
+      const gridSearch = document.querySelector(`#${gridListId} input.search`);
+      if (gridSearch) gridSearch.value = '';
+    }
+
+    const tableInstance = window['quarto-listings']?.[tableListId];
+    if (tableInstance) {
+      tableInstance.filter();
+      tableInstance.search();
+      const tableSearch = document.querySelector(`#${tableListId} input.search`);
+      if (tableSearch) tableSearch.value = '';
+    }
+
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(el => {
+      el.classList.remove('active');
+    });
+
+    if (!tableObserver) {
+      const tbody = table.querySelector('tbody');
+      if (tbody) {
+        tableObserver = new MutationObserver(() => applyTableView());
+        tableObserver.observe(tbody, { childList: true });
+      }
+    }
+
+    applyTableView();
+  }
+
+  if (currentPrefix) {
+    localStorage.setItem(`${currentPrefix}View`, view);
+  }
+}
+
+function wireSearch(listingId, columns) {
+  if (!listingId) return;
+  const interval = setInterval(() => {
+    const instance = window['quarto-listings']?.[listingId];
+    const container = document.getElementById(listingId);
+    if (!instance || !container) return;
+
+    clearInterval(interval);
+
+    const searchInput = container.querySelector('input.search');
+    if (!searchInput) return;
+
+    const newInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newInput, searchInput);
+
+    newInput.addEventListener('input', function() {
+      instance.search(this.value, columns);
+    });
+  }, 100);
+}
+
+function checkForCategoryFilter(listingId) {
+  if (window.location.hash.includes('category=')) {
+    showClearFilterBtn(listingId);
+  }
+}
+
+function showClearFilterBtn(listingId) {
+  const existing = document.getElementById('clear-filter-btn');
+  if (existing) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'clear-filter-btn';
+  btn.textContent = '✕ Clear filter';
+  btn.className = 'btn btn-sm btn-outline-danger';
+  btn.style.marginLeft = '8px';
+
+  btn.addEventListener('click', () => {
+    const instance = window['quarto-listings']?.[listingId];
+    if (instance) {
+      instance.filter();
+      instance.search();
+    }
+    history.replaceState(null, '', window.location.pathname);
+    btn.remove();
+  });
+
+  const backBtn = document.querySelector('.btn-outline-secondary');
+  if (backBtn) backBtn.insertAdjacentElement('afterend', btn);
+}
+
+window.addEventListener('load', function() {
+  initListingIds();
+
+  if (gridListId) {
+    wireSearch(gridListId, ['listing-title', 'listing-subtitle', 'listing-description']);
+  }
+  if (tableListId) {
+    wireSearch(tableListId, ['listing-title', 'listing-subtitle', 'listing-description', 'listing-advisor']);
+  }
+
+  document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('page-link')) {
+    window.scrollTo(0, 0);
+  }
+});
+
+  const referrer = document.referrer;
+  const isFromDirectory = referrer.includes('directory.html');
+  const isFromProfile = referrer.includes('/profiles/');
+
+  let viewToShow;
+  if (isFromDirectory || !referrer) {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  } else if (isFromProfile) {
+    viewToShow = currentPrefix ? (localStorage.getItem(`${currentPrefix}View`) || 'grid') : 'grid';
+  } else {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  }
+
+  setView(viewToShow);
+  checkForCategoryFilter(tableListId);
+});
+</script>

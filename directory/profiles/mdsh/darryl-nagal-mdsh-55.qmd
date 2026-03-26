@@ -2,7 +2,9 @@
 title: "**Darryl Nagal**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/4L8A1795 (2) - DARRYL NAGAL.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/4L8A1795 (2) - DARRYL NAGAL.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

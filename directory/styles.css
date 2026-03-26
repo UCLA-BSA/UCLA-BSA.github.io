@@ -268,3 +268,35 @@
 #listing-listing .list.grid {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
 }
+
+/* Accordian style for alumni */
+details {
+  margin-bottom: 1.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+details summary {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #003B5C;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1rem;
+}
+
+
+[id^="listing-"][id$="-grid"],
+[id^="listing-"][id$="-table"] {
+  display: none;
+}

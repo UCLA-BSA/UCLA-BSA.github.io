@@ -2,7 +2,9 @@
 title: "**Andrew Chuang**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2024"
-image: ../../images/phd/andrew-chuang-phd-2024 - Andrew Chuang.jpg
+
+advisor: Donatello Telesca
+image: /directory/images/phd/andrew-chuang-phd-2024 - Andrew Chuang.jpg
 categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Donatello Telesca"]
 about:
   template: trestles

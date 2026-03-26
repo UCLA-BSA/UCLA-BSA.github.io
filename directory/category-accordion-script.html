@@ -1,16 +1,12 @@
 <script>
 (function () {
   'use strict';
-
   function buildAccordion() {
     var container = document.querySelector('.quarto-listing-category');
     if (!container) return;
-
     var allItems = Array.from(container.querySelectorAll('.category'));
     if (!allItems.length) return;
-
     var groups = { Advisor: [], Cohort: [] };
-
     allItems.forEach(function (el) {
       var text = el.textContent.trim();
       if (text.startsWith('Advisor: ')) {
@@ -21,18 +17,14 @@
         el.remove();
       }
     });
-
     groups.Advisor.concat(groups.Cohort).forEach(function (el) {
       el.remove();
     });
-
     ['Advisor', 'Cohort'].forEach(function (groupName) {
       var items = groups[groupName];
       if (!items.length) return;
-
       var wrapper = document.createElement('div');
       wrapper.className = 'category-accordion-group';
-
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'category-accordion-header';
@@ -40,13 +32,23 @@
       btn.innerHTML =
         '<span class="accordion-label">' + groupName + '</span>' +
         '<span class="accordion-arrow">&#8250;</span>';
-
       var list = document.createElement('div');
       list.className = 'category-accordion-items';
       list.style.display = 'none';
 
+      // Sort alphabetically, with "Not Listed" pinned to the end
+      items.sort(function(a, b) {
+        var aText = a.textContent.trim().replace(groupName + ': ', '');
+        var bText = b.textContent.trim().replace(groupName + ': ', '');
+        if (aText === 'Not Listed') return 1;
+        if (bText === 'Not Listed') return -1;
+        return aText.localeCompare(bText);
+      });
+
       items.forEach(function (el) {
-        el.textContent = el.textContent.trim().replace(groupName + ': ', '');
+        var full = el.textContent.trim();
+        var label = full.replace(groupName + ': ', '');
+        el.textContent = label;
         list.appendChild(el);
       });
 
@@ -56,13 +58,11 @@
         list.style.display = expanded ? 'none' : 'block';
         btn.querySelector('.accordion-arrow').classList.toggle('open', !expanded);
       });
-
       wrapper.appendChild(btn);
       wrapper.appendChild(list);
       container.appendChild(wrapper);
     });
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', buildAccordion);
   } else {

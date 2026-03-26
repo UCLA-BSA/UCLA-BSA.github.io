@@ -2,7 +2,9 @@
 title: "**Yingxin Zhang**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2025"
-image: ../../images/anon.jpg
+
+advisor: Gang Li
+image: /directory/images/anon.jpg
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Gang Li"]
 about:
   template: trestles

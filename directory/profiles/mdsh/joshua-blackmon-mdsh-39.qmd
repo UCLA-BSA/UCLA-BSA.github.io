@@ -2,7 +2,9 @@
 title: "**Joshua (Lee) Blackmon**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/IMG_6291 - JOSHUA BLACKMON.jpeg
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_6291 - JOSHUA BLACKMON.jpeg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

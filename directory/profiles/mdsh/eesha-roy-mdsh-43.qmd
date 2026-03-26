@@ -2,7 +2,9 @@
 title: "**Eesha Roy**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/IMG_8365 - EESHA ROY.jpeg
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_8365 - EESHA ROY.jpeg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

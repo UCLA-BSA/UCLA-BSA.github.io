@@ -2,7 +2,9 @@
 title: "**Xihe (Heather) Yu**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/headshot - Xihe Heather Yu.jpg
+
+advisor: Weng Kee Wong
+image: /directory/images/mdsh/headshot - Xihe Heather Yu.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Weng Kee Wong"]
 about:
   template: trestles

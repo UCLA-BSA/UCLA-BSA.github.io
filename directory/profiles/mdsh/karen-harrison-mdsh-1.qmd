@@ -2,7 +2,9 @@
 title: "**Karen Harrison**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/karen-harrison-mdsh-2025 - KAREN HARRISON.jpg
+
+advisor: Thomas Belin
+image: /directory/images/mdsh/karen-harrison-mdsh-2025 - KAREN HARRISON.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Thomas Belin"]
 about:
   template: trestles

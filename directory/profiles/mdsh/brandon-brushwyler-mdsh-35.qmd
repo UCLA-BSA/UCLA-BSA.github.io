@@ -2,7 +2,9 @@
 title: "**Brandon Brushwyler**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/B518D365-26F2-456A-B26F-DE1C6864C304 - BRANDON BRUSHWYLER.png
+
+advisor: Not Listed
+image: /directory/images/mdsh/B518D365-26F2-456A-B26F-DE1C6864C304 - BRANDON BRUSHWYLER.png
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

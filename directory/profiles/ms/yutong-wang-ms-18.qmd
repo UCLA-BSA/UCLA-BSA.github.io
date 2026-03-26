@@ -2,7 +2,9 @@
 title: "**Yutong (Tanya) Wang**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
-image: ../../images/ms/Yutong-Wang-MS-2024 - TANYA WANG.jpeg
+
+advisor: Catherine Ann Sugar
+image: /directory/images/ms/Yutong-Wang-MS-2024 - TANYA WANG.jpeg
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Catherine Ann Sugar"]
 about:
   template: trestles

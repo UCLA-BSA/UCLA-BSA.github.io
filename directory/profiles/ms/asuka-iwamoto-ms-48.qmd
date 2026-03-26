@@ -2,7 +2,9 @@
 title: "**Asuka Iwamoto**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2025"
-image: ../../images/ms/IMG_0952 - ASUKA IWAMOTO.jpeg
+
+advisor: Brunilda Balliu
+image: /directory/images/ms/IMG_0952 - ASUKA IWAMOTO.jpeg
 categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Brunilda Balliu"]
 about:
   template: trestles

@@ -2,7 +2,9 @@
 title: "**Han (Emily) Zheng**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/46acecf4bc5bc30e5dd601d0881583f4 - Han Zheng.jpeg
+
+advisor: Not Listed
+image: /directory/images/mdsh/46acecf4bc5bc30e5dd601d0881583f4 - Han Zheng.jpeg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

@@ -2,7 +2,9 @@
 title: "**Danielle Lavine**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2021"
-image: ../../images/phd/IMG_8752 - Danielle LaVine.jpeg
+
+advisor: Thomas Belin, Christina Ramirez
+image: /directory/images/phd/IMG_8752 - Danielle LaVine.jpeg
 categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Thomas Belin", "Advisor: Christina Ramirez"]
 about:
   template: trestles

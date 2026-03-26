@@ -2,7 +2,9 @@
 title: "**Amaan Jogia-Sattar**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
-image: ../../images/ms/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png
+
+advisor: Brunilda Balliu
+image: /directory/images/ms/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Brunilda Balliu"]
 about:
   template: trestles

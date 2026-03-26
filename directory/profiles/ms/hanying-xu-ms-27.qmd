@@ -2,7 +2,9 @@
 title: "**Hanying (Elena) Xu**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
-image: ../../images/ms/IMG_4127 - HANYING XU.JPG
+
+advisor: Christina Ramirez
+image: /directory/images/ms/IMG_4127 - HANYING XU.JPG
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Christina Ramirez"]
 about:
   template: trestles

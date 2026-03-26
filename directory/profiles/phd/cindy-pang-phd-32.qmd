@@ -2,7 +2,9 @@
 title: "**Cindy Pang**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2023"
-image: ../../images/phd/IMG_2515 - Cindy Pang.jpeg
+
+advisor: Sudipto Banerjee, Falco J. Bargagli Stoffi
+image: /directory/images/phd/IMG_2515 - Cindy Pang.jpeg
 categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Sudipto Banerjee", "Advisor: Falco J. Bargagli Stoffi"]
 about:
   template: trestles
