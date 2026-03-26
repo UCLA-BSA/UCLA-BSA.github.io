@@ -2,7 +2,9 @@
 title: "**Siddhant Patel**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2025"
-image: ../../images/ms/Screenshot 2026-03-18 at 10.53.20 AM - SIDDHANT PATEL.png
+
+advisor: Donatello Telesca
+image: /directory/images/ms/Screenshot 2026-03-18 at 10.53.20 AM - SIDDHANT PATEL.png
 categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Donatello Telesca"]
 about:
   template: trestles

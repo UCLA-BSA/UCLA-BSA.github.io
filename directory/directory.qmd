@@ -21,6 +21,7 @@ css: styles.css
     </div>
     <div class="directory-hero-photo">
       <div class="slideshow-container">
+        
         <div class="slide active">
           <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
         </div>
@@ -33,21 +34,24 @@ css: styles.css
         <div class="slide">
           <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
         </div>
+        
         <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
-      </div>
-      <div class="slideshow-dots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-        <span class="dot" onclick="goToSlide(3)"></span>
-      </div>
-    </div>
+        
+        <div class="slideshow-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
+
+      </div> </div>
   </div>
 
   <!-- Program cards -->
+  <!-- Current Students -->
+  <h3 style="margin-bottom: 1rem; color: #003B5C;">Current Students</h3>
   <div class="program-cards-grid">
-
     <a href="phd-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
@@ -56,7 +60,6 @@ css: styles.css
         </div>
       </div>
     </a>
-
     <a href="ms-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/ms.jpg" alt="MS Students" />
@@ -65,7 +68,6 @@ css: styles.css
         </div>
       </div>
     </a>
-
     <a href="mdsh-students.html" class="text-decoration-none">
       <div class="directory-program-card">
         <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
@@ -74,8 +76,37 @@ css: styles.css
         </div>
       </div>
     </a>
-
   </div>
+
+  <!-- Alumni -->
+  <!-- <h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: #003B5C;">Alumni</h3> -->
+  <!-- <div class="program-cards-grid"> -->
+  <!--   <a href="phd-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/phd.jpeg" alt="PhD Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">PhD Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!--   <a href="ms-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/ms.jpg" alt="MS Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">MS Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!--   <a href="mdsh-alumni.html" class="text-decoration-none"> -->
+  <!--     <div class="directory-program-card"> -->
+  <!--       <img src="./images/directory_home/mdsh.jpg" alt="MDSH Alumni" /> -->
+  <!--       <div class="card-body text-center"> -->
+  <!--         <h3 class="card-title mt-2">MDSH Alumni</h3> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </a> -->
+  <!-- </div> -->
+  
 </div>
 
 <script>
@@ -86,29 +117,48 @@ css: styles.css
   function init() {
     slides = document.querySelectorAll('.slide');
     dots = document.querySelectorAll('.dot');
-    if (!slides.length) return;
+    if (!slides || !slides.length) return;
     startTimer();
   }
 
   function showSlide(n) {
+    // Safety check for empty arrays
+    if (!slides[current] || !dots[current]) return;
+
+    // Remove active classes
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
+
+    // Calculate next index
     current = (n + slides.length) % slides.length;
+
+    // Add active classes
     slides[current].classList.add('active');
     dots[current].classList.add('active');
   }
 
   function startTimer() {
-    timer = setInterval(function() { showSlide(current + 1); }, 4000);
+    // Change slide every 5 seconds
+    timer = setInterval(function() { 
+      showSlide(current + 1); 
+    }, 5000);
   }
 
   function resetTimer() {
     clearInterval(timer);
-    startTimer();
+    startTimer(); // Restarts the 5s countdown after a manual click
   }
 
-  window.changeSlide = function(dir) { showSlide(current + dir); resetTimer(); };
-  window.goToSlide = function(n) { showSlide(n); resetTimer(); };
+  // Global functions for the HTML onclick events
+  window.changeSlide = function(dir) { 
+    showSlide(current + dir); 
+    resetTimer(); 
+  };
+
+  window.goToSlide = function(n) { 
+    showSlide(n); 
+    resetTimer(); 
+  };
 
   document.addEventListener('DOMContentLoaded', init);
 })();

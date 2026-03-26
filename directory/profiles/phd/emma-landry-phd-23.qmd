@@ -2,7 +2,9 @@
 title: "**Emma Landry**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2021"
-image: ../../images/phd/emma-landry-phd-2021 - Emma Landry.jpg
+
+advisor: Donatello Telesca
+image: /directory/images/phd/emma-landry-phd-2021 - Emma Landry.jpg
 categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Donatello Telesca"]
 about:
   template: trestles

@@ -2,7 +2,9 @@
 title: "**Wenqiang Ge**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

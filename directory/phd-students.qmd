@@ -6,25 +6,57 @@ format:
   html:
     include-after-body:
       - category-accordion-script.html
+      - view-toggle-script.html
 listing:
-  type: grid
-  page-size: 25
-  contents: profiles/phd/*.qmd
-  include:
-    subtitle: ["PhD Student", "PhD Candidate"]  
-  grid-columns: 5
-  sort-ui: [title, description]
-  sort: false
-  filter-ui: true
-  fields: [image, title, subtitle, description]
-  grid-item-align: left
-  categories: unnumbered
+  - id: grid
+    type: grid
+    page-size: 15
+    contents: profiles/phd/*.qmd
+    include:
+      subtitle: ["PhD Student", "PhD Candidate"]
+    grid-columns: 5
+    sort-ui: [title, description]
+    sort: false
+    filter-ui: true
+    fields: [image, title, subtitle, description]
+    field-display-names:
+      title: "Name"
+      subtitle: "Status"
+      description: "Cohort"
+    grid-item-align: left
+    categories: unnumbered
+  - id: table
+    type: table
+    page-size: 10
+    contents: profiles/phd/*.qmd
+    include:
+      subtitle: ["PhD Student", "PhD Candidate"]
+    sort-ui: [title, subtitle, description, advisor]
+    sort: false
+    filter-ui: true
+    fields: [title, subtitle, description, advisor]
+    field-display-names:
+      title: "Name"
+      subtitle: "Status"
+      description: "Cohort"
+      advisor: "Advisor"
+    categories: unnumbered
+    table-hover: true
 ---
-
 ```{=html}
-<p class="mb-4">
+<p class="mb-4" style="display:flex; align-items:center; gap:1rem;">
   <a href="directory.html" class="btn btn-outline-secondary btn-sm">
     &larr; Back to Directory
   </a>
+  <span style="margin-left:auto;">
+    <button id="btn-grid" class="btn btn-sm btn-secondary" onclick="setView('grid')">&#x229E; Grid</button>
+    <button id="btn-table" class="btn btn-sm btn-outline-secondary" onclick="setView('table')">&#9776; List</button>
+  </span>
 </p>
 ```
+
+::: {#grid}
+:::
+::: {#table}
+:::
+

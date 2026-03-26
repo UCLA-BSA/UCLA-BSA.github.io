@@ -1,0 +1,35 @@
+---
+title: "**Tomoki Okuno**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2023"
+
+advisor: Jin Zhou, Hua Zhou
+image: /directory/images/phd/230524_FSPH_0183_chose - Tomoki Okuno.jpg
+categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/tomoki-okuno-a06aa0185/
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Jin Zhou, Hua Zhou  
+**Cohort:** Fall 2023  
+
+
+### Education:
+
+**MS in Biostatistics**, 2023  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Applied Mathematics and Physics**  
+Kyoto University — Japan
+
+
+
+

@@ -2,7 +2,9 @@
 title: "**Rongrong (Emma) Mo**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/莫镕榕 - RONGRONG MO.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/莫镕榕 - RONGRONG MO.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

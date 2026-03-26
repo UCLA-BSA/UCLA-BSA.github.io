@@ -2,6 +2,7 @@
 # this script turns each entry from the student directory form into an about page
 library(glue)
 library(googledrive)
+library(googlesheets4)
 library(dotenv)
 library(tidyverse)
 library(here)
@@ -9,24 +10,34 @@ here::i_am("directory/make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
 download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
-dotenv::load_dot_env(file = here(".env"))
-spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
-options(gargle_oauth_cache = ".secrets",
-        gargle_oauth_email = Sys.getenv("UCLA_EMAIL"))
+drive_deauth()
+googlesheets4::gs4_deauth()
 
+if (file.exists(here(".env"))) {
+  dotenv::load_dot_env(file = here(".env"))
+}
 
-# if (download_files == TRUE) {
-#   if (!drive_has_token()) {
-#     # dotenv::load_dot_env(file = here(".env"))
-#     
-#     # authenticate google
-#     drive_auth(email = Sys.getenv("UCLA_EMAIL")) 
-#   }
-#   spreadsheet_url <- Sys.getenv("SPREADSHEET_URL")
-#   drive_download(as_id(spreadsheet_url), path = here("directory/directory_file.xlsx"), overwrite = TRUE)
-# }
+options(
+  gargle_oauth_cache = ".secrets",
+  gargle_interactivity = FALSE
+)
 
+# handle Google Drive/Sheets authentication
+if (Sys.getenv("GDRIVE_JSON") != "") {
+  # github actions path
+  message("Authenticating via Service Account JSON...")
+  tmp_json <- tempfile(fileext = ".json")
+  writeLines(Sys.getenv("GDRIVE_JSON"), tmp_json)
+  drive_auth(path = tmp_json)
+  googlesheets4::gs4_auth(path = tmp_json)
+} else {
+  # if running locally, authenticate via google email
+  message("Authenticating via local UCLA email...")
+  drive_auth(email = Sys.getenv("UCLA_EMAIL"))
+  googlesheets4::gs4_auth(email = Sys.getenv("UCLA_EMAIL"))
+}
 
+spreadsheet_url <- Sys.getenv("STUDENT_DIRECTORY_URL")
 
 # functions to get image id and extensions
 safe_drive_get <- function(id) {
@@ -44,16 +55,23 @@ safe_ext <- function(meta_name) {
 }
 
 # download images function
-download_image <- function(file_id, program_lower, meta_name) {
+download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, graduation_year = NA) {
   
-  image_path <- paste(here("directory/images"), program_lower, meta_name, sep = "/")
+  # Build the correct subfolder and image path
+  if (alumni && !is.na(graduation_year)) {
+    subfolder <- paste0(program_lower, "-alumni/", program_lower, graduation_year)
+  } else {
+    subfolder <- program_lower
+  }
   
-  if(!dir.exists(here("directory/images", program_lower))) {
-    dir.create(here("directory/images", program_lower), showWarnings = FALSE, recursive = TRUE)
+  image_path <- paste(here("directory/images"), subfolder, meta_name, sep = "/")
+  
+  if (!dir.exists(here("directory/images", subfolder))) {
+    dir.create(here("directory/images", subfolder), showWarnings = FALSE, recursive = TRUE)
   }
   
   # only download if image exists in Google drive and if it is different from local folder
-  if(!is.na(file_id)) {
+  if (!is.na(file_id)) {
     meta <- drive_get(as_id(file_id))
     drive_md5 <- meta$drive_resource[[1]]$md5Checksum
     
@@ -62,7 +80,6 @@ download_image <- function(file_id, program_lower, meta_name) {
       
       if (drive_md5 == local_md5) {
         print(paste0("No changes to file ", image_path, ". Will not redownload."))
-        
         return(invisible(NULL))
       }
     }
@@ -85,9 +102,9 @@ if (download_files == TRUE) {
   writexl::write_xlsx(df, student_directory_form)
   
 } else {
-  df <- readxl::read_xlsx(student_directory_form) #%>%
-    #select(-c(1, 2, 3, 4))
+  df <- readxl::read_xlsx(student_directory_form)
 }
+
 df <- df %>%
   rename(first = 1,
          last = 2,
@@ -123,14 +140,36 @@ df <- df %>%
          meta = map(file_id, safe_drive_get)) %>%
   unnest(meta, names_sep = "_") %>%
   mutate(ext = map(meta_name, safe_ext)) %>%
-  select(-meta_drive_resource)
+  select(-meta_drive_resource) %>%
+  # set program graduation year for the MS and MDSH students
+  separate_wider_delim(year, delim = " ", names = c("quarter", "start_year"), cols_remove = FALSE) %>%
+  mutate(
+    graduation_year = if_else(program_lower %in% c("ms", "mdsh"),
+                              as.numeric(start_year) + 2,
+                              NA_real_),
+    graduation_date = if_else(program_lower %in% c("ms", "mdsh"),
+                              as.Date(paste0(as.numeric(start_year) + 2, "-07-01")), # assume by July 1 all the MS, MDSH students will have graduated
+                              NA),
+    alumni = graduation_date < Sys.Date(),
+    alumni = ifelse(is.na(alumni) | alumni == FALSE,
+                    FALSE,
+                    TRUE),
+    alumni_dir = ifelse(alumni == TRUE,
+                        paste0(program_lower, "-alumni/", program_lower, graduation_year),
+                        program_lower),
+    alumni_opt_out = ifelse(is.na(alumni_opt_out),
+                            FALSE,
+                            TRUE)
+  ) %>%
+  filter(!(alumni_opt_out == TRUE & alumni == TRUE))
 
 
 # download all profile picture images
 if (download_files == TRUE) {
-  pmap(list(df$file_id, df$program_lower, df$meta_name), download_image)
+  invisible(
+    pmap(list(df$file_id, df$program_lower, df$meta_name, df$alumni, df$graduation_year), download_image)
+  )
 }
-
 
 ##### clean data frame #####
 # for previous degree line
@@ -172,7 +211,6 @@ standardize_university <- function(x) {
 
 df_clean <- df %>%
   # cleaning names
-  
   mutate(
     unique_id = row_number(), # id to assign to each person's file
     first = str_to_title(first),
@@ -188,9 +226,12 @@ df_clean <- df %>%
     filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(unique_id)}"),
     filename = str_replace_all(filename, "[^a-z0-9 -]", ""),
     filename = str_replace_all(filename, "\\s+", "-"),
-    filename = paste0(here("directory/profiles/"), program_lower, "/", filename, ".qmd")
+    filename = ifelse(alumni == FALSE | is.na(alumni),
+                      paste0(here("directory/profiles/"), program_lower, "/", filename, ".qmd"),
+                      paste0(here("directory/profiles/"), alumni_dir, "/", filename, ".qmd")
+    )
   ) %>%
-  separate_wider_delim(year, delim = " ", names = c("quarter", "start_year"), cols_remove = FALSE) %>%
+  
   mutate(
     advisor = advisor |>
       str_replace_all("\\s+and\\s+", ",") |> # replace " and " with comma
@@ -208,6 +249,7 @@ df_clean <- df %>%
   ) %>%
   
   # cleaning education
+  
   ## cleaning the majors
   mutate(bachelors_major = tools::toTitleCase(bachelors_major),
          masters_major = tools::toTitleCase(masters_major),
@@ -220,13 +262,18 @@ df_clean <- df %>%
          masters_location = str_remove(masters_location, regex(",?\\s*(usa|united states|u\\.s\\.a\\.|u\\.s\\.)\\s*$", ignore_case = TRUE)),
          bachelors_location = str_replace_all(bachelors_location, regex(paste0(",\\s*(", paste(state.name, collapse = "|"), ")"), ignore_case = TRUE), function(x) paste0(", ", state.abb[match(str_to_title(str_trim(str_remove(x, ","))), state.name)])),
          masters_location = str_replace_all(masters_location, regex(paste0(",\\s*(", paste(state.name, collapse = "|"), ")"), ignore_case = TRUE), function(x) paste0(", ", state.abb[match(str_to_title(str_trim(str_remove(x, ","))), state.name)]))) %>%
-
+  
   mutate(bachelors_location = str_replace(bachelors_location, "\\b([a-zA-Z]{2})$", toupper),
          masters_location = str_replace(masters_location, "\\b([a-zA-Z]{2})$", toupper)) %>% # make all two letter words uppercase
   
-  
   mutate(bachelors_school = standardize_university(bachelors_school), # standardize the school names
          masters_school = standardize_university(masters_school)) %>%
+  
+  ## alumni/graduation year
+  
+  mutate(graduation_yaml = ifelse(alumni == TRUE,
+                                  paste("graduation:", graduation_year),
+                                  "")) %>%
   
   # fixing links
   mutate(across(
@@ -241,9 +288,18 @@ df_clean <- df %>%
   # sections to actually be used in the profile
   mutate(
     image_file = if_else(
-      file.exists(paste(here("directory/images"), program_lower, meta_name, sep = "/")),
-      paste(program_lower, meta_name, sep = "/"),
-      "anon.jpg"),
+      alumni == TRUE & !is.na(alumni),
+      if_else(
+        file.exists(paste(here("directory/images"), paste0(program_lower, "-alumni"), paste0(program_lower, graduation_year), meta_name, sep = "/")),
+        paste("/directory", "images", paste0(program_lower, "-alumni"), paste0(program_lower, graduation_year), meta_name, sep = "/"),
+        "/directory/images/anon.jpg"
+      ),
+      if_else(
+        file.exists(paste(here("directory/images"), program_lower, meta_name, sep = "/")),
+        paste("/directory", "images", program_lower, meta_name, sep = "/"),
+        "/directory/images/anon.jpg"
+      )
+    ),
     bio = if_else(
       !is.na(description) & description != "",
       description,
@@ -303,6 +359,8 @@ template <- function(df) {
   categories_vec <- c(
     paste0("Program: ", df$current_program),
     paste0("Cohort: ", df$year),
+    if (isTRUE(df$alumni)) "Alumni",
+    if (isTRUE(df$alumni) && !is.na(df$graduation_year)) paste0("Class of: ", df$graduation_year),
     if(!is.na(df$advisor1) && df$advisor1 != "") {paste0("Advisor: ", df$advisor1)},
     if(!is.na(df$advisor2) && df$advisor2 != "") {paste0("Advisor: ", df$advisor2)}
   ) %>%
@@ -349,7 +407,9 @@ template <- function(df) {
 title: \"**{df$first} {df$preferred}{df$last}**\"
 subtitle: \"{df$current_program} {df$candidacy}\"
 description: \"Cohort: {df$year}\"
-image: ../../images/{df$image_file}
+{df$graduation_yaml}
+advisor: {df$advisor_full}
+image: {df$image_file}
 categories: [{categories_yaml}]
 about:
   template: trestles
@@ -381,6 +441,10 @@ University of California, Los Angeles
 unlink(here("directory/profiles/mdsh"), recursive = TRUE)
 unlink(here("directory/profiles/ms"), recursive = TRUE)
 unlink(here("directory/profiles/phd"), recursive = TRUE)
+unlink(here("directory/profiles/mdsh-alumni"), recursive = TRUE)
+unlink(here("directory/profiles/ms-alumni"), recursive = TRUE)
+unlink(here("directory/profiles/phd-alumni"), recursive = TRUE)
+
 
 # create the .qmd profiles for each person
 for (i in seq_len(nrow(df_clean))) {
@@ -394,4 +458,3 @@ for (i in seq_len(nrow(df_clean))) {
     df_clean$filename[i]
   )
 }
-

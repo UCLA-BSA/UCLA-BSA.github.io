@@ -2,7 +2,9 @@
 title: "**Chuyi (Selina Li) Li**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/Weixin Image_20260324025018_1342_159 - CHUYI LI.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/Weixin Image_20260324025018_1342_159 - CHUYI LI.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

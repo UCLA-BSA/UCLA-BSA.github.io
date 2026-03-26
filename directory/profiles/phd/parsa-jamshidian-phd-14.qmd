@@ -2,7 +2,9 @@
 title: "**Parsa Jamshidian**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2021"
-image: ../../images/phd/Parsa-Jamshidian-PhD-2021 - Parsa Jamshidian.jpg
+
+advisor: Donatello Telesca
+image: /directory/images/phd/Parsa-Jamshidian-PhD-2021 - Parsa Jamshidian.jpg
 categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Donatello Telesca"]
 about:
   template: trestles

@@ -2,8 +2,8 @@ name: Update and Build Biostatistics Student Directory
 
 on:
   schedule:
-    # Runs at 09:00 every Monday
-    - cron: '0 9 * * 1'
+    # Runs daily at 11:59 pm
+    - cron: '59 6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
         env:
           GDRIVE_JSON: ${{ secrets.GDRIVE_JSON }}
           STUDENT_DIRECTORY_URL: ${{ secrets.STUDENT_DIRECTORY_URL }}
-        run: Rscript directory/workflow_make_profiles.R
+        run: Rscript directory/make_profiles.R
         
       - name: Compress images
         run: |
@@ -55,6 +55,7 @@ jobs:
             find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
               -exec mogrify -quality 75 -resize "800x800>" {} \;
           done
+
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

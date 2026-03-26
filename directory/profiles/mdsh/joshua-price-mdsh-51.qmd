@@ -2,7 +2,9 @@
 title: "**Joshua Price**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/Headshot - JOSHUA PRICE.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/Headshot - JOSHUA PRICE.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

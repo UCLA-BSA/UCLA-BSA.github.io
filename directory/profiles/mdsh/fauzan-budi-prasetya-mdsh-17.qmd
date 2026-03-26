@@ -2,7 +2,9 @@
 title: "**Fauzan Budi (Fauzan) Prasetya**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/fauzan-budi-prasetya-mdsh-2025 - FAUZAN BUDI PRASETYA.jpg
+
+advisor: Thomas Belin
+image: /directory/images/mdsh/fauzan-budi-prasetya-mdsh-2025 - FAUZAN BUDI PRASETYA.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Thomas Belin"]
 about:
   template: trestles

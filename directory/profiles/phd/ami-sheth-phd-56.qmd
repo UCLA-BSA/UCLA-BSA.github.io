@@ -2,7 +2,9 @@
 title: "**Ami Sheth**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2021"
-image: ../../images/phd/Sheth_Ami_003 - AMI SHETH.jpg
+
+advisor: Andrew Holbrook
+image: /directory/images/phd/Sheth_Ami_003 - AMI SHETH.jpg
 categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Andrew Holbrook"]
 about:
   template: trestles

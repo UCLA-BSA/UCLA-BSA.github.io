@@ -2,7 +2,9 @@
 title: "**Rica Mae Pitogo**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG
+
+advisor: Not Listed
+image: /directory/images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

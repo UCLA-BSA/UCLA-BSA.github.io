@@ -2,7 +2,9 @@
 title: "**Kelsey Ishimoto**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2020"
-image: ../../images/phd/IMG_6206 - KELSEY ISHIMOTO.jpeg
+
+advisor: Robert Weiss, Donatello Telesca
+image: /directory/images/phd/IMG_6206 - KELSEY ISHIMOTO.jpeg
 categories: ["Program: PhD", "Cohort: Fall 2020", "Advisor: Robert Weiss", "Advisor: Donatello Telesca"]
 about:
   template: trestles

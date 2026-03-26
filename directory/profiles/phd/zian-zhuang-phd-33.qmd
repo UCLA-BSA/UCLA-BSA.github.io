@@ -2,7 +2,9 @@
 title: "**Zian Zhuang**"
 subtitle: "PhD Candidate"
 description: "Cohort: Fall 2022"
-image: ../../images/phd/Photo Zian - ZIAN ZHUANG.jpg
+
+advisor: Not Listed
+image: /directory/images/phd/Photo Zian - ZIAN ZHUANG.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Not Listed"]
 about:
   template: trestles

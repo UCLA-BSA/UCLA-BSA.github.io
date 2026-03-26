@@ -2,7 +2,9 @@
 title: "**Sopyda Yin**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/4L8A1489 - Sopyda Yin.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/4L8A1489 - Sopyda Yin.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

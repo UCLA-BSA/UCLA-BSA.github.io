@@ -2,7 +2,9 @@
 title: "**Zichen Liu**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2022"
-image: ../../images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg
+
+advisor: Catherine M. Crespi
+image: /directory/images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Catherine M. Crespi"]
 about:
   template: trestles

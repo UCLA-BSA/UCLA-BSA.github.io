@@ -2,7 +2,9 @@
 title: "**Gianna Jimenez**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2024"
-image: ../../images/mdsh/IMG_9788 - GIANNA JIMENEZ.jpg
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_9788 - GIANNA JIMENEZ.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Not Listed"]
 about:
   template: trestles

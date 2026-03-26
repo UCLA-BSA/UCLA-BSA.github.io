@@ -1,0 +1,103 @@
+<script>
+function wireSearch(listingId, columns) {
+  if (!listingId) return;
+  const interval = setInterval(() => {
+    const instance = window['quarto-listings']?.[listingId];
+    const container = document.getElementById(listingId);
+    if (!instance || !container) return;
+
+    clearInterval(interval);
+
+    const searchInput = container.querySelector('input.search');
+    if (!searchInput) return;
+
+    const newInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newInput, searchInput);
+
+    newInput.addEventListener('input', function() {
+      instance.search(this.value, columns);
+    });
+  }, 100);
+}
+
+function setAlumniView(view) {
+  const gridView = document.getElementById('alumni-grid-view');
+  const tableView = document.getElementById('listing-alumni-table');
+  const btnGrid = document.getElementById('btn-grid');
+  const btnTable = document.getElementById('btn-table');
+  const sidebar = document.getElementById('quarto-margin-sidebar');
+
+  if (!gridView || !tableView) return;
+
+  if (view === 'grid') {
+    gridView.style.display = 'block';
+    tableView.style.display = 'none';
+    if (sidebar) sidebar.style.display = 'block';
+    btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary');
+    btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary');
+  } else {
+    gridView.style.display = 'none';
+    tableView.style.display = 'block';
+    if (sidebar) sidebar.style.display = 'none';
+    btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary');
+    btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary');
+  }
+
+  const prefix = window.location.pathname.split('/').pop().replace('.html', '');
+  localStorage.setItem(`${prefix}View`, view);
+}
+
+function showClearFilterBtn(listingId) {
+  const existing = document.getElementById('clear-filter-btn');
+  if (existing) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'clear-filter-btn';
+  btn.textContent = '✕ Clear filter';
+  btn.className = 'btn btn-sm btn-outline-danger';
+  btn.style.marginLeft = '8px';
+
+  btn.addEventListener('click', () => {
+    // Clear List.js filter
+    const instance = window['quarto-listings']?.[listingId];
+    if (instance) {
+      instance.filter();
+      instance.search();
+    }
+    // Remove hash from URL without reloading
+    history.replaceState(null, '', window.location.pathname);
+    btn.remove();
+  });
+
+  // Insert next to the back button
+  const backBtn = document.querySelector('.btn-outline-secondary');
+  if (backBtn) backBtn.insertAdjacentElement('afterend', btn);
+}
+
+function checkForCategoryFilter(listingId) {
+  if (window.location.hash.includes('category=')) {
+    showClearFilterBtn(listingId);
+  }
+}
+
+window.addEventListener('load', function() {
+  const tableView = document.getElementById('listing-alumni-table');
+  if (tableView) tableView.style.display = 'none';
+
+  wireSearch('listing-alumni-table', [
+    'listing-title',
+    'listing-graduation',
+    'listing-advisor'
+  ]);
+
+  const prefix = window.location.pathname.split('/').pop().replace('.html', '');
+  const referrer = document.referrer;
+  const saved = localStorage.getItem(`${prefix}View`) || 'grid';
+  const view = (referrer.includes('directory.html') || !referrer) ? 'grid' : saved;
+  setAlumniView(view);
+
+  // Check if we landed here via a tag click
+  checkForCategoryFilter('listing-alumni-table');
+});
+
+</script>

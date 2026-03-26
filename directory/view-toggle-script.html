@@ -1,0 +1,182 @@
+<style>
+/* 1. Makes the active category unclickable */
+.quarto-listing-category .category.active {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+/* 2. Disables the "Categories" title from being a reset button */
+.quarto-listing-category-title {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+</style>
+
+<script>
+let currentPrefix = '';
+let gridListId = '';
+let tableListId = '';
+let tableObserver = null;
+
+/**
+ * 1. INITIALIZATION
+ */
+function initListingIds() {
+    const gridContainer = document.querySelector('[id^="listing-"][id$="-grid"], [id="listing-grid"]');
+    const tableContainer = document.querySelector('[id^="listing-"][id$="-table"], [id="listing-table"]');
+    if (gridContainer) gridListId = gridContainer.id;
+    if (tableContainer) tableListId = tableContainer.id;
+    currentPrefix = window.location.pathname.split('/').pop().replace('.html', '');
+}
+
+/**
+ * 2. TABLE FORMATTING & WATCHDOG
+ * This continuously strips "Cohort: " even when Quarto rebuilds the table
+ */
+function applyTableFormatting() {
+    const table = document.getElementById(tableListId);
+    if (!table) return;
+    
+    table.querySelectorAll('td').forEach(td => {
+        if (td.innerHTML.includes('Cohort: ')) {
+            td.innerHTML = td.innerHTML.replace('Cohort: ', '');
+        }
+    });
+}
+
+function observeTable() {
+    const table = document.getElementById(tableListId);
+    if (!table) return;
+    const tbody = table.querySelector('tbody');
+    if (!tbody) return;
+
+    // The watchdog: if Quarto changes the table body, re-apply the formatting
+    if (!tableObserver) {
+        tableObserver = new MutationObserver(() => {
+            applyTableFormatting();
+        });
+        tableObserver.observe(tbody, { childList: true, subtree: true });
+    }
+}
+
+/**
+ * 3. VIEW TOGGLING
+ */
+function setView(view) {
+    initListingIds();
+    const grid = document.getElementById(gridListId);
+    const table = document.getElementById(tableListId);
+    const btnGrid = document.getElementById('btn-grid');
+    const btnTable = document.getElementById('btn-table');
+
+    if (!grid || !table) return;
+
+    if (view === 'grid') {
+        grid.style.display = 'block';
+        table.style.display = 'none';
+        btnGrid?.classList.replace('btn-outline-secondary', 'btn-secondary');
+        btnTable?.classList.replace('btn-secondary', 'btn-outline-secondary');
+    } else {
+        grid.style.display = 'none';
+        table.style.display = 'block';
+        btnTable?.classList.replace('btn-outline-secondary', 'btn-secondary');
+        btnGrid?.classList.replace('btn-secondary', 'btn-outline-secondary');
+        
+        applyTableFormatting();
+        observeTable();
+    }
+    
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, view);
+}
+
+/**
+ * 4. FILTER SYNCING
+ */
+function matchesCategory(item, categoryValue) {
+    const attr = item.elm.getAttribute('data-categories');
+    if (!attr) return false;
+    try {
+        const decoded = decodeURIComponent(atob(attr));
+        return decoded.split(',').map(s => s.trim()).includes(categoryValue);
+    } catch(e) { return false; }
+}
+
+function syncFilters() {
+    const activeEl = document.querySelector('.quarto-listing-category .category.active');
+    const clearBtn = document.getElementById('clear-all-filters');
+    
+    if (!activeEl) {
+        if (clearBtn) clearBtn.style.display = 'none';
+        return;
+    }
+
+    const attr = activeEl.getAttribute('data-category');
+    if (!attr) return;
+    const categoryValue = decodeURIComponent(atob(attr));
+
+    const tableInstance = window['quarto-listings']?.[tableListId];
+    if (tableInstance) {
+        tableInstance.filter(item => matchesCategory(item, categoryValue));
+    }
+
+    if (clearBtn) clearBtn.style.display = 'block';
+}
+
+function clearCategoryFilter() {
+    [gridListId, tableListId].forEach(id => {
+        const instance = window['quarto-listings']?.[id];
+        if (instance) instance.filter();
+    });
+    
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(el => {
+        el.classList.remove('active');
+    });
+
+    const clearBtn = document.getElementById('clear-all-filters');
+    if (clearBtn) clearBtn.style.display = 'none';
+
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/**
+ * 5. THE FAIL-SAFE OBSERVER
+ */
+function setupFilterObserver() {
+    const target = document.querySelector('.quarto-listing-category');
+    if (!target) return;
+
+    const observer = new MutationObserver((mutations) => {
+        syncFilters();
+    });
+
+    observer.observe(target, { attributes: true, subtree: true, attributeFilter: ['class'] });
+}
+
+/**
+ * 6. EXECUTION
+ */
+window.addEventListener('load', function() {
+    initListingIds();
+    setupFilterObserver();
+
+    // Handle Pagination clicks
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.page-link')) {
+            setTimeout(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, 50);
+        }
+    });
+
+    // View State Logic
+    const referrer = document.referrer;
+    let savedView = localStorage.getItem(`${currentPrefix}View`) || 'grid';
+    if (referrer.includes('directory.html') || !referrer) {
+        savedView = 'grid';
+    }
+
+    setView(savedView);
+    
+    // Run sync once at the very start to catch incoming profile links
+    setTimeout(syncFilters, 200);
+});
+</script>

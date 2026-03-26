@@ -2,7 +2,9 @@
 title: "**Bowen Zhang**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2025"
-image: ../../images/phd/bowen-zhang-phd-2025 - BOWEN ZHANG.jpg
+
+advisor: Jin Zhou, Hua Zhou
+image: /directory/images/phd/bowen-zhang-phd-2025 - BOWEN ZHANG.jpg
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Jin Zhou", "Advisor: Hua Zhou"]
 about:
   template: trestles

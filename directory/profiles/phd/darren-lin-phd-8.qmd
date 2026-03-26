@@ -2,7 +2,9 @@
 title: "**Darren Lin**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2024"
-image: ../../images/phd/darren-lin-phd-2024 - Darren Lin.jpeg
+
+advisor: Falco J. Bargagli Stoffi
+image: /directory/images/phd/darren-lin-phd-2024 - Darren Lin.jpeg
 categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Falco J. Bargagli Stoffi"]
 about:
   template: trestles

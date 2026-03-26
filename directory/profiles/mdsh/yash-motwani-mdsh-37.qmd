@@ -2,7 +2,9 @@
 title: "**Yash Motwani**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/IMG_4782 - YASH MOTWANI.jpeg
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_4782 - YASH MOTWANI.jpeg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

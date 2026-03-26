@@ -2,7 +2,9 @@
 title: "**Siqing Gong**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
-image: ../../images/mdsh/siqing-gong-mdsh-2025 - Siqing Gong.jpg
+
+advisor: Donatello Telesca
+image: /directory/images/mdsh/siqing-gong-mdsh-2025 - Siqing Gong.jpg
 categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Donatello Telesca"]
 about:
   template: trestles

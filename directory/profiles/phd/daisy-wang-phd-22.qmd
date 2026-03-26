@@ -2,7 +2,9 @@
 title: "**Daisy Wang**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2025"
-image: ../../images/phd/daisy-wang-phd-2025 - DAISY WANG.JPG
+
+advisor: Not Listed
+image: /directory/images/phd/daisy-wang-phd-2025 - DAISY WANG.JPG
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

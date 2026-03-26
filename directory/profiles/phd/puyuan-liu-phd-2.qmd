@@ -2,7 +2,9 @@
 title: "**Puyuan Liu**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2025"
-image: ../../images/phd/puyuan-liu-phd-2025 - PUYUAN LIU.jpg
+
+advisor: Damla Senturk
+image: /directory/images/phd/puyuan-liu-phd-2025 - PUYUAN LIU.jpg
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Damla Senturk"]
 about:
   template: trestles
