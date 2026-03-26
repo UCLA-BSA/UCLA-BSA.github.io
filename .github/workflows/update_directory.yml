@@ -51,8 +51,10 @@ jobs:
       - name: Compress images
         run: |
           sudo apt-get install -y imagemagick
-          find directory/images/ -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.JPG" -o -iname "*.jpeg" \) \
-            -exec mogrify -quality 75 -resize "800x800>" {} \;
+          for dir in directory/images/mdsh directory/images/ms directory/images/phd; do
+            find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+              -exec mogrify -quality 75 -resize "800x800>" {} \;
+          done
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
