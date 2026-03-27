@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-grid .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -84,13 +84,41 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] }],
-      page: 25,
+      page: 15,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-grid'] = new List('listing-grid', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-table .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-advisor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-table'] = new List('listing-table', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -220,27 +248,27 @@ window.Quarto = {
 </header>
 
 
-<p class="mb-4">
+<p class="mb-4" style="display:flex; align-items:center; gap:1rem;">
   <a href="directory.html" class="btn btn-outline-secondary btn-sm">
     ← Back to Directory
   </a>
+  <span style="margin-left:auto;">
+    <button id="btn-grid" class="btn btn-sm btn-secondary" onclick="setView('grid')">⊞ Grid</button>
+    <button id="btn-table" class="btn btn-sm btn-outline-secondary" onclick="setView('table')">☰ List</button>
+  </span>
 </p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div id="listing-grid" class="quarto-listing quarto-listing-container-grid">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-grid-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-grid'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title" data-direction="asc">
-        Title
+        Name
       </option>
       <option value="listing-description" data-direction="asc">
-        Description
+        Cohort
       </option>
     </select>
   </div>
@@ -250,7 +278,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465386" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122659" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="../directory/profiles/mdsh/brandon-brushwyler-mdsh-35.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -269,7 +297,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465405" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122679" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="../directory/profiles/mdsh/chuyi-li-mdsh-52.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -288,7 +316,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465408" data-listing-reading-time-sort="1" data-listing-word-count-sort="16">
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122683" data-listing-reading-time-sort="1" data-listing-word-count-sort="16">
 <a href="../directory/profiles/mdsh/darryl-nagal-mdsh-55.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -307,7 +335,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465395" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122668" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
 <a href="../directory/profiles/mdsh/eesha-roy-mdsh-43.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -326,7 +354,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774505465363" data-listing-reading-time-sort="1" data-listing-word-count-sort="71">
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774596122637" data-listing-reading-time-sort="1" data-listing-word-count-sort="71">
 <a href="../directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-17.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -345,7 +373,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465411" data-listing-reading-time-sort="1" data-listing-word-count-sort="68">
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122688" data-listing-reading-time-sort="1" data-listing-word-count-sort="68">
 <a href="../directory/profiles/mdsh/gianna-jimenez-mdsh-57.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -364,7 +392,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465400" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122673" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="../directory/profiles/mdsh/han-zheng-mdsh-47.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -383,7 +411,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465392" data-listing-reading-time-sort="1" data-listing-word-count-sort="171">
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122665" data-listing-reading-time-sort="1" data-listing-word-count-sort="171">
 <a href="../directory/profiles/mdsh/jiaye-tian-mdsh-40.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -402,7 +430,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465396" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
+<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122669" data-listing-reading-time-sort="1" data-listing-word-count-sort="21">
 <a href="../directory/profiles/mdsh/jinghao-wang-mdsh-44.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -421,7 +449,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465391" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
+<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122664" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
 <a href="../directory/profiles/mdsh/joshua-blackmon-mdsh-39.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -440,7 +468,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465404" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
+<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122678" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
 <a href="../directory/profiles/mdsh/joshua-price-mdsh-51.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -459,7 +487,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774505465344" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
+<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774596122617" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
 <a href="../directory/profiles/mdsh/karen-harrison-mdsh-1.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -478,7 +506,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465394" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
+<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122667" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
 <a href="../directory/profiles/mdsh/matthew-kostelny-mdsh-42.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -497,7 +525,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465347" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122619" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
 <a href="../directory/profiles/mdsh/michael-zaychikov-mdsh-3.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -516,7 +544,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465375" data-listing-reading-time-sort="1" data-listing-word-count-sort="65">
+<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122647" data-listing-reading-time-sort="1" data-listing-word-count-sort="65">
 <a href="../directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-25.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -535,11 +563,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465355" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
+<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122628" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
 <a href="../directory/profiles/mdsh/nena-ojukwu-mdsh-10.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/nena-ojukwu-mdsh-2025 - NENA OJUKWU.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/nena-ojukwu-mdsh-2025 - NENA OJUKWU.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -554,11 +582,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465351" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
+<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122624" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
 <a href="../directory/profiles/mdsh/rica-mae-pitogo-mdsh-7.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -573,11 +601,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465387" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
+<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122660" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
 <a href="../directory/profiles/mdsh/rongrong-mo-mdsh-36.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/莫镕榕 - RONGRONG MO.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/莫镕榕 - RONGRONG MO.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -592,11 +620,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465403" data-listing-reading-time-sort="1" data-listing-word-count-sort="47">
+<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122677" data-listing-reading-time-sort="1" data-listing-word-count-sort="47">
 <a href="../directory/profiles/mdsh/roy-mathew-mdsh-50.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/4L8A1930 - ROY MATHEW.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/4L8A1930 - ROY MATHEW.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -611,11 +639,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBEb25hdGVsbG8lMjBUZWxlc2Nh" data-listing-file-modified-sort="1774505465407" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
+<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBEb25hdGVsbG8lMjBUZWxlc2Nh" data-listing-file-modified-sort="1774596122681" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
 <a href="../directory/profiles/mdsh/siqing-gong-mdsh-54.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/siqing-gong-mdsh-2025 - Siqing Gong.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/siqing-gong-mdsh-2025 - Siqing Gong.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -630,11 +658,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="20" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465385" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<div class="g-col-1" data-index="20" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122658" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
 <a href="../directory/profiles/mdsh/sopyda-yin-mdsh-34.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/4L8A1489 - Sopyda Yin.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/4L8A1489 - Sopyda Yin.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -649,11 +677,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="21" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBKaW4lMjBaaG91JTJDQWR2aXNvciUzQSUyMEh1YSUyMFpob3U=" data-listing-file-modified-sort="1774505465393" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
+<div class="g-col-1" data-index="21" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBKaW4lMjBaaG91JTJDQWR2aXNvciUzQSUyMEh1YSUyMFpob3U=" data-listing-file-modified-sort="1774596122666" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
 <a href="../directory/profiles/mdsh/suning-zhao-mdsh-41.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -668,11 +696,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="22" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465390" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<div class="g-col-1" data-index="22" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122662" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
 <a href="../directory/profiles/mdsh/wenqiang-ge-mdsh-38.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -687,11 +715,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="23" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1774505465374" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
+<div class="g-col-1" data-index="23" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1774596122646" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
 <a href="../directory/profiles/mdsh/xihe-yu-mdsh-24.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/headshot - Xihe Heather Yu.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/headshot - Xihe Heather Yu.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -706,11 +734,11 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="24" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774505465389" data-listing-reading-time-sort="1" data-listing-word-count-sort="129">
+<div class="g-col-1" data-index="24" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122661" data-listing-reading-time-sort="1" data-listing-word-count-sort="129">
 <a href="../directory/profiles/mdsh/yash-motwani-mdsh-37.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/mdsh/IMG_4782 - YASH MOTWANI.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/mdsh/IMG_4782 - YASH MOTWANI.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -725,7 +753,7 @@ MDSH Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="25" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBSb2NoJTIwTmlhbm9nbw==" data-listing-file-modified-sort="1774505465397" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
+<div class="g-col-1" data-index="25" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBSb2NoJTIwTmlhbm9nbw==" data-listing-file-modified-sort="1774596122671" data-listing-reading-time-sort="1" data-listing-word-count-sort="95">
 <a href="../directory/profiles/mdsh/yulin-gong-mdsh-45.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -746,10 +774,508 @@ MDSH Student
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+<nav id="grid-pagination" class="listing-pagination" aria-label="Page Navigation">
   <ul class="pagination"></ul>
 </nav>
-</div></main> <!-- /main -->
+</div>
+<div id="listing-table" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-table-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Name
+      </option>
+      <option value="listing-description" data-direction="asc">
+        Cohort
+      </option>
+      <option value="listing-advisor" data-direction="asc">
+        Advisor
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+
+<th>
+ 
+</th>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Name</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-description" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Cohort</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-advisor" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Advisor</a>
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122659" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="**Brandon Brushwyler**" data-listing-filename-sort="brandon-brushwyler-mdsh-35.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/B518D365-26F2-456A-B26F-DE1C6864C304 - BRANDON BRUSHWYLER.png" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/brandon-brushwyler-mdsh-35.html" class="title listing-title"><strong>Brandon Brushwyler</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122679" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Chuyi (Selina Li) Li**" data-listing-filename-sort="chuyi-li-mdsh-52.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/Weixin Image_20260324025018_1342_159 - CHUYI LI.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/chuyi-li-mdsh-52.html" class="title listing-title"><strong>Chuyi (Selina Li) Li</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122683" data-listing-reading-time-sort="1" data-listing-word-count-sort="16" data-listing-title-sort="**Darryl Nagal**" data-listing-filename-sort="darryl-nagal-mdsh-55.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/4L8A1795 (2) - DARRYL NAGAL.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/darryl-nagal-mdsh-55.html" class="title listing-title"><strong>Darryl Nagal</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122668" data-listing-reading-time-sort="1" data-listing-word-count-sort="44" data-listing-title-sort="**Eesha Roy**" data-listing-filename-sort="eesha-roy-mdsh-43.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_8365 - EESHA ROY.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/eesha-roy-mdsh-43.html" class="title listing-title"><strong>Eesha Roy</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774596122637" data-listing-reading-time-sort="1" data-listing-word-count-sort="71" data-listing-title-sort="**Fauzan Budi (Fauzan) Prasetya**" data-listing-filename-sort="fauzan-budi-prasetya-mdsh-17.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/fauzan-budi-prasetya-mdsh-2025 - FAUZAN BUDI PRASETYA.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-17.html" class="title listing-title"><strong>Fauzan Budi (Fauzan) Prasetya</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Thomas Belin</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122688" data-listing-reading-time-sort="1" data-listing-word-count-sort="68" data-listing-title-sort="**Gianna Jimenez**" data-listing-filename-sort="gianna-jimenez-mdsh-57.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_9788 - GIANNA JIMENEZ.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/gianna-jimenez-mdsh-57.html" class="title listing-title"><strong>Gianna Jimenez</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122673" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="**Han (Emily) Zheng**" data-listing-filename-sort="han-zheng-mdsh-47.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/46acecf4bc5bc30e5dd601d0881583f4 - Han Zheng.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/han-zheng-mdsh-47.html" class="title listing-title"><strong>Han (Emily) Zheng</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122665" data-listing-reading-time-sort="1" data-listing-word-count-sort="171" data-listing-title-sort="**Jiaye Tian**" data-listing-filename-sort="jiaye-tian-mdsh-40.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_2059 - JIAYE TIAN.JPG" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/jiaye-tian-mdsh-40.html" class="title listing-title"><strong>Jiaye Tian</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122669" data-listing-reading-time-sort="1" data-listing-word-count-sort="21" data-listing-title-sort="**Jinghao Wang**" data-listing-filename-sort="jinghao-wang-mdsh-44.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_2729 - JINGHAO WANG.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/jinghao-wang-mdsh-44.html" class="title listing-title"><strong>Jinghao Wang</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122664" data-listing-reading-time-sort="1" data-listing-word-count-sort="98" data-listing-title-sort="**Joshua (Lee) Blackmon**" data-listing-filename-sort="joshua-blackmon-mdsh-39.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_6291 - JOSHUA BLACKMON.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/joshua-blackmon-mdsh-39.html" class="title listing-title"><strong>Joshua (Lee) Blackmon</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122678" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="**Joshua Price**" data-listing-filename-sort="joshua-price-mdsh-51.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/Headshot - JOSHUA PRICE.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/joshua-price-mdsh-51.html" class="title listing-title"><strong>Joshua Price</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1774596122617" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="**Karen Harrison**" data-listing-filename-sort="karen-harrison-mdsh-1.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/karen-harrison-mdsh-2025 - KAREN HARRISON.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/karen-harrison-mdsh-1.html" class="title listing-title"><strong>Karen Harrison</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Thomas Belin</span>
+</td>
+
+</tr>
+
+<tr data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122667" data-listing-reading-time-sort="1" data-listing-word-count-sort="25" data-listing-title-sort="**Matthew (Matt) Kostelny**" data-listing-filename-sort="matthew-kostelny-mdsh-42.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/matthew-kostelny-mdsh-42.html" class="title listing-title"><strong>Matthew (Matt) Kostelny</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122619" data-listing-reading-time-sort="1" data-listing-word-count-sort="26" data-listing-title-sort="**Michael Zaychikov**" data-listing-filename-sort="michael-zaychikov-mdsh-3.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/michael-zaychikov-mdsh-2025 - MICHAEL ZAYCHIKOV.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/michael-zaychikov-mdsh-3.html" class="title listing-title"><strong>Michael Zaychikov</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122647" data-listing-reading-time-sort="1" data-listing-word-count-sort="65" data-listing-title-sort="**Nanda Arun (Nanda) Payyappilly**" data-listing-filename-sort="nanda-arun-payyappilly-mdsh-25.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/Nanda_Headshot - NANDA ARUN PAYYAPPILLY.JPG" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-25.html" class="title listing-title"><strong>Nanda Arun (Nanda) Payyappilly</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122628" data-listing-reading-time-sort="1" data-listing-word-count-sort="110" data-listing-title-sort="**Nena Ojukwu**" data-listing-filename-sort="nena-ojukwu-mdsh-10.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/nena-ojukwu-mdsh-2025 - NENA OJUKWU.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/nena-ojukwu-mdsh-10.html" class="title listing-title"><strong>Nena Ojukwu</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122624" data-listing-reading-time-sort="1" data-listing-word-count-sort="95" data-listing-title-sort="**Rica Mae Pitogo**" data-listing-filename-sort="rica-mae-pitogo-mdsh-7.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/rica-mae-pitogo-mdsh-2025 - RICA MAE PITOGO.JPG" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/rica-mae-pitogo-mdsh-7.html" class="title listing-title"><strong>Rica Mae Pitogo</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122660" data-listing-reading-time-sort="1" data-listing-word-count-sort="18" data-listing-title-sort="**Rongrong (Emma) Mo**" data-listing-filename-sort="rongrong-mo-mdsh-36.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/莫镕榕 - RONGRONG MO.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/rongrong-mo-mdsh-36.html" class="title listing-title"><strong>Rongrong (Emma) Mo</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122677" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="**Roy Mathew**" data-listing-filename-sort="roy-mathew-mdsh-50.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/4L8A1930 - ROY MATHEW.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/roy-mathew-mdsh-50.html" class="title listing-title"><strong>Roy Mathew</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBEb25hdGVsbG8lMjBUZWxlc2Nh" data-listing-file-modified-sort="1774596122681" data-listing-reading-time-sort="1" data-listing-word-count-sort="54" data-listing-title-sort="**Siqing Gong**" data-listing-filename-sort="siqing-gong-mdsh-54.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/siqing-gong-mdsh-2025 - Siqing Gong.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/siqing-gong-mdsh-54.html" class="title listing-title"><strong>Siqing Gong</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Donatello Telesca</span>
+</td>
+
+</tr>
+
+<tr data-index="20" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122658" data-listing-reading-time-sort="1" data-listing-word-count-sort="26" data-listing-title-sort="**Sopyda Yin**" data-listing-filename-sort="sopyda-yin-mdsh-34.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/4L8A1489 - Sopyda Yin.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/sopyda-yin-mdsh-34.html" class="title listing-title"><strong>Sopyda Yin</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="21" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBKaW4lMjBaaG91JTJDQWR2aXNvciUzQSUyMEh1YSUyMFpob3U=" data-listing-file-modified-sort="1774596122666" data-listing-reading-time-sort="1" data-listing-word-count-sort="76" data-listing-title-sort="**Suning (Nyla) Zhao**" data-listing-filename-sort="suning-zhao-mdsh-41.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/1f25f10a08d9f2301e008f64b574706c - SUNING ZHAO.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/suning-zhao-mdsh-41.html" class="title listing-title"><strong>Suning (Nyla) Zhao</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Jin Zhou, Hua Zhou</span>
+</td>
+
+</tr>
+
+<tr data-index="22" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122662" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="**Wenqiang Ge**" data-listing-filename-sort="wenqiang-ge-mdsh-38.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/a65d4d36befac806cfe50246fd38e30 - WENQIANG GE.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/wenqiang-ge-mdsh-38.html" class="title listing-title"><strong>Wenqiang Ge</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="23" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1774596122646" data-listing-reading-time-sort="1" data-listing-word-count-sort="18" data-listing-title-sort="**Xihe (Heather) Yu**" data-listing-filename-sort="xihe-yu-mdsh-24.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/headshot - Xihe Heather Yu.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/xihe-yu-mdsh-24.html" class="title listing-title"><strong>Xihe (Heather) Yu</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Weng Kee Wong</span>
+</td>
+
+</tr>
+
+<tr data-index="24" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774596122661" data-listing-reading-time-sort="1" data-listing-word-count-sort="129" data-listing-title-sort="**Yash Motwani**" data-listing-filename-sort="yash-motwani-mdsh-37.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/IMG_4782 - YASH MOTWANI.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/yash-motwani-mdsh-37.html" class="title listing-title"><strong>Yash Motwani</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="25" data-categories="UHJvZ3JhbSUzQSUyME1EU0glMkNDb2hvcnQlM0ElMjBGYWxsJTIwMjAyNCUyQ0Fkdmlzb3IlM0ElMjBSb2NoJTIwTmlhbm9nbw==" data-listing-file-modified-sort="1774596122671" data-listing-reading-time-sort="1" data-listing-word-count-sort="95" data-listing-title-sort="**Yulin Gong**" data-listing-filename-sort="yulin-gong-mdsh-45.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/mdsh/69d0eb2074b5ab1e7b5280afe4ea73b5 - YULIN GONG.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/mdsh/yulin-gong-mdsh-45.html" class="title listing-title"><strong>Yulin Gong</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Roch Nianogo</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
 <script>
 (function () {
   'use strict';
@@ -821,6 +1347,163 @@ MDSH Student
     setTimeout(buildAccordion, 0);
   }
 })();
+</script>
+<script>
+let currentPrefix = '';
+let gridListId = '';
+let tableListId = '';
+let tableObserver = null;
+
+function initListingIds() {
+  const gridContainer = document.querySelector('[id^="listing-"][id$="-grid"]');
+  const tableContainer = document.querySelector('[id^="listing-"][id$="-table"]');
+
+  if (gridContainer) gridListId = gridContainer.id;
+  if (tableContainer) tableListId = tableContainer.id;
+
+  currentPrefix = window.location.pathname.split('/').pop().replace('.html', '');
+}
+
+function applyTableView() {
+  if (!tableListId) return;
+  const table = document.getElementById(tableListId);
+  if (!table || table.style.display === 'none') return;
+
+  if (tableObserver) tableObserver.disconnect();
+
+  // Only process rows not yet handled
+  table.querySelectorAll('th:first-child:not([data-hidden]), td:first-child:not([data-hidden])').forEach(el => {
+    el.style.display = 'none';
+    el.setAttribute('data-hidden', '1');
+  });
+
+  table.querySelectorAll('td .listing-description:not([data-trimmed])').forEach(el => {
+    if (el.textContent.startsWith('Cohort: ')) {
+      el.textContent = el.textContent.slice(8);
+    }
+    el.setAttribute('data-trimmed', '1');
+  });
+
+  const tbody = table.querySelector('tbody');
+  if (tbody && tableObserver) {
+    tableObserver.observe(tbody, { childList: true });
+  }
+}
+
+function setView(view) {
+  if (!gridListId || !tableListId) return;
+
+  const grid = document.getElementById(gridListId);
+  const table = document.getElementById(tableListId);
+  const btnGrid = document.getElementById('btn-grid');
+  const btnTable = document.getElementById('btn-table');
+  const sidebar = document.getElementById('quarto-margin-sidebar');
+
+  if (!grid || !table) return;
+
+  if (view === 'grid') {
+    grid.style.display = 'block';
+    table.style.display = 'none';
+    if (sidebar) sidebar.style.display = 'block';
+
+    if (btnGrid) { btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary'); }
+    if (btnTable) { btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary'); }
+
+    if (tableObserver) { tableObserver.disconnect(); tableObserver = null; }
+  } else {
+    grid.style.display = 'none';
+    table.style.display = 'block';
+    if (sidebar) sidebar.style.display = 'none';
+
+    if (btnTable) { btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary'); }
+    if (btnGrid) { btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary'); }
+
+    const gridInstance = window['quarto-listings']?.[gridListId];
+    if (gridInstance) {
+      gridInstance.filter();
+      gridInstance.search();
+      const gridSearch = document.querySelector(`#${gridListId} input.search`);
+      if (gridSearch) gridSearch.value = '';
+    }
+
+    const tableInstance = window['quarto-listings']?.[tableListId];
+    if (tableInstance) {
+      tableInstance.filter();
+      tableInstance.search();
+      const tableSearch = document.querySelector(`#${tableListId} input.search`);
+      if (tableSearch) tableSearch.value = '';
+    }
+
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(el => {
+      el.classList.remove('active');
+    });
+
+    if (!tableObserver) {
+      const tbody = table.querySelector('tbody');
+      if (tbody) {
+        tableObserver = new MutationObserver(() => applyTableView());
+        tableObserver.observe(tbody, { childList: true });
+      }
+    }
+
+    applyTableView();
+  }
+
+  if (currentPrefix) {
+    localStorage.setItem(`${currentPrefix}View`, view);
+  }
+}
+
+function wireSearch(listingId, columns) {
+  if (!listingId) return;
+  const interval = setInterval(() => {
+    const instance = window['quarto-listings']?.[listingId];
+    const container = document.getElementById(listingId);
+    if (!instance || !container) return;
+
+    clearInterval(interval);
+
+    const searchInput = container.querySelector('input.search');
+    if (!searchInput) return;
+
+    const newInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newInput, searchInput);
+
+    newInput.addEventListener('input', function() {
+      instance.search(this.value, columns);
+    });
+  }, 100);
+}
+
+window.addEventListener('load', function() {
+  initListingIds();
+
+  if (gridListId) {
+    wireSearch(gridListId, ['listing-title', 'listing-subtitle', 'listing-description']);
+  }
+  if (tableListId) {
+    wireSearch(tableListId, ['listing-title', 'listing-subtitle', 'listing-description', 'listing-advisor']);
+  }
+
+  const referrer = document.referrer;
+  const isFromDirectory = referrer.includes('directory.html');
+  const isFromProfile = referrer.includes('/profiles/');
+
+  let viewToShow;
+  if (isFromDirectory || !referrer) {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  } else if (isFromProfile) {
+    viewToShow = currentPrefix ? (localStorage.getItem(`${currentPrefix}View`) || 'grid') : 'grid';
+  } else {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  }
+
+  setView(viewToShow);
+  
+  checkForCategoryFilter(tableListId);
+});
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

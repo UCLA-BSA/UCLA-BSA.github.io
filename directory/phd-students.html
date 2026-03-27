@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-grid .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -84,12 +84,41 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] }],
-      
+      page: 15,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-grid'] = new List('listing-grid', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-table .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-subtitle','listing-description','listing-advisor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-table'] = new List('listing-table', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -219,27 +248,27 @@ window.Quarto = {
 </header>
 
 
-<p class="mb-4">
+<p class="mb-4" style="display:flex; align-items:center; gap:1rem;">
   <a href="directory.html" class="btn btn-outline-secondary btn-sm">
     ← Back to Directory
   </a>
+  <span style="margin-left:auto;">
+    <button id="btn-grid" class="btn btn-sm btn-secondary" onclick="setView('grid')">⊞ Grid</button>
+    <button id="btn-table" class="btn btn-sm btn-outline-secondary" onclick="setView('table')">☰ List</button>
+  </span>
 </p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div id="listing-grid" class="quarto-listing quarto-listing-container-grid">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-grid-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-grid'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title" data-direction="asc">
-        Title
+        Name
       </option>
       <option value="listing-description" data-direction="asc">
-        Description
+        Cohort
       </option>
     </select>
   </div>
@@ -249,7 +278,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774505465410" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774596122687" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
 <a href="../directory/profiles/phd/ami-sheth-phd-56.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -268,7 +297,7 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774505465353" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122627" data-listing-reading-time-sort="1" data-listing-word-count-sort="92">
 <a href="../directory/profiles/phd/andrew-chuang-phd-9.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -287,7 +316,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774505465370" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122642" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
 <a href="../directory/profiles/phd/bowen-zhang-phd-21.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -306,7 +335,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774505465348" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774596122621" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
 <a href="../directory/profiles/phd/carolyn-winskill-phd-4.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -325,7 +354,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMFN1ZGlwdG8lMjBCYW5lcmplZSUyQ0Fkdmlzb3IlM0ElMjBGYWxjbyUyMEouJTIwQmFyZ2FnbGklMjBTdG9mZmk=" data-listing-file-modified-sort="1774505465383" data-listing-reading-time-sort="1" data-listing-word-count-sort="114">
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMFN1ZGlwdG8lMjBCYW5lcmplZSUyQ0Fkdmlzb3IlM0ElMjBGYWxjbyUyMEouJTIwQmFyZ2FnbGklMjBTdG9mZmk=" data-listing-file-modified-sort="1774596122655" data-listing-reading-time-sort="1" data-listing-word-count-sort="114">
 <a href="../directory/profiles/phd/cindy-pang-phd-32.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -344,7 +373,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774505465372" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774596122643" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="../directory/profiles/phd/daisy-wang-phd-22.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -363,7 +392,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGluJTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=" data-listing-file-modified-sort="1774505465402" data-listing-reading-time-sort="1" data-listing-word-count-sort="58">
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGluJTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=" data-listing-file-modified-sort="1774596122675" data-listing-reading-time-sort="1" data-listing-word-count-sort="58">
 <a href="../directory/profiles/phd/danielle-lavine-phd-49.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -382,7 +411,7 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEZhbGNvJTIwSi4lMjBCYXJnYWdsaSUyMFN0b2ZmaQ==" data-listing-file-modified-sort="1774505465352" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEZhbGNvJTIwSi4lMjBCYXJnYWdsaSUyMFN0b2ZmaQ==" data-listing-file-modified-sort="1774596122625" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
 <a href="../directory/profiles/phd/darren-lin-phd-8.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -401,7 +430,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774505465373" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
+<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122644" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
 <a href="../directory/profiles/phd/emma-landry-phd-23.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -420,7 +449,7 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==" data-listing-file-modified-sort="1774505465381" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
+<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==" data-listing-file-modified-sort="1774596122653" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
 <a href="../directory/profiles/phd/james-papadopoulos-phd-30.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -439,7 +468,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774505465349" data-listing-reading-time-sort="1" data-listing-word-count-sort="84">
+<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774596122622" data-listing-reading-time-sort="1" data-listing-word-count-sort="84">
 <a href="../directory/profiles/phd/jasen-zhang-phd-5.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -458,7 +487,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774505465378" data-listing-reading-time-sort="1" data-listing-word-count-sort="120">
+<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122650" data-listing-reading-time-sort="1" data-listing-word-count-sort="120">
 <a href="../directory/profiles/phd/jonathan-hori-phd-28.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -477,7 +506,7 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIwJTJDQWR2aXNvciUzQSUyMFJvYmVydCUyMFdlaXNzJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774505465380" data-listing-reading-time-sort="1" data-listing-word-count-sort="30">
+<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIwJTJDQWR2aXNvciUzQSUyMFJvYmVydCUyMFdlaXNzJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122652" data-listing-reading-time-sort="1" data-listing-word-count-sort="30">
 <a href="../directory/profiles/phd/kelsey-ishimoto-phd-29.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -496,7 +525,7 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774505465359" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
+<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122634" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
 <a href="../directory/profiles/phd/parsa-jamshidian-phd-14.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -515,7 +544,7 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774505465346" data-listing-reading-time-sort="1" data-listing-word-count-sort="74">
+<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774596122618" data-listing-reading-time-sort="1" data-listing-word-count-sort="74">
 <a href="../directory/profiles/phd/puyuan-liu-phd-2.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -534,11 +563,11 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXolMkNBZHZpc29yJTNBJTIwQnJ1bmlsZGElMjBCYWxsaXU=" data-listing-file-modified-sort="1774505465350" data-listing-reading-time-sort="1" data-listing-word-count-sort="88">
+<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXolMkNBZHZpc29yJTNBJTIwQnJ1bmlsZGElMjBCYWxsaXU=" data-listing-file-modified-sort="1774596122623" data-listing-reading-time-sort="1" data-listing-word-count-sort="88">
 <a href="../directory/profiles/phd/timothy-shen-phd-6.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/phd/timothy-shen-phd-2024 - Timothy Shen.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/phd/timothy-shen-phd-2024 - Timothy Shen.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -553,11 +582,30 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774505465357" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
+<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122689" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
+<a href="../directory/profiles/phd/tomoki-okuno-phd-58.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" data-src="../directory/images/phd/230524_FSPH_0183_chose - Tomoki Okuno.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Tomoki Okuno</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+PhD Candidate
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2023</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774596122631" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
 <a href="../directory/profiles/phd/yanlong-bai-phd-12.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -572,11 +620,11 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774505465360" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
+<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774596122635" data-listing-reading-time-sort="1" data-listing-word-count-sort="60">
 <a href="../directory/profiles/phd/yingxin-zhang-phd-15.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/anon.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/anon.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -591,11 +639,11 @@ PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774505465384" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
+<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774596122656" data-listing-reading-time-sort="1" data-listing-word-count-sort="147">
 <a href="../directory/profiles/phd/zian-zhuang-phd-33.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/phd/Photo Zian - ZIAN ZHUANG.jpg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/phd/Photo Zian - ZIAN ZHUANG.jpg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -610,11 +658,11 @@ PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp" data-listing-file-modified-sort="1774505465365" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
+<div class="g-col-1" data-index="20" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp" data-listing-file-modified-sort="1774596122640" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
 <a href="../directory/profiles/phd/zichen-liu-phd-19.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
-<img loading="lazy" src="../directory/images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+<img loading="lazy" data-src="../directory/images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg" class="thumbnail-image card-img" style="height: 150px;">
 </p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
@@ -631,7 +679,493 @@ PhD Student
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<nav id="grid-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+<div id="listing-table" class="quarto-listing quarto-listing-container-table">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-table-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-table'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title-sort" data-direction="asc">
+        Name
+      </option>
+      <option value="listing-subtitle" data-direction="asc">
+        Status
+      </option>
+      <option value="listing-description" data-direction="asc">
+        Cohort
+      </option>
+      <option value="listing-advisor" data-direction="asc">
+        Advisor
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+
+<th>
+ 
+</th>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Name</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-subtitle" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Status</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-description" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Cohort</a>
+</th>
+
+<th>
+<a class="sort" data-sort="listing-advisor" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Advisor</a>
+</th>
+
+</tr>
+</thead>
+<tbody class="list">
+
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774596122687" data-listing-reading-time-sort="1" data-listing-word-count-sort="82" data-listing-title-sort="**Ami Sheth**" data-listing-filename-sort="ami-sheth-phd-56.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/Sheth_Ami_003 - AMI SHETH.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/ami-sheth-phd-56.html" class="title listing-title"><strong>Ami Sheth</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2021</span>
+</td>
+<td>
+<span class="listing-advisor">Andrew Holbrook</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122627" data-listing-reading-time-sort="1" data-listing-word-count-sort="92" data-listing-title-sort="**Andrew Chuang**" data-listing-filename-sort="andrew-chuang-phd-9.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/andrew-chuang-phd-2024 - Andrew Chuang.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/andrew-chuang-phd-9.html" class="title listing-title"><strong>Andrew Chuang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Donatello Telesca</span>
+</td>
+
+</tr>
+
+<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122642" data-listing-reading-time-sort="1" data-listing-word-count-sort="42" data-listing-title-sort="**Bowen Zhang**" data-listing-filename-sort="bowen-zhang-phd-21.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/bowen-zhang-phd-2025 - BOWEN ZHANG.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/bowen-zhang-phd-21.html" class="title listing-title"><strong>Bowen Zhang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Jin Zhou, Hua Zhou</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774596122621" data-listing-reading-time-sort="1" data-listing-word-count-sort="111" data-listing-title-sort="**Carolyn Winskill**" data-listing-filename-sort="carolyn-winskill-phd-4.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/carolyn-winskill-phd-2022 - CAROLYN WINSKILL.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/carolyn-winskill-phd-4.html" class="title listing-title"><strong>Carolyn Winskill</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2022</span>
+</td>
+<td>
+<span class="listing-advisor">Gang Li</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMFN1ZGlwdG8lMjBCYW5lcmplZSUyQ0Fkdmlzb3IlM0ElMjBGYWxjbyUyMEouJTIwQmFyZ2FnbGklMjBTdG9mZmk=" data-listing-file-modified-sort="1774596122655" data-listing-reading-time-sort="1" data-listing-word-count-sort="114" data-listing-title-sort="**Cindy Pang**" data-listing-filename-sort="cindy-pang-phd-32.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/IMG_2515 - Cindy Pang.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/cindy-pang-phd-32.html" class="title listing-title"><strong>Cindy Pang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2023</span>
+</td>
+<td>
+<span class="listing-advisor">Sudipto Banerjee, Falco J. Bargagli Stoffi</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774596122643" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="**Daisy Wang**" data-listing-filename-sort="daisy-wang-phd-22.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/daisy-wang-phd-2025 - DAISY WANG.JPG" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/daisy-wang-phd-22.html" class="title listing-title"><strong>Daisy Wang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGluJTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=" data-listing-file-modified-sort="1774596122675" data-listing-reading-time-sort="1" data-listing-word-count-sort="58" data-listing-title-sort="**Danielle Lavine**" data-listing-filename-sort="danielle-lavine-phd-49.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/IMG_8752 - Danielle LaVine.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/danielle-lavine-phd-49.html" class="title listing-title"><strong>Danielle Lavine</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2021</span>
+</td>
+<td>
+<span class="listing-advisor">Thomas Belin, Christina Ramirez</span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEZhbGNvJTIwSi4lMjBCYXJnYWdsaSUyMFN0b2ZmaQ==" data-listing-file-modified-sort="1774596122625" data-listing-reading-time-sort="1" data-listing-word-count-sort="83" data-listing-title-sort="**Darren Lin**" data-listing-filename-sort="darren-lin-phd-8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/darren-lin-phd-2024 - Darren Lin.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/darren-lin-phd-8.html" class="title listing-title"><strong>Darren Lin</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Falco J. Bargagli Stoffi</span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122644" data-listing-reading-time-sort="1" data-listing-word-count-sort="83" data-listing-title-sort="**Emma Landry**" data-listing-filename-sort="emma-landry-phd-23.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/emma-landry-phd-2021 - Emma Landry.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/emma-landry-phd-23.html" class="title listing-title"><strong>Emma Landry</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2021</span>
+</td>
+<td>
+<span class="listing-advisor">Donatello Telesca</span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==" data-listing-file-modified-sort="1774596122653" data-listing-reading-time-sort="1" data-listing-word-count-sort="39" data-listing-title-sort="**James Papadopoulos**" data-listing-filename-sort="james-papadopoulos-phd-30.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/FSPH_Headshot - JAMES PAPADOPOULOS.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/james-papadopoulos-phd-30.html" class="title listing-title"><strong>James Papadopoulos</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2022</span>
+</td>
+<td>
+<span class="listing-advisor">Michele Guindani</span>
+</td>
+
+</tr>
+
+<tr data-index="10" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMEFuZHJldyUyMEhvbGJyb29r" data-listing-file-modified-sort="1774596122622" data-listing-reading-time-sort="1" data-listing-word-count-sort="84" data-listing-title-sort="**Jasen Zhang**" data-listing-filename-sort="jasen-zhang-phd-5.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/anon.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/jasen-zhang-phd-5.html" class="title listing-title"><strong>Jasen Zhang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2022</span>
+</td>
+<td>
+<span class="listing-advisor">Andrew Holbrook</span>
+</td>
+
+</tr>
+
+<tr data-index="11" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122650" data-listing-reading-time-sort="1" data-listing-word-count-sort="120" data-listing-title-sort="**Jonathan Hori**" data-listing-filename-sort="jonathan-hori-phd-28.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/FullSizeRender copy - Jonathan Hori.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/jonathan-hori-phd-28.html" class="title listing-title"><strong>Jonathan Hori</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Jin Zhou, Hua Zhou</span>
+</td>
+
+</tr>
+
+<tr data-index="12" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIwJTJDQWR2aXNvciUzQSUyMFJvYmVydCUyMFdlaXNzJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122652" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="**Kelsey Ishimoto**" data-listing-filename-sort="kelsey-ishimoto-phd-29.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/IMG_6206 - KELSEY ISHIMOTO.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/kelsey-ishimoto-phd-29.html" class="title listing-title"><strong>Kelsey Ishimoto</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2020</span>
+</td>
+<td>
+<span class="listing-advisor">Robert Weiss, Donatello Telesca</span>
+</td>
+
+</tr>
+
+<tr data-index="13" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIxJTJDQWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=" data-listing-file-modified-sort="1774596122634" data-listing-reading-time-sort="1" data-listing-word-count-sort="90" data-listing-title-sort="**Parsa Jamshidian**" data-listing-filename-sort="parsa-jamshidian-phd-14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/Parsa-Jamshidian-PhD-2021 - Parsa Jamshidian.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/parsa-jamshidian-phd-14.html" class="title listing-title"><strong>Parsa Jamshidian</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2021</span>
+</td>
+<td>
+<span class="listing-advisor">Donatello Telesca</span>
+</td>
+
+</tr>
+
+<tr data-index="14" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774596122618" data-listing-reading-time-sort="1" data-listing-word-count-sort="74" data-listing-title-sort="**Puyuan Liu**" data-listing-filename-sort="puyuan-liu-phd-2.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/puyuan-liu-phd-2025 - PUYUAN LIU.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/puyuan-liu-phd-2.html" class="title listing-title"><strong>Puyuan Liu</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Damla Senturk</span>
+</td>
+
+</tr>
+
+<tr data-index="15" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI0JTJDQWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXolMkNBZHZpc29yJTNBJTIwQnJ1bmlsZGElMjBCYWxsaXU=" data-listing-file-modified-sort="1774596122623" data-listing-reading-time-sort="1" data-listing-word-count-sort="88" data-listing-title-sort="**Timothy Shen**" data-listing-filename-sort="timothy-shen-phd-6.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/timothy-shen-phd-2024 - Timothy Shen.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/timothy-shen-phd-6.html" class="title listing-title"><strong>Timothy Shen</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-advisor">Christina Ramirez, Brunilda Balliu</span>
+</td>
+
+</tr>
+
+<tr data-index="16" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMEppbiUyMFpob3UlMkNBZHZpc29yJTNBJTIwSHVhJTIwWmhvdQ==" data-listing-file-modified-sort="1774596122689" data-listing-reading-time-sort="1" data-listing-word-count-sort="42" data-listing-title-sort="**Tomoki Okuno**" data-listing-filename-sort="tomoki-okuno-phd-58.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/230524_FSPH_0183_chose - Tomoki Okuno.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/tomoki-okuno-phd-58.html" class="title listing-title"><strong>Tomoki Okuno</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2023</span>
+</td>
+<td>
+<span class="listing-advisor">Jin Zhou, Hua Zhou</span>
+</td>
+
+</tr>
+
+<tr data-index="17" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIzJTJDQWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==" data-listing-file-modified-sort="1774596122631" data-listing-reading-time-sort="1" data-listing-word-count-sort="76" data-listing-title-sort="**Yanlong Bai**" data-listing-filename-sort="yanlong-bai-phd-12.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/Yanlong-Bai-PhD-2023 - Yanlong Bai.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/yanlong-bai-phd-12.html" class="title listing-title"><strong>Yanlong Bai</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2023</span>
+</td>
+<td>
+<span class="listing-advisor">Damla Senturk</span>
+</td>
+
+</tr>
+
+<tr data-index="18" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDI1JTJDQWR2aXNvciUzQSUyMEdhbmclMjBMaQ==" data-listing-file-modified-sort="1774596122635" data-listing-reading-time-sort="1" data-listing-word-count-sort="60" data-listing-title-sort="**Yingxin Zhang**" data-listing-filename-sort="yingxin-zhang-phd-15.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/anon.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/yingxin-zhang-phd-15.html" class="title listing-title"><strong>Yingxin Zhang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2025</span>
+</td>
+<td>
+<span class="listing-advisor">Gang Li</span>
+</td>
+
+</tr>
+
+<tr data-index="19" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==" data-listing-file-modified-sort="1774596122656" data-listing-reading-time-sort="1" data-listing-word-count-sort="147" data-listing-title-sort="**Zian Zhuang**" data-listing-filename-sort="zian-zhuang-phd-33.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/Photo Zian - ZIAN ZHUANG.jpg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/zian-zhuang-phd-33.html" class="title listing-title"><strong>Zian Zhuang</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Candidate</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2022</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="20" data-categories="UHJvZ3JhbSUzQSUyMFBoRCUyQ0NvaG9ydCUzQSUyMEZhbGwlMjAyMDIyJTJDQWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp" data-listing-file-modified-sort="1774596122640" data-listing-reading-time-sort="1" data-listing-word-count-sort="76" data-listing-title-sort="**Zichen Liu**" data-listing-filename-sort="zichen-liu-phd-19.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-image"><img loading="lazy" src="../directory/images/phd/zichen-liu-phd-2022 - ZICHEN LIU.jpeg" style="height: 40px;"></span>
+</td>
+<td>
+<a href="../directory/profiles/phd/zichen-liu-phd-19.html" class="title listing-title"><strong>Zichen Liu</strong></a>
+</td>
+<td>
+<span class="listing-subtitle">PhD Student</span>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2022</span>
+</td>
+<td>
+<span class="listing-advisor">Catherine M. Crespi</span>
+</td>
+
+</tr>
+
+</tbody>
+</table>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
 <script>
 (function () {
   'use strict';
@@ -703,6 +1237,163 @@ PhD Student
     setTimeout(buildAccordion, 0);
   }
 })();
+</script>
+<script>
+let currentPrefix = '';
+let gridListId = '';
+let tableListId = '';
+let tableObserver = null;
+
+function initListingIds() {
+  const gridContainer = document.querySelector('[id^="listing-"][id$="-grid"]');
+  const tableContainer = document.querySelector('[id^="listing-"][id$="-table"]');
+
+  if (gridContainer) gridListId = gridContainer.id;
+  if (tableContainer) tableListId = tableContainer.id;
+
+  currentPrefix = window.location.pathname.split('/').pop().replace('.html', '');
+}
+
+function applyTableView() {
+  if (!tableListId) return;
+  const table = document.getElementById(tableListId);
+  if (!table || table.style.display === 'none') return;
+
+  if (tableObserver) tableObserver.disconnect();
+
+  // Only process rows not yet handled
+  table.querySelectorAll('th:first-child:not([data-hidden]), td:first-child:not([data-hidden])').forEach(el => {
+    el.style.display = 'none';
+    el.setAttribute('data-hidden', '1');
+  });
+
+  table.querySelectorAll('td .listing-description:not([data-trimmed])').forEach(el => {
+    if (el.textContent.startsWith('Cohort: ')) {
+      el.textContent = el.textContent.slice(8);
+    }
+    el.setAttribute('data-trimmed', '1');
+  });
+
+  const tbody = table.querySelector('tbody');
+  if (tbody && tableObserver) {
+    tableObserver.observe(tbody, { childList: true });
+  }
+}
+
+function setView(view) {
+  if (!gridListId || !tableListId) return;
+
+  const grid = document.getElementById(gridListId);
+  const table = document.getElementById(tableListId);
+  const btnGrid = document.getElementById('btn-grid');
+  const btnTable = document.getElementById('btn-table');
+  const sidebar = document.getElementById('quarto-margin-sidebar');
+
+  if (!grid || !table) return;
+
+  if (view === 'grid') {
+    grid.style.display = 'block';
+    table.style.display = 'none';
+    if (sidebar) sidebar.style.display = 'block';
+
+    if (btnGrid) { btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary'); }
+    if (btnTable) { btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary'); }
+
+    if (tableObserver) { tableObserver.disconnect(); tableObserver = null; }
+  } else {
+    grid.style.display = 'none';
+    table.style.display = 'block';
+    if (sidebar) sidebar.style.display = 'none';
+
+    if (btnTable) { btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary'); }
+    if (btnGrid) { btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary'); }
+
+    const gridInstance = window['quarto-listings']?.[gridListId];
+    if (gridInstance) {
+      gridInstance.filter();
+      gridInstance.search();
+      const gridSearch = document.querySelector(`#${gridListId} input.search`);
+      if (gridSearch) gridSearch.value = '';
+    }
+
+    const tableInstance = window['quarto-listings']?.[tableListId];
+    if (tableInstance) {
+      tableInstance.filter();
+      tableInstance.search();
+      const tableSearch = document.querySelector(`#${tableListId} input.search`);
+      if (tableSearch) tableSearch.value = '';
+    }
+
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(el => {
+      el.classList.remove('active');
+    });
+
+    if (!tableObserver) {
+      const tbody = table.querySelector('tbody');
+      if (tbody) {
+        tableObserver = new MutationObserver(() => applyTableView());
+        tableObserver.observe(tbody, { childList: true });
+      }
+    }
+
+    applyTableView();
+  }
+
+  if (currentPrefix) {
+    localStorage.setItem(`${currentPrefix}View`, view);
+  }
+}
+
+function wireSearch(listingId, columns) {
+  if (!listingId) return;
+  const interval = setInterval(() => {
+    const instance = window['quarto-listings']?.[listingId];
+    const container = document.getElementById(listingId);
+    if (!instance || !container) return;
+
+    clearInterval(interval);
+
+    const searchInput = container.querySelector('input.search');
+    if (!searchInput) return;
+
+    const newInput = searchInput.cloneNode(true);
+    searchInput.parentNode.replaceChild(newInput, searchInput);
+
+    newInput.addEventListener('input', function() {
+      instance.search(this.value, columns);
+    });
+  }, 100);
+}
+
+window.addEventListener('load', function() {
+  initListingIds();
+
+  if (gridListId) {
+    wireSearch(gridListId, ['listing-title', 'listing-subtitle', 'listing-description']);
+  }
+  if (tableListId) {
+    wireSearch(tableListId, ['listing-title', 'listing-subtitle', 'listing-description', 'listing-advisor']);
+  }
+
+  const referrer = document.referrer;
+  const isFromDirectory = referrer.includes('directory.html');
+  const isFromProfile = referrer.includes('/profiles/');
+
+  let viewToShow;
+  if (isFromDirectory || !referrer) {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  } else if (isFromProfile) {
+    viewToShow = currentPrefix ? (localStorage.getItem(`${currentPrefix}View`) || 'grid') : 'grid';
+  } else {
+    viewToShow = 'grid';
+    if (currentPrefix) localStorage.setItem(`${currentPrefix}View`, 'grid');
+  }
+
+  setView(viewToShow);
+  
+  checkForCategoryFilter(tableListId);
+});
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

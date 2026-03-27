@@ -138,7 +138,7 @@ function scrambleIt(domain, user) {
 <!-- main -->
 <div class="quarto-about-trestles column-page">
   <div class="about-entity">
-    <img src="../../images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg" class="about-image
+    <img src="/directory/images/mdsh/fall 2025 headshota - MATTHEW KOSTELNY.jpg" class="about-image
   round " style="height: 20em; width: 20em;">
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -186,19 +186,33 @@ California State University, Northridge</p>
  <!-- /main -->
 <script>
 (function () {
-  // Detect program from category badges
   var cats = document.querySelectorAll('.quarto-category');
   var program = null;
+  var isAlumni = false;
+  var graduationYear = null;
   for (var i = 0; i < cats.length; i++) {
     var text = cats[i].textContent.trim().toUpperCase();
     if (text.startsWith('PROGRAM: ')) {
       program = text.replace('PROGRAM: ', '');
-      break;
+    }
+    if (text === 'ALUMNI') {
+      isAlumni = true;
+    }
+    if (text.startsWith('CLASS OF: ')) {
+      graduationYear = text.replace('CLASS OF: ', '');
     }
   }
-
   var href, label;
-  if (program === 'PHD') {
+  if (isAlumni && program === 'MS') {
+    href = '../../../ms-alumni.html';
+    label = 'Back to MS Alumni';
+  } else if (isAlumni && program === 'MDSH') {
+    href = '../../../mdsh-alumni.html';
+    label = 'Back to MDSH Alumni';
+  } else if (isAlumni && program === 'PHD') {
+    href = '../../../phd-alumni.html';
+    label = 'Back to PhD Alumni';
+  } else if (program === 'PHD') {
     href = '../../phd-students.html';
     label = 'Back to PhD Students';
   } else if (program === 'MDSH') {
@@ -208,13 +222,11 @@ California State University, Northridge</p>
     href = '../../ms-students.html';
     label = 'Back to MS Students';
   }
-
   if (href) {
     var btn = document.createElement('a');
     btn.href = href;
     btn.className = 'back-to-directory';
     btn.innerHTML = '&#8592; ' + label;
-
     var content = document.querySelector('.about-contents');
     if (content) {
       content.insertBefore(btn, content.firstChild);
