@@ -1,62 +1,17 @@
 [
   {
-    "listing": "/directory/phd-students.html",
+    "listing": "/directory/ms-students.html",
     "items": [
-      "/directory/profiles/phd/ami-sheth-phd-56.html",
-      "/directory/profiles/phd/andrew-chuang-phd-9.html",
-      "/directory/profiles/phd/bowen-zhang-phd-21.html",
-      "/directory/profiles/phd/carolyn-winskill-phd-4.html",
-      "/directory/profiles/phd/cindy-pang-phd-32.html",
-      "/directory/profiles/phd/daisy-wang-phd-22.html",
-      "/directory/profiles/phd/danielle-lavine-phd-49.html",
-      "/directory/profiles/phd/darren-lin-phd-8.html",
-      "/directory/profiles/phd/emma-landry-phd-23.html",
-      "/directory/profiles/phd/james-papadopoulos-phd-30.html",
-      "/directory/profiles/phd/jasen-zhang-phd-5.html",
-      "/directory/profiles/phd/jonathan-hori-phd-28.html",
-      "/directory/profiles/phd/kelsey-ishimoto-phd-29.html",
-      "/directory/profiles/phd/parsa-jamshidian-phd-14.html",
-      "/directory/profiles/phd/puyuan-liu-phd-2.html",
-      "/directory/profiles/phd/timothy-shen-phd-6.html",
-      "/directory/profiles/phd/tomoki-okuno-phd-58.html",
-      "/directory/profiles/phd/yanlong-bai-phd-12.html",
-      "/directory/profiles/phd/yingxin-zhang-phd-15.html",
-      "/directory/profiles/phd/zian-zhuang-phd-33.html",
-      "/directory/profiles/phd/zichen-liu-phd-19.html"
-    ]
-  },
-  {
-    "listing": "/directory/ms-alumni.html",
-    "items": [
-      "/directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-53.html"
-    ]
-  },
-  {
-    "listing": "/about/board/2020-2021/team-hex.html",
-    "items": [
-      "/about/board/2020-2021/people/emilie-campos.html",
-      "/about/board/2020-2021/people/crystal-shaw.html",
-      "/about/board/2020-2021/people/doug-morrison.html",
-      "/about/board/2020-2021/people/john-shamshoian.html",
-      "/about/board/2020-2021/people/ian-frankenburg.html",
-      "/about/board/2020-2021/people/ami-sheth.html",
-      "/about/board/2020-2021/people/tina-arputhasamy.html",
-      "/about/board/2020-2021/people/caesar-li.html",
-      "/about/board/2020-2021/people/jane-pan.html"
-    ]
-  },
-  {
-    "listing": "/about/board/2020-2021/team-list.html",
-    "items": [
-      "/about/board/2020-2021/people/emilie-campos.html",
-      "/about/board/2020-2021/people/crystal-shaw.html",
-      "/about/board/2020-2021/people/doug-morrison.html",
-      "/about/board/2020-2021/people/john-shamshoian.html",
-      "/about/board/2020-2021/people/ian-frankenburg.html",
-      "/about/board/2020-2021/people/ami-sheth.html",
-      "/about/board/2020-2021/people/tina-arputhasamy.html",
-      "/about/board/2020-2021/people/caesar-li.html",
-      "/about/board/2020-2021/people/jane-pan.html"
+      "/directory/profiles/ms/amaan-jogia-sattar-ms-13.html",
+      "/directory/profiles/ms/asuka-iwamoto-ms-48.html",
+      "/directory/profiles/ms/fangning-luo-ms-46.html",
+      "/directory/profiles/ms/hanying-xu-ms-27.html",
+      "/directory/profiles/ms/jiale-ni-ms-31.html",
+      "/directory/profiles/ms/julian-gavino-ms-20.html",
+      "/directory/profiles/ms/kiana-mohammadinik-ms-11.html",
+      "/directory/profiles/ms/peike-li-ms-16.html",
+      "/directory/profiles/ms/siddhant-patel-ms-26.html",
+      "/directory/profiles/ms/yutong-wang-ms-18.html"
     ]
   },
   {
@@ -82,6 +37,7 @@
       "/directory/profiles/mdsh/rongrong-mo-mdsh-36.html",
       "/directory/profiles/mdsh/roy-mathew-mdsh-50.html",
       "/directory/profiles/mdsh/siqing-gong-mdsh-54.html",
+      "/directory/profiles/mdsh/sofia-landinez-mdsh-59.html",
       "/directory/profiles/mdsh/sopyda-yin-mdsh-34.html",
       "/directory/profiles/mdsh/suning-zhao-mdsh-41.html",
       "/directory/profiles/mdsh/wenqiang-ge-mdsh-38.html",
@@ -91,18 +47,63 @@
     ]
   },
   {
-    "listing": "/directory/ms-students.html",
+    "listing": "/about/board/2020-2021/team-list.html",
     "items": [
-      "/directory/profiles/ms/amaan-jogia-sattar-ms-13.html",
-      "/directory/profiles/ms/asuka-iwamoto-ms-48.html",
-      "/directory/profiles/ms/fangning-luo-ms-46.html",
-      "/directory/profiles/ms/hanying-xu-ms-27.html",
-      "/directory/profiles/ms/jiale-ni-ms-31.html",
-      "/directory/profiles/ms/julian-gavino-ms-20.html",
-      "/directory/profiles/ms/kiana-mohammadinik-ms-11.html",
-      "/directory/profiles/ms/peike-li-ms-16.html",
-      "/directory/profiles/ms/siddhant-patel-ms-26.html",
-      "/directory/profiles/ms/yutong-wang-ms-18.html"
+      "/about/board/2020-2021/people/emilie-campos.html",
+      "/about/board/2020-2021/people/crystal-shaw.html",
+      "/about/board/2020-2021/people/doug-morrison.html",
+      "/about/board/2020-2021/people/john-shamshoian.html",
+      "/about/board/2020-2021/people/ian-frankenburg.html",
+      "/about/board/2020-2021/people/ami-sheth.html",
+      "/about/board/2020-2021/people/tina-arputhasamy.html",
+      "/about/board/2020-2021/people/caesar-li.html",
+      "/about/board/2020-2021/people/jane-pan.html"
+    ]
+  },
+  {
+    "listing": "/about/board/2020-2021/team-hex.html",
+    "items": [
+      "/about/board/2020-2021/people/emilie-campos.html",
+      "/about/board/2020-2021/people/crystal-shaw.html",
+      "/about/board/2020-2021/people/doug-morrison.html",
+      "/about/board/2020-2021/people/john-shamshoian.html",
+      "/about/board/2020-2021/people/ian-frankenburg.html",
+      "/about/board/2020-2021/people/ami-sheth.html",
+      "/about/board/2020-2021/people/tina-arputhasamy.html",
+      "/about/board/2020-2021/people/caesar-li.html",
+      "/about/board/2020-2021/people/jane-pan.html"
+    ]
+  },
+  {
+    "listing": "/directory/ms-alumni.html",
+    "items": [
+      "/directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-53.html"
+    ]
+  },
+  {
+    "listing": "/directory/phd-students.html",
+    "items": [
+      "/directory/profiles/phd/ami-sheth-phd-56.html",
+      "/directory/profiles/phd/andrew-chuang-phd-9.html",
+      "/directory/profiles/phd/bowen-zhang-phd-21.html",
+      "/directory/profiles/phd/carolyn-winskill-phd-4.html",
+      "/directory/profiles/phd/cindy-pang-phd-32.html",
+      "/directory/profiles/phd/daisy-wang-phd-22.html",
+      "/directory/profiles/phd/danielle-lavine-phd-49.html",
+      "/directory/profiles/phd/darren-lin-phd-8.html",
+      "/directory/profiles/phd/emma-landry-phd-23.html",
+      "/directory/profiles/phd/james-papadopoulos-phd-30.html",
+      "/directory/profiles/phd/jasen-zhang-phd-5.html",
+      "/directory/profiles/phd/jonathan-hori-phd-28.html",
+      "/directory/profiles/phd/kelsey-ishimoto-phd-29.html",
+      "/directory/profiles/phd/parsa-jamshidian-phd-14.html",
+      "/directory/profiles/phd/puyuan-liu-phd-2.html",
+      "/directory/profiles/phd/timothy-shen-phd-6.html",
+      "/directory/profiles/phd/tomoki-okuno-phd-58.html",
+      "/directory/profiles/phd/yanlong-bai-phd-12.html",
+      "/directory/profiles/phd/yingxin-zhang-phd-15.html",
+      "/directory/profiles/phd/zian-zhuang-phd-33.html",
+      "/directory/profiles/phd/zichen-liu-phd-19.html"
     ]
   }
 ]
