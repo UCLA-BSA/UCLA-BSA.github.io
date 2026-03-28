@@ -291,7 +291,7 @@ Class of 2025
 </summary>
 <div id="listing-ms2025" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774662824872" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774674617671" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-53.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -369,7 +369,7 @@ Class of 2024
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774662824872" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jiachen Ai**" data-listing-filename-sort="jiachen-ai-ms-53.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1774674617671" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jiachen Ai**" data-listing-filename-sort="jiachen-ai-ms-53.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-53.html" class="title listing-title"><strong>Jiachen Ai</strong></a>
@@ -398,39 +398,41 @@ Class of 2024
   function buildAccordion() {
     var container = document.querySelector('.quarto-listing-category');
     if (!container) return;
+
     var allItems = Array.from(container.querySelectorAll('.category'));
     if (!allItems.length) return;
+    
     var groups = { Advisor: [], Cohort: [] };
+    var anyActive = false; // Track if ANY filter is active globally
+
     allItems.forEach(function (el) {
       var text = el.textContent.trim();
-      if (text.startsWith('Advisor: ')) {
-        groups.Advisor.push(el);
-      } else if (text.startsWith('Cohort: ')) {
-        groups.Cohort.push(el);
-      } else if (text.startsWith('Program: ')) {
-        el.remove();
-      }
+      if (el.classList.contains('active')) anyActive = true; 
+
+      if (text.startsWith('Advisor: ')) groups.Advisor.push(el);
+      else if (text.startsWith('Cohort: ')) groups.Cohort.push(el);
+      else if (text.startsWith('Program: ')) el.remove();
     });
-    groups.Advisor.concat(groups.Cohort).forEach(function (el) {
-      el.remove();
-    });
+
+    groups.Advisor.concat(groups.Cohort).forEach(function (el) { el.remove(); });
+
     ['Advisor', 'Cohort'].forEach(function (groupName) {
       var items = groups[groupName];
       if (!items.length) return;
+      
       var wrapper = document.createElement('div');
       wrapper.className = 'category-accordion-group';
+      
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'category-accordion-header';
-      btn.setAttribute('aria-expanded', 'false');
-      btn.innerHTML =
-        '<span class="accordion-label">' + groupName + '</span>' +
-        '<span class="accordion-arrow">&#8250;</span>';
+      btn.innerHTML = '<span class="accordion-label">' + groupName + '</span><span class="accordion-arrow">&#8250;</span>';
+      
       var list = document.createElement('div');
       list.className = 'category-accordion-items';
       list.style.display = 'none';
 
-      // Sort alphabetically, with "Not Listed" pinned to the end
+      // Sort items (Advisors/Cohorts)
       items.sort(function(a, b) {
         var aText = a.textContent.trim().replace(groupName + ': ', '');
         var bText = b.textContent.trim().replace(groupName + ': ', '');
@@ -439,12 +441,24 @@ Class of 2024
         return aText.localeCompare(bText);
       });
 
+      // --- AUTO-EXPAND LOGIC ---
+      // Check if this specific group contains the active filter
+      var hasActiveInGroup = items.some(function(el) {
+        return el.classList.contains('active');
+      });
+
       items.forEach(function (el) {
-        var full = el.textContent.trim();
-        var label = full.replace(groupName + ': ', '');
+        var label = el.textContent.trim().replace(groupName + ': ', '');
         el.textContent = label;
         list.appendChild(el);
       });
+
+      // If a filter is active in this group, open it by default
+      if (hasActiveInGroup) {
+        list.style.display = 'block';
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('.accordion-arrow').classList.add('open');
+      }
 
       btn.addEventListener('click', function () {
         var expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -452,11 +466,30 @@ Class of 2024
         list.style.display = expanded ? 'none' : 'block';
         btn.querySelector('.accordion-arrow').classList.toggle('open', !expanded);
       });
+
       wrapper.appendChild(btn);
       wrapper.appendChild(list);
       container.appendChild(wrapper);
     });
+
+    // --- UPDATED CLEAR BUTTON ---
+    var clearBtn = document.createElement('button');
+    clearBtn.id = 'clear-all-filters';
+    clearBtn.className = 'btn btn-link btn-sm mt-2 text-decoration-none';
+    
+    // Show button only if a filter is active
+    var displayStyle = anyActive ? 'block' : 'none';
+    clearBtn.style.cssText = 'display:' + displayStyle + '; color: #6c757d; font-size: 0.8rem; padding-left: 6px;';
+    
+    clearBtn.innerHTML = '✕ Clear Filters';
+    clearBtn.onclick = function() {
+        if (typeof clearCategoryFilter === 'function') {
+            clearCategoryFilter();
+        }
+    };
+    container.appendChild(clearBtn);
   }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', buildAccordion);
   } else {

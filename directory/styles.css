@@ -23,6 +23,14 @@
   margin-bottom: 3rem;
 }
 
+#clear-all-filters {
+    transition: color 0.2s ease;
+}
+
+#clear-all-filters:hover {
+    color: #2774AE !important; /* UCLA Blue */
+    background: none;
+}
 .directory-hero-text {
   flex: 1 1 50%;
 }
@@ -49,23 +57,32 @@
   position: relative;
 }
 
-/* Slideshow */
+/* Slideshow on Directory Homepage*/
+/* 1. Stack the slides and set up the transition */
 .slideshow-container {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .slide {
-  display: none;
+  position: absolute; /* Stack them on top of each other */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 1.2s ease-in-out; /* The "Smooth" factor */
+  z-index: 1;
 }
 
 .slide.active {
-  display: block;
+  opacity: 1; /* Fade in */
+  z-index: 2; /* Bring to front */
 }
 
+/* 2. Ensure the images fill the container perfectly */
 .slide img {
   width: 100%;
   height: 100%;
@@ -73,52 +90,53 @@
   border-radius: 12px;
 }
 
+/* 3. Keep the buttons on top of everything */
 .slide-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 59, 92, 0.45);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 1rem;
-  cursor: pointer;
   z-index: 10;
-  transition: background 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.slide-btn:hover {
-  background: rgba(0, 59, 92, 0.85);
-}
-
-.slide-prev { left: 10px; }
-.slide-next { right: 10px; }
-
+/* Pin the dots to the bottom of the slideshow container */
 .slideshow-dots {
-  text-align: center;
-  margin-top: 8px;
+  position: absolute;
+  bottom: 20px; /* Adjust this number to move them higher or lower on the image */
+  left: 50%;
+  transform: translateX(-50%); /* Centers the dots horizontally */
+  z-index: 20 !important; /* Forces them to stay on top of the images */
+  display: flex;
+  gap: 12px; /* Space between the dots */
 }
 
+/* The Dots - Smaller and Crisper */
 .dot {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  margin: 0 4px;
-  background: #bbb;
-  border-radius: 50%;
   cursor: pointer;
-  transition: background 0.2s;
+  height: 8px;   /* Smaller size (was 12px) */
+  width: 8px;    /* Smaller size (was 12px) */
+  background-color: #ffffff; /* Solid white for clarity */
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  border: none;  /* Remove the border to stop the blur */
+  /* This shadow makes them visible even on bright white parts of a photo */
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); 
+  opacity: 0.6;  /* Dim them slightly when not active */
 }
 
+/* Hover effect */
+.dot:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  background-color: #FFD100; /* UCLA Gold */
+}
+
+/* The Active Dot - Crisp and Defined */
 .dot.active {
-  background: #2774AE;
+  opacity: 1;
+  background-color: #FFD100 !important; /* UCLA Gold */
+  width: 18px; /* Slightly shorter pill shape for the smaller scale */
+  border-radius: 4px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* */
 @media (max-width: 768px) {
   .directory-hero {
     flex-direction: column;
@@ -224,6 +242,7 @@
 
 .accordion-arrow.open {
   transform: rotate(90deg);
+  transition: transform 0.2s ease;
 }
 
 .category-accordion-items {
@@ -299,4 +318,131 @@ details[open] summary {
 [id^="listing-"][id$="-grid"],
 [id^="listing-"][id$="-table"] {
   display: none;
+}
+
+
+
+.quarto-listing-category .category.active {
+    cursor: default !important;
+    pointer-events: none; /* This also helps prevent double-clicks */
+}
+
+
+
+/* 1. Ensure the container doesn't clip the hop */
+.quarto-listing-grid .grid-item {
+  padding-top: 15px !important; /* Creates 'headroom' for the jump */
+}
+
+/* 2. The Card Base */
+.quarto-grid-link .quarto-grid-item.card {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  border: 1px solid #dee2e6 !important;
+  position: relative;
+  overflow: hidden; /* Keeps the gold bar contained */
+}
+
+/* 3. The Gold Bar (UCLA Gold) */
+/* We place it absolutely at the very top of the card */
+.quarto-grid-link .quarto-grid-item.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Slightly thicker for visibility */
+  background-color: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 5; /* Ensures it stays above the image */
+}
+
+/* 4. The Hover State Trigger */
+.quarto-grid-link:hover .quarto-grid-item.card {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 15px 35px rgba(39, 116, 174, 0.25) !important;
+  border-color: #2774AE !important;
+}
+
+/* 5. Activate the Gold Bar on Hover */
+.quarto-grid-link:hover .quarto-grid-item.card::before {
+  transform: scaleX(1);
+}
+
+/* 6. Smooth out the image zoom */
+.quarto-grid-link .card-img-top img {
+  transition: transform 0.6s ease !important;
+}
+
+.quarto-grid-link:hover .card-img-top img {
+  transform: scale(1.04);
+}
+
+
+/* 1. Fix the Image Container Height */
+.quarto-listing-grid .grid-item .card-img-top {
+  height: 220px !important; /* Adjust this number to your preferred height */
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light grey placeholder if image fails */
+}
+
+/* 2. Force the Image to fill that space without stretching */
+.quarto-listing-grid .grid-item .card-img-top img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* This is the magic line */
+  object-position: center 20% !important; /* Keeps faces in frame */
+}
+
+/* 3. Ensure the card itself doesn't grow weirdly */
+.quarto-listing-grid .grid-item .card {
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. Make sure the body text area stays consistent */
+.quarto-listing-grid .grid-item .card-body {
+  flex-grow: 1;
+  padding: 1rem !important;
+}
+
+
+#listing-grid .list.grid {
+  display: grid !important;
+  /* Dropping to 180px ensures 5-across on most laptops */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+  gap: 1rem !important; /* Slightly tighter gap to save horizontal space */
+}
+
+/* Match the max-width to keep it from stretching too far on giant monitors */
+.quarto-grid-item {
+  max-width: 200px !important;
+}
+
+/* Keep your image height fixed as we discussed */
+.quarto-listing-grid .grid-item .card-img-top {
+  height: 200px !important; /* Slightly shorter height looks better with 180px width */
+}
+
+
+/* Disable the horizontal scroll in the sidebar */
+.quarto-listing-category {
+  overflow-x: hidden !important;
+  white-space: normal !important; /* Allows long names to wrap instead of pushing the width */
+}
+
+/* Ensure the accordion groups don't poke out past the container */
+.category-accordion-group {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure individual category items wrap if a name is too long */
+.category-accordion-items .category {
+  white-space: normal !important;
+  word-wrap: break-word;
+  display: block;
+  width: 100%;
 }
