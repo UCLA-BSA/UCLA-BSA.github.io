@@ -21,6 +21,7 @@ css: styles.css
     </div>
     <div class="directory-hero-photo">
       <div class="slideshow-container">
+        
         <div class="slide active">
           <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
         </div>
@@ -33,16 +34,18 @@ css: styles.css
         <div class="slide">
           <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
         </div>
+        
         <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
-      </div>
-      <div class="slideshow-dots">
-        <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot" onclick="goToSlide(1)"></span>
-        <span class="dot" onclick="goToSlide(2)"></span>
-        <span class="dot" onclick="goToSlide(3)"></span>
-      </div>
-    </div>
+        
+        <div class="slideshow-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+          <span class="dot" onclick="goToSlide(3)"></span>
+        </div>
+
+      </div> </div>
   </div>
 
   <!-- Program cards -->
@@ -114,29 +117,48 @@ css: styles.css
   function init() {
     slides = document.querySelectorAll('.slide');
     dots = document.querySelectorAll('.dot');
-    if (!slides.length) return;
+    if (!slides || !slides.length) return;
     startTimer();
   }
 
   function showSlide(n) {
+    // Safety check for empty arrays
+    if (!slides[current] || !dots[current]) return;
+
+    // Remove active classes
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
+
+    // Calculate next index
     current = (n + slides.length) % slides.length;
+
+    // Add active classes
     slides[current].classList.add('active');
     dots[current].classList.add('active');
   }
 
   function startTimer() {
-    timer = setInterval(function() { showSlide(current + 1); }, 4000);
+    // Change slide every 5 seconds
+    timer = setInterval(function() { 
+      showSlide(current + 1); 
+    }, 5000);
   }
 
   function resetTimer() {
     clearInterval(timer);
-    startTimer();
+    startTimer(); // Restarts the 5s countdown after a manual click
   }
 
-  window.changeSlide = function(dir) { showSlide(current + dir); resetTimer(); };
-  window.goToSlide = function(n) { showSlide(n); resetTimer(); };
+  // Global functions for the HTML onclick events
+  window.changeSlide = function(dir) { 
+    showSlide(current + dir); 
+    resetTimer(); 
+  };
+
+  window.goToSlide = function(n) { 
+    showSlide(n); 
+    resetTimer(); 
+  };
 
   document.addEventListener('DOMContentLoaded', init);
 })();
