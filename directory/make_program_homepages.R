@@ -48,7 +48,7 @@ format:
 listing:
   - id: grid
     type: grid
-    page-size: 15
+    page-size: 9999
     contents: ', p$contents, '
     include:
       subtitle: ', p$subtitle_filter, '
@@ -65,7 +65,7 @@ listing:
     categories: unnumbered
   - id: table
     type: table
-    page-size: 10
+    page-size: 9999
     contents: ', p$contents, '
     include:
       subtitle: ', p$subtitle_filter, '

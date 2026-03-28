@@ -10,7 +10,7 @@ format:
 listing:
   - id: grid
     type: grid
-    page-size: 15
+    page-size: 9999
     contents: profiles/mdsh/*.qmd
     include:
       subtitle: ["MDSH Student"]
@@ -27,7 +27,7 @@ listing:
     categories: unnumbered
   - id: table
     type: table
-    page-size: 10
+    page-size: 9999
     contents: profiles/mdsh/*.qmd
     include:
       subtitle: ["MDSH Student"]
