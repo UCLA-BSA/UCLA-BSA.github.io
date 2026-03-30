@@ -28,10 +28,10 @@ programs <- list(
 make_qmd <- function(p) {
   
   if (p$has_status) {
-    table_fields <- "fields: [title, subtitle, description, advisor]"
+    table_fields <- "[title, subtitle, description, advisor]"
     table_sort <- "sort-ui: [title, subtitle, description, advisor]"
   } else {
-    table_fields <- "fields: [title, description, advisor]"
+    table_fields <- "[title, description, advisor]"
     table_sort <- "sort-ui: [title, description, advisor]"
   }
   
@@ -71,8 +71,8 @@ listing:
       subtitle: ', p$subtitle_filter, '
     ', table_sort, '
     sort: false
-    filter-ui: true
-    ', table_fields, '
+    filter-ui: ', table_fields, '
+    fields: ', table_fields, '
     field-display-names:
       title: "Name"
       subtitle: "Status"

@@ -1,0 +1,30 @@
+---
+title: "**Zihong (Hazel) Huang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/学院headshot - ZIHONG HUANG.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","hazelhuang1007");</script>
+
+
+
+
+
+
+
+### Bio:
+
+I’m an MDSH grad student (Class of 2027), focusing on the intersection of ML and healthcare. I genuinely believe applying machine learning to medical data is both incredibly interesting and has the potential to make a huge impact on patient care. Outside of academic life, I’m a massive movie buff, especially if it's a suspense or thriller, and I’m always down for a good board game night.

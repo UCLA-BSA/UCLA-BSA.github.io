@@ -33,7 +33,7 @@ listing:
       subtitle: ["MDSH Student"]
     sort-ui: [title, description, advisor]
     sort: false
-    filter-ui: true
+    filter-ui: [title, description, advisor]
     fields: [title, description, advisor]
     field-display-names:
       title: "Name"

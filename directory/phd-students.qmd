@@ -33,7 +33,7 @@ listing:
       subtitle: ["PhD Student", "PhD Candidate"]
     sort-ui: [title, subtitle, description, advisor]
     sort: false
-    filter-ui: true
+    filter-ui: [title, subtitle, description, advisor]
     fields: [title, subtitle, description, advisor]
     field-display-names:
       title: "Name"

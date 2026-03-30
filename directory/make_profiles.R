@@ -5,10 +5,20 @@ library(googledrive)
 library(googlesheets4)
 library(dotenv)
 library(tidyverse)
+library(jsonlite)
 library(here)
 here::i_am("directory/make_profiles.R")
 
 ##### get environment ready to connect to google drive #####
+CACHE_FILE <- here("directory/.image_cache.json")
+load_cache <- function() {
+  if (file.exists(CACHE_FILE)) fromJSON(CACHE_FILE) else list()
+}
+save_cache <- function(cache) {
+  write_json(cache, CACHE_FILE, auto_unbox = TRUE)
+}
+
+
 download_files <- TRUE # set to FALSE if you don't want to download each time you run this script
 drive_deauth()
 googlesheets4::gs4_deauth()
@@ -56,8 +66,8 @@ safe_ext <- function(meta_name) {
 
 # download images function
 download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, graduation_year = NA) {
+  if (is.na(file_id) || is.na(meta_name)) return(invisible(NULL))
   
-  # Build the correct subfolder and image path
   if (alumni && !is.na(graduation_year)) {
     subfolder <- paste0(program_lower, "-alumni/", program_lower, graduation_year)
   } else {
@@ -70,29 +80,40 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
     dir.create(here("directory/images", subfolder), showWarnings = FALSE, recursive = TRUE)
   }
   
-  # only download if image exists in Google drive and if it is different from local folder
-  if (!is.na(file_id)) {
-    meta <- drive_get(as_id(file_id))
-    drive_md5 <- meta$drive_resource[[1]]$md5Checksum
-    
-    if (file.exists(image_path)) {
-      local_md5 <- tools::md5sum(here(image_path))
-      
-      if (drive_md5 == local_md5) {
-        print(paste0("No changes to file ", image_path, ". Will not redownload."))
-        return(invisible(NULL))
-      }
+  cache <- load_cache()
+  cached_md5 <- cache[[file_id]]
+  
+  # If file exists locally and MD5 matches cache, skip entirely (no API call)
+  if (file.exists(image_path) && !is.null(cached_md5)) {
+    local_md5 <- tools::md5sum(image_path)[[1]]
+    if (local_md5 == cached_md5) {
+      message("Cache hit, skipping: ", meta_name)
+      return(invisible(NULL))
     }
-    
-    print(paste0("Downloading ", image_path, "."))
-    suppressMessages(
-      drive_download(
-        as_id(file_id),
-        path = image_path,
-        overwrite = TRUE
-      )
-    )
   }
+  
+  # Call API only if no cache entry or local file is missing/changed
+  message("Checking Drive for: ", meta_name)
+  meta <- drive_get(as_id(file_id))
+  drive_md5 <- meta$drive_resource[[1]]$md5Checksum
+  
+  if (file.exists(image_path)) {
+    local_md5 <- tools::md5sum(image_path)[[1]]
+    if (local_md5 == drive_md5) {
+      cache[[file_id]] <- drive_md5
+      save_cache(cache)
+      message("Up to date, skipping: ", meta_name)
+      return(invisible(NULL))
+    }
+  }
+  
+  message("Downloading: ", meta_name)
+  suppressMessages(
+    drive_download(as_id(file_id), path = image_path, overwrite = TRUE)
+  )
+  
+  cache[[file_id]] <- drive_md5
+  save_cache(cache)
 }
 
 ##### clean data frame #####
@@ -249,6 +270,13 @@ df_clean <- df %>%
   ) %>%
   
   # cleaning education
+  ## adjusting degree names
+  mutate(bachelors_deg = ifelse(is.na(bachelors_deg) & (!is.na(bachelors_major) | bachelors_major != ""),
+                                "Bachelor's Degree",
+                                bachelors_deg),
+         masters_deg = ifelse(is.na(masters_deg) & (!is.na(masters_deg) | masters_deg != ""),
+                              "Master's Degree",
+                              masters_deg)) %>%
   
   ## cleaning the majors
   mutate(bachelors_major = tools::toTitleCase(bachelors_major),
