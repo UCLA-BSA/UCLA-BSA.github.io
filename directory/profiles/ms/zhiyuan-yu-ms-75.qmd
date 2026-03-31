@@ -1,0 +1,37 @@
+---
+title: "**Zhiyuan (Eric) Yu**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+
+advisor: Christina Ramirez
+image: /directory/images/ms/IMG_8975 - ZHIYUAN YU.jpeg
+categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Christina Ramirez"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/zhiyuan-eric-yu-b97916228/
+      target: _blank
+    - icon: github
+      href: https://github.com/EricYu-12
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Christina Ramirez  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","hhyzy");</script>
+
+### Education:
+
+
+
+**BS in Biological Sciences**, 2024  
+University of California, Davis — Davis, CA
+
+
+
+
