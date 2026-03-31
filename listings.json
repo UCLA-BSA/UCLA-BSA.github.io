@@ -2,6 +2,7 @@
   {
     "listing": "/directory/phd-students.html",
     "items": [
+      "/directory/profiles/phd/abraham-liu-phd-69.html",
       "/directory/profiles/phd/ami-sheth-phd-56.html",
       "/directory/profiles/phd/andrew-chuang-phd-9.html",
       "/directory/profiles/phd/bowen-zhang-phd-21.html",
@@ -14,13 +15,17 @@
       "/directory/profiles/phd/james-papadopoulos-phd-30.html",
       "/directory/profiles/phd/jasen-zhang-phd-5.html",
       "/directory/profiles/phd/jonathan-hori-phd-28.html",
+      "/directory/profiles/phd/kate-johnson-phd-63.html",
       "/directory/profiles/phd/kelsey-ishimoto-phd-29.html",
       "/directory/profiles/phd/parsa-jamshidian-phd-14.html",
       "/directory/profiles/phd/puyuan-liu-phd-2.html",
+      "/directory/profiles/phd/ryan-odell-phd-70.html",
       "/directory/profiles/phd/timothy-shen-phd-6.html",
       "/directory/profiles/phd/tomoki-okuno-phd-58.html",
+      "/directory/profiles/phd/tong-zhu-phd-66.html",
       "/directory/profiles/phd/yanlong-bai-phd-12.html",
       "/directory/profiles/phd/yingxin-zhang-phd-15.html",
+      "/directory/profiles/phd/yuxi-song-phd-67.html",
       "/directory/profiles/phd/zian-zhuang-phd-33.html",
       "/directory/profiles/phd/zichen-liu-phd-19.html"
     ]
@@ -69,18 +74,23 @@
       "/directory/profiles/mdsh/fauzan-budi-prasetya-mdsh-17.html",
       "/directory/profiles/mdsh/gianna-jimenez-mdsh-57.html",
       "/directory/profiles/mdsh/han-zheng-mdsh-47.html",
+      "/directory/profiles/mdsh/haozhe-li-mdsh-74.html",
+      "/directory/profiles/mdsh/haozhe-zhang-mdsh-71.html",
       "/directory/profiles/mdsh/jiaye-tian-mdsh-40.html",
       "/directory/profiles/mdsh/jinghao-wang-mdsh-44.html",
       "/directory/profiles/mdsh/joshua-blackmon-mdsh-39.html",
       "/directory/profiles/mdsh/joshua-price-mdsh-51.html",
       "/directory/profiles/mdsh/karen-harrison-mdsh-1.html",
+      "/directory/profiles/mdsh/ludi-zhou-mdsh-68.html",
       "/directory/profiles/mdsh/matthew-kostelny-mdsh-42.html",
       "/directory/profiles/mdsh/michael-zaychikov-mdsh-3.html",
       "/directory/profiles/mdsh/nanda-arun-payyappilly-mdsh-25.html",
       "/directory/profiles/mdsh/nena-ojukwu-mdsh-10.html",
+      "/directory/profiles/mdsh/priti-patel-mdsh-65.html",
       "/directory/profiles/mdsh/rica-mae-pitogo-mdsh-7.html",
       "/directory/profiles/mdsh/rongrong-mo-mdsh-36.html",
       "/directory/profiles/mdsh/roy-mathew-mdsh-50.html",
+      "/directory/profiles/mdsh/sabrina-skye-pickett-mdsh-73.html",
       "/directory/profiles/mdsh/siqing-gong-mdsh-54.html",
       "/directory/profiles/mdsh/sofia-landinez-mdsh-59.html",
       "/directory/profiles/mdsh/sopyda-yin-mdsh-34.html",
@@ -90,6 +100,7 @@
       "/directory/profiles/mdsh/yash-motwani-mdsh-37.html",
       "/directory/profiles/mdsh/yasmine-tani-mdsh-62.html",
       "/directory/profiles/mdsh/yulin-gong-mdsh-45.html",
+      "/directory/profiles/mdsh/zihan-teng-mdsh-64.html",
       "/directory/profiles/mdsh/zihong-huang-mdsh-61.html"
     ]
   },
@@ -99,6 +110,8 @@
       "/directory/profiles/ms/amaan-jogia-sattar-ms-13.html",
       "/directory/profiles/ms/asuka-iwamoto-ms-48.html",
       "/directory/profiles/ms/fangning-luo-ms-46.html",
+      "/directory/profiles/ms/halle-villalobos-ms-72.html",
+      "/directory/profiles/ms/hanxi-chen-ms-76.html",
       "/directory/profiles/ms/hanying-xu-ms-27.html",
       "/directory/profiles/ms/jiale-ni-ms-31.html",
       "/directory/profiles/ms/julian-gavino-ms-20.html",
@@ -106,7 +119,8 @@
       "/directory/profiles/ms/kiana-mohammadinik-ms-11.html",
       "/directory/profiles/ms/peike-li-ms-16.html",
       "/directory/profiles/ms/siddhant-patel-ms-26.html",
-      "/directory/profiles/ms/yutong-wang-ms-18.html"
+      "/directory/profiles/ms/yutong-wang-ms-18.html",
+      "/directory/profiles/ms/zhiyuan-yu-ms-75.html"
     ]
   }
 ]
