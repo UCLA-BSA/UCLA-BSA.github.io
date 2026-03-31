@@ -257,6 +257,16 @@ standardize_advisor <- function(x) {
 }
 
 df_clean <- df %>%
+  # individual cleaning
+  mutate(
+    advisor = if_else(first == "Hanxi" & last == "Chen" & current_program == "MS" & year == "Fall 2024",
+                      "Damla Senturk",
+                      advisor),
+    advisor_type = if_else(first == "Hanxi" & last == "Chen" & current_program == "MS" & year == "Fall 2024",
+                           "research",
+                           advisor_type)
+  ) %>%
+
   # cleaning names
   mutate(
     unique_id = row_number(), # id to assign to each person's file
@@ -526,3 +536,4 @@ for (i in seq_len(nrow(df_clean))) {
     df_clean$filename[i]
   )
 }
+
