@@ -1,0 +1,32 @@
+---
+title: "**Anela Leyan Wang**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2025"
+
+advisor: Falco J. Bargagli Stoffi
+image: /directory/images/phd/IMG_7340 - ANELA LEYAN WANG.JPG
+categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Falco J. Bargagli Stoffi"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Falco J. Bargagli Stoffi  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","anelawang");</script>
+
+### Education:
+
+**MS in Applied Mathematics and Statistics**, 2025  
+Johns Hopkins University — Baltimore, MD
+
+**BS in Applied Mathematics and Statistics**, 2024  
+Johns Hopkins University — Baltimore, MD
+
+
+
+
