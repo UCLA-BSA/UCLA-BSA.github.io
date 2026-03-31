@@ -119,7 +119,7 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
 ##### clean data frame #####
 student_directory_form <- here("directory/directory_file.xlsx")
 if (download_files == TRUE) {
-  df <- googlesheets4::read_sheet(spreadsheet_url, range = "E:AE")
+  df <- googlesheets4::read_sheet(spreadsheet_url, range = "A:AE")
   writexl::write_xlsx(df, student_directory_form)
   
 } else {
@@ -127,6 +127,8 @@ if (download_files == TRUE) {
 }
 
 df <- df %>%
+  filter(.[[3]] == "I agree to the FERPA directory release, photo consent, and formatting authorization described above.") %>% # include only those who agree to FERPA
+  select(-c(1, 2, 3, 4)) %>%
   rename(first = 1,
          last = 2,
          preferred = 3,
