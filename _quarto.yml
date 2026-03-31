@@ -6,6 +6,7 @@ project:
     - "!*.md"
     - "!*test*.qmd"
     - "*.qmd"
+    # - "!stats/stats.qmd"
 website:
   title: "UCLA Biostatistics Student Association"
   favicon: images/icon.png

@@ -1,17 +1,17 @@
 ---
-title: "**Kiana Mohammadinik**"
+title: "**Halle Villalobos**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2024"
 
 advisor: Catherine M. Crespi
-image: /directory/images/ms/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg
+image: /directory/images/ms/Headshot - Halle Villalobos.jpg
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Catherine M. Crespi"]
 about:
   template: trestles
   image-shape: round
   links:
-    - icon: github
-      href: https://github.com/kianamonik
+    - icon: linkedin
+      href: https://www.linkedin.com/in/hallevillalobos/
       target: _blank
 ---
 
@@ -20,13 +20,13 @@ about:
 University of California, Los Angeles  
 **Academic Advisor(s):** Catherine M. Crespi  
 **Cohort:** Fall 2024  
-**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","kiananik");</script>
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","hallevillalobos");</script>
 
 ### Education:
 
 
 
-**BS in Statistics and Data Science**, 2024  
+**BS in Molecular, Cell and Developmental Biology**, 2024  
 University of California, Los Angeles — Los Angeles, CA
 
 

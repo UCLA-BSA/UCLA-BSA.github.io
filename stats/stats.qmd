@@ -4,11 +4,19 @@ page-layout: full
 toc: false
 ---
 
-```{r, echo=FALSE, results='hide'}
-library(googledrive)
-if (file.exists("../.env")) readRenviron("../.env")
-spreadsheet_url <- Sys.getenv("STUDENT_DIRECTORY_URL")
-bsa_id <- as_id(spreadsheet_url)
+```{r, echo=FALSE, message = FALSE, results='asis'}
+library(jsonlite)
+library(here)
+
+stats_path <- here("stats/student_stats.json")
+
+if (!file.exists(stats_path)) {
+  stop("student_stats.json not found — make sure make_profiles.R ran before quarto render")
+}
+
+stats_json <- readLines(stats_path, warn = FALSE) |> paste(collapse = "\n")
+
+cat(sprintf('<script>var STUDENT_DATA = %s;</script>\n', stats_json))
 ```
 
 ```{=html}
@@ -19,8 +27,6 @@ bsa_id <- as_id(spreadsheet_url)
      The sheet must be shared as "Anyone with the link can view"
      ═══════════════════════════════════════════════════════════════════════ -->
 <script>
-var BSA_SHEET_ID = '`r bsa_id`';
-
 // ── Cohort year → year-in-program (update each August) ─────────────────
 // '2025' = entered Fall 2025 → currently 1st years
 // '2024' = entered Fall 2024 → currently 2nd years
@@ -51,7 +57,7 @@ var TOTALS = {
 .stats-hero-sub  { font-size: 1rem; color: #555; max-width: 600px; margin: 0; line-height: 1.7; }
 .stats-last-updated { font-size: 0.78rem; color: #999; margin-top: 0.7rem; }
 
-/* ── Setup / Error / Loading states ───────────────────────────────────── */
+/* ── Error state ───────────────────────────────────────────────────────── */
 .state-card {
   background: #f8f9fa; border-radius: 16px; padding: 3rem 2.5rem;
   text-align: center; margin: 2rem 0;
@@ -60,13 +66,6 @@ var TOTALS = {
 .state-card h3  { font-size: 1.3rem; font-weight: 800; color: #003B5C; margin: 0 0 0.75rem; }
 .state-card p   { color: #555; margin: 0 0 0.5rem; line-height: 1.7; font-size: 0.95rem; }
 .state-card code{ background: #e8eef5; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88rem; color: #003B5C; }
-.state-card ol  { text-align: left; display: inline-block; color: #444; line-height: 2; font-size: 0.93rem; }
-.loading-spinner {
-  width: 44px; height: 44px; border: 4px solid #e0eaf3;
-  border-top-color: #2774AE; border-radius: 50%;
-  animation: spin 0.9s linear infinite; margin: 0 auto 1.2rem;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 .hidden { display: none !important; }
 
 /* ── KPI Cards ─────────────────────────────────────────────────────────── */
@@ -102,9 +101,7 @@ var TOTALS = {
   padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 2px 12px rgba(0,59,92,0.07);
 }
 .chart-card.full { grid-column: 1 / -1; }
-.chart-card.dark {
-  background: #003B5C; border-color: #003B5C;
-}
+.chart-card.dark { background: #003B5C; border-color: #003B5C; }
 .chart-title {
   font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
   letter-spacing: 2px; color: #2774AE; margin: 0 0 0.3rem;
@@ -135,7 +132,7 @@ var TOTALS = {
 }
 .section-divider-line { flex: 1; height: 1.5px; background: #e6ecf2; }
 
-/* ── KPI sub-label (candidates shown inside PhD card) ──────────────────── */
+/* ── KPI sub-label ──────────────────────────────────────────────────────── */
 .kpi-sub {
   font-size: 0.68rem; color: #e8a000; margin-top: 0.4rem;
   font-weight: 600; letter-spacing: 0.5px;
@@ -186,8 +183,8 @@ var TOTALS = {
   background: #fff; color: #667; font-size: 0.82rem; font-weight: 600;
   cursor: pointer; transition: all 0.15s; white-space: nowrap; font-family: inherit;
 }
-.filter-btn:hover                 { border-color: #2774AE; color: #2774AE; }
-.filter-btn.active                { background: #003B5C; border-color: #003B5C; color: #fff; }
+.filter-btn:hover                    { border-color: #2774AE; color: #2774AE; }
+.filter-btn.active                   { background: #003B5C; border-color: #003B5C; color: #fff; }
 .filter-btn[data-prog="all"].active  { background: #003B5C; border-color: #003B5C; }
 .filter-btn[data-prog="PhD"].active  { background: #2774AE; border-color: #2774AE; }
 .filter-btn[data-prog="MS"].active   { background: #005587; border-color: #005587; }
@@ -219,37 +216,17 @@ var TOTALS = {
   <div class="stats-hero">
     <div class="stats-hero-tag">BSA · Dashboard</div>
     <div class="stats-hero-title">Student Profile &amp; Statistics</div>
-    <p class="stats-hero-sub">Live figures from the Biostatistics Student Directory form. </p>
+    <p class="stats-hero-sub">Figures from the Biostatistics Student Directory, updated each time the site is built.</p>
     <div class="stats-last-updated" id="lastUpdated"></div>
-  </div>
-
-  <!-- Setup instructions (shown when Sheet ID not configured) -->
-  <div class="state-card hidden" id="setupCard">
-    <h3>⚙️ One-time setup needed</h3>
-    <p>To connect this dashboard to the live Google Sheet, open <code>stats/stats.qmd</code> and replace <code>YOUR_SHEET_ID_HERE</code> with your actual Sheet ID.</p>
-    <ol>
-      <li>Open the Google Sheet with the form responses</li>
-      <li>Copy the ID from the URL — it's the long string between <code>/d/</code> and <code>/edit</code></li>
-      <li>Make sure the sheet is shared as <strong>"Anyone with the link can view"</strong></li>
-      <li>Paste the ID into the <code>BSA_SHEET_ID</code> variable at the top of <code>stats/stats.qmd</code></li>
-      <li>Re-render: <code>quarto render stats/stats.qmd</code></li>
-    </ol>
   </div>
 
   <!-- Error state -->
   <div class="state-card error-card hidden" id="errorCard">
     <h3>⚠️ Could not load data</h3>
-    <p id="errorMsg">Make sure the sheet is shared as "Anyone with the link can view" and the Sheet ID is correct.</p>
+    <p id="errorMsg">Student data was not embedded at build time. Make sure <code>make_profiles.R</code> ran before <code>quarto render</code>.</p>
   </div>
 
-  <!-- Loading state -->
-  <div class="state-card" id="loadingCard">
-    <div class="loading-spinner"></div>
-    <h3>Loading student data…</h3>
-    <p>Fetching from Google Sheets</p>
-  </div>
-
-  <!-- Main content (hidden until data loads) -->
+  <!-- Main content (hidden until data initialised) -->
   <div class="hidden" id="statsContent">
 
     <!-- Completion Rates Section -->
@@ -258,7 +235,6 @@ var TOTALS = {
       <div class="section-divider-line"></div>
     </div>
 
-    <!-- Completion Rate Cards -->
     <div class="completion-group">
       <div class="completion-group-label">PhD Program</div>
       <div class="completion-row" style="grid-template-columns:1fr 1fr;">
@@ -393,7 +369,6 @@ var TOTALS = {
       <div class="section-divider-line"></div>
     </div>
 
-    <!-- Insight pills -->
     <div class="insight-row" id="insightRow"></div>
 
     <div class="charts-row-2" id="phdChartsRow">
@@ -485,7 +460,6 @@ var TOTALS = {
       </div>
     </div>
 
-
   </div><!-- end #statsContent -->
 </div><!-- end .stats-page -->
 
@@ -496,15 +470,13 @@ var TOTALS = {
 
   /* ── Helpers ─────────────────────────────────────────────────────────── */
   var BLUE    = '#2774AE';
-  var NAVY    = '#003B5C';
-  var GOLD    = '#FFD100';
   var MID     = '#005587';
   var TEAL    = '#00a693';
   var PALETTE = [BLUE, '#e8a000', TEAL, '#8b5cf6', '#ef4444', '#10b981', '#f59e0b', '#6366f1', '#ec4899', '#14b8a6'];
 
-  function el(id)  { return document.getElementById(id); }
-  function show(id){ var e = el(id); if (e) e.classList.remove('hidden'); }
-  function hide(id){ var e = el(id); if (e) e.classList.add('hidden');    }
+  function el(id)   { return document.getElementById(id); }
+  function show(id) { var e = el(id); if (e) e.classList.remove('hidden'); }
+  function hide(id) { var e = el(id); if (e) e.classList.add('hidden');    }
 
   function pct(n, total) {
     if (!total) return '0%';
@@ -515,209 +487,6 @@ var TOTALS = {
     return Object.entries(obj)
       .sort(function (a, b) { return b[1] - a[1]; })
       .slice(0, n);
-  }
-
-  /* ── Column finder ───────────────────────────────────────────────────── */
-  function findCol(cols, keywords) {
-    for (var i = 0; i < cols.length; i++) {
-      var label = (cols[i].label || '').toLowerCase();
-      if (keywords.every(function (kw) { return label.includes(kw.toLowerCase()); })) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  function cellVal(row, idx) {
-    if (idx < 0 || !row.c || !row.c[idx] || row.c[idx].v === null || row.c[idx].v === undefined) return '';
-    return String(row.c[idx].v).trim();
-  }
-
-  /* ── Normalizers ─────────────────────────────────────────────────────── */
-  function normalizeProgram(raw) {
-    var s = raw.toLowerCase();
-    if (s.includes('phd') || s.includes('doctor')) return 'PhD';
-    if (s.includes('mdsh') || s.includes('data science in public health')) return 'MDSH';
-    if (s.includes('ms') || s.includes('master of science')) return 'MS';
-    return raw || 'Unknown';
-  }
-
-  function normalizeAdvisor(raw) {
-    // Strip honorific prefixes so "Dr. Professor Smith" == "Professor Smith" == "Smith"
-    return raw.replace(/^(dr\.?\s*)?(prof\.?|professor)\.?\s*/i, '').trim();
-  }
-
-  function normalizeMajor(raw) {
-    var m = raw.toLowerCase().trim();
-    if (!m) return null;
-    if (m.includes('biostatistic')) return 'Biostatistics';
-    if (m.includes('statistic') && (m.includes('data science') || m.includes('data analysis'))) return 'Statistics & Data Science';
-    if (m.includes('statistic')) return 'Statistics';
-    if ((m.includes('math') || m.includes('mathematics')) && (m.includes('econ') || m.includes('economics'))) return 'Mathematics / Economics';
-    if (m.includes('math') || m.includes('mathematics')) return 'Mathematics';
-    if (m.includes('applied math')) return 'Applied Mathematics';
-    if (m.includes('computer science') || m.includes('computing')) return 'Computer Science';
-    if (m.includes('biology') || m.includes('molecular bio') || m.includes('life science')) return 'Biology / Life Sciences';
-    if (m.includes('biochem')) return 'Biochemistry';
-    if (m.includes('chemistry')) return 'Chemistry';
-    if (m.includes('physics')) return 'Physics';
-    if (m.includes('economics') || m.includes('econ')) return 'Economics';
-    if (m.includes('engineering')) return 'Engineering';
-    if (m.includes('public health') || m.includes('epidemiology')) return 'Public Health / Epi';
-    if (m.includes('neuroscience')) return 'Neuroscience';
-    if (m.includes('psychology') || m.includes('cognitive')) return 'Psychology';
-    // fallback: title-case
-    return raw.split(/[\s\/]+/).map(function (w) {
-      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
-    }).join(' ');
-  }
-
-  function normalizeSchool(raw) {
-    if (!raw) return null;
-    var s = raw.toLowerCase().trim();
-    if (!s) return null;
-
-    // ── UC system — catch all variants first ────────────────────────────
-    // "University of California, X" / "UC X" / abbreviations
-    var ucMap = {
-      'los angeles': 'UCLA', 'ucla': 'UCLA',
-      'berkeley': 'UC Berkeley', 'ucb': 'UC Berkeley',
-      'davis': 'UC Davis',
-      'san diego': 'UC San Diego', 'ucsd': 'UC San Diego',
-      'santa barbara': 'UC Santa Barbara', 'ucsb': 'UC Santa Barbara',
-      'irvine': 'UC Irvine', 'uci': 'UC Irvine',
-      'santa cruz': 'UC Santa Cruz', 'ucsc': 'UC Santa Cruz',
-      'riverside': 'UC Riverside', 'ucr': 'UC Riverside',
-      'merced': 'UC Merced',
-      'san francisco': 'UCSF', 'ucsf': 'UCSF',
-    };
-    // Strip "university of california" prefix then look up campus
-    var stripped = s.replace(/university of california,?\s*/i, '').replace(/^uc\s+/i, '').trim();
-    if (ucMap[stripped]) return ucMap[stripped];
-    // Also check if the raw string contains a UC keyword
-    for (var campus in ucMap) {
-      if (s === campus || s === 'uc ' + campus || s.includes('university of california') && s.includes(campus)) {
-        return ucMap[campus];
-      }
-    }
-
-    // ── Other US institutions ─────────────────────────────────────────
-    if (s.includes('johns hopkins')) return 'Johns Hopkins University';
-    if (s.includes('university of chicago') || s === 'uchicago') return 'University of Chicago';
-    if (s.includes('university of north carolina') || s.includes('chapel hill') || s === 'unc') return 'UNC Chapel Hill';
-    if (s.includes('university of washington') && !s.includes('st. louis')) return 'U of Washington';
-    if (s.includes('university of michigan') || (s.includes('michigan') && !s.includes('state'))) return 'U of Michigan';
-    if (s.includes('university of wisconsin') || s.includes('uw-madison') || s.includes('uw–madison')) return 'U of Wisconsin–Madison';
-    if (s.includes('university of southern california') || s === 'usc') return 'USC';
-    if (s.includes('cal poly')) return 'Cal Poly';
-    if (s.includes('pomona college')) return 'Pomona College';
-    if (s.includes('brown university') || s === 'brown') return 'Brown University';
-    if (s.includes('stanford')) return 'Stanford University';
-    if (s.includes('columbia')) return 'Columbia University';
-    if (s.includes('nyu') || s.includes('new york university')) return 'NYU';
-    if (s.includes('carnegie mellon') || s === 'cmu') return 'Carnegie Mellon';
-    if (s.includes('purdue')) return 'Purdue University';
-    if (s.includes('notre dame')) return 'Notre Dame';
-    if (s.includes('cornell')) return 'Cornell University';
-    if (s.includes('imperial college')) return 'Imperial College London';
-
-    // ── Chinese institutions ──────────────────────────────────────────
-    if (s.includes('peking university') || s.includes('北京大学') || s === 'pku') return 'Peking University';
-    if (s.includes('nankai')) return 'Nankai University';
-    if (s.includes('southern university of science') || s.includes('sustech') || s.includes('shenzhen')) return 'Southern Univ. of Sci. & Tech.';
-    if (s.includes('east china normal')) return 'East China Normal University';
-    if (s.includes('chinese university of hong kong') || s === 'cuhk') return 'Chinese Univ. of Hong Kong';
-    if (s.includes('kyoto')) return 'Kyoto University';
-
-    // ── Generic cleanup ───────────────────────────────────────────────
-    var clean = raw.trim().replace(/^The\s+/i, '');
-    return clean.length > 32 ? clean.slice(0, 30) + '…' : clean;
-  }
-
-  function parseLocation(raw) {
-    if (!raw) return { country: null, state: null };
-    var parts = raw.split(',').map(function (p) { return p.trim(); });
-    var last  = (parts[parts.length - 1] || '').toLowerCase().trim();
-
-    // ── US state lookup (abbreviations + full names) ───────────────────
-    var US_STATES = {
-      al:1,ak:1,az:1,ar:1,ca:1,co:1,ct:1,de:1,fl:1,ga:1,hi:1,id:1,il:1,'in':1,
-      ia:1,ks:1,ky:1,la:1,me:1,md:1,ma:1,mi:1,mn:1,mo:1,mt:1,ne:1,nv:1,
-      nh:1,nj:1,nm:1,ny:1,nc:1,nd:1,oh:1,ok:1,or:1,pa:1,ri:1,sc:1,sd:1,tn:1,
-      tx:1,ut:1,vt:1,va:1,wa:1,wv:1,wi:1,wy:1,dc:1,
-      // Full state names
-      alabama:1,alaska:1,arizona:1,arkansas:1,california:1,colorado:1,
-      connecticut:1,delaware:1,florida:1,georgia:1,hawaii:1,idaho:1,illinois:1,
-      indiana:1,iowa:1,kansas:1,kentucky:1,louisiana:1,maine:1,maryland:1,
-      massachusetts:1,michigan:1,minnesota:1,mississippi:1,missouri:1,montana:1,
-      nebraska:1,nevada:1,'new hampshire':1,'new jersey':1,'new mexico':1,
-      'new york':1,'north carolina':1,'north dakota':1,ohio:1,oklahoma:1,
-      oregon:1,pennsylvania:1,'rhode island':1,'south carolina':1,'south dakota':1,
-      tennessee:1,texas:1,utah:1,vermont:1,virginia:1,washington:1,
-      'west virginia':1,wisconsin:1,wyoming:1,'district of columbia':1
-    };
-
-    // ── State name → 2-letter abbreviation ────────────────────────────
-    var STATE_ABBR = {
-      alabama:'AL',alaska:'AK',arizona:'AZ',arkansas:'AR',california:'CA',
-      colorado:'CO',connecticut:'CT',delaware:'DE',florida:'FL',georgia:'GA',
-      hawaii:'HI',idaho:'ID',illinois:'IL',indiana:'IN',iowa:'IA',
-      kansas:'KS',kentucky:'KY',louisiana:'LA',maine:'ME',maryland:'MD',
-      massachusetts:'MA',michigan:'MI',minnesota:'MN',mississippi:'MS',
-      missouri:'MO',montana:'MT',nebraska:'NE',nevada:'NV',
-      'new hampshire':'NH','new jersey':'NJ','new mexico':'NM','new york':'NY',
-      'north carolina':'NC','north dakota':'ND',ohio:'OH',oklahoma:'OK',
-      oregon:'OR',pennsylvania:'PA','rhode island':'RI','south carolina':'SC',
-      'south dakota':'SD',tennessee:'TN',texas:'TX',utah:'UT',vermont:'VT',
-      virginia:'VA',washington:'WA','west virginia':'WV',wisconsin:'WI',
-      wyoming:'WY','district of columbia':'DC'
-    };
-    function toStateAbbr(raw) {
-      var lo = raw.toLowerCase().trim();
-      if (lo === 'united states' || lo === 'usa' || lo === 'u.s.' || lo === 'u.s.a.') return null;
-      if (/^[A-Z]{2}$/.test(raw.trim())) return raw.trim();
-      return STATE_ABBR[lo] || raw.trim();
-    }
-
-    // ── US state abbreviation (2 uppercase letters) ────────────────────
-    if (/^[A-Z]{2}$/.test(parts[parts.length - 1])) {
-      return { country: 'United States', state: parts[parts.length - 1] };
-    }
-
-    if (US_STATES[last] || last === 'usa' || last === 'united states' || last === 'u.s.') {
-      return { country: 'United States', state: toStateAbbr(parts[parts.length - 1]) };
-    }
-
-    // ── Country matching ───────────────────────────────────────────────
-    var COUNTRIES = {
-      china: 'China', 'hong kong': 'Hong Kong',
-      'united kingdom': 'United Kingdom', england: 'United Kingdom',
-      scotland: 'United Kingdom', wales: 'United Kingdom', uk: 'United Kingdom',
-      canada: 'Canada', japan: 'Japan',
-      'south korea': 'South Korea', korea: 'South Korea',
-      india: 'India', australia: 'Australia', germany: 'Germany',
-      france: 'France', spain: 'Spain', italy: 'Italy',
-      netherlands: 'Netherlands', sweden: 'Sweden', switzerland: 'Switzerland',
-      singapore: 'Singapore', taiwan: 'Taiwan',
-      philippines: 'Philippines', indonesia: 'Indonesia', thailand: 'Thailand',
-      vietnam: 'Vietnam', malaysia: 'Malaysia', bangladesh: 'Bangladesh',
-      'sri lanka': 'Sri Lanka', pakistan: 'Pakistan', nepal: 'Nepal',
-      brazil: 'Brazil', mexico: 'Mexico', colombia: 'Colombia',
-      argentina: 'Argentina', chile: 'Chile', peru: 'Peru',
-      nigeria: 'Nigeria', ghana: 'Ghana', kenya: 'Kenya',
-      egypt: 'Egypt', iran: 'Iran', turkey: 'Turkey',
-      'new zealand': 'New Zealand', ireland: 'Ireland', portugal: 'Portugal',
-      greece: 'Greece', poland: 'Poland', russia: 'Russia', ukraine: 'Ukraine'
-    };
-
-    // Check last part exactly, then substring
-    if (COUNTRIES[last]) return { country: COUNTRIES[last], state: null };
-    for (var c in COUNTRIES) {
-      if (last.includes(c)) return { country: COUNTRIES[c], state: null };
-    }
-
-    // Fallback: return the raw string as country (better than silently wrong)
-    return { country: parts[parts.length - 1] || raw, state: null };
   }
 
   /* ── Chart factory ───────────────────────────────────────────────────── */
@@ -740,39 +509,15 @@ var TOTALS = {
     });
   }
 
-  function makeBar(canvasId, labels, data, colors, horizontal) {
-    var ctx = el(canvasId);
-    if (!ctx) return;
-    if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
-    var colorArr = Array.isArray(colors) ? colors : labels.map(function (_, i) { return PALETTE[i % PALETTE.length]; });
-    chartInstances[canvasId] = new Chart(ctx, {
-      type: horizontal ? 'bar' : 'bar',
-      data: { labels: labels, datasets: [{ data: data, backgroundColor: colorArr, borderRadius: 6, borderSkipped: false }] },
-      options: {
-        indexAxis: horizontal ? 'y' : 'x',
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed[horizontal ? 'x' : 'y'] + ' students'; } } } },
-        scales: {
-          x: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#555', font: { size: 11 } } },
-          y: { grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#555', font: { size: 11 } } }
-        }
-      }
-    });
-  }
-
   function makeHBar(canvasId, labels, data, color) {
     var ctx = el(canvasId);
     if (!ctx) return;
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{ data: data, backgroundColor: color || BLUE, borderRadius: 5, borderSkipped: false }]
-      },
+      data: { labels: labels, datasets: [{ data: data, backgroundColor: color || BLUE, borderRadius: 5, borderSkipped: false }] },
       options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: function (c) { return ' ' + c.parsed.x + ' students'; } } } },
         scales: {
           x: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#555', stepSize: 1 } },
@@ -788,12 +533,7 @@ var TOTALS = {
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
-      data: {
-        labels: labels,
-        datasets: datasets.map(function (d) {
-          return { label: d.label, data: d.data, backgroundColor: d.color, borderRadius: 4, borderSkipped: false };
-        })
-      },
+      data: { labels: labels, datasets: datasets.map(function (d) { return { label: d.label, data: d.data, backgroundColor: d.color, borderRadius: 4, borderSkipped: false }; }) },
       options: {
         responsive: true, maintainAspectRatio: false,
         plugins: {
@@ -814,15 +554,9 @@ var TOTALS = {
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
-      data: {
-        labels: labels,
-        datasets: datasets.map(function (d) {
-          return { label: d.label, data: d.data, backgroundColor: d.color, borderRadius: 4, borderSkipped: false };
-        })
-      },
+      data: { labels: labels, datasets: datasets.map(function (d) { return { label: d.label, data: d.data, backgroundColor: d.color, borderRadius: 4, borderSkipped: false }; }) },
       options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
+        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
         plugins: {
           legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 }, color: '#444', usePointStyle: true, pointStyleWidth: 10 } },
           tooltip: { mode: 'index', intersect: false, callbacks: { label: function (c) { return ' ' + c.dataset.label + ': ' + c.parsed.x; } } }
@@ -836,105 +570,72 @@ var TOTALS = {
   }
 
   /* ── Global state ────────────────────────────────────────────────────── */
-  var _rows        = [];   // active (non-alumni) rows, parsed once
-  var _alumniCount = 0;    // total alumni responses (shown separately, never filtered)
-  var _sel  = { PhD: true, MS: true, MDSH: true };
+  var _rows        = [];
+  var _alumniCount = 0;
+  var _sel         = { PhD: true, MS: true, MDSH: true };
 
-  /* ── Alumni detection — MS/MDSH beyond 2nd year cohort are alumni ───── */
-  function isAlumni(r) {
-    if (r.program === 'PhD') return false;
-    var yr     = parseInt(r.cohortYear) || 0;
-    var minYr  = parseInt(window.COHORT_2ND_YEAR) || 2024;
-    return yr > 0 && yr < minYr;
-  }
+  /* ── Process pre-cleaned JSON from make_profiles.R ───────────────────── */
+  function processData(rawRows) {
 
-  /* ── Parse sheet → structured row objects (runs once on load) ────────── */
-  function processData(tableData) {
-    var cols = tableData.cols;
-    var raw  = tableData.rows || [];
-
-    var idx = {
-      program:     findCol(cols, ['degree program']),
-      candidacy:   findCol(cols, ['candidacy']),
-      cohort:      findCol(cols, ['quarter']),
-      advisor:     findCol(cols, ['advisor']),
-      advisorType: findCol(cols, ['is this adv']),
-      bsMajor:     findCol(cols, ['bachelor', 'major']),
-      bsSchool:    findCol(cols, ['Bachelor', 'school']),
-      bsLoc:       findCol(cols, ['bachelor', 'location']),
-      msName:      findCol(cols, ['master', 'name']),
-      msSchool:    findCol(cols, ['master', 'school']),
-      linkedin:    findCol(cols, ['linkedin']),
-      github:      findCol(cols, ['github']),
-      website:     findCol(cols, ['personal website']),
-      bio:         findCol(cols, ['description']),
-    };
-
-    _rows = raw.filter(function (r) { return r.c; }).map(function (r) {
-      var advRaw = cellVal(r, idx.advisor);
-      var advs   = advRaw
-        ? advRaw.split(/,|and(?=\s+[A-Z])/i).map(function (a) { return normalizeAdvisor(a.trim()); }).filter(function (a) { return a.length > 2; })
-        : [];
-      var yrM = cellVal(r, idx.cohort).match(/\d{4}/);
+    // Map JSON fields → internal row format
+    // All normalisation (program names, advisor names, majors, schools,
+    // locations) was already done in R — no JS normalizers needed here
+    var allRows = rawRows.map(function (r) {
       return {
-        program:     normalizeProgram(cellVal(r, idx.program)),
-        candidacy:   cellVal(r, idx.candidacy).toLowerCase(),
-        cohortYear:  yrM ? yrM[0] : '',
-        hasMasters:  !!(cellVal(r, idx.msName) || cellVal(r, idx.msSchool)),
-        bsMajor:     normalizeMajor(cellVal(r, idx.bsMajor)),
-        bsSchool:    normalizeSchool(cellVal(r, idx.bsSchool)),
-        bsLoc:       parseLocation(cellVal(r, idx.bsLoc)),
-        advisors:    advs,
-        advisorType: cellVal(r, idx.advisorType).toLowerCase(),
-        linkedin:    !!cellVal(r, idx.linkedin),
-        github:      !!cellVal(r, idx.github),
-        website:     !!cellVal(r, idx.website),
-        bio:         !!cellVal(r, idx.bio),
+        program:     r.program,
+        candidacy:   r.candidacy === 'candidate' ? 'yes' : 'no',
+        cohortYear:  r.cohortYear || '',
+        hasMasters:  !!r.hasMasters,
+        bsMajor:     r.bsMajor  || null,
+        bsSchool:    r.bsSchool || null,
+        bsLoc:       { country: r.bsCountry || null, state: r.bsState || null },
+        advisors:    [r.advisor1, r.advisor2].filter(function (a) { return a; }),
+        advisorType: (r.advisorType || '').toLowerCase(),
+        alumni:      !!r.alumni
       };
     });
 
-    // Split into alumni vs active — MS/MDSH beyond 2nd-year cohort are alumni
-    _alumniCount = _rows.filter(isAlumni).length;
-    _rows        = _rows.filter(function (r) { return !isAlumni(r); });
+    _alumniCount = allRows.filter(function (r) { return r.alumni; }).length;
+    _rows        = allRows.filter(function (r) { return !r.alumni; });
 
-    // Completion rates — always from full dataset, independent of filter
+    // Completion rates
     function fillCompletion(pctId, fracId, barId, resp, total) {
       var p = Math.round(resp / total * 100);
-      el(pctId).textContent = p + '%';
+      el(pctId).textContent  = p + '%';
       el(fracId).textContent = resp + ' / ' + total;
-      el(barId).style.width = Math.min(p, 100) + '%';
+      el(barId).style.width  = Math.min(p, 100) + '%';
     }
-    var T = window.TOTALS;
-    var Y1 = window.COHORT_1ST_YEAR, Y2 = window.COHORT_2ND_YEAR;
-    fillCompletion('phdCompletePct',  'phdCompleteFrac',  'phdCompleteBar',
+    var T  = window.TOTALS;
+    var Y1 = window.COHORT_1ST_YEAR;
+    var Y2 = window.COHORT_2ND_YEAR;
+    fillCompletion('phdCompletePct',   'phdCompleteFrac',   'phdCompleteBar',
       _rows.filter(function (r) { return r.program === 'PhD'; }).length, T.PhD.all);
-    fillCompletion('ms1CompletePct',  'ms1CompleteFrac',  'ms1CompleteBar',
+    fillCompletion('ms1CompletePct',   'ms1CompleteFrac',   'ms1CompleteBar',
       _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y1; }).length, T.MS[Y1]);
-    fillCompletion('ms2CompletePct',  'ms2CompleteFrac',  'ms2CompleteBar',
+    fillCompletion('ms2CompletePct',   'ms2CompleteFrac',   'ms2CompleteBar',
       _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y2; }).length, T.MS[Y2]);
-    fillCompletion('mdsh1CompletePct','mdsh1CompleteFrac','mdsh1CompleteBar',
+    fillCompletion('mdsh1CompletePct', 'mdsh1CompleteFrac', 'mdsh1CompleteBar',
       _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y1; }).length, T.MDSH[Y1]);
-    fillCompletion('mdsh2CompletePct','mdsh2CompleteFrac','mdsh2CompleteBar',
+    fillCompletion('mdsh2CompletePct', 'mdsh2CompleteFrac', 'mdsh2CompleteBar',
       _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y2; }).length, T.MDSH[Y2]);
 
+    // Stamp the build date (set by R at render time, not the visitor's clock)
     var lu = el('lastUpdated');
-    if (lu) lu.textContent = 'Last loaded: ' + new Date().toLocaleString();
+    if (lu) lu.textContent = 'Data as of: ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-    // KPIs are always computed from full _rows — not affected by filter
     renderKPIs();
     setupFilters();
     renderAll();
-    hide('loadingCard');
     show('statsContent');
   }
 
-  /* ── KPI cards — always full _rows, never filtered ───────────────────── */
+  /* ── KPI cards ───────────────────────────────────────────────────────── */
   function renderKPIs() {
-    var programs  = {};
-    var candidacy = { Candidate: 0 };
+    var programs   = {};
+    var candidates = 0;
     _rows.forEach(function (r) {
       programs[r.program] = (programs[r.program] || 0) + 1;
-      if (r.program === 'PhD' && r.candidacy === 'yes') candidacy.Candidate++;
+      if (r.program === 'PhD' && r.candidacy === 'yes') candidates++;
     });
     el('kpiTotal').textContent  = _rows.length;
     el('kpiPhd').textContent    = programs['PhD']  || 0;
@@ -942,8 +643,7 @@ var TOTALS = {
     el('kpiMdsh').textContent   = programs['MDSH'] || 0;
     el('kpiAlumni').textContent = _alumniCount;
     var candSub = el('kpiCandSub');
-    if (candSub) candSub.textContent = candidacy.Candidate > 0
-      ? 'incl. ' + candidacy.Candidate + ' candidates' : '';
+    if (candSub) candSub.textContent = candidates > 0 ? 'incl. ' + candidates + ' candidates' : '';
   }
 
   /* ── Filter buttons ──────────────────────────────────────────────────── */
@@ -955,10 +655,7 @@ var TOTALS = {
           _sel = { PhD: true, MS: true, MDSH: true };
         } else {
           _sel[prog] = !_sel[prog];
-          // Never allow nothing selected — snap back to all
-          if (!_sel.PhD && !_sel.MS && !_sel.MDSH) {
-            _sel = { PhD: true, MS: true, MDSH: true };
-          }
+          if (!_sel.PhD && !_sel.MS && !_sel.MDSH) _sel = { PhD: true, MS: true, MDSH: true };
         }
         syncFilterBtns();
         renderAll();
@@ -966,7 +663,6 @@ var TOTALS = {
     });
     syncFilterBtns();
 
-    // Advisor chart / list toggle
     var togBtn = el('advisorViewToggle');
     if (togBtn) {
       togBtn.addEventListener('click', function () {
@@ -1003,58 +699,65 @@ var TOTALS = {
     }
   }
 
-  /* ── Render all charts from current filter selection ─────────────────── */
+  /* ── Render all charts ───────────────────────────────────────────────── */
   function renderAll() {
     var filtered = _rows.filter(function (r) { return _sel[r.program]; });
     var total    = filtered.length;
 
-    var programs      = {};
-    var cohortByYear  = {};  // { year: { PhD:0, MS:0, MDSH:0 } }
-    var phdHasMasters = { "Has Master's": 0, "No Master's": 0 };
-    var candidacy     = { Candidate: 0, Student: 0 };
-    var bsMajors      = {};
-    var bsSchools     = {};
-    var countries     = {};
-    var usStates      = {};
-    var advisorBreakdown = {}; // { name: { Research:0, Academic:0 } }
-    var advisorTypes  = { Research: 0, Academic: 0, Other: 0 };
-    var multiAdvisor  = 0;
-    var phdTotal      = 0;
+    var programs         = {};
+    var cohortByYear     = {};
+    var phdHasMasters    = { "Has Master's": 0, "No Master's": 0 };
+    var candidacy        = { Candidate: 0, Student: 0 };
+    var bsMajors         = {};
+    var bsSchools        = {};
+    var countries        = {};
+    var usStates         = {};
+    var advisorBreakdown = {};
+    var advisorTypes     = { Research: 0, Academic: 0, Other: 0 };
+    var multiAdvisor     = 0;
+    var phdTotal         = 0;
 
     filtered.forEach(function (r) {
       programs[r.program] = (programs[r.program] || 0) + 1;
       if (r.program === 'PhD') phdTotal++;
+
       if (r.cohortYear) {
         if (!cohortByYear[r.cohortYear]) cohortByYear[r.cohortYear] = { PhD: 0, MS: 0, MDSH: 0 };
         cohortByYear[r.cohortYear][r.program] = (cohortByYear[r.cohortYear][r.program] || 0) + 1;
       }
+
       if (r.program === 'PhD') {
         phdHasMasters[r.hasMasters ? "Has Master's" : "No Master's"]++;
         if (r.candidacy === 'yes') candidacy.Candidate++;
-        else if (r.candidacy === 'no') candidacy.Student++;
+        else candidacy.Student++;
       }
-      if (r.bsMajor)  bsMajors[r.bsMajor]   = (bsMajors[r.bsMajor]   || 0) + 1;
-      if (r.bsSchool) bsSchools[r.bsSchool]  = (bsSchools[r.bsSchool] || 0) + 1;
+
+      if (r.bsMajor)  bsMajors[r.bsMajor]  = (bsMajors[r.bsMajor]  || 0) + 1;
+      if (r.bsSchool) bsSchools[r.bsSchool] = (bsSchools[r.bsSchool] || 0) + 1;
+
       if (r.bsLoc.country) {
         countries[r.bsLoc.country] = (countries[r.bsLoc.country] || 0) + 1;
         if (r.bsLoc.country === 'United States' && r.bsLoc.state)
           usStates[r.bsLoc.state] = (usStates[r.bsLoc.state] || 0) + 1;
       }
+
       var advType = r.advisorType.includes('research') ? 'Research'
                   : r.advisorType.includes('academic') ? 'Academic' : null;
       if (advType) advisorTypes[advType]++;
       else if (r.advisorType) advisorTypes.Other++;
+
       r.advisors.forEach(function (a) {
         if (!advisorBreakdown[a]) advisorBreakdown[a] = { Research: 0, Academic: 0 };
         advisorBreakdown[a][advType || 'Research']++;
       });
+
       if (r.advisors.length > 1) multiAdvisor++;
     });
 
     // Insight pills
     var insightData = _sel.PhD
       ? [
-          { num: pct(phdHasMasters["Has Master's"], phdTotal || 1), text: 'of PhD students came with a prior Master\'s degree' },
+          { num: pct(phdHasMasters["Has Master's"], phdTotal || 1), text: "of PhD students came with a prior Master's degree" },
           { num: pct(multiAdvisor, total),                          text: 'have more than one faculty advisor' },
           { num: pct(countries['United States'] || 0, total),       text: 'did their undergrad at a US institution' },
           { num: pct(candidacy.Candidate, phdTotal || 1),           text: 'of PhD students have advanced to candidacy' }
@@ -1068,7 +771,6 @@ var TOTALS = {
       return '<div class="insight-pill"><div class="insight-num">' + d.num + '</div><div class="insight-text">' + d.text + '</div></div>';
     }).join('');
 
-    // Charts
     var progLabels = Object.keys(programs);
     makeDonut('chartProgram', progLabels, progLabels.map(function (l) { return programs[l]; }),
       progLabels.map(function (l) { return l === 'PhD' ? BLUE : l === 'MS' ? MID : l === 'MDSH' ? TEAL : '#999'; }));
@@ -1080,7 +782,6 @@ var TOTALS = {
       { label: 'MDSH', data: sortedYears.map(function (y) { return cohortByYear[y].MDSH || 0; }), color: TEAL }
     ]);
 
-    // Show/hide PhD-only charts
     var phdRow = el('phdChartsRow');
     if (phdRow) phdRow.style.display = _sel.PhD ? '' : 'none';
 
@@ -1104,8 +805,7 @@ var TOTALS = {
 
     var topAdvList = Object.entries(advisorBreakdown)
       .map(function (e) { return { name: e[0], r: e[1].Research, a: e[1].Academic, total: e[1].Research + e[1].Academic }; })
-      .sort(function (a, b) { return b.total - a.total; })
-      .slice(0, 10);
+      .sort(function (a, b) { return b.total - a.total; }).slice(0, 10);
     makeStackedHBar('chartAdvisors', topAdvList.map(function (e) { return e.name; }), [
       { label: 'Research', data: topAdvList.map(function (e) { return e.r; }), color: BLUE },
       { label: 'Academic', data: topAdvList.map(function (e) { return e.a; }), color: '#e8a000' }
@@ -1115,7 +815,6 @@ var TOTALS = {
     makeDonut('chartAdvisorType', advTypeLabels, advTypeLabels.map(function (k) { return advisorTypes[k]; }),
       [BLUE, '#e8a000', TEAL]);
 
-    // Faculty list view (all advisors, not just top 10)
     var allAdvList = Object.entries(advisorBreakdown)
       .map(function (e) { return { name: e[0], r: e[1].Research, a: e[1].Academic, total: e[1].Research + e[1].Academic }; })
       .sort(function (a, b) { return b.total - a.total; });
@@ -1132,53 +831,13 @@ var TOTALS = {
     }).join('');
   }
 
-  /* ── JSONP loader ────────────────────────────────────────────────────── */
-  function loadSheet(sheetId) {
-    if (!sheetId || sheetId === 'YOUR_SHEET_ID_HERE') {
-      hide('loadingCard');
-      show('setupCard');
-      return;
-    }
-
-    var cbName = '_bsaStatsData_' + Date.now();
-    var timeout = setTimeout(function () {
-      hide('loadingCard');
-      el('errorMsg').textContent = 'Request timed out. Check the Sheet ID and sharing settings.';
-      show('errorCard');
-    }, 12000);
-
-    window[cbName] = function (data) {
-      clearTimeout(timeout);
-      delete window[cbName];
-      if (!data || !data.table) {
-        hide('loadingCard');
-        el('errorMsg').textContent = 'Sheet returned no data. Make sure it\'s shared as "Anyone with the link can view."';
-        show('errorCard');
-        return;
-      }
-      try {
-        processData(data.table);
-      } catch (e) {
-        hide('loadingCard');
-        el('errorMsg').textContent = 'Error parsing data: ' + e.message;
-        show('errorCard');
-      }
-    };
-
-    var script = document.createElement('script');
-    script.onerror = function () {
-      clearTimeout(timeout);
-      hide('loadingCard');
-      el('errorMsg').textContent = 'Could not reach Google Sheets. Check the Sheet ID and make sure the sheet is shared publicly.';
-      show('errorCard');
-    };
-    script.src = 'https://docs.google.com/spreadsheets/d/' + sheetId +
-                 '/gviz/tq?tqx=out:json;responseHandler:' + cbName;
-    document.head.appendChild(script);
+  /* ── Boot — data was inlined at render time by the R chunk ───────────── */
+  if (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) {
+    processData(STUDENT_DATA);
+  } else {
+    el('errorMsg').textContent = 'Student data was not embedded at build time. Make sure make_profiles.R ran before quarto render.';
+    show('errorCard');
   }
-
-  // Kick off
-  loadSheet(window.BSA_SHEET_ID);
 
 })();
 </script>

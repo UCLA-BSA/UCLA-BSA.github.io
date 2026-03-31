@@ -1,0 +1,32 @@
+---
+title: "**Kate Johnson**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+
+
+### Education:
+
+**MS in Biostatistics**, 2025  
+University of California, San Diego — San Diego, CA
+
+**BS in Statistics**, 2022  
+University of California, Davis — Davis, CA
+
+
+
+

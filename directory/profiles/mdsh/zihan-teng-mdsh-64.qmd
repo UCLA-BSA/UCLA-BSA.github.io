@@ -1,0 +1,36 @@
+---
+title: "**Zihan (Hannah) Teng**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Michele Guindani
+image: /directory/images/mdsh/IMG_8864 - Hannah TENG.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Michele Guindani"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/hannah-teng-4a202a355
+      target: _blank
+    - icon: github
+      href: https://github.com/HannahTeng
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Michele Guindani  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","zihanteng");</script>
+
+
+
+
+
+
+
+### Bio:
+
+Data Science in Health Student@UCLA 27‘ | SQL | R |   Python | Tableau

@@ -1,0 +1,32 @@
+---
+title: "**Yuxi Song**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+
+advisor: Gang Li
+image: /directory/images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Gang Li"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Gang Li  
+**Cohort:** Fall 2024  
+
+
+### Education:
+
+**MS in Biostatistics**, 2024  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Statistics**, 2022  
+East China Normal University — Shanghai, China
+
+
+
+

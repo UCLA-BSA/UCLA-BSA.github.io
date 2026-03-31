@@ -1,0 +1,37 @@
+---
+title: "**Chih-Wei (Frank) Hsu**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/Hsu Chih Wei 2 half - Frank HSU.JPG
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/frank33hsu
+      target: _blank
+    - icon: github
+      href: https://github.com/3Frank3
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","frankhsu33");</script>
+
+### Education:
+
+
+
+**BS in Psychology & Information Management**, 2024  
+National Cheng Kung University — Tainan, Taiwan
+
+### Bio:
+
+I am a data science student interested in applying data-driven approaches to real-world problems in healthcare and finance. I enjoy working with complex datasets, exploring patterns, and translating data into meaningful insights.

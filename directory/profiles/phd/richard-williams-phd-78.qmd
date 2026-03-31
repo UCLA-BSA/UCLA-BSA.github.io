@@ -1,0 +1,34 @@
+---
+title: "**Richard (Rich) Williams**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2020"
+
+advisor: Andrew Holbrook
+image: /directory/images/phd/221018_PH_0022 - Richard Williams.jpg
+categories: ["Program: PhD", "Cohort: Fall 2020", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/richard-williams-04194a1b2/
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2020  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","rlwilliams34");</script>
+
+### Education:
+
+
+
+**BA in Applied Mathematics**, 2015  
+University of California, Berkeley — Berkeley, CA
+
+### Bio:
+
+My research interests lie at the intersection of machine learning, scalability, and viral epidemic dynamics. I am currently pursuing my PhD under the guidance of Dr. Andrew Holbrook, where I have worked on scalable generative models over graphs and am now focused on phylogenetic applications of graph neural network models. Outside of research, I enjoy staying active, gardening, going to the movies, playing video games, taking long walks on the beach, drinking coffee, and being beholden to my three cats.

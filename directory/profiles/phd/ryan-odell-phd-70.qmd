@@ -1,0 +1,32 @@
+---
+title: "**Ryan O'Dell**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+
+advisor: Andrew Holbrook
+image: /directory/images/phd/240923_FSPH_330 - RYAN O'DELL.jpg
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","rjodell");</script>
+
+### Education:
+
+**MS in Statistics**, 2023  
+University of California, Los Angeles — Los Angeles, CA
+
+**BA in Mathematics**, 2018  
+University of California, Santa Cruz — Santa Cruz, CA
+
+
+
+
