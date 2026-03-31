@@ -6,12 +6,19 @@ css: styles.css
 ---
 
 ```{=html}
+<style>
+  .quarto-title-block, h1.title { display: none !important; }
+</style>
+```
+
+```{=html}
 <div class="directory-landing">
 
   <!-- Hero section: text left, photo right -->
   <div class="directory-hero">
     <div class="directory-hero-text">
-      <h2 class="directory-hero-title">The Students</h2>
+      <div class="section-label">Student Directory</div>
+      <h2 class="directory-hero-title section-title-bar">The Students</h2>
       <p class="directory-hero-desc">
         Meet the students of UCLA Biostatistics! Our community spans three
         graduate programs: the <strong>Master of Science in Biostatistics</strong>,
@@ -50,29 +57,38 @@ css: styles.css
 
   <!-- Program cards -->
   <!-- Current Students -->
-  <h3 style="margin-bottom: 1rem; color: #003B5C;">Current Students</h3>
+  <div style="margin-bottom: 1.25rem; margin-top: 0.5rem;">
+    <div class="section-label">Browse by Program</div>
+    <h3 class="section-title-bar" style="font-size:1.6rem;">Current Students</h3>
+  </div>
   <div class="program-cards-grid">
-    <a href="phd-students.html" class="text-decoration-none">
+    <a href="phd-students.html">
       <div class="directory-program-card">
         <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
-        <div class="card-body text-center">
-          <h3 class="card-title mt-2">PhD Students</h3>
+        <div class="prog-card-overlay">
+          <div class="prog-card-tag">Doctor of Philosophy</div>
+          <div class="prog-card-title">PhD Students</div>
+          <div class="prog-card-cta">Explore →</div>
         </div>
       </div>
     </a>
-    <a href="ms-students.html" class="text-decoration-none">
+    <a href="ms-students.html">
       <div class="directory-program-card">
         <img src="./images/directory_home/ms.jpg" alt="MS Students" />
-        <div class="card-body text-center">
-          <h3 class="card-title mt-2">MS Students</h3>
+        <div class="prog-card-overlay">
+          <div class="prog-card-tag">Master of Science</div>
+          <div class="prog-card-title">MS Students</div>
+          <div class="prog-card-cta">Explore →</div>
         </div>
       </div>
     </a>
-    <a href="mdsh-students.html" class="text-decoration-none">
+    <a href="mdsh-students.html">
       <div class="directory-program-card">
         <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
-        <div class="card-body text-center">
-          <h3 class="card-title mt-2">MDSH Students</h3>
+        <div class="prog-card-overlay">
+          <div class="prog-card-tag">Master of Data Science in Health</div>
+          <div class="prog-card-title">MDSH Students</div>
+          <div class="prog-card-cta">Explore →</div>
         </div>
       </div>
     </a>

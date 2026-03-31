@@ -10,6 +10,10 @@
   flex-basis: 20% !important;
 }
 
+/* Shared section header pattern (matches about / events pages) */
+.section-label    { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: #2774AE; margin-bottom: 0.4rem; }
+.section-title-bar{ font-size: 2rem; font-weight: 800; color: #003B5C; margin: 0 0 0.6rem; padding-bottom: 0.65rem; border-bottom: 3px solid #FFD100; display: inline-block; }
+
 /* Directory landing page */
 .directory-landing {
   padding: 2rem 1rem;
@@ -153,48 +157,70 @@
 }
 
 .program-cards-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  justify-content: center;
   margin-top: 1rem;
 }
 
 .program-cards-grid > a {
-  flex: 1 1 260px;
-  max-width: 340px;
+  display: block;
+  text-decoration: none !important;
 }
 
 .directory-program-card {
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  border: 1px solid #dee2e6;
-  border-radius: 10px;
+  position: relative;
+  border-radius: 16px;
   overflow: hidden;
-  color: inherit;
-  background: #fff;
-  height: 100%;
+  cursor: pointer;
+  height: 320px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
 
 .directory-program-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 28px rgba(39, 116, 174, 0.18);
-  border-color: #2774AE;
+  transform: translateY(-7px);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.22);
 }
 
-/* Gold accent bar slides in at top of card on hover */
-.directory-program-card::before {
-  content: '';
-  display: block;
-  height: 3px;
-  background: #FFD100;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
+/* Overlay gradient */
+.prog-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2.5rem 1.4rem 1.4rem;
+  background: linear-gradient(to top, rgba(0,18,48,0.90) 0%, rgba(0,18,48,0.5) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
-.directory-program-card:hover::before {
-  transform: scaleX(1);
+.prog-card-tag {
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.2px;
+  color: #FFD100;
+  margin-bottom: 0.1rem;
+}
+
+.prog-card-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.prog-card-cta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.45rem;
+  transition: color 0.18s, letter-spacing 0.18s;
+}
+
+.directory-program-card:hover .prog-card-cta {
+  color: #FFD100;
+  letter-spacing: 0.03em;
 }
 
 .card-img-placeholder {
@@ -264,10 +290,15 @@
 
 .directory-program-card img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: transform 0.38s ease;
+}
+
+.directory-program-card:hover img {
+  transform: scale(1.05);
 }
 
 
