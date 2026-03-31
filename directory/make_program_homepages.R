@@ -55,7 +55,7 @@ listing:
     grid-columns: 5
     sort-ui: [title, description]
     sort: false
-    filter-ui: true
+    filter-ui: [title, subtitle, description]
     fields: [image, title, subtitle, description]
     field-display-names:
       title: "Name"

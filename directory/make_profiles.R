@@ -225,6 +225,7 @@ standardize_university <- function(x) {
     str_detect(x, regex("cal poly pomona", ignore_case = TRUE)) ~ "California State Polytechnic University, Pomona",
     str_detect(x, regex("jhu|johns? hopkins( university)?", ignore_case = TRUE)) ~ "Johns Hopkins University",
     str_detect(x, regex("usc|university of southern california", ignore_case = TRUE)) ~ "University of Southern California",
+    str_detect(x, regex("university of chicago|uchicago", ignore_case = TRUE)) ~ "The University of Chicago",
     str_detect(x, regex("nyu", ignore_case = TRUE)) ~ "New York University",
     str_detect(x, regex("usma|west point|united states military academy", ignore_case = TRUE)) ~ "United States Military Academy",
     .default = x
@@ -538,4 +539,35 @@ for (i in seq_len(nrow(df_clean))) {
     df_clean$filename[i]
   )
 }
+
+
+# ── Export anonymized stats data for the dashboard ──────────────────────
+stats_data <- df_clean %>%
+  mutate(
+    # bachelors_location is already cleaned: US locs end in ", XX" (state abbr)
+    bs_state   = str_extract(bachelors_location, "(?<=,\\s)[A-Z]{2}$"),
+    bs_country = case_when(
+      !is.na(bs_state)                                    ~ "United States",
+      is.na(bachelors_location) | bachelors_location == "" ~ NA_character_,
+      TRUE ~ str_trim(str_extract(bachelors_location, "[^,]+$"))
+    )
+  ) %>%
+  transmute(
+    program     = current_program,
+    candidacy   = tolower(candidacy),          # "candidate" or "student"
+    cohortYear  = start_year,
+    hasMasters  = !is.na(masters_deg) & masters_deg != "",
+    bsMajor     = na_if(bachelors_major, ""),
+    bsSchool    = na_if(bachelors_school, ""),
+    bsCountry   = bs_country,
+    bsState     = bs_state,
+    advisor1    = if_else(advisor1 == "Not Listed" | is.na(advisor1), NA_character_, advisor1),
+    advisor2    = na_if(advisor2, ""),
+    advisorType = tolower(advisor_type),
+    alumni      = alumni
+    # deliberately omitting: names, email, linkedin url, github url, photo, bio text
+  )
+
+write_json(stats_data, here("stats/student_stats.json"), auto_unbox = TRUE, na = "null")
+message("Wrote stats/student_stats.json (", nrow(stats_data), " rows)")
 
