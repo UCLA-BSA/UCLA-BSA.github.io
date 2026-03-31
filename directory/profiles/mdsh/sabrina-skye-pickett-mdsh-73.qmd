@@ -1,0 +1,37 @@
+---
+title: "**Sabrina Skye Pickett**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Jin Zhou
+image: /directory/images/mdsh/IMG_0705 - Skye Pickett.JPG
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/sabrina-skye-pickett-8b831b238/
+      target: _blank
+    - icon: github
+      href: https://github.com/skyepickett
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Jin Zhou  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","skyepickett");</script>
+
+### Education:
+
+
+
+**BA in Data Science**, 2024  
+University of California, Berkeley — Berkeley, CA
+
+
+
+

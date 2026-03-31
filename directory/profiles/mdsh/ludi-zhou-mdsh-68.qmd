@@ -1,0 +1,41 @@
+---
+title: "**Ludi Zhou**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Jin Zhou
+image: /directory/images/mdsh/IMG_1145 - LUDI ZHOU.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/ludi-zhou-349613331?utm_source=share_via&utm_content=profile&utm_medium=member_ios
+      target: _blank
+    - icon: github
+      href: https://github.com/Whatdouwantnow
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Jin Zhou  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","ludizhou");</script>
+
+### Education:
+
+
+
+**BS in Data Science and Big Data Technology**, 2025  
+The Chinese University of Hong Kong, Shenzhen — Shenzhen, China
+
+### Bio:
+
+- Data Science student and quick learner
+- Skilled in object-oriented programming
+- Sharpening data analysis skills through courses and internships
+- Continuously learning and open to new challenges
+- Optimistic and passionate about everything in life

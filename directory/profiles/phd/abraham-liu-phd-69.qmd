@@ -1,0 +1,32 @@
+---
+title: "**Abraham Liu**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2023"
+
+advisor: Robert Weiss
+image: /directory/images/phd/4033 - ABRAHAM LIU.jpg
+categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Robert Weiss"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Robert Weiss  
+**Cohort:** Fall 2023  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","abrahamliu");</script>
+
+### Education:
+
+**ScM in Biostatistics**, 2023  
+Brown University — Providence, RI
+
+**BS in Statistics and Data Science**, 2016  
+University of California, Santa Barbara — Santa Barbara, CA
+
+### Bio:
+
+Hey, I'm a 3rd year PhD student soon advancing to candidacy. My research is currently focused on spatial graphical models applied to eye data, and recently I've gotten back to reading on my free time. If you have any book suggestions let me know!

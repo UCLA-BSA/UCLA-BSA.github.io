@@ -230,6 +230,32 @@ standardize_university <- function(x) {
 }
 
 
+# list of advisors
+
+standardize_advisor <- function(x) {
+  case_when(
+    is.na(x) ~ NA_character_,
+    str_detect(x, regex("^li$", ignore_case = TRUE)) ~ "Gang Li", # for now assume "Li" means Gang Li, adjust later for Sijia Li if it pops up
+    str_detect(x, regex("\\bholbrook\\b", ignore_case = TRUE)) ~ "Andrew Holbrook",
+    str_detect(x, regex("\\bballiu\\b", ignore_case = TRUE)) ~ "Brunilda Balliu",
+    str_detect(x, regex("\\bcrespi\\b", ignore_case = TRUE)) ~ "Catherine M. Crespi",
+    str_detect(x, regex("\\bramirez\\b", ignore_case = TRUE)) ~ "Christina Ramirez",
+    str_detect(x, regex("\\bsenturk\\b", ignore_case = TRUE)) ~ "Damla Senturk",
+    str_detect(x, regex("\\btelesca\\b", ignore_case = TRUE)) ~ "Donatello Telesca",
+    str_detect(x, regex("\\bbargagli\\b", ignore_case = TRUE)) ~ "Falco J. Bargagli Stoffi",
+    str_detect(x, regex("\\bgang\\s+li\\b", ignore_case = TRUE)) ~ "Gang Li",
+    str_detect(x, regex("\\bsijia\\s+li\\b", ignore_case = TRUE)) ~ "Sijia Li",
+    str_detect(x, regex("\\bhua\\s+zhou\\b", ignore_case = TRUE)) ~ "Hua Zhou",
+    str_detect(x, regex("\\bjin\\s+zhou\\b", ignore_case = TRUE)) ~ "Jin Zhou",
+    str_detect(x, regex("\\bguindani\\b", ignore_case = TRUE)) ~ "Michele Guindani",
+    str_detect(x, regex("\\bweiss\\b", ignore_case = TRUE)) ~ "Robert Weiss",
+    str_detect(x, regex("\\bbanerjee\\b", ignore_case = TRUE)) ~ "Sudipto Banerjee",
+    str_detect(x, regex("\\bbelin\\b", ignore_case = TRUE)) ~ "Thomas Belin",
+    str_detect(x, regex("\\bdai\\b", ignore_case = TRUE)) ~ "Xiaowu Dai",
+    .default = x
+  )
+}
+
 df_clean <- df %>%
   # cleaning names
   mutate(
@@ -297,7 +323,15 @@ df_clean <- df %>%
   mutate(bachelors_school = standardize_university(bachelors_school), # standardize the school names
          masters_school = standardize_university(masters_school)) %>%
   
-  ## alumni/graduation year
+  ## graduation year and alumni
+  mutate(
+    bachelors_grad = if_else(str_detect(as.character(bachelors_grad), "^\\d{4}$"), 
+                             bachelors_grad, 
+                             NA_real_),
+    masters_grad = if_else(str_detect(as.character(masters_grad), "^\\d{4}$"),
+                           masters_grad,
+                           NA_real_)
+  ) %>%
   
   mutate(graduation_yaml = ifelse(alumni == TRUE,
                                   paste("graduation:", graduation_year),
@@ -373,6 +407,12 @@ df_clean <- df %>%
          advisor2 = ifelse(!is.na(advisor2), advisor2, ""),
          advisor1 = str_remove(advisor1, regex("^(dr\\.?s?\\.?|professor|prof\\.?)\\s*", ignore_case = TRUE)),
          advisor2 = str_remove(advisor2, regex("^(dr\\.?s?\\.?|professor|prof\\.?)\\s*", ignore_case = TRUE))) %>%
+  
+  mutate(
+    advisor1 = standardize_advisor(advisor1), # standardize advisor names
+    advisor2 = standardize_advisor(advisor2)
+  ) %>%
+  
   unite("advisor_full", advisor1, advisor2, sep = ", ", remove = FALSE, na.rm = TRUE) %>%
   mutate(advisor_full = gsub(", $", "", advisor_full)) # removes trailing comma if advisor2 was ""
 

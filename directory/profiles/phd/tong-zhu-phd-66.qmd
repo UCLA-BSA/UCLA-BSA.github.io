@@ -1,0 +1,35 @@
+---
+title: "**Tong Zhu**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2024"
+
+advisor: Xiaowu Dai, Gang Li
+image: /directory/images/phd/profile - TONG ZHU.JPG
+categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Xiaowu Dai", "Advisor: Gang Li"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://toz015.github.io/
+      target: _blank
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Xiaowu Dai, Gang Li  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","toz015");</script>
+
+### Education:
+
+**MS in Statistics**, 2020  
+University of North Carolina at Chapel Hill — Chapel Hill, NC
+
+**BS in Joint Mathematics-Economics**, 2017  
+University of California, San Diego — San Diego, CA
+
+### Bio:
+
+My research focuses on multi-agent AI systems, reliable reasoning, and truthful AI mechanisms.
