@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – UCLA Biostatistics Student Association</title>
+<title>About – Biostatistics Student Association at UCLA</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -93,7 +93,7 @@ function scrambleIt(domain, user) {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">UCLA Biostatistics Student Association</span>
+    <span class="navbar-title">Biostatistics Student Association at UCLA</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -218,6 +218,8 @@ function scrambleIt(domain, user) {
   .about-hero-word { font-size: 2.2rem; }
   .newsletter-big-title { font-size: 1.9rem; }
   .section-block { padding: 0 1rem; }
+  .newsletter-issues { grid-template-columns: 1fr; }
+  .board-year-tabs { gap: 0.4rem; }
 }
 </style>
 
@@ -473,6 +475,17 @@ window.BSA_ABOUT = {
   /* ── Compute balanced row sizes ───────────────────────────────────────── */
   // Rules: no row of 1, rows never decrease toward the bottom.
   // e.g. 7 → [3,4]  |  5 → [2,3]  |  8 → [2,3,3]  |  10 → [3,3,4]
+  /* ── Mobile row sizes: strict 2-1-2-1... honeycomb ──────────────────── */
+  function computeRowSizesMobile(n) {
+    var rows = [];
+    while (n > 0) {
+      var count = (rows.length % 2 === 0) ? Math.min(2, n) : 1;
+      rows.push(count);
+      n -= count;
+    }
+    return rows;
+  }
+
   function computeRowSizes(n) {
     if (n <= 0) return [];
 
@@ -501,11 +514,13 @@ window.BSA_ABOUT = {
     var grid  = document.createElement('div');
     grid.className = 'hex-grid';
 
-    var sizes  = computeRowSizes(members.length);
-    var cursor = 0;
+    var isMobile = window.innerWidth <= 900;
+    var sizes    = isMobile ? computeRowSizesMobile(members.length) : computeRowSizes(members.length);
+    var cursor   = 0;
     sizes.forEach(function (size, rowIndex) {
       var rowEl = document.createElement('div');
-      rowEl.className = 'hex-row' + (rowIndex % 2 === 1 ? ' hex-row-offset' : '');
+      // On mobile: no offset class — CSS centering aligns single-item rows to honeycomb midpoint
+      rowEl.className = 'hex-row' + (!isMobile && rowIndex % 2 === 1 ? ' hex-row-offset' : '');
       members.slice(cursor, cursor + size).forEach(function (m) {
         rowEl.appendChild(buildHex(m));
       });

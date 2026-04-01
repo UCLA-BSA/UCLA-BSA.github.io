@@ -108,8 +108,34 @@
   margin-left: 0 !important;
 }
 
-@media (max-width: 600px) {
-  .hex-shape { width: 120px; height: 139px; }
-  .hex-wrap { width: 120px; }
-  .hex-row-offset { margin-left: 128px; }
+/* ── Tablet: shrink hexes ── */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hex-shape  { width: 155px; height: 179px; }
+  .hex-wrap   { width: 155px; }
+  .hex-row    { margin-bottom: -46px; }
+  .hex-row-offset { margin-left: 155px; }
+  .hex-border { width: 155px; height: 179px; }
+}
+
+/* ── Mobile: 2-1-2-1 honeycomb ── */
+@media (max-width: 900px) {
+  .hex-grid { padding-bottom: 2rem; }
+
+  .hex-row {
+    justify-content: center;
+    margin-bottom: -38px !important;
+    margin-left: 0 !important;   /* centering aligns single-item rows to honeycomb midpoint */
+  }
+  /* offset class is unused on mobile (JS skips it); reset just in case */
+  .hex-row-offset { margin-left: 0 !important; }
+
+  .hex-wrap   { width: 115px; }
+  .hex-shape  { width: 115px; height: 133px; }
+  .hex-border { width: 115px; height: 133px; }
+
+  /* Always show name/role — touch screens can't hover */
+  .hex-label { opacity: 1 !important; padding: 5px 3px; }
+  .hex-name  { font-size: 0.58rem; }
+  .hex-role  { font-size: 0.52rem; }
+  .hex-initials { font-size: 0.75rem; }
 }
