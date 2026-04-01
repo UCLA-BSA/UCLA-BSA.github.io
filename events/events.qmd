@@ -531,7 +531,7 @@ resources:
      CSV columns: title, link (optional), date (M/D/YY or YYYY-MM-DD)
      Cards are auto-coloured by urgency: red ≤3d · orange ≤7d · yellow ≤14d · green 14d+
      ══════════════════════════════════════════════════════════════════════════ -->
-<div class="important-dates-section">
+<div class="important-dates-section" id="important_dates">
   <div class="id-wrap">
 
     <!-- Header: title + live deadline count -->

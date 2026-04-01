@@ -1,0 +1,37 @@
+---
+title: "**Qianhui (Hedy) Ma**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+
+advisor: Michele Guindani
+image: /directory/images/ms/IMG_0205 - Qianhui Ma (Hedy).jpeg
+categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Michele Guindani"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/qianhui-ma
+      target: _blank
+    - icon: github
+      href: https://github.com/QM1101
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Michele Guindani  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","qhma");</script>
+
+### Education:
+
+
+
+**BS in Statistics**, 2023  
+University of California, Davis — Davis, CA
+
+
+
+
