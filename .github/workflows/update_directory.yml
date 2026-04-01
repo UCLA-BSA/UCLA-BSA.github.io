@@ -33,7 +33,7 @@ jobs:
       # ---- restore cache ----
       - name: Restore images cache
         if: ${{ github.event.inputs.force_redownload != 'true' }}
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             directory/images
@@ -41,7 +41,7 @@ jobs:
           key: directory-images-${{ github.run_id }}
           restore-keys: |
             directory-images-
-            
+
        # ---- clear cache if force redownload ----
       - name: Clear images for force redownload
         if: ${{ github.event.inputs.force_redownload == 'true' }}
@@ -64,6 +64,7 @@ jobs:
             any::here
             any::writexl
             any::readxl
+            any::jsonlite
           cache-version: 1
 
       - name: Run R script to generate profiles
@@ -80,9 +81,9 @@ jobs:
               -exec mogrify -quality 75 -resize "800x800>" {} \;
           done
       
-      #  ---- save cache after compression ----
+      # ---- save cache after compression ----
       - name: Save images cache
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
           path: |
             directory/images
@@ -91,9 +92,6 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        
-      - name: Build Quarto site
-        run: quarto render
 
       - name: Commit and push .qmd profiles
         run: |

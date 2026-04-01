@@ -14,5 +14,6 @@ public/
 .secrets
 *.json
 /_*.local
+*_files/
 .DS_Store
 docs/
