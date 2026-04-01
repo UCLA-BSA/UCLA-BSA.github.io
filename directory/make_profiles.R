@@ -255,7 +255,6 @@ standardize_advisor <- function(x) {
     str_detect(x, regex("\\bbanerjee\\b", ignore_case = TRUE)) ~ "Sudipto Banerjee",
     str_detect(x, regex("\\bbelin\\b", ignore_case = TRUE)) ~ "Thomas Belin",
     str_detect(x, regex("\\bdai\\b", ignore_case = TRUE)) ~ "Xiaowu Dai",
-    str_detect(x, regex("\\bsuchard\\b", ignore_case = TRUE)) ~ "Marc Suchard",
     .default = x
   )
 }
@@ -275,9 +274,7 @@ df_clean <- df %>%
   mutate(
     unique_id = row_number(), # id to assign to each person's file
     first = str_to_title(first),
-    first = str_replace_all(first, "(?<=')([a-z])", function(m) toupper(m)),
     last  = str_to_title(last),
-    last = str_replace_all(last, "(?<=')([a-z])", function(m) toupper(m)),
     preferred = ifelse(preferred == first | preferred == last | preferred == paste(first, last), NA, preferred), # remove duplicated preferred name
     preferred = ifelse(
       str_detect(preferred, "\\(.*\\)"),
