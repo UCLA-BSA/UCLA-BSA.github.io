@@ -111,7 +111,6 @@ css: styles.css
         <p class="stats-banner-desc">
           Explore anonymized, self-reported statistics from our students —
           academic backgrounds, research areas, geographic origins, and more.
-          Updated each time the directory form is submitted.
         </p>
         <a href="../stats/stats.html" class="stats-banner-cta">
           View Student Statistics <span class="stats-cta-arrow">→</span>
