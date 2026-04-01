@@ -4,7 +4,7 @@ subtitle: "PhD Student"
 description: "Cohort: Fall 2022"
 
 advisor: Andrew Holbrook
-image: /directory/images/anon.jpg
+image: /directory/images/phd/square-image - JASEN ZHANG.jpg
 categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Andrew Holbrook"]
 about:
   template: trestles
@@ -24,14 +24,14 @@ University of California, Los Angeles
 
 ### Education:
 
-**MS in Biostatistics**  
+**MS in Biostatistics**, 2022  
 University of California, San Diego — San Diego, CA
 
-**BS**  
+**BS in Chemical and Biomolecular Engineering**, 2020  
 Johns Hopkins University — Baltimore, MD
 
 ### Bio:
 
 My research interests broadly span stochastic processes, machine learning, and computational approaches to model noisy datasets. 
 
-I'm originally from New Jersey and moved to California for grad school. I enjoy a nice workout, tennis, pickleball, and the outdoors/camping. Previously, I also did content creation for modular origami.
+I'm originally from New Jersey and moved to California for grad school. I enjoy a nice workout, tennis, pickleball, poker, and playing guitar covers of my favorite songs. Previously, I also did content creation for modular origami.

@@ -66,6 +66,8 @@ css: [events-styles.css, hex-styles.css]
   .about-hero-word { font-size: 2.2rem; }
   .newsletter-big-title { font-size: 1.9rem; }
   .section-block { padding: 0 1rem; }
+  .newsletter-issues { grid-template-columns: 1fr; }
+  .board-year-tabs { gap: 0.4rem; }
 }
 </style>
 
@@ -321,6 +323,17 @@ window.BSA_ABOUT = {
   /* ── Compute balanced row sizes ───────────────────────────────────────── */
   // Rules: no row of 1, rows never decrease toward the bottom.
   // e.g. 7 → [3,4]  |  5 → [2,3]  |  8 → [2,3,3]  |  10 → [3,3,4]
+  /* ── Mobile row sizes: strict 2-1-2-1... honeycomb ──────────────────── */
+  function computeRowSizesMobile(n) {
+    var rows = [];
+    while (n > 0) {
+      var count = (rows.length % 2 === 0) ? Math.min(2, n) : 1;
+      rows.push(count);
+      n -= count;
+    }
+    return rows;
+  }
+
   function computeRowSizes(n) {
     if (n <= 0) return [];
 
@@ -349,11 +362,13 @@ window.BSA_ABOUT = {
     var grid  = document.createElement('div');
     grid.className = 'hex-grid';
 
-    var sizes  = computeRowSizes(members.length);
-    var cursor = 0;
+    var isMobile = window.innerWidth <= 768;
+    var sizes    = isMobile ? computeRowSizesMobile(members.length) : computeRowSizes(members.length);
+    var cursor   = 0;
     sizes.forEach(function (size, rowIndex) {
       var rowEl = document.createElement('div');
-      rowEl.className = 'hex-row' + (rowIndex % 2 === 1 ? ' hex-row-offset' : '');
+      // On mobile: no offset class — CSS centering aligns single-item rows to honeycomb midpoint
+      rowEl.className = 'hex-row' + (!isMobile && rowIndex % 2 === 1 ? ' hex-row-offset' : '');
       members.slice(cursor, cursor + size).forEach(function (m) {
         rowEl.appendChild(buildHex(m));
       });

@@ -1,0 +1,32 @@
+---
+title: "**Xinghua Tao**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2025"
+
+advisor: Marc Suchard
+image: /directory/images/phd/IMG_0238 - XINGHUA TAO.jpg
+categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Marc Suchard"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Marc Suchard  
+**Cohort:** Fall 2025  
+
+
+### Education:
+
+**MS**  
+University of Michigan, Ann Arbor
+
+**BS**  
+Peking University
+
+
+
+

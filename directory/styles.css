@@ -140,7 +140,13 @@
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* */
+.program-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
 @media (max-width: 768px) {
   .directory-hero {
     flex-direction: column;
@@ -154,13 +160,22 @@
   .directory-hero-photo {
     height: 280px;
   }
+  .program-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .directory-program-card {
+    height: 260px;
+  }
 }
 
-.program-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 1rem;
+@media (max-width: 480px) {
+  .program-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .directory-program-card {
+    height: 220px;
+  }
 }
 
 .program-cards-grid > a {
