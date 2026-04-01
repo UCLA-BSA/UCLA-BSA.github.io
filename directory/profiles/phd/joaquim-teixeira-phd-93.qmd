@@ -1,0 +1,31 @@
+---
+title: "**Joaquim Teixeira**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2022"
+
+advisor: Sudipto Banerjee
+image: /directory/images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Sudipto Banerjee"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Sudipto Banerjee  
+**Cohort:** Fall 2022  
+
+
+### Education:
+
+
+
+**BS in Mathematics & Economics**, 2017  
+University of California, Los Angeles — Los Angeles, CA
+
+### Bio:
+
+I research Variational and Neural approaches for Bayesian Inference in large spatial settings, with applications in microbiological imaging and earth science.
