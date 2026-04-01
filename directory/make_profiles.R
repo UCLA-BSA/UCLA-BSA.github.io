@@ -561,10 +561,11 @@ stats_data <- df_clean %>%
     bsSchool    = na_if(bachelors_school, ""),
     bsCountry   = bs_country,
     bsState     = bs_state,
-    advisor1    = if_else(advisor1 == "Not Listed" | is.na(advisor1), NA_character_, advisor1),
-    advisor2    = na_if(advisor2, ""),
-    advisorType = tolower(advisor_type),
-    alumni      = alumni
+    advisor1      = if_else(advisor1 == "Not Listed" | is.na(advisor1), NA_character_, advisor1),
+    advisor2      = na_if(advisor2, ""),
+    advisorType   = tolower(advisor_type),
+    alumni        = alumni,
+    mastersSchool = na_if(standardize_university(masters_school), "")
     # deliberately omitting: names, email, linkedin url, github url, photo, bio text
   )
 

@@ -108,8 +108,8 @@
   margin-left: 0 !important;
 }
 
-/* ── Tablet: shrink hexes slightly ── */
-@media (max-width: 1100px) and (min-width: 769px) {
+/* ── Tablet: shrink hexes ── */
+@media (max-width: 1100px) and (min-width: 901px) {
   .hex-shape  { width: 155px; height: 179px; }
   .hex-wrap   { width: 155px; }
   .hex-row    { margin-bottom: -46px; }
@@ -117,8 +117,8 @@
   .hex-border { width: 155px; height: 179px; }
 }
 
-/* ── Mobile: 2-1-2-1 honeycomb (JS drives the row sizes; CSS handles sizing + centering) ── */
-@media (max-width: 768px) {
+/* ── Mobile: 2-1-2-1 honeycomb ── */
+@media (max-width: 900px) {
   .hex-grid { padding-bottom: 2rem; }
 
   .hex-row {

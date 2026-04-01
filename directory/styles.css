@@ -492,3 +492,204 @@ details[open] summary {
   display: block;
   width: 100%;
 }
+
+/* ══════════════════════════════════════════════════════
+   Stats Banner — "By the Numbers" section
+   ══════════════════════════════════════════════════════ */
+.stats-banner {
+  position: relative;
+  background: linear-gradient(135deg, #002e48 0%, #003B5C 45%, #1a5f8a 100%);
+  border-radius: 24px;
+  margin: 3rem 0 2rem;
+  overflow: hidden;
+  padding: 3.5rem 3rem 3.5rem;
+  box-shadow: 0 20px 60px rgba(0, 59, 92, 0.30);
+}
+
+/* Subtle dot-grid texture */
+.stats-banner-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+/* Gold accent bar at top */
+.stats-banner-gold {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #FFD100 0%, #ffea70 50%, #FFD100 100%);
+}
+
+.stats-banner-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+/* ── Left panel ── */
+.stats-banner-left { flex: 1; min-width: 0; }
+
+.stats-banner-tag {
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  color: #FFD100;
+  margin-bottom: 0.9rem;
+}
+
+.stats-banner-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin: 0 0 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.stats-banner-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.8;
+  max-width: 400px;
+  margin: 0 0 2.2rem;
+}
+
+.stats-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #FFD100;
+  color: #002e48;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  padding: 0.85rem 1.9rem;
+  border-radius: 100px;
+  text-decoration: none !important;
+  transition: transform 0.22s, box-shadow 0.22s, background 0.18s;
+  box-shadow: 0 6px 22px rgba(255, 209, 0, 0.4);
+}
+.stats-banner-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(255, 209, 0, 0.55);
+  background: #ffe84d;
+  color: #002e48;
+}
+.stats-cta-arrow {
+  display: inline-block;
+  transition: transform 0.22s;
+  font-size: 1.05rem;
+}
+.stats-banner-cta:hover .stats-cta-arrow { transform: translateX(5px); }
+
+/* ── Right panel: floating stat chips ── */
+.stats-banner-right {
+  flex: 0 0 320px;
+  position: relative;
+  height: 250px;
+}
+
+.stat-chip {
+  position: absolute;
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px;
+  padding: 1rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+}
+
+.chip-num {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #FFD100;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.chip-label {
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Chip positions + staggered float animations */
+.chip-1 { top: 0;    left: 0;   animation: chipFloat 7s ease-in-out infinite 0s; }
+.chip-2 { top: 5px;  right: 0;  animation: chipFloat 7s ease-in-out infinite -2s; }
+.chip-3 { bottom: 0; left: 30px; animation: chipFloat 7s ease-in-out infinite -3.5s; }
+.chip-4 { bottom: 8px; right: 0; animation: chipFloat 7s ease-in-out infinite -5s; }
+.chip-5 {
+  top: 50%; left: 50%;
+  animation: chipFloat5 7s ease-in-out infinite -1.2s;
+  background: rgba(255,209,0,0.15);
+  border-color: rgba(255,209,0,0.3);
+}
+
+@keyframes chipFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-9px); }
+}
+@keyframes chipFloat5 {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%       { transform: translate(-50%, -50%) translateY(-9px); }
+}
+
+/* ── Mobile stat strip (shown below 768px, replaces chips) ── */
+.stats-mobile-strip {
+  display: none;
+  position: relative;
+  margin-top: 2rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0;
+}
+.mobile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.4rem;
+}
+.ms-num {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #FFD100;
+  line-height: 1;
+}
+.ms-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.2rem;
+}
+.mobile-stat-div {
+  width: 1px;
+  background: rgba(255,255,255,0.2);
+  align-self: stretch;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .stats-banner { padding: 2.5rem 1.75rem 2rem; border-radius: 18px; }
+  .stats-banner-inner { gap: 0; }
+  .stats-banner-right { display: none; }
+  .stats-mobile-strip { display: flex; }
+  .stats-banner-desc { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .stats-banner { padding: 2rem 1.25rem 1.75rem; border-radius: 14px; }
+  .stats-banner-title { font-size: 1.75rem; }
+}

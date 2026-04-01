@@ -362,7 +362,7 @@ window.BSA_ABOUT = {
     var grid  = document.createElement('div');
     grid.className = 'hex-grid';
 
-    var isMobile = window.innerWidth <= 768;
+    var isMobile = window.innerWidth <= 900;
     var sizes    = isMobile ? computeRowSizesMobile(members.length) : computeRowSizes(members.length);
     var cursor   = 0;
     sizes.forEach(function (size, rowIndex) {
