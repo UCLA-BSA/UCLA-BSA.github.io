@@ -1,5 +1,5 @@
 ---
-title: "**Ryan O'dell**"
+title: "**Ryan O'Dell**"
 subtitle: "PhD Student"
 description: "Cohort: Fall 2024"
 

@@ -1,0 +1,35 @@
+---
+title: "**Wenjing (Vicky) Zhou**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+
+advisor: Sudipto Banerjee
+image: /directory/images/mdsh/IMG_7756 2 - Wenjing Zhou.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Advisor: Sudipto Banerjee"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/vickyzhouvicky
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Sudipto Banerjee  
+**Cohort:** Fall 2024  
+
+
+### Education:
+
+**MS in Data Analytics**, 2023  
+San Diego, CA
+
+**BS in Computer Science  &  Information Systems and Technology**, 2022  
+San Diego, CA / Tianjin, China
+
+
+
+
