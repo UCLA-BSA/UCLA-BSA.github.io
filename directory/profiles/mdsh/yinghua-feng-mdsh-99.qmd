@@ -1,0 +1,43 @@
+---
+title: "**Yinghua Feng**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/anon.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/-2bb761391
+      target: _blank
+    - icon: github
+      href: https://github.com/1546063629
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("outlook.com","feng.yinghua");</script>
+
+### Education:
+
+
+
+**BS in Robotics**, 2024  
+Herriot-Watt University — Edinburgh, United Kingdom
+
+### Bio:
+
+I am a recent graduate from Heriot-Watt University with a Bachelor’s degree in Robotics, where I developed a strong foundation in programming, data analysis, and quantitative problem-solving. My academic training has equipped me with skills in Java, Python, C, and statistical tools such as SAS, and I have a growing interest in applying data-driven methods to real-world problems.
+
+I gained research experience as a visiting scholar at Zhejiang University School of Medicine, where I worked on a project investigating the relationship between postpartum depression and postmenopausal mental disorders using UK Biobank data. In this role, I applied statistical methods including Cox regression, t-tests, and survival analysis, and contributed to drafting sections of a research paper. This experience strengthened my interest in biostatistics and healthcare data science.
+
+In addition to my academic work, I have been actively involved in extracurricular activities, including organizing university events as part of the student union. I also completed an internship in a hospital setting, where I supported data management and COVID-19 vaccination operations, further enhancing my ability to work in fast-paced and collaborative environments.
+
+Outside of academics, I enjoy reading, cycling, running, and hiking. I am particularly interested in exploring how statistical modeling and machine learning can be used to improve healthcare outcomes and decision-making.

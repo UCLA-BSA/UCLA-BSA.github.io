@@ -1,0 +1,31 @@
+---
+title: "**Jiayu (Martina) Liao**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_7604 - JIAYU LIAO.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jiayu0730");</script>
+
+### Education:
+
+
+
+**BA in Statistics and Economics**, 2025  
+University of California, Davis — Davis, CA
+
+
+
+

@@ -1,0 +1,32 @@
+---
+title: "**Yilan Huang**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2021"
+
+advisor: Honghu Liu
+image: /directory/images/phd/photo - YILAN HUANG.jpg
+categories: ["Program: PhD", "Cohort: Fall 2021", "Advisor: Honghu Liu"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Honghu Liu  
+**Cohort:** Fall 2021  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","yilanh19");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2021  
+University of California, Los Angeles — Los Angeles, CA
+
+**BS in Pharmaceutical Sciences**, 2019  
+Fudan University — Shanghai, China
+
+
+
+
