@@ -3,9 +3,9 @@ title: "**Asuka Iwamoto**"
 subtitle: "MS Student"
 description: "Cohort: Fall 2025"
 
-advisor: Brunilda Balliu
+advisor: Jason Xu
 image: /directory/images/ms/IMG_0952 - ASUKA IWAMOTO.jpeg
-categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Brunilda Balliu"]
+categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Jason Xu"]
 about:
   template: trestles
   image-shape: round
@@ -15,7 +15,7 @@ about:
 
 ### MS Student, Biostatistics
 University of California, Los Angeles  
-**Research Advisor(s):** Brunilda Balliu  
+**Academic Advisor(s):** Jason Xu  
 **Cohort:** Fall 2025  
 **Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","asukaiwa");</script>
 

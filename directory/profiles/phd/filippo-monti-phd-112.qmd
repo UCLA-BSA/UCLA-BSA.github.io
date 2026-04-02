@@ -1,0 +1,42 @@
+---
+title: "**Filippo Monti**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2022"
+
+advisor: Marc Suchard
+image: /directory/images/phd/IMG_7627 - FILIPPO MONTI.jpeg
+categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Marc Suchard"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://fil-monti.github.io
+      target: _blank
+    - icon: linkedin
+      href: https://www.linkedin.com/in/filippo-monti-6070a5150/
+      target: _blank
+    - icon: github
+      href: https://github.com/fil-monti
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Marc Suchard  
+**Cohort:** Fall 2022  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","fmonti");</script>
+
+### Education:
+
+**MS in Economic and Social Sciences**, 2022  
+Bocconi University — Milan, Italy
+
+**BS in Economic and Social Sciences**, 2019  
+Bocconi University — Milan, Italy
+
+### Bio:
+
+I am a PhD candidate in Biostatistics at the University of California, Los Angeles, advised by Marc A. Suchard. My research focuses on developing scalable Bayesian methods for inference on stochastic processes, with particular emphasis on continuous-time Markov chains, diffusion processes, and coalescent models motivated by applications in evolutionary biology and population genetics. I am especially interested in probabilistic representations and computational techniques that enable flexible inference in high-dimensional and structured systems, including nonparametric models and Hamiltonian Monte Carlo methods.
+My hobbies include skiing and beach volleyball.

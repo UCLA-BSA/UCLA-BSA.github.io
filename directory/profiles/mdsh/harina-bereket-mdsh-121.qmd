@@ -1,0 +1,37 @@
+---
+title: "**Harina Bereket**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/647508 - HARINA BEREKET.JPG
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/harina-bereket-214805213/
+      target: _blank
+    - icon: github
+      href: https://github.com/harinabereket
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+
+
+### Education:
+
+
+
+**BS in Health Administration**, 2023  
+California State University, Northridge — Northridge, CA
+
+### Bio:
+
+I am a graduate student pursuing my master's in Data Science in Health at UCLA. I completed my BS in Health Administration at California State University, Northridge. My interests lie in leveraging data to improve healthcare outcomes and reduce disparities. In my free time, I enjoy working out, exploring new restaurants, and traveling.

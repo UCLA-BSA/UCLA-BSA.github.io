@@ -1,0 +1,30 @@
+---
+title: "**Brendon Chau**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2020"
+
+advisor: Not Listed
+image: /directory/images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2020", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2020  
+
+
+
+
+
+
+
+
+
+
+

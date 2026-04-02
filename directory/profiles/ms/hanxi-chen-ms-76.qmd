@@ -15,7 +15,7 @@ about:
 
 ### MS Student, Biostatistics
 University of California, Los Angeles  
-**research Advisor(s):** Damla Senturk  
+**Research Advisor(s):** Damla Senturk  
 **Cohort:** Fall 2024  
 **Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","hanxic");</script>
 

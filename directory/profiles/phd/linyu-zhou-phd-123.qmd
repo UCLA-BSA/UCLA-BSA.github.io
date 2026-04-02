@@ -1,0 +1,32 @@
+---
+title: "**Linyu Zhou**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2020"
+
+advisor: Thomas Belin, Honghu Liu
+image: /directory/images/phd/LZ-pic - LINYU ZHOU.jpg
+categories: ["Program: PhD", "Cohort: Fall 2020", "Advisor: Thomas Belin", "Advisor: Honghu Liu"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Thomas Belin, Honghu Liu  
+**Cohort:** Fall 2020  
+
+
+### Education:
+
+**MS in Biology**, 2020  
+University of California, San Diego — La Jolla, CA
+
+**BS in Applied Mathematics  &  Biochemistry and Cell Biology**, 2019  
+University of California, San Diego — La Jolla, CA
+
+
+
+

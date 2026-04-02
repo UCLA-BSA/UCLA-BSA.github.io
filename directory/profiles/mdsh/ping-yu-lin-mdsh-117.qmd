@@ -1,0 +1,34 @@
+---
+title: "**Ping-Yu (Jolly) Lin**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Weng Kee Wong
+image: /directory/images/mdsh/IMG_5711 - PING YU LIN.JPG
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Weng Kee Wong"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/ping-yu-lin-a17467252
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Weng Kee Wong  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jollylin1013");</script>
+
+### Education:
+
+**MS in Business Analytics**, 2025  
+University of Illinois Urbana-Champaign — Champaign–Urbana, IL
+
+
+
+### Bio:
+
+I’m a Master’s student in Data Science in Health (Biostatistics) at UCLA, with a background in business analytics, marketing analytics, and technical project management. I have experience in data analysis, attribution modeling, predictive analytics, and workflow optimization, using tools such as Python, R, SAS, SQL, AWS, Tableau, Power BI, Google Analytics, and Jira across technology and marketing projects.

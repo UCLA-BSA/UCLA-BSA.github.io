@@ -4,7 +4,7 @@ subtitle: "PhD Student"
 description: "Cohort: Fall 2025"
 
 advisor: Not Listed
-image: /directory/images/anon.jpg
+image: /directory/images/phd/katepfp - Kate Johnson.jpg
 categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles

@@ -1,0 +1,31 @@
+---
+title: "**Sihong Yao**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/ms/IMG_1105 - SIHONG YAO.jpeg
+categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","sihongy13");</script>
+
+### Education:
+
+
+
+**BS in Mathematics**, 2025  
+University of California, Irvine — Irvine, CA
+
+### Bio:
+
+I’m interested in statistics and anything data-related, and I graduated from UC Irvine with a degree in Mathematics. Outside of school, I love playing basketball and traveling. I try to travel whenever I can, and hopefully one day I’ll make it to every corner of the world.

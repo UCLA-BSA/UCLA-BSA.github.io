@@ -1,0 +1,34 @@
+---
+title: "**Olivia Williams**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+
+advisor: Damla Senturk
+image: /directory/images/ms/IMG_8329 - OLIVIA WILLIAMS.JPG
+categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Damla Senturk"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/williams-olivia/
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Damla Senturk  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","oliviawilliams");</script>
+
+### Education:
+
+
+
+**BA in Mathematics & Environmental and Urban Studies**, 2017  
+Bard College — Annandale-on-Hudson, NY
+
+
+
+

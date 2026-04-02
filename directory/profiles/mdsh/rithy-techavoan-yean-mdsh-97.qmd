@@ -1,0 +1,39 @@
+---
+title: "**Rithy Techavoan Yean**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Andrew Holbrook
+image: /directory/images/mdsh/unnamed - RITHY TECHAVOAN YEAN.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/rithy-techavoan-yean-852031228/
+      target: _blank
+    - icon: github
+      href: https://github.com/Techavoan
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","techavoan2907");</script>
+
+### Education:
+
+
+
+**BS in Applied Statistics and Mathematical Economics**, 2025  
+California State University, Long Beach — Long Beach, CA
+
+### Bio:
+
+Hi everyone! My name is Rithy Techavoan Yean and I am a graduate student in the Masters of Data Science in Health program at University of California, Los Angeles Fielding School of Public Health. I am an international student from Cambodia. 
+
+Prior to my graduate studies, I dual majored in Applied Statistics and Mathematical Economics at California State University, Long Beach. My interests lie in the interplay between statistics, data science, public health, and economics to solve current health issues. Machine Learning and Neural Networks are topics that I am most interested in! I hope to leverage my skills in Python, R, SAS, and ArcGIS to make a profound impact in the world.

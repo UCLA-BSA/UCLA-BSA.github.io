@@ -1,0 +1,31 @@
+---
+title: "**Jian (Tom) Huang**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/ms/IMG_4422 - TOM HUANG.JPG
+categories: ["Program: MS", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jianh888");</script>
+
+### Education:
+
+
+
+**BS in Statistics**, 2025  
+University of California, Davis — Davis, CA
+
+
+
+
