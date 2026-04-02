@@ -338,12 +338,8 @@ df_clean <- df %>%
   
   ## graduation year and alumni
   mutate(
-    bachelors_grad = if_else(str_detect(as.character(bachelors_grad), "^\\d{4}$"), 
-                             bachelors_grad, 
-                             NA_real_),
-    masters_grad = if_else(str_detect(as.character(masters_grad), "^\\d{4}$"),
-                           masters_grad,
-                           NA_real_)
+    bachelors_grad = as.numeric(str_extract(as.character(bachelors_grad), "\\d{4}")),
+    masters_grad = as.numeric(str_extract(as.character(masters_grad), "\\d{4}"))
   ) %>%
   
   mutate(graduation_yaml = ifelse(alumni == TRUE,
