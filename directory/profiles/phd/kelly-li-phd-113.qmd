@@ -1,0 +1,37 @@
+---
+title: "**Kelly Li**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2020"
+
+advisor: Marc Suchard
+image: /directory/images/phd/face pic - Kelly Li.jpg
+categories: ["Program: PhD", "Cohort: Fall 2020", "Advisor: Marc Suchard"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/kelly-li-654528178/
+      target: _blank
+    - icon: github
+      href: https://github.com/k-m-li
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Marc Suchard  
+**Cohort:** Fall 2020  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","yes");</script>
+
+### Education:
+
+
+
+**BS in Biochemistry & Mathematics**, 2019  
+Mary Baldwin University — Staunton, VA
+
+### Bio:
+
+I work with Dr. Suchard on improving analytics on observational healthcare data as part of the Observation Health Data Sciences and Informatics (OHDSI) community. My research focuses on propensity score methods and large-scale patient prediction models. These analytics are typically conducted through scalable packages in R and sometimes Python. In my free time, I like spending time with my dog and playing the guitar.
