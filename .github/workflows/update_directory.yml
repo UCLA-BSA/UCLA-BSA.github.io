@@ -92,6 +92,8 @@ jobs:
             cache <- fromJSON(cache_file)
             for (file_id in names(cache)) {
               entry <- cache[[file_id]]
+              # Skip old-format entries (plain strings, not lists)
+              if (!is.list(entry)) next
               if (!is.null(entry$path) && file.exists(entry$path)) {
                 cache[[file_id]]$local_md5 <- tools::md5sum(entry$path)[[1]]
               }
