@@ -33,7 +33,7 @@ jobs:
       # ---- restore cache ----
       - name: Restore images cache
         if: ${{ github.event.inputs.force_redownload != 'true' }}
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             directory/images
@@ -64,6 +64,7 @@ jobs:
             any::here
             any::writexl
             any::readxl
+            any::jsonlite
           cache-version: 1
 
       - name: Run R script to generate profiles
@@ -79,10 +80,30 @@ jobs:
             find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
               -exec mogrify -quality 75 -resize "800x800>" {} \;
           done
+          
+      - name: Update cache checksums after compression
+        run: |
+          Rscript -e '
+          library(jsonlite)
+          library(here)
+          here::i_am("directory/make_profiles.R")
+          cache_file <- here("directory/.image_cache.json")
+          if (file.exists(cache_file)) {
+            cache <- fromJSON(cache_file)
+            for (file_id in names(cache)) {
+              entry <- cache[[file_id]]
+              if (!is.null(entry$path) && file.exists(entry$path)) {
+                cache[[file_id]]$local_md5 <- tools::md5sum(entry$path)[[1]]
+              }
+            }
+            write_json(cache, cache_file, auto_unbox = TRUE)
+            cat("Cache checksums updated\n")
+          }
+          '
       
       #  ---- save cache after compression ----
       - name: Save images cache
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
           path: |
             directory/images
@@ -91,9 +112,6 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        
-      - name: Build Quarto site
-        run: quarto render
 
       - name: Commit and push .qmd profiles
         run: |

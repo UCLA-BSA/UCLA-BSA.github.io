@@ -86,7 +86,8 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
   # If file exists locally and MD5 matches cache, skip entirely (no API call)
   if (file.exists(image_path) && !is.null(cached_md5)) {
     local_md5 <- tools::md5sum(image_path)[[1]]
-    if (local_md5 == cached_md5) {
+    cached_local <- if (is.list(cached_md5)) cached_md5$local_md5 else cached_md5
+    if (local_md5 == cached_local) {
       message("Cache hit, skipping: ", meta_name)
       return(invisible(NULL))
     }
@@ -100,7 +101,7 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
   if (file.exists(image_path)) {
     local_md5 <- tools::md5sum(image_path)[[1]]
     if (local_md5 == drive_md5) {
-      cache[[file_id]] <- drive_md5
+      cache[[file_id]] <- list(drive_md5 = drive_md5, local_md5 = local_md5, path = image_path)
       save_cache(cache)
       message("Up to date, skipping: ", meta_name)
       return(invisible(NULL))
@@ -112,7 +113,8 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
     drive_download(as_id(file_id), path = image_path, overwrite = TRUE)
   )
   
-  cache[[file_id]] <- drive_md5
+  local_md5 <- tools::md5sum(image_path)[[1]]
+  cache[[file_id]] <- list(drive_md5 = drive_md5, local_md5 = local_md5, path = image_path)
   save_cache(cache)
 }
 
