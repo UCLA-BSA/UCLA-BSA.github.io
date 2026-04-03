@@ -1,0 +1,35 @@
+---
+title: "**Xiang Chen**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2022"
+
+advisor: Sudipto Banerjee
+image: /directory/images/phd/photo_crop - Xiang Chen.png
+categories: ["Program: PhD", "Cohort: Fall 2022", "Advisor: Sudipto Banerjee"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/chen-xiang/
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Sudipto Banerjee  
+**Cohort:** Fall 2022  
+
+
+### Education:
+
+**ScM in Biostatistics**, 2021  
+Johns Hopkins University
+
+**BS in Economics and Environmental Science**, 2019  
+Peking University
+
+
+
+

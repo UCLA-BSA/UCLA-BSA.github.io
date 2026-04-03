@@ -1,0 +1,31 @@
+---
+title: "**Jesse Birchfield**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2018"
+
+advisor: Robert Weiss, Andrew Holbrook
+image: /directory/images/phd/jesse_birchfield_headshot - Jesse Birchfield.png
+categories: ["Program: PhD", "Cohort: Fall 2018", "Advisor: Robert Weiss", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Robert Weiss, Andrew Holbrook  
+**Cohort:** Fall 2018  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","yes");</script>
+
+### Education:
+
+
+
+**BA in Philosophy**  
+
+
+
+
+

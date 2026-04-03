@@ -4,7 +4,7 @@ subtitle: "MS Student"
 description: "Cohort: Fall 2024"
 
 advisor: Christina Ramirez
-image: /directory/images/ms/IMG_8975 - ZHIYUAN YU.jpeg
+image: /directory/images/ms/Directory photo - ZHIYUAN YU.jpg
 categories: ["Program: MS", "Cohort: Fall 2024", "Advisor: Christina Ramirez"]
 about:
   template: trestles
@@ -23,7 +23,7 @@ about:
 University of California, Los Angeles  
 **Academic Advisor(s):** Christina Ramirez  
 **Cohort:** Fall 2024  
-**Email:**<script type="text/javascript">scrambleIt("ucla.edu","hhyzy");</script>
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","hhyzy");</script>
 
 ### Education:
 
@@ -32,6 +32,6 @@ University of California, Los Angeles
 **BS in Biological Sciences**, 2024  
 University of California, Davis — Davis, CA
 
+### Bio:
 
-
-
+I am a Master’s student in the Department of Biostatistics at UCLA and received my B.S. in Biological Sciences from UC Davis in 2024. My research interests focus on applying data analytics and statistical modeling to ischemic stroke drug development, particularly in modeling drug diffusion and evaluating therapeutic effectiveness. Outside of academics, I was a student athlete competing in basketball and sprinting, and I enjoy fishing, hiking, and cycling in my free time.

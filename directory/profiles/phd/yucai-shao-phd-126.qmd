@@ -1,0 +1,32 @@
+---
+title: "**Yucai Shao**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2023"
+
+advisor: Marc Suchard
+image: /directory/images/phd/Image_20260403132642_37_123 - Yucai Shao.jpg
+categories: ["Program: PhD", "Cohort: Fall 2023", "Advisor: Marc Suchard"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Marc Suchard  
+**Cohort:** Fall 2023  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","yucais");</script>
+
+### Education:
+
+**MS in Chemistry**  
+Carnegie Mellon University
+
+**BS in Mathematics**  
+Boston College
+
+
+
+
