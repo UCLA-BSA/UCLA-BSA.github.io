@@ -17,7 +17,7 @@ about:
 University of California, Los Angeles  
 **Research Advisor(s):** Robert Weiss, Andrew Holbrook  
 **Cohort:** Fall 2018  
-**Email:**<script type="text/javascript">scrambleIt("ucla.edu","yes");</script>
+
 
 ### Education:
 

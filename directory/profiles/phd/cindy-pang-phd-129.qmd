@@ -21,7 +21,7 @@ about:
 
 ### PhD Student, Biostatistics
 University of California, Los Angeles  
-**Academic Advisor(s):** Sudipto Banerjee, Falco J. Bargagli Stoffi  
+**Research Advisor(s):** Sudipto Banerjee, Falco J. Bargagli Stoffi  
 **Cohort:** Fall 2023  
 **Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","cindypang");</script>
 

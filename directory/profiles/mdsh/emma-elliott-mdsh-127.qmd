@@ -1,0 +1,31 @@
+---
+title: "**Emma Elliott**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_7958 - EMMA ELLIOTT.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","emmae");</script>
+
+### Education:
+
+
+
+**BS in Computer Science**, 2022  
+University of Arizona — Tucson, AZ, US
+
+
+
+

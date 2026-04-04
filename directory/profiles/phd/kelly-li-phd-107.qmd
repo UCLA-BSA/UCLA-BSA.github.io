@@ -23,7 +23,7 @@ about:
 University of California, Los Angeles  
 **Research Advisor(s):** Marc Suchard  
 **Cohort:** Fall 2020  
-**Email:**<script type="text/javascript">scrambleIt("ucla.edu","yes");</script>
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","kmli");</script>
 
 ### Education:
 
