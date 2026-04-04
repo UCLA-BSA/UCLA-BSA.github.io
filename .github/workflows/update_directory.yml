@@ -127,17 +127,19 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add directory/profiles/
           
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes to commit"
+          # Only stage the profile files
+          git add directory/profiles/*.qmd
+          
+          # Check if there are any STAGED changes (ignores the modified images)
+          if git diff --cached --quiet; then
+            echo "No profile changes to commit"
           else
             git commit -m "Auto-update student directory profiles"
             git pull --rebase origin main --autostash
             git push origin main
           fi
         env:
-          # This ensures the 'git push' command uses the App token
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
       - name: Publish to GitHub Pages (Action)
