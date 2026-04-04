@@ -73,12 +73,20 @@ jobs:
           STUDENT_DIRECTORY_URL: ${{ secrets.STUDENT_DIRECTORY_URL }}
         run: Rscript directory/make_profiles.R
         
-      - name: Compress images
+      - name: Compress images in directory
         run: |
           sudo apt-get install -y imagemagick
           for dir in directory/images/mdsh directory/images/ms directory/images/phd; do
             find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
               -exec mogrify -quality 75 -resize "800x800>" {} \;
+          done
+          
+      - name: Compress directory homepage images
+        run: |
+          sudo apt-get install -y imagemagick
+          for dir in directory/images/directory_home; do
+            find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
+              -exec mogrify -quality 80 -resize "1600x1600>" {} \;
           done
           
       - name: Update cache checksums after compression

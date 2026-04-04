@@ -130,15 +130,16 @@ if (download_files == TRUE) {
 
 df <- df %>%
   filter(.[[3]] == "I agree to the FERPA directory release, photo consent, and formatting authorization described above.") %>% # include only those who agree to FERPA
+  mutate(google_email = tolower(.[[2]])) %>%
   select(-c(1, 2, 3, 4)) %>%
-  rename(first = 1,
-         last = 2,
-         preferred = 3,
-         photo = 4,
-         ucla_email = 5,
-         current_program = 6,
-         candidacy = 7,
-         year = 8,
+  rename(current_program = 1,
+         year = 2,
+         first = 3,
+         last = 4,
+         preferred = 5,
+         photo = 6,
+         ucla_email = 7,
+         candidacy = 8,
          advisor = 9,
          advisor_type = 10,
          bachelors_deg = 11,
@@ -159,6 +160,9 @@ df <- df %>%
          github = 26,
          other_web = 27
   ) %>%
+  mutate(year = ifelse(year == "2025-2026",
+                       "Fall 2025",
+                       year)) %>%
   mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"),
          program_lower = tolower(current_program)) %>%
   mutate(file_id = str_extract(photo, "(?<=id=)[^&]+"),
@@ -271,7 +275,7 @@ df_clean <- df %>%
                            "Research",
                            advisor_type)
   ) %>%
-
+  
   # cleaning names
   mutate(
     unique_id = row_number(), # id to assign to each person's file
@@ -306,8 +310,10 @@ df_clean <- df %>%
   mutate(
     ucla_email = case_when(
       is.na(ucla_email) ~ NA_character_,
-      str_detect(ucla_email, "@") ~ ucla_email,  # already has @, leave it
-      TRUE ~ paste0(ucla_email, "@ucla.edu") # missing domain, append it
+      tolower(str_trim(ucla_email)) == "yes" & str_detect(tolower(google_email), "@(g\\.)?ucla\\.edu$") ~ google_email,
+      tolower(str_trim(ucla_email)) == "yes" ~ NA_character_,
+      str_detect(ucla_email, "@") ~ tolower(ucla_email),
+      TRUE ~ paste0(tolower(ucla_email), "@ucla.edu")
     ),
     ucla_email = tolower(ucla_email)
   ) %>%
