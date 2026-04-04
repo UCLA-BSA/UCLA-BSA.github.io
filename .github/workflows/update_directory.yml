@@ -133,7 +133,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto-update student directory profiles"
-            git pull --rebase origin main
+            git pull --rebase origin main --autostash
             git push origin main
           fi
         env:
