@@ -170,6 +170,55 @@ var TOTALS = {
   font-size: 0.78rem; color: #7aa8bf; margin-top: 0.65rem; line-height: 1.4;
 }
 
+/* ── Completion summary bar ─────────────────────────────────────────────── */
+.completion-summary-bar { margin-bottom: 1.2rem; }
+.completion-pill-row {
+  display: flex; align-items: stretch;
+  background: #f0f4f8; border-radius: 14px;
+  overflow: hidden; border: 1.5px solid #dce7f3;
+  gap: 0.5rem; padding: 0.5rem;
+}
+.cpill-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  flex: 1; justify-content: center;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  position: relative; overflow: hidden;
+}
+.cpill-item.cpill-phd   { background: #b8d4ec; }
+.cpill-item.cpill-ms    { background: #99bdd4; }
+.cpill-item.cpill-mdsh  { background: #80d9d0; }
+.cpill-item.cpill-total { background: #8fb8cc; }
+.cpill-fill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
+  transition: width 0.85s cubic-bezier(0.4,0,0.2,1);
+  z-index: 0;
+}
+.cpill-phd  .cpill-fill { background: #2774AE; }
+.cpill-ms   .cpill-fill { background: #005587; }
+.cpill-mdsh .cpill-fill { background: #00a693; }
+.cpill-total .cpill-fill { background: #003B5C; }
+.cpill-item > :not(.cpill-fill) { position: relative; z-index: 1; }
+.cpill-label { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.7);
+               text-transform: uppercase; letter-spacing: 1.5px; }
+.cpill-val   { font-size: 1.15rem; font-weight: 900; color: #FFD100; }
+.cpill-item.cpill-details {
+  flex: 0 0 auto; padding: 0.65rem 1.1rem; cursor: pointer;
+  background: #fff; border: 1.5px solid #dce7f3;
+  transition: background 0.15s, border-color 0.15s;
+  border-radius: 10px; font-family: inherit;
+}
+.cpill-item.cpill-details:hover { background: #e8f0fa; border-color: #2774AE; }
+.cpill-item.cpill-details .cpill-label {
+  color: #2774AE; letter-spacing: 0.5px; font-size: 0.75rem;
+}
+#completionDetails { margin-top: 0.5rem; }
+@media (max-width: 600px) {
+  .completion-pill-row { flex-wrap: wrap; }
+  .cpill-item { flex: 0 0 calc(50% - 0.25rem); }
+  .cpill-item.cpill-details { flex: 0 0 100%; justify-content: center; }
+}
+
 /* ── Filter Bar ─────────────────────────────────────────────────────────── */
 .filter-bar {
   display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
@@ -382,70 +431,102 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Completion Rates Section -->
     <div class="section-divider">
-      <div class="section-divider-label">Completion Rates</div>
+      <div class="section-divider-label">Survey Completion Rates</div>
       <div class="section-divider-line"></div>
     </div>
 
-    <div class="completion-group">
-      <div class="completion-group-label">PhD Program</div>
-      <div class="completion-row">
-        <div class="completion-card">
-          <div class="completion-prog-label">PhD · Profile Completion</div>
-          <div class="completion-main">
-            <div class="completion-pct"  id="phdCompletePct">—</div>
-            <div class="completion-frac" id="phdCompleteFrac"></div>
-          </div>
-          <div class="completion-bar-track"><div class="completion-bar-fill" id="phdCompleteBar" style="width:0%"></div></div>
-          <div class="completion-desc">out of 46 total PhD students</div>
-        </div>
-        <div></div>
+    <!-- Compact summary row -->
+    <div class="completion-summary-bar">
+      <div class="completion-pill-row">
+        <span class="cpill-item cpill-phd">
+          <div class="cpill-fill" id="phdFill"></div>
+          <span class="cpill-val" id="phdMini">—</span>
+          <span class="cpill-label">PhD</span>
+        </span>
+        <span class="cpill-item cpill-ms">
+          <div class="cpill-fill" id="msFill"></div>
+          <span class="cpill-val" id="msMini">—</span>
+          <span class="cpill-label">MS</span>
+        </span>
+        <span class="cpill-item cpill-mdsh">
+          <div class="cpill-fill" id="mdshFill"></div>
+          <span class="cpill-val" id="mdshMini">—</span>
+          <span class="cpill-label">MDSH</span>
+        </span>
+        <span class="cpill-item cpill-total">
+          <div class="cpill-fill" id="overallFill"></div>
+          <span class="cpill-val" id="overallMini">—</span>
+          <span class="cpill-label">Overall</span>
+        </span>
+        <button class="cpill-item cpill-details" id="completionToggle">
+          <span class="cpill-label" id="completionToggleLabel">Details ▾</span>
+        </button>
       </div>
     </div>
 
-    <div class="completion-group">
-      <div class="completion-group-label">MS Program</div>
-      <div class="completion-row">
-        <div class="completion-card">
-          <div class="completion-prog-label">1st Year MS · Profile Completion</div>
-          <div class="completion-main">
-            <div class="completion-pct"  id="ms1CompletePct">—</div>
-            <div class="completion-frac" id="ms1CompleteFrac"></div>
+    <!-- Expandable detail cards -->
+    <div id="completionDetails" style="display:none">
+      <div class="completion-group">
+        <div class="completion-group-label">PhD Program</div>
+        <div class="completion-row">
+          <div class="completion-card">
+            <div class="completion-prog-label">PhD · Profile Completion</div>
+            <div class="completion-main">
+              <div class="completion-pct"  id="phdCompletePct">—</div>
+              <div class="completion-frac" id="phdCompleteFrac"></div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" id="phdCompleteBar" style="width:0%"></div></div>
+            <div class="completion-desc">out of 46 total PhD students</div>
           </div>
-          <div class="completion-bar-track"><div class="completion-bar-fill" id="ms1CompleteBar" style="width:0%"></div></div>
-          <div class="completion-desc">out of 8 students (entered Fall 2025)</div>
-        </div>
-        <div class="completion-card">
-          <div class="completion-prog-label">2nd Year MS · Profile Completion</div>
-          <div class="completion-main">
-            <div class="completion-pct"  id="ms2CompletePct">—</div>
-            <div class="completion-frac" id="ms2CompleteFrac"></div>
-          </div>
-          <div class="completion-bar-track"><div class="completion-bar-fill" id="ms2CompleteBar" style="width:0%"></div></div>
-          <div class="completion-desc">out of 13 students (entered Fall 2024)</div>
+          <div></div>
         </div>
       </div>
-    </div>
 
-    <div class="completion-group">
-      <div class="completion-group-label">MDSH Program</div>
-      <div class="completion-row">
-        <div class="completion-card">
-          <div class="completion-prog-label">1st Year MDSH · Profile Completion</div>
-          <div class="completion-main">
-            <div class="completion-pct"  id="mdsh1CompletePct">—</div>
-            <div class="completion-frac" id="mdsh1CompleteFrac"></div>
+      <div class="completion-group">
+        <div class="completion-group-label">MS Program</div>
+        <div class="completion-row">
+          <div class="completion-card">
+            <div class="completion-prog-label">1st Year MS · Profile Completion</div>
+            <div class="completion-main">
+              <div class="completion-pct"  id="ms1CompletePct">—</div>
+              <div class="completion-frac" id="ms1CompleteFrac"></div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" id="ms1CompleteBar" style="width:0%"></div></div>
+            <div class="completion-desc">out of 8 students (entered Fall 2025)</div>
           </div>
-          <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh1CompleteBar" style="width:0%"></div></div>
-          <div class="completion-desc">out of 55 students (entered Fall 2025)</div>
+          <div class="completion-card">
+            <div class="completion-prog-label">2nd Year MS · Profile Completion</div>
+            <div class="completion-main">
+              <div class="completion-pct"  id="ms2CompletePct">—</div>
+              <div class="completion-frac" id="ms2CompleteFrac"></div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" id="ms2CompleteBar" style="width:0%"></div></div>
+            <div class="completion-desc">out of 13 students (entered Fall 2024)</div>
+          </div>
         </div>
-        <div class="completion-card">
-          <div class="completion-prog-label">2nd Year MDSH · Profile Completion</div>
-          <div class="completion-main">
-            <div class="completion-pct"  id="mdsh2CompletePct">—</div>
-            <div class="completion-frac" id="mdsh2CompleteFrac"></div>
+      </div>
+
+      <div class="completion-group">
+        <div class="completion-group-label">MDSH Program</div>
+        <div class="completion-row">
+          <div class="completion-card">
+            <div class="completion-prog-label">1st Year MDSH · Profile Completion</div>
+            <div class="completion-main">
+              <div class="completion-pct"  id="mdsh1CompletePct">—</div>
+              <div class="completion-frac" id="mdsh1CompleteFrac"></div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh1CompleteBar" style="width:0%"></div></div>
+            <div class="completion-desc">out of 55 students (entered Fall 2025)</div>
           </div>
-          <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh2CompleteBar" style="width:0%"></div></div>
-          <div class="completion-desc">out of 44 students (entered Fall 2024)</div>
+          <div class="completion-card">
+            <div class="completion-prog-label">2nd Year MDSH · Profile Completion</div>
+            <div class="completion-main">
+              <div class="completion-pct"  id="mdsh2CompletePct">—</div>
+              <div class="completion-frac" id="mdsh2CompleteFrac"></div>
+            </div>
+            <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh2CompleteBar" style="width:0%"></div></div>
+            <div class="completion-desc">out of 44 students (entered Fall 2024)</div>
+          </div>
         </div>
       </div>
     </div>
@@ -546,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.1rem;">
             <div>
               <div class="chart-title">UCLA Matriculation</div>
-              <div class="chart-headline">Active PhD Students from UCLA MS</div>
+              <div class="chart-headline">Active PhD Students from UCLA Biostatistics MS</div>
             </div>
             <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;white-space:nowrap;margin-top:0.2rem;">
               <label for="donutYearFrom" style="font-weight:600;color:#2774AE;font-size:0.72rem;">From</label>
@@ -564,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
             <div>
               <div class="chart-title">Matriculation Over Time</div>
-              <div class="chart-headline">UCLA MS → PhD by Cohort Year</div>
+              <div class="chart-headline">UCLA Biostatistics MS → PhD by Cohort Year</div>
             </div>
             <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:#555;white-space:nowrap;margin-top:0.2rem;">
               <label for="trendYearFrom" style="font-weight:600;color:#2774AE;">From</label>
@@ -576,12 +657,11 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="chart-canvas-wrap" style="height:220px;">
             <canvas id="chartUclaMsTrend"></canvas>
           </div>
-          <p style="font-size:0.72rem;color:#999;margin:0.65rem 0 0;line-height:1.5;">
-            * Earlier years only reflect currently active students and do not accurately reflect
-            historical pipeline rates — students who have since graduated are excluded from the data.
-          </p>
         </div>
       </div>
+      <p style="font-size:0.72rem;color:#999;margin:0.6rem 0 0;line-height:1.6;">
+        * Defaults to the last 3 years. Earlier cohort years may appear skewed as students who have since graduated are no longer included in the directory — more recent years better reflect true matriculation rates.
+      </p>
     </div>
 
     <div class="chart-card" style="margin-bottom:1.25rem;">
@@ -859,24 +939,56 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Completion rates
     function fillCompletion(pctId, fracId, barId, resp, total) {
-      var p = Math.round(resp / total * 100);
+      var p = total > 0 ? Math.round(resp / total * 100) : 0;
       el(pctId).textContent  = p + '%';
       el(fracId).textContent = resp + ' / ' + total;
       el(barId).style.width  = Math.min(p, 100) + '%';
+      return p;
     }
+    function setMini(id, pct) { if (el(id)) el(id).textContent = pct + '%'; }
     var T  = window.TOTALS;
     var Y1 = window.COHORT_1ST_YEAR;
     var Y2 = window.COHORT_2ND_YEAR;
-    fillCompletion('phdCompletePct',   'phdCompleteFrac',   'phdCompleteBar',
-      _rows.filter(function (r) { return r.program === 'PhD'; }).length, T.PhD.all);
-    fillCompletion('ms1CompletePct',   'ms1CompleteFrac',   'ms1CompleteBar',
-      _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y1; }).length, T.MS[Y1]);
-    fillCompletion('ms2CompletePct',   'ms2CompleteFrac',   'ms2CompleteBar',
-      _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y2; }).length, T.MS[Y2]);
-    fillCompletion('mdsh1CompletePct', 'mdsh1CompleteFrac', 'mdsh1CompleteBar',
-      _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y1; }).length, T.MDSH[Y1]);
-    fillCompletion('mdsh2CompletePct', 'mdsh2CompleteFrac', 'mdsh2CompleteBar',
-      _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y2; }).length, T.MDSH[Y2]);
+    var cPhd   = _rows.filter(function (r) { return r.program === 'PhD'; }).length;
+    var cMs1   = _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y1; }).length;
+    var cMs2   = _rows.filter(function (r) { return r.program === 'MS'   && r.cohortYear === Y2; }).length;
+    var cMdsh1 = _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y1; }).length;
+    var cMdsh2 = _rows.filter(function (r) { return r.program === 'MDSH' && r.cohortYear === Y2; }).length;
+    fillCompletion('phdCompletePct',   'phdCompleteFrac',   'phdCompleteBar',   cPhd,   T.PhD.all);
+    fillCompletion('ms1CompletePct',   'ms1CompleteFrac',   'ms1CompleteBar',   cMs1,   T.MS[Y1]);
+    fillCompletion('ms2CompletePct',   'ms2CompleteFrac',   'ms2CompleteBar',   cMs2,   T.MS[Y2]);
+    fillCompletion('mdsh1CompletePct', 'mdsh1CompleteFrac', 'mdsh1CompleteBar', cMdsh1, T.MDSH[Y1]);
+    fillCompletion('mdsh2CompletePct', 'mdsh2CompleteFrac', 'mdsh2CompleteBar', cMdsh2, T.MDSH[Y2]);
+    // Mini pills: combined MS and MDSH
+    var tMs   = (T.MS[Y1] || 0) + (T.MS[Y2] || 0);
+    var tMdsh = (T.MDSH[Y1] || 0) + (T.MDSH[Y2] || 0);
+    setMini('phdMini',   T.PhD.all > 0 ? Math.round(cPhd / T.PhD.all * 100) : 0);
+    setMini('msMini',    tMs   > 0 ? Math.round((cMs1 + cMs2) / tMs * 100) : 0);
+    setMini('mdshMini',  tMdsh > 0 ? Math.round((cMdsh1 + cMdsh2) / tMdsh * 100) : 0);
+    var totalResp = cPhd + cMs1 + cMs2 + cMdsh1 + cMdsh2;
+    var totalAll  = (T.PhD.all || 0) + tMs + tMdsh;
+    var overallPct = totalAll > 0 ? Math.round(totalResp / totalAll * 100) : 0;
+    setMini('overallMini', overallPct);
+    var phdPct  = T.PhD.all > 0 ? Math.round(cPhd / T.PhD.all * 100) : 0;
+    var msPct   = tMs   > 0 ? Math.round((cMs1 + cMs2) / tMs * 100) : 0;
+    var mdshPct = tMdsh > 0 ? Math.round((cMdsh1 + cMdsh2) / tMdsh * 100) : 0;
+    setTimeout(function () {
+      [['phdFill', phdPct], ['msFill', msPct], ['mdshFill', mdshPct], ['overallFill', overallPct]]
+        .forEach(function (p) { var f = document.getElementById(p[0]); if (f) f.style.width = p[1] + '%'; });
+    }, 80);
+
+    // Toggle button for completion details
+    var toggleBtn   = document.getElementById('completionToggle');
+    var toggleLabel = document.getElementById('completionToggleLabel');
+    var detailDiv   = document.getElementById('completionDetails');
+    var open = false;
+    if (toggleBtn && detailDiv) {
+      toggleBtn.addEventListener('click', function () {
+        open = !open;
+        detailDiv.style.display = open ? 'block' : 'none';
+        if (toggleLabel) toggleLabel.textContent = open ? 'Details ▴' : 'Details ▾';
+      });
+    }
 
     // Stamp the build date (set by R at render time, not the visitor's clock)
     var lu = el('lastUpdated');
