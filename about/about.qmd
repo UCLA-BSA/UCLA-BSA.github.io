@@ -257,6 +257,35 @@ window.BSA_ABOUT = {
     }).join('');
   }
 
+  /* ── Slugify a name the same way profile filenames are built ─────────── */
+  function slugify(name) {
+    return name.toLowerCase()
+      .replace(/'/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
+
+  /* ── Find a profile path by name, tolerant of number changes ─────────── */
+  function findProfilePath(name) {
+    var idx = window.BSA_DIRECTORY_INDEX;
+    if (!idx) return null;
+    // 1. Exact key match (fastest)
+    if (idx[name]) return idx[name];
+    // 2. Slug-based scan — matches even when the trailing number changes
+    var nameSlug = slugify(name);
+    var paths = Object.values(idx);
+    for (var i = 0; i < paths.length; i++) {
+      var filename = paths[i].split('/').pop(); // e.g. "darren-lin-phd-50"
+      if (filename.indexOf(nameSlug + '-') === 0) return paths[i];
+    }
+    // 3. Fallback: match index key by slug (handles apostrophe/case drift)
+    var keys = Object.keys(idx);
+    for (var j = 0; j < keys.length; j++) {
+      if (slugify(keys[j]) === nameSlug) return idx[keys[j]];
+    }
+    return null;
+  }
+
   /* ── Build one hex element ────────────────────────────────────────────── */
   function buildHex(member) {
     var wrap = document.createElement('div');
@@ -276,8 +305,7 @@ window.BSA_ABOUT = {
         '</div>' +
       '</div>';
 
-    // Auto-lookup profilePath by name from the generated directory index
-    var profilePath = (window.BSA_DIRECTORY_INDEX && window.BSA_DIRECTORY_INDEX[member.name]) || null;
+    var profilePath = findProfilePath(member.name);
 
     if (profilePath) {
       var profileUrl = '../directory/profiles/' + profilePath + '.html';
