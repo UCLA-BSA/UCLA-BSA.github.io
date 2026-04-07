@@ -223,63 +223,59 @@ var TOTALS = {
 <style>
 #statsLoader {
   position: fixed; inset: 0; z-index: 9999;
-  background: #0d1117;
+  background: #f4f7fb;
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.4s ease;
 }
 #statsLoader.fade-out { opacity: 0; pointer-events: none; }
 
 .loader-window {
-  width: min(560px, 90vw);
-  border-radius: 12px;
+  width: min(520px, 90vw);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 40px rgba(39,116,174,0.13), 0 2px 8px rgba(0,0,0,0.07);
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  border: 1px solid #dce7f3;
 }
 .loader-titlebar {
-  background: #2d2d2d;
-  padding: 0.65rem 1rem;
-  display: flex; align-items: center; gap: 0.5rem;
+  background: #2774AE;
+  padding: 0.6rem 1rem;
+  display: flex; align-items: center; gap: 0.45rem;
 }
-.loader-dot {
-  width: 12px; height: 12px; border-radius: 50%;
-}
+.loader-dot { width: 11px; height: 11px; border-radius: 50%; }
 .loader-dot.r { background: #ff5f57; }
 .loader-dot.y { background: #febc2e; }
 .loader-dot.g { background: #28c840; }
 .loader-wintitle {
   flex: 1; text-align: center;
-  font-size: 0.72rem; color: #888; letter-spacing: 0.04em;
+  font-size: 0.7rem; color: rgba(255,255,255,0.75); letter-spacing: 0.06em;
 }
 .loader-body {
-  background: #1a1a2e;
-  padding: 1.5rem 1.75rem 2rem;
-  min-height: 200px;
-  font-size: 0.88rem;
+  background: #ffffff;
+  padding: 1.4rem 1.6rem 1.8rem;
+  font-size: 0.83rem;
   line-height: 1.9;
-  color: #c9d1d9;
+  color: #1a2233;
 }
-.loader-prompt { color: #58a6ff; }
-.loader-cmd    { color: #e6edf3; }
+.loader-prompt { color: #2774AE; font-weight: 600; }
 .loader-cursor {
   display: inline-block;
-  width: 9px; height: 1.1em;
-  background: #e6edf3;
+  width: 8px; height: 1em;
+  background: #2774AE;
   vertical-align: text-bottom;
-  animation: blink 0.9s step-end infinite;
+  animation: blink 0.8s step-end infinite;
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-.loader-ok     { color: #3fb950; }
-.loader-warn   { color: #d29922; }
-.loader-muted  { color: #8b949e; font-size: 0.78rem; }
+.loader-ok  { color: #2774AE; }
+.loader-dim { color: #5a6a80; }
 
 /* content enter animation */
 @keyframes statsEnter {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .stats-page { opacity: 0; }
-.stats-page.visible { animation: statsEnter 0.55s ease forwards; }
+.stats-page.visible { animation: statsEnter 0.45s ease forwards; }
 </style>
 
 <!-- ── Loading screen ────────────────────────────────────────────────────── -->
@@ -299,64 +295,66 @@ var TOTALS = {
 </div>
 
 <script>
-(function () {
-  var CMD      = 'library(bsa_cohort)';
-  var typed    = el('loaderTyped') || document.getElementById('loaderTyped');
-  var cursor   = document.getElementById('loaderCursor');
-  var output   = document.getElementById('loaderOutput');
-  var loader   = document.getElementById('statsLoader');
-  var page     = document.querySelector('.stats-page');
+document.addEventListener('DOMContentLoaded', function () {
+  var loader = document.getElementById('statsLoader');
+  var page   = document.querySelector('.stats-page');
 
-  function addLine(html, delay) {
-    return new Promise(function (res) {
-      setTimeout(function () {
-        var d = document.createElement('div');
-        d.innerHTML = html;
-        output.appendChild(d);
-        res();
-      }, delay);
-    });
+  function showPage() {
+    loader.style.display = 'none';
+    if (page) { page.style.opacity = '1'; }
+  }
+
+  // Skip animation on repeat visits within this browser session
+  if (sessionStorage.getItem('bsa_loader_done')) {
+    showPage();
+    return;
+  }
+
+  var typed  = document.getElementById('loaderTyped');
+  var cursor = document.getElementById('loaderCursor');
+  var output = document.getElementById('loaderOutput');
+  var n      = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function addLine(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html;
+    output.appendChild(d);
   }
 
   function typeCmd(str) {
     return new Promise(function (res) {
       var i = 0;
-      function next() {
+      function tick() {
         if (i < str.length) {
           typed.textContent += str[i++];
-          setTimeout(next, 48 + Math.random() * 35);
+          setTimeout(tick, 36 + Math.random() * 26);
         } else { res(); }
       }
-      setTimeout(next, 350);
+      setTimeout(tick, 150);
     });
   }
 
-  typeCmd(CMD).then(function () {
+  typeCmd('library(bsa_cohort)').then(function () {
     cursor.style.display = 'none';
-    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
-    return addLine('<span class="loader-muted">── Attaching BSA Cohort ─────────────────────────</span>', 200);
+    return wait(100);
   }).then(function () {
-    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
-    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">bsa_cohort loaded &nbsp;&nbsp;</span>', 320);
+    addLine('<span class="loader-dim">── Attaching package: <em>bsa_cohort</em> ──</span>');
+    return wait(100);
   }).then(function () {
-    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">student_stats.json ingested</span>', 250);
+    addLine('<span class="loader-ok">✔</span> <span class="loader-dim">student_stats.json — ' + n + ' profiles loaded</span>');
+    return wait(90);
   }).then(function () {
-    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
-    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">' + n + ' profiles ready</span>', 250);
+    addLine('<span class="loader-ok">✔</span> <span class="loader-dim">rendering dashboard...</span>');
+    return wait(320);
   }).then(function () {
-    return addLine('<span class="loader-warn">ℹ</span> <span class="loader-muted">responses are self-reported — errors may occur</span>', 300);
-  }).then(function () {
-    return addLine('', 200);
-  }).then(function () {
-    return addLine('<span class="loader-prompt">&gt;&nbsp;</span><span class="loader-cmd">render_dashboard()</span>', 180);
-  }).then(function () {
-    return new Promise(function (res) { setTimeout(res, 520); });
-  }).then(function () {
+    sessionStorage.setItem('bsa_loader_done', '1');
     loader.classList.add('fade-out');
     if (page) page.classList.add('visible');
-    setTimeout(function () { loader.style.display = 'none'; }, 520);
+    setTimeout(function () { loader.style.display = 'none'; }, 420);
   });
-}());
+});
 </script>
 
 <!-- ── Page HTML ────────────────────────────────────────────────────────── -->
