@@ -571,7 +571,8 @@ stats_data <- df_clean %>%
     advisor2      = na_if(advisor2, ""),
     advisorType   = tolower(advisor_type),
     alumni        = alumni,
-    mastersSchool = na_if(standardize_university(masters_school), "")
+    mastersSchool = na_if(standardize_university(masters_school), ""),
+    mastersMajor  = na_if(tools::toTitleCase(str_trim(masters_major)), "")
     # deliberately omitting: names, email, linkedin url, github url, photo, bio text
   )
 

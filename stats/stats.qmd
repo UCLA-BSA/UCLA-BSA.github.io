@@ -219,6 +219,146 @@ var TOTALS = {
   .quarto-title-block, h1.title { display: none !important; }
 </style>
 
+<!-- ── Loader styles ─────────────────────────────────────────────────────── -->
+<style>
+#statsLoader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0d1117;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.5s ease;
+}
+#statsLoader.fade-out { opacity: 0; pointer-events: none; }
+
+.loader-window {
+  width: min(560px, 90vw);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+.loader-titlebar {
+  background: #2d2d2d;
+  padding: 0.65rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.loader-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+}
+.loader-dot.r { background: #ff5f57; }
+.loader-dot.y { background: #febc2e; }
+.loader-dot.g { background: #28c840; }
+.loader-wintitle {
+  flex: 1; text-align: center;
+  font-size: 0.72rem; color: #888; letter-spacing: 0.04em;
+}
+.loader-body {
+  background: #1a1a2e;
+  padding: 1.5rem 1.75rem 2rem;
+  min-height: 200px;
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: #c9d1d9;
+}
+.loader-prompt { color: #58a6ff; }
+.loader-cmd    { color: #e6edf3; }
+.loader-cursor {
+  display: inline-block;
+  width: 9px; height: 1.1em;
+  background: #e6edf3;
+  vertical-align: text-bottom;
+  animation: blink 0.9s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.loader-ok     { color: #3fb950; }
+.loader-warn   { color: #d29922; }
+.loader-muted  { color: #8b949e; font-size: 0.78rem; }
+
+/* content enter animation */
+@keyframes statsEnter {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stats-page { opacity: 0; }
+.stats-page.visible { animation: statsEnter 0.55s ease forwards; }
+</style>
+
+<!-- ── Loading screen ────────────────────────────────────────────────────── -->
+<div id="statsLoader">
+  <div class="loader-window">
+    <div class="loader-titlebar">
+      <div class="loader-dot r"></div>
+      <div class="loader-dot y"></div>
+      <div class="loader-dot g"></div>
+      <div class="loader-wintitle">R Console — bsa_cohort</div>
+    </div>
+    <div class="loader-body" id="loaderBody">
+      <div><span class="loader-prompt">&gt;&nbsp;</span><span id="loaderTyped"></span><span class="loader-cursor" id="loaderCursor"></span></div>
+      <div id="loaderOutput"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CMD      = 'library(bsa_cohort)';
+  var typed    = el('loaderTyped') || document.getElementById('loaderTyped');
+  var cursor   = document.getElementById('loaderCursor');
+  var output   = document.getElementById('loaderOutput');
+  var loader   = document.getElementById('statsLoader');
+  var page     = document.querySelector('.stats-page');
+
+  function addLine(html, delay) {
+    return new Promise(function (res) {
+      setTimeout(function () {
+        var d = document.createElement('div');
+        d.innerHTML = html;
+        output.appendChild(d);
+        res();
+      }, delay);
+    });
+  }
+
+  function typeCmd(str) {
+    return new Promise(function (res) {
+      var i = 0;
+      function next() {
+        if (i < str.length) {
+          typed.textContent += str[i++];
+          setTimeout(next, 48 + Math.random() * 35);
+        } else { res(); }
+      }
+      setTimeout(next, 350);
+    });
+  }
+
+  typeCmd(CMD).then(function () {
+    cursor.style.display = 'none';
+    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
+    return addLine('<span class="loader-muted">── Attaching BSA Cohort ─────────────────────────</span>', 200);
+  }).then(function () {
+    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
+    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">bsa_cohort loaded &nbsp;&nbsp;</span>', 320);
+  }).then(function () {
+    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">student_stats.json ingested</span>', 250);
+  }).then(function () {
+    var n = (typeof STUDENT_DATA !== 'undefined' && Array.isArray(STUDENT_DATA)) ? STUDENT_DATA.length : '–';
+    return addLine('<span class="loader-ok">✔</span> <span class="loader-muted">' + n + ' profiles ready</span>', 250);
+  }).then(function () {
+    return addLine('<span class="loader-warn">ℹ</span> <span class="loader-muted">responses are self-reported — errors may occur</span>', 300);
+  }).then(function () {
+    return addLine('', 200);
+  }).then(function () {
+    return addLine('<span class="loader-prompt">&gt;&nbsp;</span><span class="loader-cmd">render_dashboard()</span>', 180);
+  }).then(function () {
+    return new Promise(function (res) { setTimeout(res, 520); });
+  }).then(function () {
+    loader.classList.add('fade-out');
+    if (page) page.classList.add('visible');
+    setTimeout(function () { loader.style.display = 'none'; }, 520);
+  });
+}());
+</script>
+
 <!-- ── Page HTML ────────────────────────────────────────────────────────── -->
 <div class="stats-page">
 
@@ -405,16 +545,36 @@ var TOTALS = {
     <div id="uclaMsPipelineRow" style="margin-bottom:1.25rem;">
       <div class="charts-row-2">
         <div class="chart-card">
-          <div class="chart-title">UCLA Matriculation</div>
-          <div class="chart-headline">Active PhD Students from UCLA MS</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.1rem;">
+            <div>
+              <div class="chart-title">UCLA Matriculation</div>
+              <div class="chart-headline">Active PhD Students from UCLA MS</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;white-space:nowrap;margin-top:0.2rem;">
+              <label for="donutYearFrom" style="font-weight:600;color:#2774AE;font-size:0.72rem;">From</label>
+              <select id="donutYearFrom" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <label for="donutYearTo" style="font-weight:600;color:#2774AE;font-size:0.72rem;">To</label>
+              <select id="donutYearTo" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+            </div>
+          </div>
           <div class="chart-canvas-wrap" style="height:200px;">
             <canvas id="chartUclaMs"></canvas>
           </div>
           <div id="uclaMsInsight" style="font-size:0.88rem;color:#555;line-height:1.5;margin:0.6rem 0 0;text-align:center;"></div>
         </div>
         <div class="chart-card">
-          <div class="chart-title">Matriculation Over Time</div>
-          <div class="chart-headline">UCLA MS → PhD by Cohort Year</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.25rem;">
+            <div>
+              <div class="chart-title">Matriculation Over Time</div>
+              <div class="chart-headline">UCLA MS → PhD by Cohort Year</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:#555;white-space:nowrap;margin-top:0.2rem;">
+              <label for="trendYearFrom" style="font-weight:600;color:#2774AE;">From</label>
+              <select id="trendYearFrom" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <label for="trendYearTo" style="font-weight:600;color:#2774AE;">To</label>
+              <select id="trendYearTo" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+            </div>
+          </div>
           <div class="chart-canvas-wrap" style="height:220px;">
             <canvas id="chartUclaMsTrend"></canvas>
           </div>
@@ -551,7 +711,14 @@ var TOTALS = {
   function makeDonut(canvasId, labels, data, colors) {
     var ctx = el(canvasId);
     if (!ctx) return;
-    if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
+    if (chartInstances[canvasId]) {
+      var ch = chartInstances[canvasId];
+      ch.data.labels = labels;
+      ch.data.datasets[0].data = data;
+      ch.data.datasets[0].backgroundColor = colors;
+      ch.update('none');
+      return;
+    }
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'doughnut',
       data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 6 }] },
@@ -568,7 +735,13 @@ var TOTALS = {
   function makeHBar(canvasId, labels, data, color) {
     var ctx = el(canvasId);
     if (!ctx) return;
-    if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
+    if (chartInstances[canvasId]) {
+      var ch = chartInstances[canvasId];
+      ch.data.labels = labels;
+      ch.data.datasets[0].data = data;
+      ch.update('none');
+      return;
+    }
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
       data: { labels: labels, datasets: [{ data: data, backgroundColor: color || BLUE, borderRadius: 5, borderSkipped: false }] },
@@ -586,6 +759,16 @@ var TOTALS = {
   function makeStackedBar(canvasId, labels, datasets) {
     var ctx = el(canvasId);
     if (!ctx) return;
+    if (chartInstances[canvasId] && chartInstances[canvasId].data.datasets.length === datasets.length) {
+      var ch = chartInstances[canvasId];
+      ch.data.labels = labels;
+      datasets.forEach(function (d, i) {
+        ch.data.datasets[i].data  = d.data;
+        ch.data.datasets[i].label = d.label;
+      });
+      ch.update('none');
+      return;
+    }
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
@@ -607,6 +790,17 @@ var TOTALS = {
   function makeStackedHBar(canvasId, labels, datasets) {
     var ctx = el(canvasId);
     if (!ctx) return;
+    if (chartInstances[canvasId] && chartInstances[canvasId].data.datasets.length === datasets.length) {
+      var ch = chartInstances[canvasId];
+      ch.data.labels = labels;
+      datasets.forEach(function (d, i) {
+        ch.data.datasets[i].data  = d.data;
+        ch.data.datasets[i].label = d.label;
+        ch.data.datasets[i].backgroundColor = d.color;
+      });
+      ch.update('none');
+      return;
+    }
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
@@ -615,7 +809,7 @@ var TOTALS = {
         indexAxis: 'y', responsive: true, maintainAspectRatio: false,
         plugins: {
           legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 }, color: '#444', usePointStyle: true, pointStyleWidth: 10 } },
-          tooltip: { mode: 'index', intersect: false, callbacks: { label: function (c) { return ' ' + c.dataset.label + ': ' + c.parsed.x; } } }
+          tooltip: { mode: 'index', axis: 'y', intersect: false, callbacks: { label: function (c) { return ' ' + c.dataset.label + ': ' + c.parsed.x; } } }
         },
         scales: {
           x: { stacked: true, beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' }, ticks: { color: '#555', stepSize: 1 } },
@@ -630,6 +824,14 @@ var TOTALS = {
   var _alumniCount   = 0;
   var _sel           = { PhD: true, MS: true, MDSH: true };
   var _advisorFilter = 'all'; // 'all' | 'research' | 'academic'
+  var _trendYearFrom  = null;  // null = no filter
+  var _trendYearTo    = null;
+  var _donutYearFrom  = null;
+  var _donutYearTo    = null;
+  // cached data for partial re-renders
+  var _filteredRows   = [];
+  var _advRaw         = [];
+  var _uclaMsByYear   = {};
 
   /* ── Process pre-cleaned JSON from make_profiles.R ───────────────────── */
   function processData(rawRows) {
@@ -649,6 +851,7 @@ var TOTALS = {
         advisors:     [r.advisor1, r.advisor2].filter(function (a) { return a; }),
         advisorType:  (r.advisorType || '').toLowerCase(),
         mastersSchool: r.mastersSchool || null,
+        mastersMajor:  r.mastersMajor  || null,
         alumni:       !!r.alumni
       };
     });
@@ -738,6 +941,64 @@ var TOTALS = {
       });
     }
 
+    // Year-range selects for matriculation trend chart
+    (function () {
+      var allYears = Object.keys(_rows.reduce(function (acc, r) {
+        if (r.cohortYear) acc[r.cohortYear] = 1;
+        return acc;
+      }, {})).sort();
+      var fromSel = el('trendYearFrom');
+      var toSel   = el('trendYearTo');
+      if (!fromSel || !toSel || !allYears.length) return;
+      allYears.forEach(function (y) {
+        fromSel.appendChild(Object.assign(document.createElement('option'), { value: y, textContent: y }));
+        toSel.appendChild(Object.assign(document.createElement('option'), { value: y, textContent: y }));
+      });
+      fromSel.value    = allYears[Math.max(0, allYears.length - 3)];
+      toSel.value      = allYears[allYears.length - 1];
+      _trendYearFrom   = allYears[Math.max(0, allYears.length - 3)];
+      _trendYearTo     = allYears[allYears.length - 1];
+      fromSel.addEventListener('change', function () {
+        _trendYearFrom = fromSel.value;
+        if (_trendYearFrom > _trendYearTo) { _trendYearTo = _trendYearFrom; toSel.value = _trendYearFrom; }
+        renderMatriculationTrend();
+      });
+      toSel.addEventListener('change', function () {
+        _trendYearTo = toSel.value;
+        if (_trendYearTo < _trendYearFrom) { _trendYearFrom = _trendYearTo; fromSel.value = _trendYearTo; }
+        renderMatriculationTrend();
+      });
+    }());
+
+    // Year-range selects for matriculation donut chart
+    (function () {
+      var allYears = Object.keys(_rows.reduce(function (acc, r) {
+        if (r.cohortYear) acc[r.cohortYear] = 1;
+        return acc;
+      }, {})).sort();
+      var fromSel = el('donutYearFrom');
+      var toSel   = el('donutYearTo');
+      if (!fromSel || !toSel || !allYears.length) return;
+      allYears.forEach(function (y) {
+        fromSel.appendChild(Object.assign(document.createElement('option'), { value: y, textContent: y }));
+        toSel.appendChild(Object.assign(document.createElement('option'), { value: y, textContent: y }));
+      });
+      fromSel.value  = allYears[Math.max(0, allYears.length - 3)];
+      toSel.value    = allYears[allYears.length - 1];
+      _donutYearFrom = allYears[Math.max(0, allYears.length - 3)];
+      _donutYearTo   = allYears[allYears.length - 1];
+      fromSel.addEventListener('change', function () {
+        _donutYearFrom = fromSel.value;
+        if (_donutYearFrom > _donutYearTo) { _donutYearTo = _donutYearFrom; toSel.value = _donutYearFrom; }
+        renderMatriculationDonut();
+      });
+      toSel.addEventListener('change', function () {
+        _donutYearTo = toSel.value;
+        if (_donutYearTo < _donutYearFrom) { _donutYearFrom = _donutYearTo; fromSel.value = _donutYearTo; }
+        renderMatriculationDonut();
+      });
+    }());
+
     // Advisor type filter buttons
     document.querySelectorAll('.adv-filter-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -749,7 +1010,7 @@ var TOTALS = {
           b.style.background = active ? activeColor : '#fff';
           b.style.color = active ? '#fff' : activeColor;
         });
-        renderAll();
+        renderAdvisors();
       });
     });
   }
@@ -770,6 +1031,24 @@ var TOTALS = {
         fc.textContent = 'Showing ' + count + ' students (' + names.join(' + ') + ')';
       }
     }
+  }
+
+  /* ── Major standardization ───────────────────────────────────────────── */
+  function standardizeMajor(m) {
+    m = m.trim();
+    if (/^statistics\s+and\s+data\s+science$/i.test(m))       return 'Statistics & Data Science';
+    if (/^statistics$/i.test(m))                              return 'Statistics';
+    if (/^data\s*science$/i.test(m))                          return 'Data Science';
+    if (/^applied\s*math(ematics)?$/i.test(m))                return 'Applied Mathematics';
+    if (/^applied\s*math/i.test(m) && /statistics/i.test(m)) return 'Applied Mathematics & Statistics';
+    if (/^(pure\s*)?math(ematics)?$/i.test(m))                return 'Mathematics';
+    if (/molecular.*cell|cell.*molecular/i.test(m))           return 'Molecular & Cell Biology';
+    if (/biological\s*science/i.test(m))                      return 'Biological Sciences';
+    if (/^biology$/i.test(m))                                 return 'Biology';
+    if (/^biostatistics$/i.test(m))                           return 'Biostatistics';
+    if (/^computer\s*science$/i.test(m))                      return 'Computer Science';
+    if (/public\s*health/i.test(m))                           return 'Public Health';
+    return m;
   }
 
   /* ── Render all charts ───────────────────────────────────────────────── */
@@ -807,7 +1086,8 @@ var TOTALS = {
         else candidacy.Student++;
 
         // UCLA MS → PhD pipeline
-        var fromUcla = r.mastersSchool && /^university of california,? los angeles$|^ucla$/i.test(r.mastersSchool.trim());
+        var fromUcla = r.mastersSchool && /^university of california,? los angeles$|^ucla$/i.test(r.mastersSchool.trim())
+                    && r.mastersMajor && /biostatistics/i.test(r.mastersMajor);
         if (fromUcla) uclaMs++;
         if (r.cohortYear) {
           if (!uclaMsByYear[r.cohortYear]) uclaMsByYear[r.cohortYear] = { uclaMs: 0, other: 0 };
@@ -816,7 +1096,12 @@ var TOTALS = {
         }
       }
 
-      if (r.bsMajor)  bsMajors[r.bsMajor]  = (bsMajors[r.bsMajor]  || 0) + 1;
+      if (r.bsMajor) {
+        r.bsMajor.split(/\s*&\s*/).forEach(function (part) {
+          var key = standardizeMajor(part);
+          bsMajors[key] = (bsMajors[key] || 0) + 1;
+        });
+      }
       if (r.bsSchool) bsSchools[r.bsSchool] = (bsSchools[r.bsSchool] || 0) + 1;
 
       if (r.bsLoc.country) {
@@ -856,7 +1141,8 @@ var TOTALS = {
             var allPhd = _rows.filter(function (r) { return r.program === 'PhD' && !r.alumni; });
             var allPhdTotal = allPhd.length;
             var uclaFromMs = allPhd.filter(function (r) {
-              return r.mastersSchool && /^university of california,? los angeles$|^ucla$/i.test(r.mastersSchool.trim());
+              return r.mastersSchool && /^university of california,? los angeles$|^ucla$/i.test(r.mastersSchool.trim())
+                  && r.mastersMajor && /biostatistics/i.test(r.mastersMajor);
             }).length;
             pills.push({ num: pct(uclaFromMs, allPhdTotal || 1), text: 'of active PhD students matriculated from the UCLA MS program' });
           }
@@ -884,26 +1170,11 @@ var TOTALS = {
     var pipelineRow = el('uclaMsPipelineRow');
     if (pipelineRow) pipelineRow.style.display = _sel.PhD ? '' : 'none';
 
+    _filteredRows = filtered;
+    _uclaMsByYear = uclaMsByYear;
     if (_sel.PhD) {
-      // Insight text
-      var insight = el('uclaMsInsight');
-      if (insight) {
-        var uclaPct = phdTotal ? Math.round(uclaMs / phdTotal * 100) : 0;
-        insight.innerHTML = '<strong style="color:#2774AE;font-size:1.05rem;">' + uclaPct + '%</strong> completed their master\'s at UCLA before joining the PhD program';
-      }
-
-      // Donut: UCLA MS vs other
-      makeDonut('chartUclaMs',
-        ['From UCLA MS', 'Other Background'],
-        [uclaMs, phdTotal - uclaMs],
-        [GOLD, '#e0e7ef']);
-
-      // Stacked bar: per cohort year, UCLA MS vs other PhD
-      var trendYears = Object.keys(uclaMsByYear).sort();
-      makeStackedBar('chartUclaMsTrend', trendYears, [
-        { label: 'From UCLA MS', data: trendYears.map(function (y) { return uclaMsByYear[y].uclaMs; }), color: GOLD },
-        { label: 'Other',        data: trendYears.map(function (y) { return uclaMsByYear[y].other;  }), color: BLUE }
-      ]);
+      renderMatriculationDonut();
+      renderMatriculationTrend();
     }
 
     makeDonut('chartMasters', Object.keys(phdHasMasters), Object.values(phdHasMasters), [BLUE, '#e0e7ef']);
@@ -924,27 +1195,31 @@ var TOTALS = {
     var topStates = topN(usStates, 8);
     makeHBar('chartStates', topStates.map(function (e) { return e[0]; }), topStates.map(function (e) { return e[1]; }), TEAL);
 
-    // Advisor chart — respect _advisorFilter for sort order and displayed count
-    var advRaw = Object.entries(advisorBreakdown)
+    _advRaw = Object.entries(advisorBreakdown)
       .map(function (e) { return { name: e[0], r: e[1].Research, a: e[1].Academic, total: e[1].Research + e[1].Academic }; });
+    renderAdvisors();
+
+    var advTypeLabels = Object.keys(advisorTypes).filter(function (k) { return advisorTypes[k] > 0; });
+    makeDonut('chartAdvisorType', advTypeLabels, advTypeLabels.map(function (k) { return advisorTypes[k]; }),
+      [BLUE, '#e8a000', TEAL]);
+  }
+
+  /* ── Sub-renderers (called independently by filter listeners) ─────────── */
+  function renderAdvisors() {
     var topAdvList;
     if (_advisorFilter === 'research') {
-      topAdvList = advRaw.filter(function (e) { return e.r > 0; }).sort(function (a, b) { return b.r - a.r; }).slice(0, 10);
+      topAdvList = _advRaw.filter(function (e) { return e.r > 0; }).sort(function (a, b) { return b.r - a.r; }).slice(0, 10);
     } else if (_advisorFilter === 'academic') {
-      topAdvList = advRaw.filter(function (e) { return e.a > 0; }).sort(function (a, b) { return b.a - a.a; }).slice(0, 10);
+      topAdvList = _advRaw.filter(function (e) { return e.a > 0; }).sort(function (a, b) { return b.a - a.a; }).slice(0, 10);
     } else {
-      topAdvList = advRaw.sort(function (a, b) { return b.total - a.total; }).slice(0, 10);
+      topAdvList = _advRaw.slice().sort(function (a, b) { return b.total - a.total; }).slice(0, 10);
     }
     var advDatasets = [];
     if (_advisorFilter !== 'academic') advDatasets.push({ label: 'Research', data: topAdvList.map(function (e) { return e.r; }), color: BLUE });
     if (_advisorFilter !== 'research') advDatasets.push({ label: 'Academic', data: topAdvList.map(function (e) { return e.a; }), color: '#e8a000' });
     makeStackedHBar('chartAdvisors', topAdvList.map(function (e) { return e.name; }), advDatasets);
 
-    var advTypeLabels = Object.keys(advisorTypes).filter(function (k) { return advisorTypes[k] > 0; });
-    makeDonut('chartAdvisorType', advTypeLabels, advTypeLabels.map(function (k) { return advisorTypes[k]; }),
-      [BLUE, '#e8a000', TEAL]);
-
-    var allAdvList = advRaw.slice();
+    var allAdvList = _advRaw.slice();
     if (_advisorFilter === 'research') {
       allAdvList = allAdvList.filter(function (e) { return e.r > 0; }).sort(function (a, b) { return b.r - a.r; });
     } else if (_advisorFilter === 'academic') {
@@ -963,6 +1238,43 @@ var TOTALS = {
         + (parts.length ? ' <span style="color:#999;font-size:0.82rem;">(' + parts.join(', ') + ')</span>' : '')
         + '</span></div>';
     }).join('');
+  }
+
+  function renderMatriculationDonut() {
+    var donutPhd = _filteredRows.filter(function (r) {
+      return r.program === 'PhD'
+        && (!_donutYearFrom || r.cohortYear >= _donutYearFrom)
+        && (!_donutYearTo   || r.cohortYear <= _donutYearTo);
+    });
+    var donutTotal  = donutPhd.length;
+    var donutUclaMs = donutPhd.filter(function (r) {
+      return r.mastersSchool && /^university of california,? los angeles$|^ucla$/i.test(r.mastersSchool.trim())
+          && r.mastersMajor  && /biostatistics/i.test(r.mastersMajor);
+    }).length;
+    var uclaPct   = donutTotal ? Math.round(donutUclaMs / donutTotal * 100) : 0;
+    var yearLabel = (_donutYearFrom === _donutYearTo)
+      ? 'cohort ' + _donutYearFrom
+      : 'cohort years ' + _donutYearFrom + '\u2013' + _donutYearTo;
+    var insight = el('uclaMsInsight');
+    if (insight) {
+      insight.innerHTML = '<strong style="color:#2774AE;font-size:1.05rem;">' + uclaPct + '%</strong>'
+        + ' completed their master\'s at UCLA before joining the PhD program'
+        + ' <span style="color:#999;font-size:0.82rem;">(' + yearLabel + ')</span>';
+    }
+    makeDonut('chartUclaMs',
+      ['From UCLA Biostat MS', 'Other Background'],
+      [donutUclaMs, donutTotal - donutUclaMs],
+      [GOLD, '#e0e7ef']);
+  }
+
+  function renderMatriculationTrend() {
+    var trendYears = Object.keys(_uclaMsByYear).sort().filter(function (y) {
+      return (!_trendYearFrom || y >= _trendYearFrom) && (!_trendYearTo || y <= _trendYearTo);
+    });
+    makeStackedBar('chartUclaMsTrend', trendYears, [
+      { label: 'From UCLA Biostat MS', data: trendYears.map(function (y) { return _uclaMsByYear[y].uclaMs; }), color: GOLD },
+      { label: 'Other',                data: trendYears.map(function (y) { return _uclaMsByYear[y].other;  }), color: BLUE }
+    ]);
   }
 
   /* ── Boot — data was inlined at render time by the R chunk ───────────── */
