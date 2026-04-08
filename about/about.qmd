@@ -104,7 +104,7 @@ window.BSA_ABOUT = {
       { name: "Karen Harrison",   role: "Board Member",           hexColor: "#005587" },
       { name: "Timothy Shen",      role: "Board Member",          hexColor: "#005587" },
       { name: "Ryan O'Dell",      role: "Board Member",           hexColor: "#005587" },
-      { name: "Jessica Wu",      role: "Treasurer",         hexColor: "#003B5C" }
+      { name: "Yige Wu",      role: "Treasurer",         hexColor: "#003B5C" }
     ]
   },
 
