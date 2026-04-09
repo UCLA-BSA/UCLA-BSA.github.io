@@ -1,0 +1,43 @@
+<!-- Site-wide footer maintainer line — included via _quarto.yml include-after-body -->
+<script>
+(function () {
+  // Maintainer lookup — edit maintainers.csv and re-run build_maintainers.R
+  // This block is auto-replaced by build_maintainers.R on each run
+  var MAINTAINERS = {"/":"Bowen Zhang","/about/about":"Timothy Shen","/directory/directory":"Darren Lin","/directory/phd-students":"Darren Lin","/directory/ms-students":"Darren Lin","/directory/mdsh-students":"Darren Lin","/directory/ms-alumni":"Darren Lin","/events/events":"Timothy Shen","/stats/stats":"Timothy Shen"};
+
+  // Normalize the current page path
+  var path = window.location.pathname
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '')
+    || '/';
+
+  // Try several variants to find a match
+  var name =
+    MAINTAINERS[path] ||
+    MAINTAINERS[path + '.html'] ||
+    MAINTAINERS[path + '/'];
+
+  if (!name) return;
+
+  var bar = document.createElement('div');
+  bar.style.cssText = [
+    'text-align:center',
+    'font-size:0.72rem',
+    'color:#888',
+    'padding:0.5rem 1rem 0.75rem',
+    'letter-spacing:0.01em',
+    'border-top:1px solid #f0f0f0',
+    'margin-top:0.5rem'
+  ].join(';');
+
+  bar.innerHTML =
+    'Page Maintained by <strong style="color:#2774AE;">' + name + '</strong>' +
+    ' &nbsp;&middot;&nbsp; Built with ' +
+    '<a href="https://quarto.org" target="_blank" style="color:#2774AE;text-decoration:none;">Quarto</a>' +
+    ' &nbsp;&middot;&nbsp; Hosted on ' +
+    '<a href="https://pages.github.com" target="_blank" style="color:#2774AE;text-decoration:none;">GitHub Pages</a>';
+
+  var footer = document.querySelector('.nav-footer') || document.body;
+  footer.appendChild(bar);
+}());
+</script>

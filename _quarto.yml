@@ -42,6 +42,7 @@ format:
       sidebar-width: 200px
       margin-width: 300px
     include-in-header: directory/scramble_email.html
+    include-after-body: footer.html
     link-external-newwindow: true
     link-external-filter: '.*'
 

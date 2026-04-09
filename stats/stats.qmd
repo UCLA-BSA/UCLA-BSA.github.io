@@ -1233,17 +1233,21 @@ document.addEventListener('DOMContentLoaded', function () {
       if (r.advisors.length > 1) multiAdvisor++;
     });
 
+    var domestic = countries['United States'] || 0;
+    var international = Object.entries(countries).reduce(function (s, e) { return e[0] !== 'United States' ? s + e[1] : s; }, 0);
+    var geoTotal = domestic + international;
+
     // Insight pills
     var insightData = _sel.PhD
       ? [
           { num: pct(phdHasMasters["Has Master's"], phdTotal || 1), text: "of PhD students came with a prior Master's degree" },
           { num: pct(multiAdvisor, total),                          text: 'have more than one faculty advisor' },
-          { num: pct(countries['United States'] || 0, total),       text: 'did their undergrad at a US institution' },
+          { num: pct(countries['United States'] || 0, geoTotal),     text: 'did their undergrad at a US institution' },
           { num: pct(candidacy.Candidate, phdTotal || 1),           text: 'of PhD students have advanced to candidacy' }
         ]
       : (function () {
           var pills = [
-            { num: pct(countries['United States'] || 0, total), text: 'did their undergrad at a US institution' },
+            { num: pct(countries['United States'] || 0, geoTotal), text: 'did their undergrad at a US institution' },
             { num: pct(advisorTypes.Research, total),            text: 'have a research advisor' }
           ];
           if (_sel.MS && !_sel.PhD && !_sel.MDSH) {
@@ -1298,8 +1302,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var topSchools = topN(bsSchools, 10);
     makeHBar('chartSchools', topSchools.map(function (e) { return e[0]; }), topSchools.map(function (e) { return e[1]; }), MID);
 
-    var domestic = countries['United States'] || 0;
-    var international = Object.entries(countries).reduce(function (s, e) { return e[0] !== 'United States' ? s + e[1] : s; }, 0);
     makeDonut('chartGeo', ['Domestic', 'International'], [domestic, international], [BLUE, GOLD]);
 
     var topStates = topN(usStates, 8);
