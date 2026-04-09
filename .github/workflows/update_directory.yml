@@ -110,7 +110,12 @@ jobs:
             cat("Cache checksums updated\n")
           }
           '
-      
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        
+      - name: Render Quarto site
+        run: quarto render
+        
       - name: Build directory index
         run: Rscript directory/build_directory_index.R
 
@@ -140,9 +145,6 @@ jobs:
             directory/images
             directory/.image_cache.json
           key: directory-images-${{ github.run_id }}
-
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Commit and push .qmd profiles
         run: |
