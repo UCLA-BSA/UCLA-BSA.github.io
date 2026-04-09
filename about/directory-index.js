@@ -77,6 +77,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Palash Raval": "mdsh/palash-raval-mdsh-73",
   "Parsa Jamshidian": "phd/parsa-jamshidian-phd-12",
   "Peike Li": "ms/peike-li-ms-14",
+  "Peixuan Zang": "mdsh/peixuan-zang-mdsh-132",
   "Ping Yu Lin": "mdsh/ping-yu-lin-mdsh-114",
   "Priti Patel": "mdsh/priti-patel-mdsh-60",
   "Puyuan Liu": "phd/puyuan-liu-phd-2",

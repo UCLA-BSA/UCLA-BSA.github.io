@@ -1,0 +1,39 @@
+---
+title: "**Peixuan (Priscilla) Zang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Jin Zhou
+image: /directory/images/mdsh/截屏2026-04-09 14.14.18 - PEIXUAN ZANG.png
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/priscilla-zang-8090112b5
+      target: _blank
+    - icon: github
+      href: https://github.com/peixuanzang
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Jin Zhou  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("outlook.com","peixuanzang");</script>
+
+### Education:
+
+
+
+**BS in Finance**, 2025  
+The Chinese University of Hong Kong, Shenzhen — Shenzhen, China
+
+### Bio:
+
+I am a graduate student at UCLA studying Data Science in Health, with a background in finance and computer science. My work focuses on analyzing large-scale health data to better understand how socioeconomic and structural factors influence health outcomes and access to care. I am particularly interested in connecting data-driven insights with real-world public health and policy questions.
+
+Outside of academics, I enjoy music and have played instruments such as piano and violin since childhood.
