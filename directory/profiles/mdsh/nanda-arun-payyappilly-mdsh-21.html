@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-aabc189771b79475236e18e0e9005bbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -188,6 +188,49 @@ University of California, San Diego — San Diego, CA</p>
 </main></div>
 </div>
  <!-- /main -->
+<!-- Site-wide footer maintainer line — included via _quarto.yml include-after-body -->
+<script>
+(function () {
+  // Maintainer lookup — edit maintainers.csv and re-run build_maintainers.R
+  // This block is auto-replaced by build_maintainers.R on each run
+  var MAINTAINERS = {"/":"Biostatistics Student Association","/about/about":"Biostatistics Student Association","/directory/directory":"Biostatistics Student Association","/directory/phd-students":"Biostatistics Student Association","/directory/ms-students":"Biostatistics Student Association","/directory/mdsh-students":"Biostatistics Student Association","/directory/ms-alumni":"Biostatistics Student Association","/events/events":"Biostatistics Student Association","/stats/stats":"Biostatistics Student Association"};
+
+  // Normalize the current page path
+  var path = window.location.pathname
+    .replace(/\/index\.html$/, '/')
+    .replace(/\.html$/, '')
+    || '/';
+
+  // Try several variants to find a match
+  var name =
+    MAINTAINERS[path] ||
+    MAINTAINERS[path + '.html'] ||
+    MAINTAINERS[path + '/'];
+
+  if (!name) return;
+
+  var bar = document.createElement('div');
+  bar.style.cssText = [
+    'text-align:center',
+    'font-size:0.72rem',
+    'color:#888',
+    'padding:0.5rem 1rem 0.75rem',
+    'letter-spacing:0.01em',
+    'border-top:1px solid #f0f0f0',
+    'margin-top:0.5rem'
+  ].join(';');
+
+  bar.innerHTML =
+    'Page Maintained by <strong style="color:#2774AE;">' + name + '</strong>' +
+    ' &nbsp;&middot;&nbsp; Built with ' +
+    '<a href="https://quarto.org" target="_blank" style="color:#2774AE;text-decoration:none;">Quarto</a>' +
+    ' &nbsp;&middot;&nbsp; Hosted on ' +
+    '<a href="https://pages.github.com" target="_blank" style="color:#2774AE;text-decoration:none;">GitHub Pages</a>';
+
+  var footer = document.querySelector('.nav-footer') || document.body;
+  footer.appendChild(bar);
+}());
+</script>
 <script>
 (function () {
   var cats = document.querySelectorAll('.quarto-category');
