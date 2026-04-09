@@ -32,7 +32,7 @@ json   <- toJSON(lookup, auto_unbox = TRUE, pretty = FALSE)
 # Read footer.html, replace the placeholder with real data, write back
 footer <- readLines("footer.html", warn = FALSE)
 footer <- gsub(
-  pattern     = "var MAINTAINERS = \\{\\}; /\\* MAINTAINERS_PLACEHOLDER \\*/",
+  pattern     = "var MAINTAINERS = .*?;",
   replacement = paste0("var MAINTAINERS = ", json, ";"),
   x           = footer
 )
@@ -42,3 +42,4 @@ cat("Injected", nrow(csv), "maintainer entries into footer.html\n")
 for (i in seq_len(nrow(csv))) {
   cat(sprintf("  %-40s -> %s\n", csv$html_path[i], csv$maintainer[i]))
 }
+
