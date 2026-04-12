@@ -11,14 +11,64 @@ format:
     link-external-newwindow: true
 ---
 
+<style>
+.quarto-title-block .title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #003B5C;
+  margin-bottom: 0.8rem;
+}
+
+.home-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #003B5C;
+  margin-bottom: 0.6rem;
+}
+
+.home-subtext {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 760px;
+  color: #374151;
+  margin-bottom: 1.2rem;
+}
+
+.home-footer-note {
+  margin-top: 2rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.hero-content {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.hero-content .btn {
+  margin-top: 0.4rem;
+}
+</style>
+
 :::: hero-banner
 ![](home/images/hero.png)
 
 ::: hero-content
-## Biostatistics Student Association (BSA) at UCLA
-Connecting students, research, and careers in biostatistics & data science for public health.
-[Events](./events/events.qmd){.btn .btn-primary .btn-lg}
+<div class="home-header">
+<h1>Biostatistics Student Association (BSA) at UCLA</h1>
+</div>
+
+<div class="home-subtext">
+Connecting students, research, and careers in biostatistics and data science for public health.
+</div>
+
+[Events](./events/events.qmd){.btn .btn-primary .btn-lg} [Join BSA / Interest Form](https://forms.gle/TMFufSRsUM8tozzr9){.btn .btn-primary .btn-lg}
 :::
 ::::
 
-If you are curious to learn more about the UCLA Department of Biostatistics, click [here](https://ph.ucla.edu/departments/biostatistics).
+<div class="home-footer-note">
+To learn more about the UCLA Department of Biostatistics:
+
+[Visit UCLA Biostatistics](https://ph.ucla.edu/departments/biostatistics){.btn .btn-primary .btn-lg}
+</div>
