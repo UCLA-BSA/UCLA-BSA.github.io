@@ -120,6 +120,7 @@ jobs:
         run: Rscript directory/build_directory_index.R
 
       - name: Commit profiles and directory index
+        id: commit_index
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -147,6 +148,7 @@ jobs:
           key: directory-images-${{ github.run_id }}
 
       - name: Commit and push .qmd profiles
+        id: commit_profiles
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -166,6 +168,7 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
       - name: Publish to GitHub Pages (Action)
+        if: ${{ steps.commit_index.outputs.changes_pushed == 'true' || steps.commit_profiles.outputs.changes_pushed == 'true' }}
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
