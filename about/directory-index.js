@@ -68,6 +68,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Linyu Zhou": "phd/linyu-zhou-phd-121",
   "Ludi Zhou": "mdsh/ludi-zhou-mdsh-63",
   "Matthew Kostelny": "mdsh/matthew-kostelny-mdsh-37",
+  "Mayra Cortez": "mdsh/mayra-cortez-mdsh-133",
   "Michael Zaychikov": "mdsh/michael-zaychikov-mdsh-3",
   "Nanda Arun Payyappilly": "mdsh/nanda-arun-payyappilly-mdsh-21",
   "Nathaniel Boyle": "mdsh/nathaniel-boyle-mdsh-95",
