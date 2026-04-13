@@ -1,0 +1,41 @@
+---
+title: "**Mayra Cortez**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/StudentIDCard - MAYRA CORTEZ.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://mayra-cortez.webflow.io/
+      target: _blank
+    - icon: linkedin
+      href: https://linkedin.com/in/mayralcortez
+      target: _blank
+    - icon: github
+      href: https://github.com/mc0x
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","mlcortez3");</script>
+
+### Education:
+
+**MS in Informatics**, 2022  
+University of California, Irvine — Irvine, CA
+
+**BA in Art**, 2020  
+University of California, Irvine — Irvine, CA
+
+
+
+
