@@ -10,6 +10,10 @@ on:
         description: 'Force re-download all images'
         type: boolean
         default: false
+      force_publish:
+        description: 'Force publish to GitHub Pages even without new commits'
+        type: boolean
+        default: false
 
 jobs:
   deploy:
@@ -133,6 +137,7 @@ jobs:
             git commit -m "Auto-update student directory profiles and index"
             git pull --rebase origin main --autostash
             git push origin main
+            echo "changes_pushed=true" >> $GITHUB_OUTPUT
           fi
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -163,12 +168,13 @@ jobs:
             git commit -m "Auto-update student directory profiles"
             git pull --rebase origin main --autostash
             git push origin main
+            echo "changes_pushed=true" >> $GITHUB_OUTPUT
           fi
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
       - name: Publish to GitHub Pages (Action)
-        if: ${{ steps.commit_index.outputs.changes_pushed == 'true' || steps.commit_profiles.outputs.changes_pushed == 'true' }}
+        if: ${{ steps.commit_index.outputs.changes_pushed == 'true' || steps.commit_profiles.outputs.changes_pushed == 'true' || github.event.inputs.force_publish == 'true' }}
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
