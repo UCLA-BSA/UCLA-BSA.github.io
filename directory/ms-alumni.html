@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +45,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-aabc189771b79475236e18e0e9005bbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c61fd315c8f61bf75f2adc3422ad8859.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-ms2025 .list');
+    const listingTargetEl = window.document.querySelector('#listing-alumni-filter .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -85,11 +88,11 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-ms2025'] = new List('listing-ms2025', options);
+    window['quarto-listings']['listing-alumni-filter'] = new List('listing-alumni-filter', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -104,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
   
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-ms2024 .list');
+    const listingTargetEl = window.document.querySelector('#listing-ms2026 .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -113,11 +116,39 @@ ul.task-list li input[type="checkbox"] {
     const options = {
       valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-ms2024'] = new List('listing-ms2024', options);
+    window['quarto-listings']['listing-ms2026'] = new List('listing-ms2026', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-ms2025 .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-ms2025'] = new List('listing-ms2025', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -139,9 +170,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-graduation','listing-advisor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-graduation','listing-advisor',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-title","listing-description","listing-graduation","listing-advisor"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -167,7 +198,7 @@ function scrambleIt(domain, user) {
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -250,11 +281,11 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QWR2aXNvciUzQSUyMEJydW5pbGRhJTIwQmFsbGl1">Advisor: Brunilda Balliu</div><div class="category" data-category="QWR2aXNvciUzQSUyMENhdGhlcmluZSUyMEFubiUyMFN1Z2Fy">Advisor: Catherine Ann Sugar</div><div class="category" data-category="QWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp">Advisor: Catherine M. Crespi</div><div class="category" data-category="QWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=">Advisor: Christina Ramirez</div><div class="category" data-category="QWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==">Advisor: Damla Senturk</div><div class="category" data-category="QWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==">Advisor: Michele Guindani</div><div class="category" data-category="QWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==">Advisor: Not Listed</div><div class="category" data-category="QWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGlu">Advisor: Thomas Belin</div><div class="category" data-category="QWR2aXNvciUzQSUyMFdlbmclMjBLZWUlMjBXb25n">Advisor: Weng Kee Wong</div><div class="category" data-category="QWx1bW5p">Alumni</div><div class="category" data-category="Q2xhc3MlMjBvZiUzQSUyMDIwMjU=">Class of: 2025</div><div class="category" data-category="Q2xhc3MlMjBvZiUzQSUyMDIwMjY=">Class of: 2026</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjM=">Cohort: Fall 2023</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjQ=">Cohort: Fall 2024</div><div class="category" data-category="UHJvZ3JhbSUzQSUyME1T">Program: MS</div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -263,7 +294,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -284,15 +315,29 @@ window.Quarto = {
     <button id="btn-table" class="btn btn-sm btn-outline-secondary" onclick="setAlumniView('table')">☰ List</button>
   </span>
 </p>
-<div id="alumni-grid-view">
-<details open="">
-<summary>
-Class of 2025
-</summary>
-<div id="listing-ms2025" class="quarto-listing quarto-listing-container-grid">
+<div id="listing-alumni-filter" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1776411801002" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
-<a href="../directory/profiles/ms-alumni/ms2025/chuanliang-chen-ms-75.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBCcnVuaWxkYSUyMEJhbGxpdQ==" data-listing-file-modified-sort="1787768680232" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+<a href="../directory/profiles/ms-alumni/ms2026/amaan-jogia-sattar-ms-11.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Amaan Jogia-Sattar</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680307" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
+<a href="../directory/profiles/ms-alumni/ms2025/chuanliang-chen-ms-74.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms-alumni/ms2025/240411_FSPH_0417 - Jimmy Chen.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -310,8 +355,541 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1776411800969" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
-<a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-48.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680268" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
+<a href="../directory/profiles/ms-alumni/ms2026/fangning-luo-ms-40.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/white background square - SOPHIA LUO.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Fangning (Sophia) Luo</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680298" data-listing-reading-time-sort="1" data-listing-word-count-sort="36">
+<a href="../directory/profiles/ms-alumni/ms2026/halle-villalobos-ms-66.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Headshot - Halle Villalobos.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Halle Villalobos</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680301" data-listing-reading-time-sort="1" data-listing-word-count-sort="112">
+<a href="../directory/profiles/ms-alumni/ms2026/hanxi-chen-ms-69.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/final1 - HANXI CHEN.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Hanxi Chen</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680246" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<a href="../directory/profiles/ms-alumni/ms2026/hanying-xu-ms-23.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_4127 - HANYING XU.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Hanying (Elena) Xu</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680276" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-47.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/anon.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Jiachen Ai</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2023</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1787768680285" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
+<a href="../directory/profiles/ms-alumni/ms2026/julie-lee-ms-55.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Screenshot 2026-03-26 at 4.17.18 PM - Julie Lee.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Julie Lee</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680229" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
+<a href="../directory/profiles/ms-alumni/ms2026/kiana-mohammadinik-ms-8.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Kiana Mohammadinik</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680360" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<a href="../directory/profiles/ms-alumni/ms2026/olivia-williams-ms-119.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_8329 - OLIVIA WILLIAMS.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Olivia Williams</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680236" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
+<a href="../directory/profiles/ms-alumni/ms2026/peike-li-ms-14.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/peike-li-ms-2024 - Peike Li.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Peike Li</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBNaWNoZWxlJTIwR3VpbmRhbmk=" data-listing-file-modified-sort="1787768680316" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="../directory/profiles/ms-alumni/ms2026/qianhui-ma-ms-82.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_0205 - Qianhui Ma (Hedy).jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Qianhui (Hedy) Ma</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1787768680306" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="../directory/profiles/ms-alumni/ms2026/xiaomiao-wang-ms-73.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_0737 - XIAOMIAO WANG.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Xiaomiao (Mia) Wang</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBBbm4lMjBTdWdhcg==" data-listing-file-modified-sort="1787768680270" data-listing-reading-time-sort="1" data-listing-word-count-sort="127">
+<a href="../directory/profiles/ms-alumni/ms2026/yutong-wang-ms-42.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Yutong-Wang-MS-2024 - TANYA WANG.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Yutong (Tanya) Wang</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680365" data-listing-reading-time-sort="1" data-listing-word-count-sort="103">
+<a href="../directory/profiles/ms-alumni/ms2026/zhiyuan-yu-ms-123.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Directory photo - ZHIYUAN YU.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Zhiyuan (Eric) Yu</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<div id="alumni-grid-view">
+<details open="">
+<summary>
+Class of 2026
+</summary>
+<div id="listing-ms2026" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-5">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBCcnVuaWxkYSUyMEJhbGxpdQ==" data-listing-file-modified-sort="1787768680232" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
+<a href="../directory/profiles/ms-alumni/ms2026/amaan-jogia-sattar-ms-11.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Amaan Jogia-Sattar</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680268" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
+<a href="../directory/profiles/ms-alumni/ms2026/fangning-luo-ms-40.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/white background square - SOPHIA LUO.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Fangning (Sophia) Luo</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680298" data-listing-reading-time-sort="1" data-listing-word-count-sort="36">
+<a href="../directory/profiles/ms-alumni/ms2026/halle-villalobos-ms-66.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Headshot - Halle Villalobos.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Halle Villalobos</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680301" data-listing-reading-time-sort="1" data-listing-word-count-sort="112">
+<a href="../directory/profiles/ms-alumni/ms2026/hanxi-chen-ms-69.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/final1 - HANXI CHEN.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Hanxi Chen</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680246" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
+<a href="../directory/profiles/ms-alumni/ms2026/hanying-xu-ms-23.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_4127 - HANYING XU.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Hanying (Elena) Xu</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1787768680285" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
+<a href="../directory/profiles/ms-alumni/ms2026/julie-lee-ms-55.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Screenshot 2026-03-26 at 4.17.18 PM - Julie Lee.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Julie Lee</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680229" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
+<a href="../directory/profiles/ms-alumni/ms2026/kiana-mohammadinik-ms-8.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Kiana Mohammadinik</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680360" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<a href="../directory/profiles/ms-alumni/ms2026/olivia-williams-ms-119.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_8329 - OLIVIA WILLIAMS.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Olivia Williams</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680236" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
+<a href="../directory/profiles/ms-alumni/ms2026/peike-li-ms-14.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/peike-li-ms-2024 - Peike Li.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Peike Li</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBNaWNoZWxlJTIwR3VpbmRhbmk=" data-listing-file-modified-sort="1787768680316" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="../directory/profiles/ms-alumni/ms2026/qianhui-ma-ms-82.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_0205 - Qianhui Ma (Hedy).jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Qianhui (Hedy) Ma</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1787768680306" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="../directory/profiles/ms-alumni/ms2026/xiaomiao-wang-ms-73.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/IMG_0737 - XIAOMIAO WANG.JPG" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Xiaomiao (Mia) Wang</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBBbm4lMjBTdWdhcg==" data-listing-file-modified-sort="1787768680270" data-listing-reading-time-sort="1" data-listing-word-count-sort="127">
+<a href="../directory/profiles/ms-alumni/ms2026/yutong-wang-ms-42.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Yutong-Wang-MS-2024 - TANYA WANG.jpeg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Yutong (Tanya) Wang</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680365" data-listing-reading-time-sort="1" data-listing-word-count-sort="103">
+<a href="../directory/profiles/ms-alumni/ms2026/zhiyuan-yu-ms-123.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2026/Directory photo - ZHIYUAN YU.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Zhiyuan (Eric) Yu</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2024</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</details>
+<details>
+<summary>
+Class of 2025
+</summary>
+<div id="listing-ms2025" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-5">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680307" data-listing-reading-time-sort="1" data-listing-word-count-sort="43">
+<a href="../directory/profiles/ms-alumni/ms2025/chuanliang-chen-ms-74.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="../directory/images/ms-alumni/ms2025/240411_FSPH_0417 - Jimmy Chen.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+<strong>Chuanliang (Jimmy) Chen</strong>
+</h5>
+<div class="card-subtitle listing-subtitle">
+MS Student
+</div>
+<div class="card-text listing-description delink">
+<p>Cohort: Fall 2023</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680276" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-47.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/anon.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -333,17 +911,6 @@ MS Student
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
 </details>
-<details>
-<summary>
-Class of 2024
-</summary>
-<div id="listing-ms2024" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-5">
-
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</details>
 </div>
 <div id="listing-alumni-table" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
@@ -354,6 +921,9 @@ Class of 2024
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title-sort" data-direction="asc">
         Name
+      </option>
+      <option value="listing-description" data-direction="asc">
+        Cohort
       </option>
       <option value="listing-graduation" data-direction="asc">
         Graduation Year
@@ -377,6 +947,10 @@ Class of 2024
 </th>
 
 <th>
+<a class="sort" data-sort="listing-description" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Cohort</a>
+</th>
+
+<th>
 <a class="sort" data-sort="listing-graduation" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Graduation Year</a>
 </th>
 
@@ -388,10 +962,30 @@ Class of 2024
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1776411801002" data-listing-reading-time-sort="1" data-listing-word-count-sort="43" data-listing-title-sort="**Chuanliang (Jimmy) Chen**" data-listing-filename-sort="chuanliang-chen-ms-75.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBCcnVuaWxkYSUyMEJhbGxpdQ==" data-listing-file-modified-sort="1787768680232" data-listing-reading-time-sort="1" data-listing-word-count-sort="118" data-listing-title-sort="**Amaan Jogia-Sattar**" data-listing-filename-sort="amaan-jogia-sattar-ms-11.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms-alumni/ms2025/chuanliang-chen-ms-75.html" class="title listing-title"><strong>Chuanliang (Jimmy) Chen</strong></a>
+<a href="../directory/profiles/ms-alumni/ms2026/amaan-jogia-sattar-ms-11.html" class="title listing-title"><strong>Amaan Jogia-Sattar</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Brunilda Balliu</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680307" data-listing-reading-time-sort="1" data-listing-word-count-sort="43" data-listing-title-sort="**Chuanliang (Jimmy) Chen**" data-listing-filename-sort="chuanliang-chen-ms-74.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2025/chuanliang-chen-ms-74.html" class="title listing-title"><strong>Chuanliang (Jimmy) Chen</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2023</span>
 </td>
 <td>
 <span class="listing-graduation">2025</span>
@@ -402,16 +996,223 @@ Class of 2024
 
 </tr>
 
-<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1776411800969" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jiachen Ai**" data-listing-filename-sort="jiachen-ai-ms-48.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680268" data-listing-reading-time-sort="1" data-listing-word-count-sort="128" data-listing-title-sort="**Fangning (Sophia) Luo**" data-listing-filename-sort="fangning-luo-ms-40.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-48.html" class="title listing-title"><strong>Jiachen Ai</strong></a>
+<a href="../directory/profiles/ms-alumni/ms2026/fangning-luo-ms-40.html" class="title listing-title"><strong>Fangning (Sophia) Luo</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680298" data-listing-reading-time-sort="1" data-listing-word-count-sort="36" data-listing-title-sort="**Halle Villalobos**" data-listing-filename-sort="halle-villalobos-ms-66.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/halle-villalobos-ms-66.html" class="title listing-title"><strong>Halle Villalobos</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Catherine M. Crespi</span>
+</td>
+
+</tr>
+
+<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680301" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="**Hanxi Chen**" data-listing-filename-sort="hanxi-chen-ms-69.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/hanxi-chen-ms-69.html" class="title listing-title"><strong>Hanxi Chen</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Damla Senturk</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680246" data-listing-reading-time-sort="1" data-listing-word-count-sort="26" data-listing-title-sort="**Hanying (Elena) Xu**" data-listing-filename-sort="hanying-xu-ms-23.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/hanying-xu-ms-23.html" class="title listing-title"><strong>Hanying (Elena) Xu</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Christina Ramirez</span>
+</td>
+
+</tr>
+
+<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjMlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNSUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680276" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jiachen Ai**" data-listing-filename-sort="jiachen-ai-ms-47.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2025/jiachen-ai-ms-47.html" class="title listing-title"><strong>Jiachen Ai</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2023</span>
 </td>
 <td>
 <span class="listing-graduation">2025</span>
 </td>
 <td>
 <span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBUaG9tYXMlMjBCZWxpbg==" data-listing-file-modified-sort="1787768680285" data-listing-reading-time-sort="1" data-listing-word-count-sort="90" data-listing-title-sort="**Julie Lee**" data-listing-filename-sort="julie-lee-ms-55.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/julie-lee-ms-55.html" class="title listing-title"><strong>Julie Lee</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Thomas Belin</span>
+</td>
+
+</tr>
+
+<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBNLiUyMENyZXNwaQ==" data-listing-file-modified-sort="1787768680229" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="**Kiana Mohammadinik**" data-listing-filename-sort="kiana-mohammadinik-ms-8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/kiana-mohammadinik-ms-8.html" class="title listing-title"><strong>Kiana Mohammadinik</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Catherine M. Crespi</span>
+</td>
+
+</tr>
+
+<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBEYW1sYSUyMFNlbnR1cms=" data-listing-file-modified-sort="1787768680360" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Olivia Williams**" data-listing-filename-sort="olivia-williams-ms-119.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/olivia-williams-ms-119.html" class="title listing-title"><strong>Olivia Williams</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Damla Senturk</span>
+</td>
+
+</tr>
+
+<tr data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBOb3QlMjBMaXN0ZWQ=" data-listing-file-modified-sort="1787768680236" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="**Peike Li**" data-listing-filename-sort="peike-li-ms-14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/peike-li-ms-14.html" class="title listing-title"><strong>Peike Li</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Not Listed</span>
+</td>
+
+</tr>
+
+<tr data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBNaWNoZWxlJTIwR3VpbmRhbmk=" data-listing-file-modified-sort="1787768680316" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Qianhui (Hedy) Ma**" data-listing-filename-sort="qianhui-ma-ms-82.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/qianhui-ma-ms-82.html" class="title listing-title"><strong>Qianhui (Hedy) Ma</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Michele Guindani</span>
+</td>
+
+</tr>
+
+<tr data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBXZW5nJTIwS2VlJTIwV29uZw==" data-listing-file-modified-sort="1787768680306" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Xiaomiao (Mia) Wang**" data-listing-filename-sort="xiaomiao-wang-ms-73.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/xiaomiao-wang-ms-73.html" class="title listing-title"><strong>Xiaomiao (Mia) Wang</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Weng Kee Wong</span>
+</td>
+
+</tr>
+
+<tr data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDYXRoZXJpbmUlMjBBbm4lMjBTdWdhcg==" data-listing-file-modified-sort="1787768680270" data-listing-reading-time-sort="1" data-listing-word-count-sort="127" data-listing-title-sort="**Yutong (Tanya) Wang**" data-listing-filename-sort="yutong-wang-ms-42.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/yutong-wang-ms-42.html" class="title listing-title"><strong>Yutong (Tanya) Wang</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Catherine Ann Sugar</span>
+</td>
+
+</tr>
+
+<tr data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBbHVtbmklMkNDbGFzcyUyMG9mJTNBJTIwMjAyNiUyQ0Fkdmlzb3IlM0ElMjBDaHJpc3RpbmElMjBSYW1pcmV6" data-listing-file-modified-sort="1787768680365" data-listing-reading-time-sort="1" data-listing-word-count-sort="103" data-listing-title-sort="**Zhiyuan (Eric) Yu**" data-listing-filename-sort="zhiyuan-yu-ms-123.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<a href="../directory/profiles/ms-alumni/ms2026/zhiyuan-yu-ms-123.html" class="title listing-title"><strong>Zhiyuan (Eric) Yu</strong></a>
+</td>
+<td>
+<span class="listing-description">Cohort: Fall 2024</span>
+</td>
+<td>
+<span class="listing-graduation">2026</span>
+</td>
+<td>
+<span class="listing-advisor">Christina Ramirez</span>
 </td>
 
 </tr>
@@ -487,7 +1288,7 @@ Class of 2024
 
       if (text.startsWith('Advisor: ')) groups.Advisor.push(el);
       else if (text.startsWith('Cohort: ')) groups.Cohort.push(el);
-      else if (text.startsWith('Program: ')) el.remove();
+      else if (text.startsWith('Program: ') || text === 'Alumni' || text.startsWith('Class of: ')) el.remove();
     });
 
     groups.Advisor.concat(groups.Cohort).forEach(function (el) { el.remove(); });
@@ -600,20 +1401,17 @@ function setAlumniView(view) {
   const tableView = document.getElementById('listing-alumni-table');
   const btnGrid = document.getElementById('btn-grid');
   const btnTable = document.getElementById('btn-table');
-  const sidebar = document.getElementById('quarto-margin-sidebar');
 
   if (!gridView || !tableView) return;
 
   if (view === 'grid') {
     gridView.style.display = 'block';
     tableView.style.display = 'none';
-    if (sidebar) sidebar.style.display = 'block';
     btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary');
     btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary');
   } else {
     gridView.style.display = 'none';
     tableView.style.display = 'block';
-    if (sidebar) sidebar.style.display = 'none';
     btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary');
     btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary');
   }
@@ -661,6 +1459,7 @@ window.addEventListener('load', function() {
 
   wireSearch('listing-alumni-table', [
     'listing-title',
+    'listing-description',
     'listing-graduation',
     'listing-advisor'
   ]);
@@ -675,6 +1474,77 @@ window.addEventListener('load', function() {
   checkForCategoryFilter('listing-alumni-table');
 });
 
+</script>
+<style>
+#listing-alumni-filter { display: none !important; }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  function getListings() {
+    return window['quarto-listings'] || {};
+  }
+
+  function decodeCategory(value) {
+    try {
+      return decodeURIComponent(atob(value));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function matchesCategory(item, category) {
+    var encoded = item.elm.getAttribute('data-categories');
+    var categories = encoded && decodeCategory(encoded);
+    return categories && categories.split(',').map(function (value) {
+      return value.trim();
+    }).includes(category);
+  }
+
+  function targetListingIds() {
+    return Object.keys(getListings()).filter(function (id) {
+      return id !== 'listing-alumni-filter';
+    });
+  }
+
+  function applyCategoryFilter() {
+    var active = document.querySelector('.quarto-listing-category .category.active');
+    if (!active) return;
+
+    var category = decodeCategory(active.getAttribute('data-category'));
+    if (!category) return;
+
+    targetListingIds().forEach(function (id) {
+      var listing = getListings()[id];
+      if (listing) listing.filter(function (item) {
+        return matchesCategory(item, category);
+      });
+    });
+  }
+
+  window.clearCategoryFilter = function () {
+    Object.keys(getListings()).forEach(function (id) {
+      getListings()[id].filter();
+    });
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(function (item) {
+      item.classList.remove('active');
+    });
+    var clear = document.getElementById('clear-all-filters');
+    if (clear) clear.style.display = 'none';
+    history.replaceState(null, '', window.location.pathname);
+  };
+
+  window.addEventListener('load', function () {
+    var categoryContainer = document.querySelector('.quarto-listing-category');
+    if (!categoryContainer) return;
+
+    new MutationObserver(function () {
+      applyCategoryFilter();
+    }).observe(categoryContainer, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  });
+})();
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

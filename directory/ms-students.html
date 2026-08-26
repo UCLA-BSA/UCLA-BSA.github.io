@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +45,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-aabc189771b79475236e18e0e9005bbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c61fd315c8f61bf75f2adc3422ad8859.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -139,7 +142,7 @@ function scrambleIt(domain, user) {
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -224,7 +227,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QWR2aXNvciUzQSUyMEJydW5pbGRhJTIwQmFsbGl1">Advisor: Brunilda Balliu</div><div class="category" data-category="QWR2aXNvciUzQSUyMENhdGhlcmluZSUyMEFubiUyMFN1Z2Fy">Advisor: Catherine Ann Sugar</div><div class="category" data-category="QWR2aXNvciUzQSUyMENhdGhlcmluZSUyME0uJTIwQ3Jlc3Bp">Advisor: Catherine M. Crespi</div><div class="category" data-category="QWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=">Advisor: Christina Ramirez</div><div class="category" data-category="QWR2aXNvciUzQSUyMERhbWxhJTIwU2VudHVyaw==">Advisor: Damla Senturk</div><div class="category" data-category="QWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=">Advisor: Donatello Telesca</div><div class="category" data-category="QWR2aXNvciUzQSUyMEphc29uJTIwWHU=">Advisor: Jason Xu</div><div class="category" data-category="QWR2aXNvciUzQSUyME1pY2hlbGUlMjBHdWluZGFuaQ==">Advisor: Michele Guindani</div><div class="category" data-category="QWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==">Advisor: Not Listed</div><div class="category" data-category="QWR2aXNvciUzQSUyMFRob21hcyUyMEJlbGlu">Advisor: Thomas Belin</div><div class="category" data-category="QWR2aXNvciUzQSUyMFdlbmclMjBLZWUlMjBXb25n">Advisor: Weng Kee Wong</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjQ=">Cohort: Fall 2024</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjU=">Cohort: Fall 2025</div><div class="category" data-category="UHJvZ3JhbSUzQSUyME1T">Program: MS</div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-unnumbered"><div class="category" data-category="QWR2aXNvciUzQSUyMENocmlzdGluYSUyMFJhbWlyZXo=">Advisor: Christina Ramirez</div><div class="category" data-category="QWR2aXNvciUzQSUyMERvbmF0ZWxsbyUyMFRlbGVzY2E=">Advisor: Donatello Telesca</div><div class="category" data-category="QWR2aXNvciUzQSUyMEphc29uJTIwWHU=">Advisor: Jason Xu</div><div class="category" data-category="QWR2aXNvciUzQSUyME5vdCUyMExpc3RlZA==">Advisor: Not Listed</div><div class="category" data-category="QWR2aXNvciUzQSUyMFdlbmclMjBLZWUlMjBXb25n">Advisor: Weng Kee Wong</div><div class="category" data-category="Q29ob3J0JTNBJTIwRmFsbCUyMDIwMjU=">Cohort: Fall 2025</div><div class="category" data-category="UHJvZ3JhbSUzQSUyME1T">Program: MS</div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -277,27 +280,8 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQnJ1bmlsZGElMjBCYWxsaXU=" data-listing-file-modified-sort="1776411800921" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
-<a href="../directory/profiles/ms/amaan-jogia-sattar-ms-11.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Amaan Jogia-Sattar</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1776411801039" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
-<a href="../directory/profiles/ms/asuka-iwamoto-ms-103.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1787768680342" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<a href="../directory/profiles/ms/asuka-iwamoto-ms-102.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/IMG_0952 - ASUKA IWAMOTO.jpeg" class="thumbnail-image card-img" style="height: 150px;">
@@ -315,83 +299,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800960" data-listing-reading-time-sort="1" data-listing-word-count-sort="128">
-<a href="../directory/profiles/ms/fangning-luo-ms-41.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/white background square - SOPHIA LUO.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Fangning (Sophia) Luo</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwTS4lMjBDcmVzcGk=" data-listing-file-modified-sort="1776411800992" data-listing-reading-time-sort="1" data-listing-word-count-sort="36">
-<a href="../directory/profiles/ms/halle-villalobos-ms-67.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/Headshot - Halle Villalobos.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Halle Villalobos</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwRGFtbGElMjBTZW50dXJr" data-listing-file-modified-sort="1776411800996" data-listing-reading-time-sort="1" data-listing-word-count-sort="112">
-<a href="../directory/profiles/ms/hanxi-chen-ms-70.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/final1 - HANXI CHEN.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Hanxi Chen</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411800939" data-listing-reading-time-sort="1" data-listing-word-count-sort="26">
-<a href="../directory/profiles/ms/hanying-xu-ms-23.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/IMG_4127 - HANYING XU.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Hanying (Elena) Xu</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800943" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680253" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="../directory/profiles/ms/jiale-ni-ms-27.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -410,8 +318,8 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801043" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
-<a href="../directory/profiles/ms/jian-huang-ms-106.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680345" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<a href="../directory/profiles/ms/jian-huang-ms-105.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/IMG_4422 - TOM HUANG.JPG" class="thumbnail-image card-img" style="height: 150px;">
@@ -429,8 +337,8 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411801035" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<a href="../directory/profiles/ms/jiaqi-zhou-ms-100.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1787768680338" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<a href="../directory/profiles/ms/jiaqi-zhou-ms-99.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/headshot - NINA ZHOU.JPG" class="thumbnail-image card-img" style="height: 150px;">
@@ -448,8 +356,8 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801050" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<a href="../directory/profiles/ms/julian-gavino-ms-112.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680351" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
+<a href="../directory/profiles/ms/julian-gavino-ms-111.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/image - JULIAN GAVINO.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -467,102 +375,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwVGhvbWFzJTIwQmVsaW4=" data-listing-file-modified-sort="1776411800979" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
-<a href="../directory/profiles/ms/julie-lee-ms-56.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/Screenshot 2026-03-26 at 4.17.18 PM - Julie Lee.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Julie Lee</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwTS4lMjBDcmVzcGk=" data-listing-file-modified-sort="1776411800917" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
-<a href="../directory/profiles/ms/kiana-mohammadinik-ms-8.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Kiana Mohammadinik</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwRGFtbGElMjBTZW50dXJr" data-listing-file-modified-sort="1776411801060" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
-<a href="../directory/profiles/ms/olivia-williams-ms-120.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/IMG_8329 - OLIVIA WILLIAMS.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Olivia Williams</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800924" data-listing-reading-time-sort="1" data-listing-word-count-sort="35">
-<a href="../directory/profiles/ms/peike-li-ms-14.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/peike-li-ms-2024 - Peike Li.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Peike Li</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTWljaGVsZSUyMEd1aW5kYW5p" data-listing-file-modified-sort="1776411801012" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<a href="../directory/profiles/ms/qianhui-ma-ms-83.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/IMG_0205 - Qianhui Ma (Hedy).jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Qianhui (Hedy) Ma</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1776411800937" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1787768680245" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
 <a href="../directory/profiles/ms/siddhant-patel-ms-22.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -581,8 +394,8 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801028" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
-<a href="../directory/profiles/ms/sihong-yao-ms-94.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680332" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
+<a href="../directory/profiles/ms/sihong-yao-ms-93.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/IMG_1105 - SIHONG YAO.jpeg" class="thumbnail-image card-img" style="height: 150px;">
@@ -600,27 +413,8 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1776411801001" data-listing-reading-time-sort="1" data-listing-word-count-sort="29">
-<a href="../directory/profiles/ms/xiaomiao-wang-ms-74.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/IMG_0737 - XIAOMIAO WANG.JPG" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Xiaomiao (Mia) Wang</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1776411801047" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
-<a href="../directory/profiles/ms/yubo-shen-ms-110.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1787768680349" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<a href="../directory/profiles/ms/yubo-shen-ms-109.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="../directory/images/ms/IMG_5754 - YUBO SHEN.jpeg" class="thumbnail-image card-img" style="height: 150px;">
@@ -634,44 +428,6 @@ MS Student
 </div>
 <div class="card-text listing-description delink">
 <p>Cohort: Fall 2025</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwQW5uJTIwU3VnYXI=" data-listing-file-modified-sort="1776411800963" data-listing-reading-time-sort="1" data-listing-word-count-sort="127">
-<a href="../directory/profiles/ms/yutong-wang-ms-43.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/Yutong-Wang-MS-2024 - TANYA WANG.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Yutong (Tanya) Wang</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="20" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411801065" data-listing-reading-time-sort="1" data-listing-word-count-sort="103">
-<a href="../directory/profiles/ms/zhiyuan-yu-ms-124.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../directory/images/ms/Directory photo - ZHIYUAN YU.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-<strong>Zhiyuan (Eric) Yu</strong>
-</h5>
-<div class="card-subtitle listing-subtitle">
-MS Student
-</div>
-<div class="card-text listing-description delink">
-<p>Cohort: Fall 2024</p>
 </div>
 </div>
 </div></a>
@@ -722,24 +478,10 @@ MS Student
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQnJ1bmlsZGElMjBCYWxsaXU=" data-listing-file-modified-sort="1776411800921" data-listing-reading-time-sort="1" data-listing-word-count-sort="118" data-listing-title-sort="**Amaan Jogia-Sattar**" data-listing-filename-sort="amaan-jogia-sattar-ms-11.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1787768680342" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="**Asuka Iwamoto**" data-listing-filename-sort="asuka-iwamoto-ms-102.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/amaan-jogia-sattar-ms-11.html" class="title listing-title"><strong>Amaan Jogia-Sattar</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Brunilda Balliu</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1776411801039" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="**Asuka Iwamoto**" data-listing-filename-sort="asuka-iwamoto-ms-103.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/asuka-iwamoto-ms-103.html" class="title listing-title"><strong>Asuka Iwamoto</strong></a>
+<a href="../directory/profiles/ms/asuka-iwamoto-ms-102.html" class="title listing-title"><strong>Asuka Iwamoto</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
@@ -750,63 +492,7 @@ MS Student
 
 </tr>
 
-<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800960" data-listing-reading-time-sort="1" data-listing-word-count-sort="128" data-listing-title-sort="**Fangning (Sophia) Luo**" data-listing-filename-sort="fangning-luo-ms-41.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/fangning-luo-ms-41.html" class="title listing-title"><strong>Fangning (Sophia) Luo</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Not Listed</span>
-</td>
-
-</tr>
-
-<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwTS4lMjBDcmVzcGk=" data-listing-file-modified-sort="1776411800992" data-listing-reading-time-sort="1" data-listing-word-count-sort="36" data-listing-title-sort="**Halle Villalobos**" data-listing-filename-sort="halle-villalobos-ms-67.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/halle-villalobos-ms-67.html" class="title listing-title"><strong>Halle Villalobos</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Catherine M. Crespi</span>
-</td>
-
-</tr>
-
-<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwRGFtbGElMjBTZW50dXJr" data-listing-file-modified-sort="1776411800996" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="**Hanxi Chen**" data-listing-filename-sort="hanxi-chen-ms-70.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/hanxi-chen-ms-70.html" class="title listing-title"><strong>Hanxi Chen</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Damla Senturk</span>
-</td>
-
-</tr>
-
-<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411800939" data-listing-reading-time-sort="1" data-listing-word-count-sort="26" data-listing-title-sort="**Hanying (Elena) Xu**" data-listing-filename-sort="hanying-xu-ms-23.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/hanying-xu-ms-23.html" class="title listing-title"><strong>Hanying (Elena) Xu</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Christina Ramirez</span>
-</td>
-
-</tr>
-
-<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800943" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiale Ni**" data-listing-filename-sort="jiale-ni-ms-27.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680253" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiale Ni**" data-listing-filename-sort="jiale-ni-ms-27.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/jiale-ni-ms-27.html" class="title listing-title"><strong>Jiale Ni</strong></a>
@@ -820,10 +506,10 @@ MS Student
 
 </tr>
 
-<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801043" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jian (Tom) Huang**" data-listing-filename-sort="jian-huang-ms-106.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680345" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jian (Tom) Huang**" data-listing-filename-sort="jian-huang-ms-105.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/jian-huang-ms-106.html" class="title listing-title"><strong>Jian (Tom) Huang</strong></a>
+<a href="../directory/profiles/ms/jian-huang-ms-105.html" class="title listing-title"><strong>Jian (Tom) Huang</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
@@ -834,10 +520,10 @@ MS Student
 
 </tr>
 
-<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411801035" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiaqi (Nina) Zhou**" data-listing-filename-sort="jiaqi-zhou-ms-100.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1787768680338" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiaqi (Nina) Zhou**" data-listing-filename-sort="jiaqi-zhou-ms-99.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/jiaqi-zhou-ms-100.html" class="title listing-title"><strong>Jiaqi (Nina) Zhou</strong></a>
+<a href="../directory/profiles/ms/jiaqi-zhou-ms-99.html" class="title listing-title"><strong>Jiaqi (Nina) Zhou</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
@@ -848,10 +534,10 @@ MS Student
 
 </tr>
 
-<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801050" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Julian Gavino**" data-listing-filename-sort="julian-gavino-ms-112.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680351" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Julian Gavino**" data-listing-filename-sort="julian-gavino-ms-111.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/julian-gavino-ms-112.html" class="title listing-title"><strong>Julian Gavino</strong></a>
+<a href="../directory/profiles/ms/julian-gavino-ms-111.html" class="title listing-title"><strong>Julian Gavino</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
@@ -862,77 +548,7 @@ MS Student
 
 </tr>
 
-<tr data-index="10" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwVGhvbWFzJTIwQmVsaW4=" data-listing-file-modified-sort="1776411800979" data-listing-reading-time-sort="1" data-listing-word-count-sort="90" data-listing-title-sort="**Julie Lee**" data-listing-filename-sort="julie-lee-ms-56.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/julie-lee-ms-56.html" class="title listing-title"><strong>Julie Lee</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Thomas Belin</span>
-</td>
-
-</tr>
-
-<tr data-index="11" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwTS4lMjBDcmVzcGk=" data-listing-file-modified-sort="1776411800917" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="**Kiana Mohammadinik**" data-listing-filename-sort="kiana-mohammadinik-ms-8.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/kiana-mohammadinik-ms-8.html" class="title listing-title"><strong>Kiana Mohammadinik</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Catherine M. Crespi</span>
-</td>
-
-</tr>
-
-<tr data-index="12" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwRGFtbGElMjBTZW50dXJr" data-listing-file-modified-sort="1776411801060" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Olivia Williams**" data-listing-filename-sort="olivia-williams-ms-120.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/olivia-williams-ms-120.html" class="title listing-title"><strong>Olivia Williams</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Damla Senturk</span>
-</td>
-
-</tr>
-
-<tr data-index="13" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411800924" data-listing-reading-time-sort="1" data-listing-word-count-sort="35" data-listing-title-sort="**Peike Li**" data-listing-filename-sort="peike-li-ms-14.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/peike-li-ms-14.html" class="title listing-title"><strong>Peike Li</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Not Listed</span>
-</td>
-
-</tr>
-
-<tr data-index="14" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwTWljaGVsZSUyMEd1aW5kYW5p" data-listing-file-modified-sort="1776411801012" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Qianhui (Hedy) Ma**" data-listing-filename-sort="qianhui-ma-ms-83.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/qianhui-ma-ms-83.html" class="title listing-title"><strong>Qianhui (Hedy) Ma</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Michele Guindani</span>
-</td>
-
-</tr>
-
-<tr data-index="15" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1776411800937" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="**Siddhant Patel**" data-listing-filename-sort="siddhant-patel-ms-22.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1787768680245" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="**Siddhant Patel**" data-listing-filename-sort="siddhant-patel-ms-22.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/siddhant-patel-ms-22.html" class="title listing-title"><strong>Siddhant Patel</strong></a>
@@ -946,10 +562,10 @@ MS Student
 
 </tr>
 
-<tr data-index="16" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1776411801028" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="**Sihong Yao**" data-listing-filename-sort="sihong-yao-ms-94.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1787768680332" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="**Sihong Yao**" data-listing-filename-sort="sihong-yao-ms-93.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/sihong-yao-ms-94.html" class="title listing-title"><strong>Sihong Yao</strong></a>
+<a href="../directory/profiles/ms/sihong-yao-ms-93.html" class="title listing-title"><strong>Sihong Yao</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
@@ -960,58 +576,16 @@ MS Student
 
 </tr>
 
-<tr data-index="17" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1776411801001" data-listing-reading-time-sort="1" data-listing-word-count-sort="29" data-listing-title-sort="**Xiaomiao (Mia) Wang**" data-listing-filename-sort="xiaomiao-wang-ms-74.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1787768680349" data-listing-reading-time-sort="1" data-listing-word-count-sort="41" data-listing-title-sort="**Yubo Shen**" data-listing-filename-sort="yubo-shen-ms-109.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
-<a href="../directory/profiles/ms/xiaomiao-wang-ms-74.html" class="title listing-title"><strong>Xiaomiao (Mia) Wang</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Weng Kee Wong</span>
-</td>
-
-</tr>
-
-<tr data-index="18" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1776411801047" data-listing-reading-time-sort="1" data-listing-word-count-sort="41" data-listing-title-sort="**Yubo Shen**" data-listing-filename-sort="yubo-shen-ms-110.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/yubo-shen-ms-110.html" class="title listing-title"><strong>Yubo Shen</strong></a>
+<a href="../directory/profiles/ms/yubo-shen-ms-109.html" class="title listing-title"><strong>Yubo Shen</strong></a>
 </td>
 <td>
 <span class="listing-description">Cohort: Fall 2025</span>
 </td>
 <td>
 <span class="listing-advisor">Weng Kee Wong</span>
-</td>
-
-</tr>
-
-<tr data-index="19" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2F0aGVyaW5lJTIwQW5uJTIwU3VnYXI=" data-listing-file-modified-sort="1776411800963" data-listing-reading-time-sort="1" data-listing-word-count-sort="127" data-listing-title-sort="**Yutong (Tanya) Wang**" data-listing-filename-sort="yutong-wang-ms-43.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/yutong-wang-ms-43.html" class="title listing-title"><strong>Yutong (Tanya) Wang</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Catherine Ann Sugar</span>
-</td>
-
-</tr>
-
-<tr data-index="20" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjQlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1776411801065" data-listing-reading-time-sort="1" data-listing-word-count-sort="103" data-listing-title-sort="**Zhiyuan (Eric) Yu**" data-listing-filename-sort="zhiyuan-yu-ms-124.qmd" onclick="href = this.querySelector('a').getAttribute('href');
- if (href) { window.location=href ; return false; }">
-<td>
-<a href="../directory/profiles/ms/zhiyuan-yu-ms-124.html" class="title listing-title"><strong>Zhiyuan (Eric) Yu</strong></a>
-</td>
-<td>
-<span class="listing-description">Cohort: Fall 2024</span>
-</td>
-<td>
-<span class="listing-advisor">Christina Ramirez</span>
 </td>
 
 </tr>
@@ -1087,7 +661,7 @@ MS Student
 
       if (text.startsWith('Advisor: ')) groups.Advisor.push(el);
       else if (text.startsWith('Cohort: ')) groups.Cohort.push(el);
-      else if (text.startsWith('Program: ')) el.remove();
+      else if (text.startsWith('Program: ') || text === 'Alumni' || text.startsWith('Class of: ')) el.remove();
     });
 
     groups.Advisor.concat(groups.Cohort).forEach(function (el) { el.remove(); });

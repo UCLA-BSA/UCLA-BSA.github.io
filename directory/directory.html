@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-aabc189771b79475236e18e0e9005bbb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c61fd315c8f61bf75f2adc3422ad8859.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -305,33 +308,21 @@ function scrambleIt(domain, user) {
   </div>
 
   <!-- Alumni -->
-  <!-- <h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: #003B5C;">Alumni</h3> -->
-  <!-- <div class="program-cards-grid"> -->
-  <!--   <a href="phd-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/phd.jpeg" alt="PhD Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">PhD Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!--   <a href="ms-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/ms.jpg" alt="MS Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">MS Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!--   <a href="mdsh-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/mdsh.jpg" alt="MDSH Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">MDSH Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!-- </div> -->
+  <section class="alumni-preview">
+    <div class="alumni-preview-copy">
+      <div class="section-label">Beyond UCLA</div>
+      <h3 class="section-title-bar anchored" style="font-size:1.6rem;">Alumni</h3>
+      <p>
+        Our alumni carry UCLA Biostatistics into research, public health,
+        industry, and beyond. Explore graduate profiles and stay connected as
+        the alumni directory grows.
+      </p>
+      <a href="alumni.html" class="alumni-preview-link">Explore the Alumni Directory <span aria-hidden="true">→</span></a>
+    </div>
+    <a href="alumni.html" class="alumni-preview-image" aria-label="Explore the Alumni Directory">
+      <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics students and alumni">
+    </a>
+  </section>
   
 </div>
 
