@@ -75,12 +75,15 @@ jobs:
         env:
           GDRIVE_JSON: ${{ secrets.GDRIVE_JSON }}
           STUDENT_DIRECTORY_URL: ${{ secrets.STUDENT_DIRECTORY_URL }}
+          ALUMNI_URL: ${{ secrets.ALUMNI_URL }}
         run: Rscript directory/make_profiles.R
         
       - name: Compress images in directory
         run: |
           sudo apt-get install -y imagemagick
-          for dir in directory/images/mdsh directory/images/ms directory/images/phd; do
+          for dir in directory/images/mdsh directory/images/ms directory/images/phd \
+                     directory/images/mdsh-alumni directory/images/ms-alumni directory/images/phd-alumni; do
+            [ -d "$dir" ] || continue
             find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) \
               -exec mogrify -quality 75 -resize "800x800>" {} \;
           done

@@ -1,5 +1,5 @@
 ---
-title: "Master of Science Alumni"
+title: "Master of Data Science in Health Alumni"
 page-layout: full
 css: styles.css
 format:
@@ -10,24 +10,19 @@ format:
       - alumni-filter-script.html
 listing:
   - id: alumni-filter
-    contents: "profiles/ms-alumni/**/*.qmd"
+    contents: "profiles/mdsh-alumni/**/*.qmd"
     type: grid
     page-size: 9999
     grid-columns: 5
     fields: [image, title, subtitle, description]
     categories: unnumbered
-  - id: ms2026
-    contents: "profiles/ms-alumni/ms2026/*.qmd"
-    type: grid
-    grid-columns: 5
-    fields: [image, title, subtitle, description]
-  - id: ms2025
-    contents: "profiles/ms-alumni/ms2025/*.qmd"
+  - id: mdsh2026
+    contents: "profiles/mdsh-alumni/mdsh2026/*.qmd"
     type: grid
     grid-columns: 5
     fields: [image, title, subtitle, description]
   - id: alumni-table
-    contents: "profiles/ms-alumni/**/*.qmd"
+    contents: "profiles/mdsh-alumni/**/*.qmd"
     type: table
     sort-ui: [title, description, graduation, advisor]
     filter-ui: [title, description, graduation, advisor]
@@ -42,8 +37,8 @@ listing:
 
 ```{=html}
 <p class="mb-4" style="display:flex; align-items:center; gap:1rem;">
-  <a href="directory.html" class="btn btn-outline-secondary btn-sm">
-    &larr; Back to Directory
+  <a href="alumni.html" class="btn btn-outline-secondary btn-sm">
+    &larr; Alumni Directory
   </a>
   <span style="margin-left:auto;">
     <button id="btn-grid" class="btn btn-sm btn-secondary" onclick="setAlumniView('grid')">⊞ Grid</button>
@@ -58,13 +53,7 @@ listing:
 <div id="alumni-grid-view">
 <details open>
 <summary>Class of 2026</summary>
-:::{#ms2026}
-:::
-</details>
-
-<details>
-<summary>Class of 2025</summary>
-:::{#ms2025}
+:::{#mdsh2026}
 :::
 </details>
 </div>

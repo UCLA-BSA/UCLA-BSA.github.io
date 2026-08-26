@@ -17,7 +17,7 @@
 
       if (text.startsWith('Advisor: ')) groups.Advisor.push(el);
       else if (text.startsWith('Cohort: ')) groups.Cohort.push(el);
-      else if (text.startsWith('Program: ')) el.remove();
+      else if (text.startsWith('Program: ') || text === 'Alumni' || text.startsWith('Class of: ')) el.remove();
     });
 
     groups.Advisor.concat(groups.Cohort).forEach(function (el) { el.remove(); });

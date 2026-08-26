@@ -34,6 +34,26 @@ css: styles.css
           </div>
         </div>
       </a>
+      <a href="mdsh-alumni.html">
+        <div class="directory-program-card">
+          <img src="./images/directory_home/mdsh.jpg" alt="Master of Data Science in Health alumni" />
+          <div class="prog-card-overlay">
+            <div class="prog-card-tag">Master of Data Science in Health</div>
+            <div class="prog-card-title">MDSH Alumni</div>
+            <div class="prog-card-cta">Explore profiles →</div>
+          </div>
+        </div>
+      </a>
+      <a href="phd-alumni.html">
+        <div class="directory-program-card">
+          <img src="./images/directory_home/phd.jpeg" alt="Doctor of Philosophy alumni" />
+          <div class="prog-card-overlay">
+            <div class="prog-card-tag">Doctor of Philosophy</div>
+            <div class="prog-card-title">PhD Alumni</div>
+            <div class="prog-card-cta">Explore profiles →</div>
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 

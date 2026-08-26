@@ -25,20 +25,17 @@ function setAlumniView(view) {
   const tableView = document.getElementById('listing-alumni-table');
   const btnGrid = document.getElementById('btn-grid');
   const btnTable = document.getElementById('btn-table');
-  const sidebar = document.getElementById('quarto-margin-sidebar');
 
   if (!gridView || !tableView) return;
 
   if (view === 'grid') {
     gridView.style.display = 'block';
     tableView.style.display = 'none';
-    if (sidebar) sidebar.style.display = 'block';
     btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary');
     btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary');
   } else {
     gridView.style.display = 'none';
     tableView.style.display = 'block';
-    if (sidebar) sidebar.style.display = 'none';
     btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary');
     btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary');
   }
@@ -86,6 +83,7 @@ window.addEventListener('load', function() {
 
   wireSearch('listing-alumni-table', [
     'listing-title',
+    'listing-description',
     'listing-graduation',
     'listing-advisor'
   ]);

@@ -18,8 +18,8 @@ website:
         text: About
       - href: directory/directory.qmd
         text: Student Directory
-      - href: directory/alumni.qmd
-        text: Alumni
+      # - href: directory/alumni.qmd
+      #   text: Alumni
       - href: events/events.qmd
         text: Events
     right:

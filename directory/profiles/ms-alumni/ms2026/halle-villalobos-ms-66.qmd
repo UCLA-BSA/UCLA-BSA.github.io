@@ -1,0 +1,34 @@
+---
+title: "**Halle Villalobos**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Catherine M. Crespi
+image: /directory/images/ms-alumni/ms2026/Headshot - Halle Villalobos.jpg
+categories: ["Program: MS", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Catherine M. Crespi"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/hallevillalobos/
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Catherine M. Crespi  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","hallevillalobos");</script>
+
+### Education:
+
+
+
+**BS in Molecular, Cell and Developmental Biology**, 2024  
+University of California, Los Angeles — Los Angeles, CA
+
+
+
+

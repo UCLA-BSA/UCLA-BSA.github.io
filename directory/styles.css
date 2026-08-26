@@ -390,7 +390,7 @@
 .alumni-back-link { flex-shrink: 0; }
 
 .alumni-program-section { max-width: 900px; margin: 0 auto 4rem; }
-.alumni-program-cards { grid-template-columns: minmax(260px, 1fr); max-width: 360px; }
+.alumni-program-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
 
 .alumni-note {
   display: flex;
@@ -412,6 +412,11 @@
   .alumni-preview { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
   .alumni-hero { align-items: flex-start; flex-direction: column; margin-bottom: 2.75rem; }
   .alumni-note { align-items: flex-start; }
+  .alumni-program-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .alumni-program-cards { grid-template-columns: 1fr; }
 }
 
 

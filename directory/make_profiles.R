@@ -48,6 +48,7 @@ if (Sys.getenv("GDRIVE_JSON") != "") {
 }
 
 spreadsheet_url <- Sys.getenv("STUDENT_DIRECTORY_URL")
+alumni_url <- Sys.getenv("ALUMNI_URL")
 
 # functions to get image id and extensions
 safe_drive_get <- function(id) {
@@ -93,7 +94,7 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
     }
   }
   
-  # Call API only if no cache entry or local file is missing/changed
+  # call API only if no cache entry or local file is missing/changed
   message("Checking Drive for: ", meta_name)
   meta <- drive_get(as_id(file_id))
   drive_md5 <- meta$drive_resource[[1]]$md5Checksum
@@ -120,13 +121,56 @@ download_image <- function(file_id, program_lower, meta_name, alumni = FALSE, gr
 
 ##### clean data frame #####
 student_directory_form <- here("directory/directory_file.xlsx")
+alumni_directory_form <- here("directory/alumni_file.xlsx")
+
 if (download_files == TRUE) {
   df <- googlesheets4::read_sheet(spreadsheet_url, range = "A:AE")
+  alumni_df <- googlesheets4::read_sheet(alumni_url)
+  
+  # convert year to plain text
+  normalize_year_value <- function(value) {
+    if (is.null(value) || length(value) == 0 || all(is.na(value))) {
+      return(NA_character_)
+    }
+    as.character(value[[1]])
+  }
+
+  df <- df %>%
+    mutate(across(
+      all_of(c(
+        "Bachelor's Degree Year of Graduation",
+        "Master's Degree Year of Graduation"
+      )),
+      ~ purrr::map_chr(.x, normalize_year_value)
+    ))
+
   writexl::write_xlsx(df, student_directory_form)
+  writexl::write_xlsx(alumni_df, alumni_directory_form)
   
 } else {
   df <- readxl::read_xlsx(student_directory_form)
+  alumni_df <- readxl::read_xlsx(alumni_directory_form)
 }
+
+normalize_match_text <- function(value) {
+  value %>%
+    as.character() %>%
+    str_to_lower() %>%
+    str_replace_all("[^a-z0-9]+", " ") %>%
+    str_squish()
+}
+
+
+alumni_lookup <- alumni_df %>%
+  transmute(
+    match_first = normalize_match_text(`First Name`),
+    match_last = normalize_match_text(`Last Name`),
+    match_cohort = normalize_match_text(`Cohort Year`),
+    alumni_graduation_year = as.numeric(`Graduation Year`)
+  ) %>%
+  filter(!is.na(match_first), !is.na(match_last), !is.na(match_cohort),
+         !is.na(alumni_graduation_year)) %>%
+  distinct(match_first, match_last, match_cohort, .keep_all = TRUE)
 
 df <- df %>%
   filter(.[[3]] == "I agree to the FERPA directory release, photo consent, and formatting authorization described above.") %>% # include only those who agree to FERPA
@@ -164,25 +208,32 @@ df <- df %>%
                        "Fall 2025",
                        year)) %>%
   mutate(current_program = recode(current_program, "Master of Data Science in Public Health (MDSH)" = "MDSH"),
-         program_lower = tolower(current_program)) %>%
+         program_lower = tolower(current_program),
+         match_first = normalize_match_text(first),
+         match_last = normalize_match_text(last),
+         match_cohort = normalize_match_text(year)) %>%
+  left_join(alumni_lookup, by = c("match_first", "match_last", "match_cohort")) %>%
   mutate(file_id = str_extract(photo, "(?<=id=)[^&]+"),
          meta = map(file_id, safe_drive_get)) %>%
   unnest(meta, names_sep = "_") %>%
   mutate(ext = map(meta_name, safe_ext)) %>%
   select(-meta_drive_resource) %>%
-  # set program graduation year for the MS and MDSH students
+  # set graduation years for MS/MDSH students and matched PhD alumni
   separate_wider_delim(year, delim = " ", names = c("quarter", "start_year"), cols_remove = FALSE) %>%
   mutate(
-    graduation_year = if_else(program_lower %in% c("ms", "mdsh"),
-                              as.numeric(start_year) + 2,
-                              NA_real_),
+    graduation_year = case_when(
+      program_lower %in% c("ms", "mdsh") ~ as.numeric(start_year) + 2,
+      program_lower == "phd" & !is.na(alumni_graduation_year) ~ alumni_graduation_year,
+      TRUE ~ NA_real_
+    ),
     graduation_date = if_else(program_lower %in% c("ms", "mdsh"),
                               as.Date(paste0(as.numeric(start_year) + 2, "-07-01")), # assume by July 1 all the MS, MDSH students will have graduated
                               NA),
-    alumni = graduation_date < Sys.Date(),
-    alumni = ifelse(is.na(alumni) | alumni == FALSE,
-                    FALSE,
-                    TRUE),
+    alumni = case_when(
+      program_lower == "phd" & !is.na(alumni_graduation_year) ~ TRUE,
+      !is.na(graduation_date) & graduation_date < Sys.Date() ~ TRUE,
+      TRUE ~ FALSE
+    ),
     alumni_dir = ifelse(alumni == TRUE,
                         paste0(program_lower, "-alumni/", program_lower, graduation_year),
                         program_lower),
@@ -578,4 +629,3 @@ stats_data <- df_clean %>%
 
 write_json(stats_data, here("stats/student_stats.json"), auto_unbox = TRUE, na = "null")
 message("Wrote stats/student_stats.json (", nrow(stats_data), " rows)")
-
