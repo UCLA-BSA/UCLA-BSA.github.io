@@ -1,0 +1,34 @@
+---
+title: "**Joshua Price**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/Headshot - JOSHUA PRICE.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://linkedin.com/in/joshua-nathaniel-price/
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","joshuanp");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2023  
+University of California, Santa Barbara — Santa Barbara, CA
+
+
+
+

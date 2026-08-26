@@ -1,0 +1,31 @@
+---
+title: "**Heyang Ma**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/my photo - HEYANG MA.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+
+
+### Education:
+
+
+
+**BS in Math**, 2023  
+university of warwick
+
+
+
+

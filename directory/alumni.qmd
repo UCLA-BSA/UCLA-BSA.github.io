@@ -1,0 +1,71 @@
+---
+title: "Alumni Directory"
+page-layout: full
+toc: false
+css: styles.css
+---
+
+```{=html}
+<div class="alumni-landing">
+  <div class="alumni-hero">
+    <div>
+      <div class="section-label">UCLA Biostatistics Community</div>
+      <h1 class="alumni-hero-title">Alumni Directory</h1>
+      <p class="alumni-hero-desc">
+        Meet the graduates who continue to shape biostatistics, data science,
+        public health, and related fields. This directory will grow as more
+        program cohorts are added.
+      </p>
+    </div>
+    <a href="directory.html" class="btn btn-outline-primary alumni-back-link">&larr; Student Directory</a>
+  </div>
+
+  <section class="alumni-program-section" aria-labelledby="alumni-programs-title">
+    <div class="section-label">Browse by Program</div>
+    <h2 id="alumni-programs-title" class="section-title-bar">Alumni Profiles</h2>
+    <div class="program-cards-grid alumni-program-cards">
+      <a href="ms-alumni.html">
+        <div class="directory-program-card">
+          <img src="./images/directory_home/ms.jpg" alt="Master of Science alumni" />
+          <div class="prog-card-overlay">
+            <div class="prog-card-tag">Master of Science</div>
+            <div class="prog-card-title">MS Alumni</div>
+            <div class="prog-card-cta">Explore profiles →</div>
+          </div>
+        </div>
+      </a>
+      <a href="mdsh-alumni.html">
+        <div class="directory-program-card">
+          <img src="./images/directory_home/mdsh.jpg" alt="Master of Data Science in Health alumni" />
+          <div class="prog-card-overlay">
+            <div class="prog-card-tag">Master of Data Science in Health</div>
+            <div class="prog-card-title">MDSH Alumni</div>
+            <div class="prog-card-cta">Explore profiles →</div>
+          </div>
+        </div>
+      </a>
+      <a href="phd-alumni.html">
+        <div class="directory-program-card">
+          <img src="./images/directory_home/phd.jpeg" alt="Doctor of Philosophy alumni" />
+          <div class="prog-card-overlay">
+            <div class="prog-card-tag">Doctor of Philosophy</div>
+            <div class="prog-card-title">PhD Alumni</div>
+            <div class="prog-card-cta">Explore profiles →</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="alumni-note">
+    <div class="alumni-note-mark" aria-hidden="true">BSA</div>
+    <div>
+      <h2>Stay connected</h2>
+      <p>
+        Additional alumni cohorts and programs will be added here as their
+        profiles become available.
+      </p>
+    </div>
+  </section>
+</div>
+```

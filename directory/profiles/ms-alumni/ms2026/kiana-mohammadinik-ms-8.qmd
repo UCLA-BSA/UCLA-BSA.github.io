@@ -1,0 +1,34 @@
+---
+title: "**Kiana Mohammadinik**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Catherine M. Crespi
+image: /directory/images/ms-alumni/ms2026/kiana-mohammadinik-ms-2024 - KIANA MOHAMMADINIK.jpeg
+categories: ["Program: MS", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Catherine M. Crespi"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: github
+      href: https://github.com/kianamonik
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Catherine M. Crespi  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","kiananik");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2024  
+University of California, Los Angeles — Los Angeles, CA
+
+
+
+

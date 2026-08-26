@@ -1,0 +1,71 @@
+<style>
+#listing-alumni-filter { display: none !important; }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  function getListings() {
+    return window['quarto-listings'] || {};
+  }
+
+  function decodeCategory(value) {
+    try {
+      return decodeURIComponent(atob(value));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function matchesCategory(item, category) {
+    var encoded = item.elm.getAttribute('data-categories');
+    var categories = encoded && decodeCategory(encoded);
+    return categories && categories.split(',').map(function (value) {
+      return value.trim();
+    }).includes(category);
+  }
+
+  function targetListingIds() {
+    return Object.keys(getListings()).filter(function (id) {
+      return id !== 'listing-alumni-filter';
+    });
+  }
+
+  function applyCategoryFilter() {
+    var active = document.querySelector('.quarto-listing-category .category.active');
+    if (!active) return;
+
+    var category = decodeCategory(active.getAttribute('data-category'));
+    if (!category) return;
+
+    targetListingIds().forEach(function (id) {
+      var listing = getListings()[id];
+      if (listing) listing.filter(function (item) {
+        return matchesCategory(item, category);
+      });
+    });
+  }
+
+  window.clearCategoryFilter = function () {
+    Object.keys(getListings()).forEach(function (id) {
+      getListings()[id].filter();
+    });
+    document.querySelectorAll('.quarto-listing-category .category.active').forEach(function (item) {
+      item.classList.remove('active');
+    });
+    var clear = document.getElementById('clear-all-filters');
+    if (clear) clear.style.display = 'none';
+    history.replaceState(null, '', window.location.pathname);
+  };
+
+  window.addEventListener('load', function () {
+    var categoryContainer = document.querySelector('.quarto-listing-category');
+    if (!categoryContainer) return;
+
+    new MutationObserver(function () {
+      applyCategoryFilter();
+    }).observe(categoryContainer, { attributes: true, subtree: true, attributeFilter: ['class'] });
+  });
+})();
+</script>

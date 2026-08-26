@@ -1,0 +1,34 @@
+---
+title: "**Gianna Jimenez**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/IMG_9788 - GIANNA JIMENEZ.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/giannajimenez/
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","giannajimenez");</script>
+
+### Education:
+
+
+
+**BS in Molecular, Cell and Developmental Biology**, 2021  
+University of California, Los Angeles — Los Angeles, CA
+
+### Bio:
+
+I am a master's student in the MDSH program within the Department of Biostatistics at UCLA. I also completed my BS at UCLA. I enjoy the outdoors, baking, reading, and always learning new things!

@@ -1,0 +1,34 @@
+---
+title: "**Rongrong (Emma) Mo**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/莫镕榕 - RONGRONG MO.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/rongrong-mo-8496051b7/
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+
+
+### Education:
+
+
+
+**BS**  
+
+
+
+
+

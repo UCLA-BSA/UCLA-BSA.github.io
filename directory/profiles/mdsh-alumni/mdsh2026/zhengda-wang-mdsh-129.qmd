@@ -1,0 +1,31 @@
+---
+title: "**Zhengda Wang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/个人照片 - ZHENGDA WANG.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","zhengda0204");</script>
+
+### Education:
+
+
+
+**BA in ECONOMICS**, 2023  
+University of California, Irvine
+
+
+
+

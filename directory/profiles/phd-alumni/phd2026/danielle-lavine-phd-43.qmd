@@ -1,0 +1,34 @@
+---
+title: "**Danielle Lavine**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2021"
+graduation: 2026
+advisor: Thomas Belin, Christina Ramirez
+image: /directory/images/phd-alumni/phd2026/IMG_8752 - Danielle LaVine.jpeg
+categories: ["Program: PhD", "Cohort: Fall 2021", "Alumni", "Class of: 2026", "Advisor: Thomas Belin", "Advisor: Christina Ramirez"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/djlavine09
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Thomas Belin, Christina Ramirez  
+**Cohort:** Fall 2021  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","djlavine");</script>
+
+### Education:
+
+
+
+**BS in Mathematics**, 2021  
+California State Polytechnic University, Pomona — Pomona, CA
+
+### Bio:
+
+I do research on missing and hierarchical data with applications to dentistry and epigenetics. My hobbies include rock climbing, knitting, and hiking with my dog Smokey.

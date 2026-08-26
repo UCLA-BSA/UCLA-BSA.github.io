@@ -1,0 +1,37 @@
+---
+title: "**Fangning (Sophia) Luo**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/ms-alumni/ms2026/white background square - SOPHIA LUO.jpg
+categories: ["Program: MS", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/fangning-luo/
+      target: _blank
+    - icon: github
+      href: https://github.com/mmmm2627
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","fangningl");</script>
+
+### Education:
+
+
+
+**BS in Biological Science**, 2024  
+University of California, Irvine — Irvine, CA
+
+### Bio:
+
+I am an M.S. student in Biostatistics at UCLA with a background in Biological Sciences and a strong interest in integrating statistical methods with biological and biomedical applications. My research experience spans bioinformatics and Bayesian inference, including transcriptomic data analysis and developing probabilistic models for biological data. I have also gained industry experience in biotech and pharmaceutical settings, where I worked on data science and decision analytics projects to support research and development. More broadly, I am interested in applying data-driven approaches to improve health outcomes and inform scientific discovery. Outside of academics, I enjoy bouldering, hiking, and reading.

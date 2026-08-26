@@ -157,33 +157,21 @@ css: styles.css
   </div>
 
   <!-- Alumni -->
-  <!-- <h3 style="margin-top: 2.5rem; margin-bottom: 1rem; color: #003B5C;">Alumni</h3> -->
-  <!-- <div class="program-cards-grid"> -->
-  <!--   <a href="phd-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/phd.jpeg" alt="PhD Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">PhD Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!--   <a href="ms-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/ms.jpg" alt="MS Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">MS Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!--   <a href="mdsh-alumni.html" class="text-decoration-none"> -->
-  <!--     <div class="directory-program-card"> -->
-  <!--       <img src="./images/directory_home/mdsh.jpg" alt="MDSH Alumni" /> -->
-  <!--       <div class="card-body text-center"> -->
-  <!--         <h3 class="card-title mt-2">MDSH Alumni</h3> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--   </a> -->
-  <!-- </div> -->
+  <section class="alumni-preview">
+    <div class="alumni-preview-copy">
+      <div class="section-label">Beyond UCLA</div>
+      <h3 class="section-title-bar" style="font-size:1.6rem;">Alumni</h3>
+      <p>
+        Our alumni carry UCLA Biostatistics into research, public health,
+        industry, and beyond. Explore graduate profiles and stay connected as
+        the alumni directory grows.
+      </p>
+      <a href="alumni.html" class="alumni-preview-link">Explore the Alumni Directory <span aria-hidden="true">→</span></a>
+    </div>
+    <a href="alumni.html" class="alumni-preview-image" aria-label="Explore the Alumni Directory">
+      <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics students and alumni" />
+    </a>
+  </section>
   
 </div>
 

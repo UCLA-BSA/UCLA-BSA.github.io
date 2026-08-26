@@ -1,0 +1,34 @@
+---
+title: "**Ami Sheth**"
+subtitle: "PhD Candidate"
+description: "Cohort: Fall 2021"
+graduation: 2026
+advisor: Andrew Holbrook
+image: /directory/images/phd-alumni/phd2026/Sheth_Ami_003 - AMI SHETH.jpg
+categories: ["Program: PhD", "Cohort: Fall 2021", "Alumni", "Class of: 2026", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/ami-sheth/
+      target: _blank
+---
+
+
+### PhD Candidate, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2021  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","amisheth26");</script>
+
+### Education:
+
+**MS in Biostatistics**, 2021  
+University of California, Los Angeles
+
+
+
+### Bio:
+
+I am a Ph.D. candidate in Biostatistics at UCLA Fielding School of Public Health. My dissertation work focuses on developing scalable Bayesian dimension reduction tools for large, complex data. My other research interests include survival analysis, clinical trial study design and Bayesian methods for improving health outcomes. Outside of work, I enjoy climbing and cooking.

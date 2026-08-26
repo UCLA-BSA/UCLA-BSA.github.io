@@ -1,0 +1,31 @@
+---
+title: "**Joshua (Lee) Blackmon**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/IMG_6291 - JOSHUA BLACKMON.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jlblackm");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2024  
+United States Military Academy — West Point, NY
+
+### Bio:
+
+I am and will likely continue to research Operation tasks in healthcare and the application of AI within the field. Currently am working with the Army and UN to work on Women’s healthcare within the Middle East. I have a BS in Statistics and Data Science from USMA, MSE in Operations Research Engineering from USCA and will graduate with a MS in Data Science in Health.

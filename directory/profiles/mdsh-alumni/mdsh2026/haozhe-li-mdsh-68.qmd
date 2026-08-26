@@ -1,0 +1,31 @@
+---
+title: "**Haozhe (Chris Li) Li**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/7c173e31a3c2597fcb800ea0d1945b0e - HAOZHE LI.png
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","lihaozhe");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2023  
+University of California, Santa Barbara — Santa Barbara, CA
+
+
+
+

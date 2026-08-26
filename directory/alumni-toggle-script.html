@@ -25,20 +25,17 @@ function setAlumniView(view) {
   const tableView = document.getElementById('listing-alumni-table');
   const btnGrid = document.getElementById('btn-grid');
   const btnTable = document.getElementById('btn-table');
-  const sidebar = document.getElementById('quarto-margin-sidebar');
 
   if (!gridView || !tableView) return;
 
   if (view === 'grid') {
     gridView.style.display = 'block';
     tableView.style.display = 'none';
-    if (sidebar) sidebar.style.display = 'block';
     btnGrid.classList.remove('btn-outline-secondary'); btnGrid.classList.add('btn-secondary');
     btnTable.classList.remove('btn-secondary'); btnTable.classList.add('btn-outline-secondary');
   } else {
     gridView.style.display = 'none';
     tableView.style.display = 'block';
-    if (sidebar) sidebar.style.display = 'none';
     btnTable.classList.remove('btn-outline-secondary'); btnTable.classList.add('btn-secondary');
     btnGrid.classList.remove('btn-secondary'); btnGrid.classList.add('btn-outline-secondary');
   }
@@ -80,12 +77,20 @@ function checkForCategoryFilter(listingId) {
   }
 }
 
+function simplifyAlumniCohortLabels() {
+  document.querySelectorAll('#listing-alumni-table .listing-description').forEach((cell) => {
+    const cohort = cell.textContent.trim().replace(/^Cohort:\s*/i, '');
+    if (cohort && cell.textContent.trim() !== cohort) cell.textContent = cohort;
+  });
+}
+
 window.addEventListener('load', function() {
   const tableView = document.getElementById('listing-alumni-table');
   if (tableView) tableView.style.display = 'none';
 
   wireSearch('listing-alumni-table', [
     'listing-title',
+    'listing-description',
     'listing-graduation',
     'listing-advisor'
   ]);
@@ -98,6 +103,15 @@ window.addEventListener('load', function() {
 
   // Check if we landed here via a tag click
   checkForCategoryFilter('listing-alumni-table');
+  simplifyAlumniCohortLabels();
+
+  // Listings redraw when users search, sort, or filter.
+  if (tableView) {
+    new MutationObserver(simplifyAlumniCohortLabels).observe(tableView, {
+      childList: true,
+      subtree: true
+    });
+  }
 });
 
 </script>

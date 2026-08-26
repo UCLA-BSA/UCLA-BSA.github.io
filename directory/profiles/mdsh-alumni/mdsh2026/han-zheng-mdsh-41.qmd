@@ -1,0 +1,31 @@
+---
+title: "**Han (Emily) Zheng**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2024"
+graduation: 2026
+advisor: Not Listed
+image: /directory/images/mdsh-alumni/mdsh2026/46acecf4bc5bc30e5dd601d0881583f4 - Han Zheng.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2024", "Alumni", "Class of: 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2024  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","zhenghan0113");</script>
+
+### Education:
+
+
+
+**BS in Data Science and Big Data Technology**, 2023  
+
+
+
+
+
