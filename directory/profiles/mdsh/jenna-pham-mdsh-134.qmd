@@ -1,0 +1,34 @@
+---
+title: "**Jenna Pham**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/PNG image 4 - JENNA PHAM.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/jennaup
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","jennaup");</script>
+
+### Education:
+
+
+
+**BA in Business Administration**, 2024  
+University of California, Irvine — Irvine, CA
+
+
+
+

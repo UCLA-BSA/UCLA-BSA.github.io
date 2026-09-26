@@ -1,0 +1,32 @@
+---
+title: "**Daniel Gilchrist**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2026"
+
+advisor: Thomas Belin
+image: /directory/images/anon.jpg
+categories: ["Program: PhD", "Cohort: Fall 2026", "Advisor: Thomas Belin"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Thomas Belin  
+**Cohort:** Fall 2026  
+
+
+### Education:
+
+**MS in Epidemiology**  
+Mailman School of Public Health — New York, NY
+
+**BS in Biology**  
+University of California, Irvine — Irvine, CA
+
+
+
+

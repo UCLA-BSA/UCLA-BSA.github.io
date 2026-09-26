@@ -1,0 +1,38 @@
+---
+title: "**Shayan Rassouli**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/IMG_1641 - SHAYAN RASSOULI.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/shayan-rassouli-5a5a65242?utm_source=share_via&utm_content=profile&utm_medium=member_ios
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","srassouli");</script>
+
+### Education:
+
+
+
+**BS in Economics**, 2025  
+University of California, San Diego — La Jolla, CA
+
+### Bio:
+
+My research interests center on using statistical and data science methods to advance research in mental health and neurological conditions such as Alzheimer’s disease. With a background in economics and econometrics, I am particularly interested in applying quantitative methods to health data to study mental health outcomes, identify risk factors and disparities, evaluate the effectiveness of treatments and interventions, and better understand patterns in access to care. Through the MDSH program, I hope to strengthen my skills in statistical modeling, causal inference, and health data analysis and apply them to research that can improve our understanding and treatment of mental health and neurological conditions.
+
+My hobbies include watching and playing soccer and basketball, going to concerts, hiking, and going to the gym. For those who follow soccer, I’m a Liverpool fan through and through, and my love for basketball stems from growing up watching Russell Westbrook, who also happens to be a Bruin!
+
+I attended UC Riverside before transferring to UC San Diego in 2023, where I earned my Bachelor of Science in Economics in 2025\.

@@ -1,0 +1,34 @@
+---
+title: "**Christopher (Chris) Chow**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2026"
+
+advisor: Sijia Li
+image: /directory/images/ms/china_visa - CHRIS CHOW.jpg
+categories: ["Program: MS", "Cohort: Fall 2026", "Advisor: Sijia Li"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      href: https://imchrischow.com
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Sijia Li  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","cchow1838");</script>
+
+### Education:
+
+
+
+**BA in Biology & Mathematics**, 2019  
+Washington University in St. Louis — St. Louis, MO
+
+
+
+

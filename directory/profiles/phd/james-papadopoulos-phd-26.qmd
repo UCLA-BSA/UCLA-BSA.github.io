@@ -1,6 +1,6 @@
 ---
 title: "**James Papadopoulos**"
-subtitle: "PhD Student"
+subtitle: "PhD Candidate"
 description: "Cohort: Fall 2022"
 
 advisor: Michele Guindani
@@ -13,7 +13,7 @@ about:
 ---
 
 
-### PhD Student, Biostatistics
+### PhD Candidate, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Michele Guindani  
 **Cohort:** Fall 2022  
