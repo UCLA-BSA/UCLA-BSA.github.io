@@ -13,6 +13,66 @@ css: styles.css
 
 ```{=html}
 <!-- ════════════════════════════════════════════════════════════════════
+     ✏️  DIRECTORY FORM ANNOUNCEMENT — EDITABLE
+     ════════════════════════════════════════════════════════════════════
+     A one-time popup pointing students at the directory-info Google Form.
+     It's triggered from the pinned-hero scroll driver below (search for
+     "window.__bsaTriggerDirAnnounce") the moment the "Student Directory"
+     title finishes crossfading in — not on page load. EDITABLE: the
+     deadline date, the copy below, and the form URL in the button's href.
+     Dismissing it (X, clicking outside, or Escape) hides it for the rest
+     of the browser session (sessionStorage) — it reappears on the next
+     fresh visit.
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="dir-announce-overlay" id="dirAnnounceOverlay">
+  <div class="dir-announce-box">
+    <button class="dir-announce-close" id="dirAnnounceClose" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 class="dir-announce-title">Fill out the Student Directory Form</h2>
+    <p class="dir-announce-body">
+      If you are a <strong>new student</strong>, please fill out the Student Directory Form by <strong>October 9th</strong> to be populated.
+    </p>
+    <p class="dir-announce-body">
+      If you are a <strong>returning student</strong>, this is your only time to modify your student directory information.
+    </p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchqL1p8_M1wwoE4lxY7j9sqMfx5T4BUeR9ukXXuOJ845he0Q/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-pill dir-announce-btn">Fill Out the Form &rarr;</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay  = document.getElementById('dirAnnounceOverlay');
+  var closeBtn = document.getElementById('dirAnnounceClose');
+  if (!overlay || !closeBtn) return;
+
+  var STORAGE_KEY = 'bsa_dir_form_announce_dismissed';
+  var alreadyDismissed = false;
+  try { alreadyDismissed = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+  var shown = false;
+
+  function closeAnnounce() {
+    overlay.classList.remove('active');
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+  }
+
+  // Called by the pinned-hero scroll driver once the "Student Directory"
+  // title has finished crossfading in. Only ever shows once per page visit.
+  window.__bsaTriggerDirAnnounce = function () {
+    if (shown || alreadyDismissed) return;
+    shown = true;
+    overlay.classList.add('active');
+  };
+
+  closeBtn.addEventListener('click', closeAnnounce);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeAnnounce(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAnnounce(); });
+})();
+</script>
+```
+
+```{=html}
+<!-- ════════════════════════════════════════════════════════════════════
      ✏️  PINNED ZOOM-MORPH HERO — EDITABLE
      ════════════════════════════════════════════════════════════════════
      `.dir-hero-image img` below is the photo used for the effect —
@@ -114,6 +174,12 @@ css: styles.css
     var raw = scrollable > 0 ? (-rect.top) / scrollable : 0;
     var progress = Math.min(Math.max(raw / 0.8, 0), 1);
     pin.style.setProperty('--progress', progress.toFixed(3));
+    // .dir-hero-final's opacity (directory/styles.css) reaches 1 once
+    // progress crosses ~0.935 — fire the form-announcement popup right as
+    // the "Student Directory" title finishes crossfading in.
+    if (progress >= 0.93 && window.__bsaTriggerDirAnnounce) {
+      window.__bsaTriggerDirAnnounce();
+    }
     ticking = false;
   }
 
