@@ -1,37 +1,421 @@
 /* css styles */
 
+/* Full-bleed hero bands (below) use a `width:100vw` trick that can
+   introduce a 1px horizontal scrollbar on some browsers; this keeps
+   the page from ever scrolling sideways because of it.
+   NOTE: `clip`, not `hidden` — `overflow-x: hidden` silently forces
+   `overflow-y` to compute as `auto` (a CSS spec quirk: a non-visible
+   value on one axis forces the other off `visible` too), which turns
+   body into its own scroll container and breaks `position: sticky`
+   for any descendant expecting to stick within the true page scroll
+   (like the Student Directory page's pinned zoom-morph hero).
+   `overflow-x: clip` clips the same way without that side effect. */
+html, body {
+  overflow-x: clip;
+}
+
+/* Quarto adds its own small margin/padding above `main.content`
+   (on top of `body`'s fixed-nav-clearance padding), meant for the
+   default title block. We hide that title block on every page that
+   has a hero band, so this leftover spacing just shows up as a stray
+   gap between the floating nav and the hero image/video — removing
+   it here is what makes the hero bands truly flush with the top. */
+main.content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 /* ── UCLA Brand Colors ──────────────────────────────────────────
    UCLA Blue:    #2774AE
    Darker Blue:  #003B5C
    UCLA Gold:    #FFD100  (accent only — never as text)
 ──────────────────────────────────────────────────────────────── */
 
-/* Navbar */
-.navbar {
-  background-color: #2774AE !important;
-  border-bottom: 3px solid #FFD100;
+/* ── Font Hierarchy ───────────────────────────────────────────────
+   Title font:  Fira Code  — headings, navbar brand, section titles
+   Body font:   Quarto/Cosmo theme default — unchanged
+──────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
 }
 
-.navbar .navbar-brand,
-.navbar-brand:hover,
-.navbar .nav-link {
-  color: #fff !important;
+/* ══════════════════════════════════════════════════════════════════
+   HEADER / NAVBAR
+   ══════════════════════════════════════════════════════════════════
+   Layout (left → right), matching a museum-site reference the club
+   liked: a logo chip floating on the far left, and a separate white
+   "pill" nav (page links + one dark CTA button) floating on the far
+   right. Both float transparently over whatever is behind the page
+   (a page-hero image/video, or plain white further down the page).
+
+   Nothing here touches the DOM Quarto generates — it's all CSS
+   re-styling of the standard Quarto navbar markup, driven by the
+   `logo:` and `navbar:` keys in _quarto.yml. That keeps the site
+   fully reproducible from a plain `quarto render`.
+
+   EDITABLE KNOBS in this section (safe to tweak):
+   - #quarto-header .navbar-logo  → height  = logo size
+   - #quarto-header .navbar-brand-container → background = logo chip color
+   - #quarto-header .navbar-collapse → max-width = how wide the pill can grow
+   - #quarto-header .navbar-nav.ms-auto .nav-link → background = CTA button color
+   To change the actual logo image, replace images/bsa_logo.png (see
+   _quarto.yml, website.logo) — no CSS change needed for that.
+──────────────────────────────────────────────────────────────── */
+#quarto-header.fixed-top {
+  background: transparent;
+  box-shadow: none;
 }
 
-.navbar .nav-link:hover {
-  color: #FFD100 !important;
+#quarto-header .navbar {
+  background: transparent !important;
+  border: none !important;
+  padding: 1.25rem 2rem 0;
+}
+
+/* The outer bar: spans the full header width, logo chip and nav pill
+   pinned to opposite ends via space-between. */
+#quarto-header .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  gap: 1rem;
+}
+
+/* ── Logo (far left) ───────────────────────────────────────────────
+   images/bsa_logo.png is white artwork on a transparent background.
+   The logo itself is transparent (no chip/background) — a drop-
+   shadow keeps it legible over busy photos or a plain white page.
+
+   NOTE: when `navbar: logo:` is set in _quarto.yml, Quarto renders
+   TWO sibling `.navbar-brand` links here — one wrapping the logo
+   image (`.navbar-brand-logo`), and a second, separate one holding
+   just the site-title text. We show only the first and fully remove
+   the second (not just hide its text), otherwise its empty pill
+   still takes up space next to the logo. */
+#quarto-header .navbar-brand-container {
+  display: flex !important;
+  margin: 0 !important; /* cancel Quarto's default "mx-auto" centering */
+  flex: 0 0 auto;
+}
+
+#quarto-header .navbar-brand-logo {
+  display: flex;
+  align-items: center;
+}
+
+#quarto-header .navbar-logo {
+  height: 46px;                     /* EDITABLE: logo size */
+  max-height: none !important;      /* overrides Bootstrap's built-in max-height:24px */
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.65));   /* EDITABLE: logo shadow darkness */
+}
+
+/* The text-only brand link Quarto renders alongside the logo link —
+   the logo already carries the brand, so this whole link is removed. */
+#quarto-header .navbar-brand:not(.navbar-brand-logo) {
+  display: none !important;
+}
+
+/* Search box — removed per redesign */
+#quarto-header #quarto-search {
+  display: none !important;
+}
+
+/* Mobile hamburger toggle — not needed, since the nav pill below is
+   forced to always stay visible (`.navbar-collapse{display:flex}`),
+   so there's nothing left for it to open/close. */
+#quarto-header .navbar-toggler {
+  display: none !important;
+}
+
+/* ── Nav pill (far right) ─────────────────────────────────────────
+   The page links + the one external CTA link live inside Quarto's
+   standard .navbar-collapse element — that's what becomes the white
+   floating pill. */
+#quarto-header .navbar-collapse {
+  flex: 0 1 auto;
+  max-width: 760px;                 /* EDITABLE: widest the pill can grow */
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;                 /* EDITABLE: pill background */
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);   /* EDITABLE: pill shadow darkness */
+  padding: 0.45rem 0.5rem 0.45rem 1.5rem;
+}
+
+#quarto-header .navbar-nav {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#quarto-header .nav-link {
+  color: #111 !important;
+  font-weight: 500;
+  padding: 0.55rem 0.9rem !important;
+  border-radius: 999px;
   opacity: 1;
+  transition: background 0.2s, color 0.2s;
 }
 
-.navbar .nav-link.active,
-.navbar .nav-link[aria-current] {
-  color: #FFD100 !important;
+#quarto-header .nav-link:hover {
+  background: #f2f2f2;
+  color: #003B5C !important;
+}
+
+#quarto-header .nav-link.active,
+#quarto-header .nav-link[aria-current] {
+  color: #003B5C !important;
+  font-weight: 700;
+  background: #f2f2f2;
+}
+
+/* The single right-hand link becomes a black pill button —
+   just "UCLA Biostatistics" */
+#quarto-header .navbar-nav.ms-auto .nav-link {
+  background: #111;                 /* EDITABLE: CTA button color */
+  color: #fff !important;
+  padding: 0.6rem 1.4rem !important;
   font-weight: 600;
 }
 
-/* Main page background */
+#quarto-header .navbar-nav.ms-auto .nav-link:hover {
+  background: #003B5C;
+  color: #fff !important;
+}
+
+@media (max-width: 700px) {
+  #quarto-header .navbar { padding: 1rem 1rem 0; }
+  #quarto-header .navbar-logo { height: 32px; }
+
+  /* Small screens: let the pill wrap instead of overflowing, since
+     the hamburger toggle is turned off (see .navbar-toggler above). */
+  #quarto-header .navbar-container { flex-wrap: wrap; row-gap: 0.6rem; }
+  #quarto-header .navbar-collapse { flex-wrap: wrap; max-width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PILL BUTTONS
+   ══════════════════════════════════════════════════════════════════
+   Reusable button look matching the header's black "UCLA Biostatistics"
+   CTA, for use anywhere on the site: add `.btn .btn-lg .btn-pill` (solid)
+   or `.btn .btn-lg .btn-pill-outline` (outline, for secondary actions
+   like a social-media link) to any Quarto button-style link, e.g.:
+     [Events](./events/events.qmd){.btn .btn-lg .btn-pill}
+
+   EDITABLE: the two colors below (#111 fill / #003B5C hover) are the
+   same ones used for the header CTA, so they stay in sync — change
+   both places together if the brand color changes.
+──────────────────────────────────────────────────────────────── */
+.btn-pill {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-pill:hover,
+.btn-pill:focus {
+  background: #003B5C;
+  border-color: #003B5C;
+  color: #fff;
+}
+
+.btn-pill-outline {
+  background: transparent;
+  border: 1.5px solid #111;
+  color: #111;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-pill-outline:hover,
+.btn-pill-outline:focus {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+/* ── Full-bleed helper ─────────────────────────────────────────────
+   Shared by every edge-to-edge band on the site: Home's video, and
+   the image bands on About/Student Directory/Events.
+
+   - The `width:100vw` + `left:50%` + negative `margin-left` combo is
+     the standard "full-bleed inside a centered container" trick: it
+     works no matter how deeply the element is nested (unlike Quarto's
+     own `screen-start/screen-end` grid line names, which only apply
+     to an element's *direct* grid-container parent — these bands are
+     nested a level too deep for that to reach, which is why an
+     earlier version of this rule silently did nothing).
+   - The negative top margin pulls the band up into the space `body`
+     reserves above everything else for the fixed nav (`body`'s own
+     `padding-top`, set dynamically by Quarto's JS to match the
+     navbar's real rendered height — not a fixed number, since a
+     bigger logo or nav links wrapping to two rows both change it).
+     `--bsa-header-h` is a CSS variable a small script in
+     directory/scramble_email.html keeps mirrored to that exact value,
+     so this can't drift out of sync the way a hardcoded pixel value
+     would. The `64px` after the comma is only a fallback for the
+     instant before that script runs.
+──────────────────────────────────────────────────────────────── */
+.hero-banner,
+.page-hero {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-top: calc(-1 * var(--bsa-header-h, 64px));
+}
+
+.hero-banner video {
+  width: 100%;
+  display: block;
+}
+
+/* A slight dark tint over every top-of-page hero (the About/Student
+   Directory/Events image bands) so the white nav text/logo stays
+   readable against bright photos. Sits above the video/image, below
+   the floating nav (which is a separate, later element in the DOM,
+   so it's unaffected by this). The Home video hero (.hero-banner) is
+   left undarkened — EDITABLE: reinstate by adding `.hero-banner::after`
+   back to the selector list below. */
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.22);   /* EDITABLE: darkness of the tint */
+  pointer-events: none;
+}
+
+/* ── Page hero band (About / Student Directory / Events) ──────────
+   Same full-bleed treatment as the video above, but a single fixed-
+   height image band. */
+.page-hero {
+  height: 420px;              /* EDITABLE: hero band height */
+  overflow: hidden;
+}
+
+.page-hero img,
+.page-hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.page-hero-placeholder {
+  background: linear-gradient(135deg, #2774AE 0%, #003B5C 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-hero-placeholder-label {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+}
+
+@media (max-width: 700px) {
+  .page-hero { height: 260px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   HOME PAGE: image + text split section
+   ══════════════════════════════════════════════════════════════════
+   The portrait placeholder photo on the left, and the title/subtext/
+   buttons on the right — contained to a normal reading width (same
+   idea as `.section-block` on the About page), NOT full-bleed, unlike
+   the video above it.
+──────────────────────────────────────────────────────────────── */
+.home-hero-split {
+  max-width: 1100px;              /* EDITABLE: matches About page's content width */
+  margin: 0 auto;
+  padding: 3.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.home-hero-image {
+  flex: 0 0 300px;                /* EDITABLE: portrait image width */
+  aspect-ratio: 3 / 4;             /* EDITABLE: portrait shape (width/height) */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.home-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero-text {
+  flex: 1;
+  min-width: 260px;
+  text-align: left;
+}
+
+@media (max-width: 800px) {
+  .home-hero-split { flex-direction: column; text-align: center; }
+  .home-hero-text { text-align: center; }
+}
+
+/* ── Scroll-reveal effect ──────────────────────────────────────────
+   Used on the Home page: the portrait image grows in from a slight
+   scale-down + fade as it scrolls into view (`.reveal-grow`), and the
+   title/subtext/button-row each fade + slide up in sequence
+   (`.reveal-fade`, staggered via the `nth-child` delays below). A
+   small script at the bottom of index.qmd adds `.is-visible` to each
+   once it's scrolled into view — see that script for how the
+   triggering works; this file only defines the before/after look.
+   EDITABLE: the two `transition` durations, and the 3 delay values. */
+.reveal-grow {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 1.4s ease, transform 1.4s ease;   /* EDITABLE: grow-in duration */
+}
+
+.reveal-grow.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1s ease, transform 1s ease;   /* EDITABLE: fade-in duration */
+}
+
+.reveal-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-hero-text > .reveal-fade:nth-child(1) { transition-delay: 0.15s; }
+.home-hero-text > .reveal-fade:nth-child(2) { transition-delay: 0.55s; }
+.home-hero-text > .reveal-fade:nth-child(3) { transition-delay: 0.95s; }
+
+/* Main page background — warm, academic off-white (the header/nav pill
+   stays plain white; see #quarto-header .navbar-collapse above). */
 body {
-  background-color: #fff;
+  background-color: #F7F3EA;        /* EDITABLE: site background color */
 }
 
 /* Back to directory button on profile pages */

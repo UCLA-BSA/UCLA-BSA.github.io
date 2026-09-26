@@ -19,12 +19,89 @@
   padding: 2rem 1rem;
 }
 
-/* Hero section */
-.directory-hero {
+/* ── Directory form announcement popup ───────────────────────────────────
+   Shown once per browser session when the Student Directory page loads.
+   See the "DIRECTORY FORM ANNOUNCEMENT" block in directory/directory.qmd
+   for the markup and the show/dismiss logic. */
+.dir-announce-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 20, 40, 0.6);
   display: flex;
   align-items: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dir-announce-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dir-announce-box {
+  position: relative;
+  background: #fff;
+  color: #333;
+  max-width: 440px;
+  width: 100%;
+  padding: 2.25rem 2rem 2rem;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  transform: scale(0.92) translateY(16px);
+  transition: transform 0.35s cubic-bezier(0.34, 1.48, 0.64, 1);
+}
+
+.dir-announce-overlay.active .dir-announce-box {
+  transform: scale(1) translateY(0);
+}
+
+.dir-announce-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  background: rgba(0, 59, 92, 0.08);
+  border: none;
+  color: #003B5C;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.dir-announce-close:hover { background: rgba(0, 59, 92, 0.16); }
+
+.dir-announce-title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #003B5C;
+  margin: 0 0 1rem;
+  line-height: 1.3;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dir-announce-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0 0 1.1rem;
+}
+
+.dir-announce-btn {
+  width: max-content;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 480px) {
+  .dir-announce-box { padding: 2rem 1.5rem 1.75rem; }
+  .dir-announce-title { font-size: 1.3rem; }
 }
 
 #clear-all-filters {
@@ -35,109 +112,254 @@
     color: #2774AE !important; /* UCLA Blue */
     background: none;
 }
-.directory-hero-text {
-  flex: 1 1 50%;
-}
 
-.directory-hero-title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #003B5C;
-}
 
-.directory-hero-desc {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #444;
-  margin-bottom: 0;
-}
+/* ══════════════════════════════════════════════════════════════════
+   PINNED ZOOM HERO
+   ══════════════════════════════════════════════════════════════════
+   A "pinned" scroll effect: the section holds in place (position:
+   sticky) while you scroll past it. The photo is full-bleed the whole
+   time (no boxed "before" state), and during the pin it: (a) slowly
+   scales up (a subtle "Ken Burns" zoom, centered by default), (b)
+   darkens further, (c) fades out a single centered word ("Students"),
+   and (d) fades in its final overlay text — "Student Directory" on
+   the left, the three programs listed beside it on the right (styled
+   like the About page's newsletter list) — plus a scroll footnote.
 
-.directory-hero-photo {
-  flex: 1 1 50%;
-  height: 420px;
-  border-radius: 12px;
-  overflow: hidden;
+   How it works: a small script at the bottom of directory.qmd sets a
+   `--progress` CSS variable (0 → 1) on #dirHeroPin as you scroll
+   through it — everything below just reads that one variable via
+   `calc()`/`clamp()`, so the whole effect is declared here in CSS,
+   not computed in JS.
+
+   EDITABLE:
+   - .dir-hero-pin `height` → how much scroll distance the effect takes
+     (taller = slower/longer)
+   - .dir-hero-image img `scale(...)` end value → how much it zooms in
+   - .dir-hero-image-overlay `rgba(...)` alpha values → how dark the
+     photo gets, before → after
+──────────────────────────────────────────────────────────────── */
+.dir-hero-pin {
   position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-top: calc(-1 * var(--bsa-header-h, 64px));
+  height: 220vh;                     /* EDITABLE: scroll distance for the effect */
 }
 
-/* Slideshow on Directory Homepage*/
-/* 1. Stack the slides and set up the transition */
-.slideshow-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.slide {
-  position: absolute; /* Stack them on top of each other */
+.dir-hero-sticky {
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0; /* Hidden by default */
-  transition: opacity 1.2s ease-in-out; /* The "Smooth" factor */
-  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+  background: #F7F3EA;
 }
 
-.slide.active {
-  opacity: 1; /* Fade in */
-  z-index: 2; /* Bring to front */
+.dir-hero-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
-/* 2. Ensure the images fill the container perfectly */
-.slide img {
+.dir-hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  display: block;
+  transform: scale(calc(1 + 0.15 * var(--progress, 0)));   /* EDITABLE: 0.15 = how much it zooms in by the end */
 }
 
-/* 3. Keep the buttons on top of everything */
-.slide-btn {
-  z-index: 10;
-}
-
-/* Pin the dots to the bottom of the slideshow container */
-.slideshow-dots {
+.dir-hero-image-overlay {
   position: absolute;
-  bottom: 20px; /* Adjust this number to move them higher or lower on the image */
-  left: 50%;
-  transform: translateX(-50%); /* Centers the dots horizontally */
-  z-index: 20 !important; /* Forces them to stay on top of the images */
+  inset: 0;
+  background: rgba(0, 0, 0, calc(0.25 + 0.35 * var(--progress, 0)));   /* EDITABLE: darkness, before → after */
+}
+
+.dir-hero-intro {
+  position: absolute;
+  inset: 0;
   display: flex;
-  gap: 12px; /* Space between the dots */
+  align-items: center;
+  justify-content: center;
+  opacity: clamp(0, calc(1 - var(--progress, 0) * 2.8), 1);
 }
 
-/* The Dots - Smaller and Crisper */
-.dot {
-  cursor: pointer;
-  height: 8px;   /* Smaller size (was 12px) */
-  width: 8px;    /* Smaller size (was 12px) */
-  background-color: #ffffff; /* Solid white for clarity */
-  border-radius: 50%;
-  transition: all 0.2s ease-in-out;
-  border: none;  /* Remove the border to stop the blur */
-  /* This shadow makes them visible even on bright white parts of a photo */
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); 
-  opacity: 0.6;  /* Dim them slightly when not active */
+.dir-hero-intro-word {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #fff;
 }
 
-/* Hover effect */
-.dot:hover {
-  opacity: 1;
-  transform: scale(1.2);
-  background-color: #FFD100; /* UCLA Gold */
+.dir-hero-final {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* `width: max-content` matters here, not just cosmetic: with only
+     `left` set (no `width`/`right`), the browser's shrink-to-fit
+     sizing caps the box at "containing-block-width minus left-offset"
+     — at left:50% that's only half the viewport, which was squeezing
+     the title+list row and wrapping the program names. max-content
+     sizes it to its natural content width instead, and the transform
+     below shifts that correctly-sized box to be truly centered. */
+  width: max-content;
+  max-width: 90vw;                    /* safety cap so it can't overflow a narrow viewport */
+  transform: translate(-50%, -50%);   /* EDITABLE: centers the whole block — swap for `left:7%; transform:translateY(-50%); width:auto;` to go back to left-aligned */
+  color: #fff;
+  text-align: center;
+  opacity: clamp(0, calc((var(--progress, 0) - 0.55) * 2.6), 1);
 }
 
-/* The Active Dot - Crisp and Defined */
-.dot.active {
-  opacity: 1;
-  background-color: #FFD100 !important; /* UCLA Gold */
-  width: 18px; /* Slightly shorter pill shape for the smaller scale */
-  border-radius: 4px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.6);
+/* Title + program list side by side, centered as one unit */
+.dir-hero-final-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4rem;                /* EDITABLE: space between the title and the list */
+  flex-wrap: nowrap;         /* keep title + list on one row — the dedicated mobile layout below (max-width:768px) is what handles narrow screens, not wrapping here */
+  margin-bottom: 1.3rem;
+}
+
+.dir-hero-programs {
+  text-align: left;   /* the list itself still reads left-to-right internally */
+}
+
+.dir-hero-final-title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.05;    /* "Student" / "Directory" stacked on two lines (see the <br> in directory.qmd) — tighter than the default so they read as one title, not two paragraphs */
+  text-align: left;     /* both lines start at the same left edge, instead of the parent's center alignment */
+  flex: 0 0 auto;
+}
+
+/* Program list — same row/divider pattern as the About page's
+   newsletter list (.newsletter-list in the site-wide styles.css),
+   just recolored for sitting on top of a dark photo. */
+.dir-hero-programs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 26rem;     /* EDITABLE: the "26rem" is the list's actual width — raise it for more space between each label and its "Explore →" link. flex-shrink is 0 (not 1) so it can't be squeezed smaller than this by the parent's width:max-content sizing pass. */
+  width: 26rem;
+}
+
+.dir-hero-programs li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dir-hero-programs li a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #fff;
+  text-decoration: none !important;
+}
+
+.dir-hero-program-arrow {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.15s;
+}
+
+.dir-hero-programs li a:hover .dir-hero-program-arrow {
+  color: #fff;
+}
+
+.dir-hero-footnote {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 768px) {
+  /* Pinned scroll effect is disabled on small screens — scroll-hijack
+     effects are fragile on mobile browsers. Falls back to a plain
+     static full-width darkened photo with the final text already
+     showing (no scroll-driven state to wait for). */
+  .dir-hero-pin { height: auto; margin-top: 0; }
+  .dir-hero-sticky { position: static; height: auto; display: block; background: #003B5C; padding-bottom: 0.5rem; }
+  .dir-hero-image { position: static; width: 100%; height: 260px; border-radius: 0; }
+  .dir-hero-image img { transform: none; }
+  .dir-hero-image-overlay { background: rgba(0, 0, 0, 0.35); }
+  .dir-hero-intro { display: none; }
+  .dir-hero-final { position: static; opacity: 1; transform: none; left: auto; width: auto; max-width: none; text-align: left; padding: 1.5rem 1.25rem 0; }
+  .dir-hero-final-row { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 1rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PHOTO-SPLIT SECTIONS (Student Statistics / Alumni)
+   ══════════════════════════════════════════════════════════════════
+   Same idea as the Home page's image+text intro (.home-hero-split in
+   the site-wide styles.css), but with its own classes here since the
+   photo is meant to be noticeably larger on this page, and — via
+   `.dir-split-reverse` — mirrorable per section (Student Statistics
+   is image-left/text-right; Alumni is the reverse). */
+.dir-split {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1150px;
+  margin: 0 auto 4.5rem;
+  padding: 0 1rem;
+}
+
+.dir-split-reverse {
+  flex-direction: row-reverse;
+}
+
+.dir-split-image {
+  flex: 0 0 480px;                  /* EDITABLE: photo width — deliberately larger than home's hero image */
+  aspect-ratio: 4 / 5;              /* EDITABLE: photo shape */
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.dir-split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.dir-split-text {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* Stagger the title/description/button's fade-in (see the site-wide
+   .reveal-fade rules, and this page's own reveal-trigger script). */
+.dir-split-text > .reveal-fade:nth-child(1) { transition-delay: 0.05s; }
+.dir-split-text > .reveal-fade:nth-child(2) { transition-delay: 0.25s; }
+.dir-split-text > .reveal-fade:nth-child(3) { transition-delay: 0.45s; }
+
+.dir-split-title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003B5C;
+  margin-bottom: 0.9rem;
+}
+
+.dir-split-desc {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.4rem;
+}
+
+@media (max-width: 800px) {
+  .dir-split,
+  .dir-split-reverse { flex-direction: column; text-align: center; padding: 0 1.25rem; }
+  .dir-split-image { flex: none; width: 100%; max-width: 380px; }
 }
 
 .program-cards-grid {
@@ -148,18 +370,6 @@
 }
 
 @media (max-width: 768px) {
-  .directory-hero {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .directory-hero-text,
-  .directory-hero-photo {
-    flex: none;
-    width: 100%;
-  }
-  .directory-hero-photo {
-    height: 280px;
-  }
   .program-cards-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -316,107 +526,123 @@
   transform: scale(1.05);
 }
 
-/* Alumni entry point and landing page */
-.alumni-preview {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr);
-  gap: 2.5rem;
+/* Alumni landing page */
+.alumni-landing { padding: 0 1rem 5rem; }
+
+/* ── Banner — same full-bleed darkened-photo treatment as the site's
+   other page-hero bands, with a centered Fira Code title. */
+.alumni-banner { position: relative; }
+.alumni-banner-title {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: flex;
   align-items: center;
-  margin-top: 4.5rem;
-  padding: 2.75rem;
-  border-radius: 18px;
-  background: #f0f7fb;
-  border-left: 5px solid #2774AE;
+  justify-content: center;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
 }
 
-.alumni-preview-copy p,
-.alumni-hero-desc,
-.alumni-note p {
+.alumni-back-link { margin: 2.5rem auto 0; display: block; width: max-content; }
+
+.alumni-intro-desc {
+  max-width: 670px;
+  margin: 1.25rem auto 3.5rem;
   color: #444;
   font-size: 1.02rem;
   line-height: 1.7;
-  margin: 0;
 }
 
-.alumni-preview-link {
-  display: inline-block;
-  margin-top: 1.1rem;
-  color: #003B5C;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.alumni-preview-link:hover { color: #2774AE; }
-
-.alumni-preview-image {
-  display: block;
-  min-height: 210px;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.alumni-preview-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 210px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.alumni-preview-image:hover img { transform: scale(1.04); }
-
-.alumni-landing { padding: 2.5rem 1rem 4rem; }
-
-.alumni-hero {
+/* ── Program rows — photo + a color-block text panel overlapping its
+   edge, alternating sides down the page. */
+.alumni-program-rows {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto 4rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 3px solid #FFD100;
+  flex-direction: column;
+  gap: 5rem;
 }
 
-.alumni-hero-title {
-  color: #003B5C;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin: 0 0 0.8rem;
-}
-
-.alumni-hero-desc { max-width: 670px; }
-.alumni-back-link { flex-shrink: 0; }
-
-.alumni-program-section { max-width: 900px; margin: 0 auto 4rem; }
-.alumni-program-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
-
-.alumni-note {
+.alumni-program-row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 1.75rem;
-  background: #003B5C;
-  border-radius: 14px;
-  color: #fff;
 }
 
-.alumni-note h2 { font-size: 1.35rem; margin: 0 0 0.3rem; color: #fff; }
-.alumni-note p { color: #d9e8f2; }
-.alumni-note-mark { color: #FFD100; font-size: 1.1rem; font-weight: 800; letter-spacing: 0.12em; }
+.alumni-program-row-reverse { flex-direction: row-reverse; }
 
-@media (max-width: 768px) {
-  .alumni-preview { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; }
-  .alumni-hero { align-items: flex-start; flex-direction: column; margin-bottom: 2.75rem; }
-  .alumni-note { align-items: flex-start; }
-  .alumni-program-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.alumni-program-image {
+  flex: 1 1 62%;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.alumni-program-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.alumni-program-box {
+  flex: 0 0 320px;
+  position: relative;
+  z-index: 2;
+  background: #003B5C;
+  color: #fff;
+  padding: 2.25rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.25);
+  margin-left: -70px;
+}
+
+.alumni-program-row-reverse .alumni-program-box {
+  margin-left: 0;
+  margin-right: -70px;
+}
+
+/* EDITABLE: alternate box color per row — solid blue / solid dark gold /
+   solid blue, applied via this modifier on the middle row. */
+.alumni-program-box-gold { background: #FFD100; }
+.alumni-program-box-gold .alumni-program-box-title,
+.alumni-program-box-gold .alumni-program-box-desc {
+  color: #003B5C;
+  text-shadow: none;
+}
+
+.alumni-program-box-title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.alumni-program-box-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d9e8f2;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 800px) {
+  .alumni-program-row,
+  .alumni-program-row-reverse { flex-direction: column; }
+  .alumni-program-image { width: 100%; height: 260px; }
+  .alumni-program-box,
+  .alumni-program-row-reverse .alumni-program-box {
+    margin: -50px 1.25rem 0;
+    flex: none;
+  }
 }
 
 @media (max-width: 480px) {
-  .alumni-program-cards { grid-template-columns: 1fr; }
 }
 
 
@@ -467,6 +693,14 @@ details[open] summary {
 [id^="listing-"][id$="-grid"],
 [id^="listing-"][id$="-table"] {
   display: none;
+}
+
+/* List-view tables (every directory + alumni page) default to Bootstrap's
+   white table background — make it transparent so it matches the page's
+   off-white background instead of showing a white box. */
+.quarto-listing-table {
+  --bs-table-bg: transparent;
+  background-color: transparent !important;
 }
 
 
@@ -558,11 +792,16 @@ details[open] summary {
 }
 
 
-#listing-grid .list.grid {
+/* Class-based (not #listing-grid, which only matches the id Quarto gives the
+   regular-directory listing) so every grid listing on the page — regular
+   directory AND alumni, whatever id Quarto assigns it (listing-ms2026,
+   listing-mdsh2026, etc.) — gets the same compact column sizing instead of
+   falling back to Quarto's much wider default. */
+.quarto-listing-container-grid .list.grid {
   display: grid !important;
   /* Dropping to 180px ensures 5-across on most laptops */
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
-  gap: 1rem !important; /* Slightly tighter gap to save horizontal space */
+  gap: 1.75rem !important; /* EDITABLE: card spacing on the directory/alumni grids */
 }
 
 /* Match the max-width to keep it from stretching too far on giant monitors */
@@ -596,203 +835,6 @@ details[open] summary {
   width: 100%;
 }
 
-/* ══════════════════════════════════════════════════════
-   Stats Banner — "By the Numbers" section
-   ══════════════════════════════════════════════════════ */
-.stats-banner {
-  position: relative;
-  background: linear-gradient(135deg, #002e48 0%, #003B5C 45%, #1a5f8a 100%);
-  border-radius: 24px;
-  margin: 3rem 0 2rem;
-  overflow: hidden;
-  padding: 3.5rem 3rem 3.5rem;
-  box-shadow: 0 20px 60px rgba(0, 59, 92, 0.30);
-}
-
-/* Subtle dot-grid texture */
-.stats-banner-dots {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1.5px, transparent 1.5px);
-  background-size: 26px 26px;
-  pointer-events: none;
-}
-
-/* Gold accent bar at top */
-.stats-banner-gold {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, #FFD100 0%, #ffea70 50%, #FFD100 100%);
-}
-
-.stats-banner-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-}
-
-/* ── Left panel ── */
-.stats-banner-left { flex: 1; min-width: 0; }
-
-.stats-banner-tag {
-  font-size: 0.67rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 3.5px;
-  color: #FFD100;
-  margin-bottom: 0.9rem;
-}
-
-.stats-banner-title {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.05;
-  margin: 0 0 1.1rem;
-  letter-spacing: -0.02em;
-}
-
-.stats-banner-desc {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.68);
-  line-height: 1.8;
-  max-width: 400px;
-  margin: 0 0 2.2rem;
-}
-
-.stats-banner-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: #FFD100;
-  color: #002e48;
-  font-weight: 800;
-  font-size: 0.9rem;
-  letter-spacing: 0.01em;
-  padding: 0.85rem 1.9rem;
-  border-radius: 100px;
-  text-decoration: none !important;
-  transition: transform 0.22s, box-shadow 0.22s, background 0.18s;
-  box-shadow: 0 6px 22px rgba(255, 209, 0, 0.4);
-}
-.stats-banner-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 34px rgba(255, 209, 0, 0.55);
-  background: #ffe84d;
-  color: #002e48;
-}
-.stats-cta-arrow {
-  display: inline-block;
-  transition: transform 0.22s;
-  font-size: 1.05rem;
-}
-.stats-banner-cta:hover .stats-cta-arrow { transform: translateX(5px); }
-
-/* ── Right panel: floating stat chips ── */
-.stats-banner-right {
-  flex: 0 0 320px;
-  position: relative;
-  height: 250px;
-}
-
-.stat-chip {
-  position: absolute;
-  background: rgba(255,255,255,0.09);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 18px;
-  padding: 1rem 1.35rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-}
-
-.chip-num {
-  font-size: 2.1rem;
-  font-weight: 900;
-  color: #FFD100;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.chip-label {
-  font-size: 0.64rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-}
-
-/* Chip positions + staggered float animations */
-.chip-1 { top: 0;    left: 0;   animation: chipFloat 7s ease-in-out infinite 0s; }
-.chip-2 { top: 5px;  right: 0;  animation: chipFloat 7s ease-in-out infinite -2s; }
-.chip-3 { bottom: 0; left: 30px; animation: chipFloat 7s ease-in-out infinite -3.5s; }
-.chip-4 { bottom: 8px; right: 0; animation: chipFloat 7s ease-in-out infinite -5s; }
-.chip-5 {
-  top: 50%; left: 50%;
-  animation: chipFloat5 7s ease-in-out infinite -1.2s;
-  background: rgba(255,209,0,0.15);
-  border-color: rgba(255,209,0,0.3);
-}
-
-@keyframes chipFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-9px); }
-}
-@keyframes chipFloat5 {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50%       { transform: translate(-50%, -50%) translateY(-9px); }
-}
-
-/* ── Mobile stat strip (shown below 768px, replaces chips) ── */
-.stats-mobile-strip {
-  display: none;
-  position: relative;
-  margin-top: 2rem;
-  padding-top: 1.8rem;
-  border-top: 1px solid rgba(255,255,255,0.14);
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem 0;
-}
-.mobile-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 1.4rem;
-}
-.ms-num {
-  font-size: 1.9rem;
-  font-weight: 900;
-  color: #FFD100;
-  line-height: 1;
-}
-.ms-label {
-  font-size: 0.62rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.65);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 0.2rem;
-}
-.mobile-stat-div {
-  width: 1px;
-  background: rgba(255,255,255,0.2);
-  align-self: stretch;
-}
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .stats-banner { padding: 2.5rem 1.75rem 2rem; border-radius: 18px; }
-  .stats-banner-inner { gap: 0; }
-  .stats-banner-right { display: none; }
-  .stats-mobile-strip { display: flex; }
-  .stats-banner-desc { max-width: 100%; }
-}
-@media (max-width: 480px) {
-  .stats-banner { padding: 2rem 1.25rem 1.75rem; border-radius: 14px; }
-  .stats-banner-title { font-size: 1.75rem; }
-}
+/* "By the Numbers" stats-banner section that used to live here was
+   replaced by the .dir-split "Student Statistics" section further up
+   this file. */

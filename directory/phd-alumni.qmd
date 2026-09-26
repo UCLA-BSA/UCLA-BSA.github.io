@@ -21,6 +21,9 @@ listing:
     type: grid
     page-size: 9999
     grid-columns: 5
+    sort-ui: [title, description]
+    sort: false
+    filter-ui: [title, subtitle, description]
     fields: [image, title, subtitle, description]
   - id: alumni-table
     contents: "profiles/phd-alumni/**/*.qmd"
