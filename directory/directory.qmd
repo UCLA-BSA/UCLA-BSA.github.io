@@ -124,7 +124,7 @@ css: styles.css
        <img src> below for any other photo. -->
   <section class="dir-split">
     <div class="dir-split-image reveal-grow">
-      <img src="../images/directory/directory_student_stat.jpeg" alt="UCLA Biostatistics students">
+      <img src="../images/directory/directory_student_stat.jpg" alt="UCLA Biostatistics students">
     </div>
     <div class="dir-split-text">
       <div class="dir-split-title reveal-fade">Student Statistics</div>
