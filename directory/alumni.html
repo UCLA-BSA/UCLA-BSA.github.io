@@ -31,12 +31,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
 <link href="../images/icon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -48,18 +44,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-92ce099e2bf66d6000d869af7dee5acc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -74,12 +58,55 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Font: Fira Code (titles/headings only; body keeps the Quarto/Cosmo default) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
 <!-- this script builds an email only when rendered -->
 <!-- emails are not directly contained in the .html file -->
 <script type="text/javascript">
 function scrambleIt(domain, user) {
   document.write('<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>');
 }
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Header-height CSS variable (site-wide — not something you need to
+     edit)
+     ════════════════════════════════════════════════════════════════════
+     Quarto's own JS measures the floating navbar's real (dynamic)
+     height and sets it as an inline `padding-top` directly on `<body>`
+     — that's the one source of truth for "how much space is reserved
+     above the page content for the fixed header," and it changes with
+     the header's own content (a bigger logo, nav links wrapping to a
+     second row on a narrow screen, etc.). `.hero-banner`/`.page-hero`
+     bands (styles.css) need that exact number, as a negative margin,
+     to sit flush under the transparent floating nav with no gap.
+
+     Rather than re-measuring the header ourselves (which can race
+     against Quarto's own measurement and read a stale value), this
+     just watches `<body>`'s `style` attribute directly with a
+     MutationObserver and mirrors whatever padding-top Quarto set into
+     a `--bsa-header-h` CSS variable — so it can never drift out of
+     sync, regardless of load order or timing.
+
+     This script sits in `<head>` (via include-in-header), which runs
+     before `<body>` exists yet — so the observer setup is deferred to
+     DOMContentLoaded rather than attached immediately. -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+  function syncHeaderHeight() {
+    var padTop = document.body.style.paddingTop;
+    if (padTop) {
+      document.documentElement.style.setProperty('--bsa-header-h', padTop);
+    }
+  }
+  syncHeaderHeight();
+  new MutationObserver(syncHeaderHeight)
+    .observe(document.body, { attributes: true, attributeFilter: ['style'] });
+  window.addEventListener('resize', syncHeaderHeight);
+});
 </script>
 
 
@@ -94,11 +121,14 @@ function scrambleIt(domain, user) {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Biostatistics Student Association at UCLA</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -109,7 +139,7 @@ function scrambleIt(domain, user) {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/about.html"> 
+    <a class="nav-link" href="../index.html#about"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -160,67 +190,64 @@ function scrambleIt(domain, user) {
 </header>
 
 
+<style>
+.quarto-title-block, h1.title { display: none !important; }
+</style>
+<!-- ── Alumni banner — full-bleed, darkened. EDITABLE: swap the <img src>
+     below for any other photo in ../images/directory/alumni/. -->
+<div class="page-hero alumni-banner">
+  <img src="../images/directory/alumni/alumni_main.jpg" alt="">
+  <div class="alumni-banner-title">Alumni Directory</div>
+</div>
+
 <div class="alumni-landing">
-  <div class="alumni-hero">
-    <div>
-      <div class="section-label">UCLA Biostatistics Community</div>
-      <h1 class="alumni-hero-title">Alumni Directory</h1>
-      <p class="alumni-hero-desc">
-        Meet the graduates who continue to shape biostatistics, data science,
-        public health, and related fields. This directory will grow as more
-        program cohorts are added.
-      </p>
-    </div>
-    <a href="directory.html" class="btn btn-outline-primary alumni-back-link">← Student Directory</a>
-  </div>
 
-  <section class="alumni-program-section" aria-labelledby="alumni-programs-title">
-    <div class="section-label">Browse by Program</div>
-    <h2 id="alumni-programs-title" class="section-title-bar anchored">Alumni Profiles</h2>
-    <div class="program-cards-grid alumni-program-cards">
-      <a href="ms-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/ms.jpg" alt="Master of Science alumni">
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Master of Science</div>
-            <div class="prog-card-title">MS Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
-      <a href="mdsh-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/mdsh.jpg" alt="Master of Data Science in Health alumni">
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Master of Data Science in Health</div>
-            <div class="prog-card-title">MDSH Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
-      <a href="phd-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/phd.jpeg" alt="Doctor of Philosophy alumni">
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Doctor of Philosophy</div>
-            <div class="prog-card-title">PhD Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
+  <a href="directory.html" class="btn btn-outline-primary alumni-back-link">← Student Directory</a>
+
+  <p class="alumni-intro-desc">
+    Meet our alumni! This directory started collecting in 2026, it will grow
+    as more cohorts graduate.
+  </p>
+
+  <!-- ── Program rows — image + overlapping color-block text, alternating
+       sides. EDITABLE: swap each <img src> and the copy in each box. -->
+  <section class="alumni-program-rows">
+
+    <div class="alumni-program-row">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_ms.jpg" alt="Master of Science alumni">
+      </div>
+      <div class="alumni-program-box">
+        <div class="alumni-program-box-title">MS Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Master of Science (Starting with class of 2026)</p>
+        <a href="ms-alumni.html" class="btn btn-lg btn-pill">Explore →</a>
+      </div>
     </div>
+
+    <div class="alumni-program-row alumni-program-row-reverse">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_mdsh.jpg" alt="Master of Data Science in Health alumni">
+      </div>
+      <div class="alumni-program-box alumni-program-box-gold">
+        <div class="alumni-program-box-title">MDSH Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Master of Data Science in Health (Starting with class of 2026)</p>
+        <a href="mdsh-alumni.html" class="btn btn-lg btn-pill">Explore →</a>
+      </div>
+    </div>
+
+    <div class="alumni-program-row">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_phd.jpg" alt="Doctor of Philosophy alumni">
+      </div>
+      <div class="alumni-program-box">
+        <div class="alumni-program-box-title">PhD Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Doctor of Philosophy (Starting with class of 2026)</p>
+        <a href="phd-alumni.html" class="btn btn-lg btn-pill">Explore →</a>
+      </div>
+    </div>
+
   </section>
 
-  <section class="alumni-note">
-    <div class="alumni-note-mark" aria-hidden="true">BSA</div>
-    <div>
-      <h2 class="anchored">Stay connected</h2>
-      <p>
-        Additional alumni cohorts and programs will be added here as their
-        profiles become available.
-      </p>
-    </div>
-  </section>
 </div>
 
 

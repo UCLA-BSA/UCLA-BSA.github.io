@@ -31,14 +31,10 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
 <link href="../images/icon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -50,18 +46,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-92ce099e2bf66d6000d869af7dee5acc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -133,12 +117,55 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
+<!-- Font: Fira Code (titles/headings only; body keeps the Quarto/Cosmo default) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
 <!-- this script builds an email only when rendered -->
 <!-- emails are not directly contained in the .html file -->
 <script type="text/javascript">
 function scrambleIt(domain, user) {
   document.write('<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>');
 }
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Header-height CSS variable (site-wide — not something you need to
+     edit)
+     ════════════════════════════════════════════════════════════════════
+     Quarto's own JS measures the floating navbar's real (dynamic)
+     height and sets it as an inline `padding-top` directly on `<body>`
+     — that's the one source of truth for "how much space is reserved
+     above the page content for the fixed header," and it changes with
+     the header's own content (a bigger logo, nav links wrapping to a
+     second row on a narrow screen, etc.). `.hero-banner`/`.page-hero`
+     bands (styles.css) need that exact number, as a negative margin,
+     to sit flush under the transparent floating nav with no gap.
+
+     Rather than re-measuring the header ourselves (which can race
+     against Quarto's own measurement and read a stale value), this
+     just watches `<body>`'s `style` attribute directly with a
+     MutationObserver and mirrors whatever padding-top Quarto set into
+     a `--bsa-header-h` CSS variable — so it can never drift out of
+     sync, regardless of load order or timing.
+
+     This script sits in `<head>` (via include-in-header), which runs
+     before `<body>` exists yet — so the observer setup is deferred to
+     DOMContentLoaded rather than attached immediately. -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+  function syncHeaderHeight() {
+    var padTop = document.body.style.paddingTop;
+    if (padTop) {
+      document.documentElement.style.setProperty('--bsa-header-h', padTop);
+    }
+  }
+  syncHeaderHeight();
+  new MutationObserver(syncHeaderHeight)
+    .observe(document.body, { attributes: true, attributeFilter: ['style'] });
+  window.addEventListener('resize', syncHeaderHeight);
+});
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -182,11 +209,14 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Biostatistics Student Association at UCLA</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -197,7 +227,7 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/about.html"> 
+    <a class="nav-link" href="../index.html#about"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -280,7 +310,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-5">
-<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1790401833154" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
+<div class="g-col-1" data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1790465643558" data-listing-reading-time-sort="1" data-listing-word-count-sort="31">
 <a href="../directory/profiles/ms/asuka-iwamoto-ms-102.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -299,7 +329,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833195" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643591" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="../directory/profiles/ms/chenxin-zhu-ms-136.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -318,7 +348,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwU2lqaWElMjBMaQ==" data-listing-file-modified-sort="1790401833191" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
+<div class="g-col-1" data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwU2lqaWElMjBMaQ==" data-listing-file-modified-sort="1790465643588" data-listing-reading-time-sort="1" data-listing-word-count-sort="33">
 <a href="../directory/profiles/ms/christopher-chow-ms-133.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -337,7 +367,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833061" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643483" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="../directory/profiles/ms/jiale-ni-ms-27.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -356,7 +386,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833158" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="g-col-1" data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643560" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <a href="../directory/profiles/ms/jian-huang-ms-105.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -375,7 +405,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1790401833150" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1790465643555" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="../directory/profiles/ms/jiaqi-zhou-ms-99.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -394,7 +424,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRmFsY28lMjBKLiUyMEJhcmdhZ2xpJTIwU3RvZmZp" data-listing-file-modified-sort="1790401833165" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="g-col-1" data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRmFsY28lMjBKLiUyMEJhcmdhZ2xpJTIwU3RvZmZp" data-listing-file-modified-sort="1790465643566" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
 <a href="../directory/profiles/ms/julian-gavino-ms-111.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -413,7 +443,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1790401833055" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
+<div class="g-col-1" data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1790465643478" data-listing-reading-time-sort="1" data-listing-word-count-sort="34">
 <a href="../directory/profiles/ms/siddhant-patel-ms-22.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -432,7 +462,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833143" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
+<div class="g-col-1" data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643550" data-listing-reading-time-sort="1" data-listing-word-count-sort="75">
 <a href="../directory/profiles/ms/sihong-yao-ms-93.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -451,7 +481,7 @@ MS Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1790401833162" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
+<div class="g-col-1" data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1790465643564" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
 <a href="../directory/profiles/ms/yubo-shen-ms-109.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -516,7 +546,7 @@ MS Student
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1790401833154" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="**Asuka Iwamoto**" data-listing-filename-sort="asuka-iwamoto-ms-102.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="0" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwSmFzb24lMjBYdQ==" data-listing-file-modified-sort="1790465643558" data-listing-reading-time-sort="1" data-listing-word-count-sort="31" data-listing-title-sort="**Asuka Iwamoto**" data-listing-filename-sort="asuka-iwamoto-ms-102.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/asuka-iwamoto-ms-102.html" class="title listing-title"><strong>Asuka Iwamoto</strong></a>
@@ -530,7 +560,7 @@ MS Student
 
 </tr>
 
-<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833195" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="**Chenxin (Lucy) Zhu**" data-listing-filename-sort="chenxin-zhu-ms-136.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="1" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643591" data-listing-reading-time-sort="1" data-listing-word-count-sort="27" data-listing-title-sort="**Chenxin (Lucy) Zhu**" data-listing-filename-sort="chenxin-zhu-ms-136.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/chenxin-zhu-ms-136.html" class="title listing-title"><strong>Chenxin (Lucy) Zhu</strong></a>
@@ -544,7 +574,7 @@ MS Student
 
 </tr>
 
-<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwU2lqaWElMjBMaQ==" data-listing-file-modified-sort="1790401833191" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="**Christopher (Chris) Chow**" data-listing-filename-sort="christopher-chow-ms-133.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="2" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjYlMkNBZHZpc29yJTNBJTIwU2lqaWElMjBMaQ==" data-listing-file-modified-sort="1790465643588" data-listing-reading-time-sort="1" data-listing-word-count-sort="33" data-listing-title-sort="**Christopher (Chris) Chow**" data-listing-filename-sort="christopher-chow-ms-133.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/christopher-chow-ms-133.html" class="title listing-title"><strong>Christopher (Chris) Chow</strong></a>
@@ -558,7 +588,7 @@ MS Student
 
 </tr>
 
-<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833061" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiale Ni**" data-listing-filename-sort="jiale-ni-ms-27.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="3" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643483" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiale Ni**" data-listing-filename-sort="jiale-ni-ms-27.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/jiale-ni-ms-27.html" class="title listing-title"><strong>Jiale Ni</strong></a>
@@ -572,7 +602,7 @@ MS Student
 
 </tr>
 
-<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833158" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jian (Tom) Huang**" data-listing-filename-sort="jian-huang-ms-105.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="4" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643560" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="**Jian (Tom) Huang**" data-listing-filename-sort="jian-huang-ms-105.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/jian-huang-ms-105.html" class="title listing-title"><strong>Jian (Tom) Huang</strong></a>
@@ -586,7 +616,7 @@ MS Student
 
 </tr>
 
-<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1790401833150" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiaqi (Nina) Zhou**" data-listing-filename-sort="jiaqi-zhou-ms-99.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="5" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwQ2hyaXN0aW5hJTIwUmFtaXJleg==" data-listing-file-modified-sort="1790465643555" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Jiaqi (Nina) Zhou**" data-listing-filename-sort="jiaqi-zhou-ms-99.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/jiaqi-zhou-ms-99.html" class="title listing-title"><strong>Jiaqi (Nina) Zhou</strong></a>
@@ -600,7 +630,7 @@ MS Student
 
 </tr>
 
-<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRmFsY28lMjBKLiUyMEJhcmdhZ2xpJTIwU3RvZmZp" data-listing-file-modified-sort="1790401833165" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Julian Gavino**" data-listing-filename-sort="julian-gavino-ms-111.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="6" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRmFsY28lMjBKLiUyMEJhcmdhZ2xpJTIwU3RvZmZp" data-listing-file-modified-sort="1790465643566" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="**Julian Gavino**" data-listing-filename-sort="julian-gavino-ms-111.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/julian-gavino-ms-111.html" class="title listing-title"><strong>Julian Gavino</strong></a>
@@ -614,7 +644,7 @@ MS Student
 
 </tr>
 
-<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1790401833055" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="**Siddhant Patel**" data-listing-filename-sort="siddhant-patel-ms-22.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="7" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwRG9uYXRlbGxvJTIwVGVsZXNjYQ==" data-listing-file-modified-sort="1790465643478" data-listing-reading-time-sort="1" data-listing-word-count-sort="34" data-listing-title-sort="**Siddhant Patel**" data-listing-filename-sort="siddhant-patel-ms-22.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/siddhant-patel-ms-22.html" class="title listing-title"><strong>Siddhant Patel</strong></a>
@@ -628,7 +658,7 @@ MS Student
 
 </tr>
 
-<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790401833143" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="**Sihong Yao**" data-listing-filename-sort="sihong-yao-ms-93.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="8" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwTm90JTIwTGlzdGVk" data-listing-file-modified-sort="1790465643550" data-listing-reading-time-sort="1" data-listing-word-count-sort="75" data-listing-title-sort="**Sihong Yao**" data-listing-filename-sort="sihong-yao-ms-93.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/sihong-yao-ms-93.html" class="title listing-title"><strong>Sihong Yao</strong></a>
@@ -642,7 +672,7 @@ MS Student
 
 </tr>
 
-<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1790401833162" data-listing-reading-time-sort="1" data-listing-word-count-sort="41" data-listing-title-sort="**Yubo Shen**" data-listing-filename-sort="yubo-shen-ms-109.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+<tr data-index="9" data-categories="UHJvZ3JhbSUzQSUyME1TJTJDQ29ob3J0JTNBJTIwRmFsbCUyMDIwMjUlMkNBZHZpc29yJTNBJTIwV2VuZyUyMEtlZSUyMFdvbmc=" data-listing-file-modified-sort="1790465643564" data-listing-reading-time-sort="1" data-listing-word-count-sort="41" data-listing-title-sort="**Yubo Shen**" data-listing-filename-sort="yubo-shen-ms-109.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
 <td>
 <a href="../directory/profiles/ms/yubo-shen-ms-109.html" class="title listing-title"><strong>Yubo Shen</strong></a>

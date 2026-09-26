@@ -4,6 +4,28 @@
 .quarto-title-block { display: none !important; }
 #title-block-header { display: none !important; }
 
+/* ── Banner — full-bleed darkened photo (via the shared .page-hero rules
+   in the root styles.css), with a centered Fira Code title. EDITABLE: the
+   image's object-position below is shifted toward the bottom of the frame
+   so the crowd/panel (not the empty ceiling) stays in view; height is
+   shorter than the default .page-hero so the banner doesn't dominate the
+   page. */
+.events-banner { position: relative; height: 380px; }
+.events-banner img { object-position: center 85%; }
+.events-banner-title {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
 /* ── Page container ── */
 .events-page {
   padding: 2.5rem 2rem 4rem;
@@ -15,13 +37,6 @@
 .events-section-header {
   text-align: center;
   margin-bottom: 2.5rem;
-}
-
-.events-section-header h1 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #003B5C;
-  margin-bottom: 0.4rem;
 }
 
 .events-section-header p {
@@ -57,82 +72,95 @@
   color: #fff;
 }
 
-/* ── Carousel wrapper ── */
-.events-carousel-outer {
-  position: relative;
+/* ── Events grid — 3 per row, cards fade in on render (.reveal-fade,
+   defined in the root styles.css) ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ── Load more (Upcoming Events only) ── */
+.events-load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 980px) {
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .events-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Past Events — one collapsible section per academic year ── */
+.events-year-group {
+  border-bottom: 1px solid #e5ddd0;
+}
+
+.events-year-group:first-child { border-top: 1px solid #e5ddd0; }
+
+.events-year-toggle {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.events-track-container {
-  overflow: hidden;
-  flex: 1;
-  border-radius: 4px;
-}
-
-.events-track {
-  display: flex;
-  gap: 1.5rem;
-  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-/* ── Carousel nav buttons ── */
-.carousel-arrow {
-  background: #fff;
-  border: 2px solid #2774AE;
-  color: #2774AE;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, color 0.2s, opacity 0.2s;
-  line-height: 1;
-}
-
-.carousel-arrow:hover:not(:disabled) {
-  background: #2774AE;
-  color: #fff;
-}
-
-.carousel-arrow:disabled {
-  opacity: 0.25;
-  cursor: default;
-}
-
-/* ── Carousel dots ── */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.carousel-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #c5d8ea;
-  cursor: pointer;
+  background: none;
   border: none;
-  padding: 0;
-  transition: background 0.2s, transform 0.2s;
+  padding: 1.1rem 0.25rem;
+  cursor: pointer;
+  text-align: left;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #003B5C;
+  transition: color 0.15s;
 }
 
-.carousel-dot.active {
-  background: #2774AE;
-  transform: scale(1.25);
+.events-year-toggle:hover { color: #2774AE; }
+
+.events-year-toggle-count {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  margin-left: auto;
+}
+
+.events-year-toggle-chevron {
+  flex-shrink: 0;
+  color: #2774AE;
+  transition: transform 0.25s ease;
+}
+
+.events-year-toggle.open .events-year-toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.events-year-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.events-year-panel > .events-grid {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.events-year-panel.open {
+  grid-template-rows: 1fr;
+}
+
+.events-year-panel .events-grid {
+  padding: 0.25rem 0 1.75rem;
 }
 
 /* ── Event Card ── */
 .event-card {
-  flex: 0 0 280px;
+  display: flex;
   background: #fff;
   border-radius: 14px;
   overflow: hidden;
@@ -147,10 +175,55 @@
   box-shadow: 0 10px 28px rgba(0, 59, 92, 0.18);
 }
 
+/* Left rail — date on top, location pinned to the bottom, colored by category */
+.card-date-rail {
+  flex: 0 0 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 1rem 0.5rem;
+}
+
+.card-date-day {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.card-date-month {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  opacity: 0.9;
+  margin-top: 0.2rem;
+}
+
+.card-date-location {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.3;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  width: 100%;
+}
+
+/* Right column — image, then title, then the CTA row */
+.card-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Card photo */
 .card-photo-wrap {
   width: 100%;
-  height: 175px;
+  height: 170px;
   overflow: hidden;
   position: relative;
 }
@@ -164,11 +237,12 @@
 
 .card-photo-placeholder {
   width: 100%;
-  height: 175px;
+  height: 170px;
   background: linear-gradient(135deg, #2774AE 0%, #003B5C 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .card-photo-placeholder svg {
@@ -177,45 +251,83 @@
 
 /* Card body */
 .card-body-inner {
-  padding: 1rem 1.1rem 1.2rem;
-}
-
-.card-category-badge {
-  display: inline-block;
-  padding: 0.18rem 0.65rem;
-  border-radius: 20px;
-  font-size: 0.69rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin-bottom: 0.55rem;
-}
-
-.card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #003B5C;
-  margin: 0 0 0.55rem 0;
-  line-height: 1.35;
-}
-
-.card-meta {
+  padding: 1rem 1.1rem 1.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  flex: 1;
 }
 
-.card-meta-item {
+.card-category-eyebrow {
+  display: block;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.35rem;
+}
+
+/* Title — its own line below the photo, not overlaid on it */
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #003B5C;
+  line-height: 1.3;
+  margin: 0 0 0.3rem;
+}
+
+.card-time {
+  font-size: 0.8rem;
+  color: #2774AE;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+/* Short description snippet */
+.card-desc {
   font-size: 0.82rem;
   color: #666;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
+  line-height: 1.55;
+  margin: 0;
 }
 
-.card-meta-item svg {
-  flex-shrink: 0;
+/* Register Now / Read More row */
+.card-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+}
+
+.card-register-btn {
+  background: #111;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s;
+}
+
+.card-register-btn:hover { background: #003B5C; }
+
+.card-register-btn-disabled {
+  background: #ccc;
+  color: #fff;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.card-register-btn-disabled:hover { background: #ccc; }
+
+.card-readmore {
+  font-size: 0.78rem;
+  font-weight: 700;
   color: #2774AE;
+  white-space: nowrap;
 }
 
 /* Category colours */
@@ -394,147 +506,10 @@
   text-decoration: none !important;
 }
 
-/* ── Important Dates — newsletter-card style ── */
-.important-dates-section {
-  max-width: 1100px;
-  margin: 3.5rem auto 1rem;
-  padding: 0 2rem;
-}
-
-/* Dark wrapper matching newsletter style */
-.id-wrap {
-  background: #003B5C;
-  border-radius: 20px;
-  padding: 2rem 2.5rem 2.5rem;
-  color: #fff;
-}
-
-/* Header row */
-.id-top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-}
-.id-top-left { flex: 1; }
-.id-logo-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: #FFD100;
-  margin-bottom: 0.5rem;
-}
-.id-big-title {
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  font-weight: 900;
-  color: #fff;
-  margin: 0 0 0.4rem;
-  line-height: 1.15;
-  white-space: nowrap;
-}
-.id-subtitle {
-  font-size: 0.97rem;
-  color: #a8c4d8;
-  line-height: 1.75;
-  max-width: 480px;
-  margin: 0;
-}
-
-/* Live count stat */
-.id-stat { flex-shrink: 0; text-align: center; }
-.id-stat-num { font-size: 2.8rem; font-weight: 900; color: #FFD100; line-height: 1; }
-.id-stat-label { font-size: 0.72rem; color: #7aa8bf; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
-
-/* Cards grid — auto-fills columns, min 220px each */
-.id-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-
-/* Single deadline card */
-.id-card {
-  background: #fff;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-  transition: transform 0.22s, box-shadow 0.22s;
-}
-.id-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.38);
-}
-
-/* Coloured stripe at top — gradient set inline by JS */
-.id-card-banner { height: 7px; width: 100%; }
-
-.id-card-body {
-  padding: 1.3rem 1.25rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-/* Urgency badge (Today! / Tomorrow / in N days) */
-.id-urgency-badge {
-  font-size: 0.67rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 0.15rem 0.55rem;
-  border-radius: 4px;
-  align-self: flex-start;
-  margin-bottom: 0.2rem;
-}
-
-/* Deadline title */
-.id-card-title { font-size: 1.1rem; font-weight: 800; color: #003B5C; line-height: 1.3; }
-.id-card-title-link {
-  color: #2774AE;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.id-card-title-link:hover { color: #003B5C; text-decoration: underline; }
-.id-card-title-text { color: #003B5C; }
-
-/* Date text */
-.id-card-date { font-size: 0.85rem; color: #666; margin-top: 0.1rem; }
-
-/* CTA link button */
-.id-card-cta {
-  display: inline-block;
-  margin-top: 0.9rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #2774AE;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.id-card-cta:hover { color: #003B5C; text-decoration: underline; }
-
-/* Urgency colour tokens — applied to .id-urgency-badge */
-.urgency-red    { background: #ef5350; color: #fff; }
-.urgency-orange { background: #FF9800; color: #fff; }
-.urgency-yellow { background: #FFC107; color: #333; }
-.urgency-green  { background: #66BB6A; color: #fff; }
-
-/* Empty / loading states */
-.id-loading,
-.id-empty {
-  color: #a8c4d8;
-  font-size: 0.97rem;
-  padding: 0.5rem 0;
-}
-
-@media (max-width: 768px) {
-  .id-wrap { padding: 2rem 1.5rem 2.5rem; }
-  .id-top { flex-direction: column; align-items: flex-start; }
-  .id-cards-grid { grid-template-columns: 1fr; }
-}
-
-/* ── Recurring Events Section ── */
+/* ── Recurring Events Section ── (matches the Alumni Directory's program
+   rows: a photo with a color-block text panel overlapping its edge,
+   alternating sides down the page — see directory/styles.css
+   .alumni-program-row for the original.) */
 .recurring-section {
   max-width: 1100px;
   margin: 4rem auto 3rem;
@@ -546,97 +521,99 @@
   font-weight: 700;
   color: #003B5C;
   margin-bottom: 2.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 3px solid #FFD100;
   display: inline-block;
+}
+
+.recurring-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .recurring-row {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  margin-bottom: 3.5rem;
 }
 
-.recurring-row-reverse {
-  flex-direction: row-reverse;
+.recurring-row-reverse { flex-direction: row-reverse; }
+
+.recurring-image {
+  flex: 1 1 62%;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.recurring-text {
-  flex: 1;
-}
-
-.recurring-badge {
-  display: inline-block;
-  padding: 0.22rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin-bottom: 0.75rem;
-}
-
-.recurring-text h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #003B5C;
-  margin: 0 0 0.75rem 0;
-}
-
-.recurring-text p {
-  color: #444;
-  line-height: 1.8;
-  font-size: 0.97rem;
-  margin: 0;
-}
-
-.recurring-image-wrap {
-  flex: 0 0 420px;
-}
-
-.recurring-image-wrap img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-}
-
-.recurring-image-placeholder {
-  width: 100%;
-  height: 320px;
-  background: linear-gradient(135deg, #2774AE 0%, #003B5C 100%);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.recurring-image-placeholder svg {
-  opacity: 0.3;
-}
-
-.recurring-image-placeholder .recurring-img {
+.recurring-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px;
   display: block;
 }
 
-@media (max-width: 768px) {
+.recurring-box {
+  flex: 0 0 360px;
+  position: relative;
+  z-index: 2;
+  background: #003B5C;
+  color: #fff;
+  padding: 2.25rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.25);
+  margin-left: -70px;
+}
+
+.recurring-row-reverse .recurring-box {
+  margin-left: 0;
+  margin-right: -70px;
+}
+
+/* EDITABLE: alternate box color per row — solid blue / solid dark gold /
+   solid blue, applied via this modifier on the middle row. */
+.recurring-box-gold { background: #FFD100; }
+.recurring-box-gold .recurring-box-title,
+.recurring-box-gold .recurring-box-desc,
+.recurring-box-gold .recurring-box-eyebrow {
+  color: #003B5C;
+  text-shadow: none;
+}
+
+.recurring-box-eyebrow {
+  display: block;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.recurring-box-title {
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.recurring-box-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #d9e8f2;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 800px) {
   .recurring-row,
-  .recurring-row-reverse {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .recurring-image-wrap {
+  .recurring-row-reverse { flex-direction: column; }
+  .recurring-image { width: 100%; height: 240px; }
+  .recurring-box,
+  .recurring-row-reverse .recurring-box {
+    margin: -50px 1.25rem 0;
     flex: none;
-    width: 100%;
-  }
-  .recurring-image-placeholder {
-    height: 180px;
   }
 }
 
@@ -651,9 +628,9 @@
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .events-page { padding: 1.5rem 1rem 3rem; }
-  .events-section-header h1 { font-size: 1.8rem; }
-  .event-card { flex: 0 0 240px; }
-  .carousel-arrow { width: 38px; height: 38px; font-size: 1.1rem; }
+  .card-date-rail { flex-basis: 64px; padding: 0.75rem 0.4rem; }
+  .card-date-day { font-size: 1.2rem; }
+  .card-date-location { font-size: 0.6rem; }
   .modal-body-inner { padding: 1.25rem 1.25rem 1.5rem; }
   .modal-photo-wrap, .modal-photo-placeholder { height: 200px; }
 }

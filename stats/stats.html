@@ -31,12 +31,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
 <link href="../images/icon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -48,18 +44,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-92ce099e2bf66d6000d869af7dee5acc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -74,12 +58,55 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Font: Fira Code (titles/headings only; body keeps the Quarto/Cosmo default) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
 <!-- this script builds an email only when rendered -->
 <!-- emails are not directly contained in the .html file -->
 <script type="text/javascript">
 function scrambleIt(domain, user) {
   document.write('<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>');
 }
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Header-height CSS variable (site-wide — not something you need to
+     edit)
+     ════════════════════════════════════════════════════════════════════
+     Quarto's own JS measures the floating navbar's real (dynamic)
+     height and sets it as an inline `padding-top` directly on `<body>`
+     — that's the one source of truth for "how much space is reserved
+     above the page content for the fixed header," and it changes with
+     the header's own content (a bigger logo, nav links wrapping to a
+     second row on a narrow screen, etc.). `.hero-banner`/`.page-hero`
+     bands (styles.css) need that exact number, as a negative margin,
+     to sit flush under the transparent floating nav with no gap.
+
+     Rather than re-measuring the header ourselves (which can race
+     against Quarto's own measurement and read a stale value), this
+     just watches `<body>`'s `style` attribute directly with a
+     MutationObserver and mirrors whatever padding-top Quarto set into
+     a `--bsa-header-h` CSS variable — so it can never drift out of
+     sync, regardless of load order or timing.
+
+     This script sits in `<head>` (via include-in-header), which runs
+     before `<body>` exists yet — so the observer setup is deferred to
+     DOMContentLoaded rather than attached immediately. -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+  function syncHeaderHeight() {
+    var padTop = document.body.style.paddingTop;
+    if (padTop) {
+      document.documentElement.style.setProperty('--bsa-header-h', padTop);
+    }
+  }
+  syncHeaderHeight();
+  new MutationObserver(syncHeaderHeight)
+    .observe(document.body, { attributes: true, attributeFilter: ['style'] });
+  window.addEventListener('resize', syncHeaderHeight);
+});
 </script>
 
 
@@ -93,11 +120,14 @@ function scrambleIt(domain, user) {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Biostatistics Student Association at UCLA</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -108,7 +138,7 @@ function scrambleIt(domain, user) {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/about.html"> 
+    <a class="nav-link" href="../index.html#about"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -168,15 +198,19 @@ function scrambleIt(domain, user) {
      ═══════════════════════════════════════════════════════════════════════ -->
 <script>
 // ── Cohort year → year-in-program (update each August) ─────────────────
-// '2025' = entered Fall 2025 → currently 1st years
-// '2024' = entered Fall 2024 → currently 2nd years
-var COHORT_1ST_YEAR = '2025';
-var COHORT_2ND_YEAR = '2024';
+// '2026' = entered Fall 2026 → currently 1st years
+// '2025' = entered Fall 2025 → currently 2nd years
+var COHORT_1ST_YEAR = '2026';
+var COHORT_2ND_YEAR = '2025';
 // Denominators — total enrolled per cohort (not just respondents)
+// PhD has no cohort split (all active PhD students, any year) — 46 minus
+// the 9 who graduated to the phd-alumni directory this cycle, plus 2
+// incoming Fall 2026 admits = 39. MS/MDSH are 2-year programs, so the old
+// 2024 cohort (now graduated) has rolled off entirely.
 var TOTALS = {
-  PhD:  { all: 46 },
-  MS:   { '2025': 8,  '2024': 13 },
-  MDSH: { '2025': 55, '2024': 44 }
+  PhD:  { all: 39 },
+  MS:   { '2026': 11, '2025': 8 },
+  MDSH: { '2026': 58, '2025': 55 }
 };
 </script>
 
@@ -189,37 +223,36 @@ var TOTALS = {
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .stats-hero {
   padding: 3rem 0 2rem;
-  border-bottom: 3px solid #FFD100;
   margin-bottom: 2.5rem;
 }
-.stats-hero-tag  { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #2774AE; margin-bottom: 0.5rem; }
+.stats-hero-tag  { font-family: "Fira Code", "Menlo", "Monaco", monospace; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; color: #2774AE; margin-bottom: 0.5rem; }
 .stats-hero-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: #003B5C; margin: 0 0 0.5rem; line-height: 1.1; }
 .stats-hero-sub  { font-size: 1rem; color: #555; max-width: 600px; margin: 0; line-height: 1.7; }
 .stats-last-updated { font-size: 0.78rem; color: #999; margin-top: 0.7rem; }
 
 /* ── Error state ───────────────────────────────────────────────────────── */
 .state-card {
-  background: #f8f9fa; border-radius: 16px; padding: 3rem 2.5rem;
+  background: #f8f9fa; padding: 3rem 2.5rem;
   text-align: center; margin: 2rem 0;
 }
 .state-card.error-card { background: #fff3f3; border: 1.5px solid #ffb3b3; }
 .state-card h3  { font-size: 1.3rem; font-weight: 800; color: #003B5C; margin: 0 0 0.75rem; }
 .state-card p   { color: #555; margin: 0 0 0.5rem; line-height: 1.7; font-size: 0.95rem; }
-.state-card code{ background: #e8eef5; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.88rem; color: #003B5C; }
+.state-card code{ background: #e8eef5; padding: 0.15rem 0.4rem; font-size: 0.88rem; color: #003B5C; }
 .hidden { display: none !important; }
 
 /* ── KPI Cards ─────────────────────────────────────────────────────────── */
 .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
 .kpi-card {
-  background: #003B5C; border-radius: 14px; padding: 1.5rem 1.25rem;
+  background: #003B5C; padding: 1.5rem 1.25rem;
   text-align: center; position: relative; overflow: hidden;
 }
 .kpi-card::before {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-  background: var(--kpi-accent, #FFD100);
+  background: var(--kpi-accent, #2774AE);
 }
 .kpi-num   { font-size: 2.4rem; font-weight: 900; color: #FFD100; line-height: 1; margin-bottom: 0.35rem; }
-.kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #a8c4d8; }
+.kpi-label { font-family: "Fira Code", "Menlo", "Monaco", monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3px; color: #a8c4d8; }
 .kpi-card.phd    { --kpi-accent: #2774AE; }
 .kpi-card.ms     { --kpi-accent: #005587; }
 .kpi-card.mdsh   { --kpi-accent: #00a693; }
@@ -237,14 +270,15 @@ var TOTALS = {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;
 }
 .chart-card {
-  background: #fff; border: 1.5px solid #e6ecf2; border-radius: 16px;
+  background: #fff; border: 1.5px solid #e6ecf2;
   padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 2px 12px rgba(0,59,92,0.07);
 }
 .chart-card.full { grid-column: 1 / -1; }
 .chart-card.dark { background: #003B5C; border-color: #003B5C; }
 .chart-title {
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 2px; color: #2774AE; margin: 0 0 0.3rem;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.3px; color: #2774AE; margin: 0 0 0.3rem;
 }
 .chart-card.dark .chart-title { color: #FFD100; }
 .chart-headline {
@@ -257,7 +291,7 @@ var TOTALS = {
 .insight-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .insight-pill {
   background: linear-gradient(135deg, #2774AE, #003B5C);
-  border-radius: 12px; padding: 1rem 1.4rem; color: #fff; flex: 1; min-width: 200px;
+  padding: 1rem 1.4rem; color: #fff; flex: 1; min-width: 200px;
 }
 .insight-num  { font-size: 1.9rem; font-weight: 900; color: #FFD100; line-height: 1; }
 .insight-text { font-size: 0.82rem; color: #a8c4d8; margin-top: 0.25rem; line-height: 1.4; }
@@ -267,7 +301,8 @@ var TOTALS = {
   display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.5rem;
 }
 .section-divider-label {
-  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
   color: #2774AE; white-space: nowrap;
 }
 .section-divider-line { flex: 1; height: 1.5px; background: #e6ecf2; }
@@ -283,16 +318,17 @@ var TOTALS = {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
 }
 .completion-card {
-  background: #003B5C; border-radius: 14px; padding: 1.6rem 1.75rem;
+  background: #003B5C; padding: 1.6rem 1.75rem;
   position: relative; overflow: hidden;
 }
 .completion-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: #FFD100;
+  background: #2774AE;
 }
 .completion-prog-label {
-  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 2.5px; color: #FFD100; margin-bottom: 0.8rem;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.3px; color: #FFD100; margin-bottom: 0.8rem;
 }
 .completion-main {
   display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem;
@@ -300,11 +336,11 @@ var TOTALS = {
 .completion-pct  { font-size: 2.6rem; font-weight: 900; color: #fff; line-height: 1; }
 .completion-frac { font-size: 1rem; color: #a8c4d8; font-weight: 600; }
 .completion-bar-track {
-  height: 8px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden;
+  height: 8px; background: rgba(255,255,255,0.12); overflow: hidden;
 }
 .completion-bar-fill {
-  height: 100%; background: linear-gradient(90deg, #2774AE, #FFD100);
-  border-radius: 99px; transition: width 0.8s ease;
+  height: 100%; background: linear-gradient(90deg, #2774AE, #005587);
+  transition: width 0.8s ease;
 }
 .completion-desc {
   font-size: 0.78rem; color: #7aa8bf; margin-top: 0.65rem; line-height: 1.4;
@@ -314,7 +350,7 @@ var TOTALS = {
 .completion-summary-bar { margin-bottom: 1.2rem; }
 .completion-pill-row {
   display: flex; align-items: stretch;
-  background: #f0f4f8; border-radius: 14px;
+  background: #f0f4f8;
   overflow: hidden; border: 1.5px solid #dce7f3;
   gap: 0.5rem; padding: 0.5rem;
 }
@@ -322,7 +358,6 @@ var TOTALS = {
   display: flex; align-items: center; gap: 0.5rem;
   flex: 1; justify-content: center;
   padding: 0.65rem 0.75rem;
-  border-radius: 10px;
   position: relative; overflow: hidden;
 }
 .cpill-item.cpill-phd   { background: #b8d4ec; }
@@ -339,18 +374,18 @@ var TOTALS = {
 .cpill-mdsh .cpill-fill { background: #00a693; }
 .cpill-total .cpill-fill { background: #003B5C; }
 .cpill-item > :not(.cpill-fill) { position: relative; z-index: 1; }
-.cpill-label { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.7);
-               text-transform: uppercase; letter-spacing: 1.5px; }
+.cpill-label { font-family: "Fira Code", "Menlo", "Monaco", monospace; font-size: 0.64rem; font-weight: 700; color: rgba(255,255,255,0.7);
+               letter-spacing: 0.3px; }
 .cpill-val   { font-size: 1.15rem; font-weight: 900; color: #FFD100; }
 .cpill-item.cpill-details {
   flex: 0 0 auto; padding: 0.65rem 1.1rem; cursor: pointer;
   background: #fff; border: 1.5px solid #dce7f3;
   transition: background 0.15s, border-color 0.15s;
-  border-radius: 10px; font-family: inherit;
+  font-family: inherit;
 }
 .cpill-item.cpill-details:hover { background: #e8f0fa; border-color: #2774AE; }
 .cpill-item.cpill-details .cpill-label {
-  color: #2774AE; letter-spacing: 0.5px; font-size: 0.75rem;
+  color: #2774AE; letter-spacing: 0.3px; font-size: 0.72rem;
 }
 #completionDetails { margin-top: 0.5rem; }
 @media (max-width: 600px) {
@@ -363,12 +398,12 @@ var TOTALS = {
 .filter-bar {
   display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
   margin-bottom: 1.75rem; padding: 0.9rem 1.25rem;
-  background: #f4f7fb; border-radius: 12px; border: 1.5px solid #e6ecf2;
+  background: #f4f7fb; border: 1.5px solid #e6ecf2;
 }
-.filter-label { font-size: 0.75rem; font-weight: 700; color: #667; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+.filter-label { font-family: "Fira Code", "Menlo", "Monaco", monospace; font-size: 0.7rem; font-weight: 700; color: #667; letter-spacing: 0.2px; white-space: nowrap; }
 .filter-btns  { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .filter-btn {
-  padding: 0.38rem 1.05rem; border-radius: 99px; border: 1.5px solid #d1dce8;
+  padding: 0.38rem 1.05rem; border: 1.5px solid #d1dce8;
   background: #fff; color: #667; font-size: 0.82rem; font-weight: 600;
   cursor: pointer; transition: all 0.15s; white-space: nowrap; font-family: inherit;
 }
@@ -383,7 +418,8 @@ var TOTALS = {
 /* ── Completion group headers ────────────────────────────────────────────── */
 .completion-group { margin-bottom: 0.75rem; }
 .completion-group-label {
-  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3px;
   color: #7aa8bf; margin-bottom: 0.45rem; padding-left: 0.1rem;
 }
 
@@ -420,7 +456,6 @@ var TOTALS = {
 
 .loader-window {
   width: min(520px, 90vw);
-  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 8px 40px rgba(39,116,174,0.13), 0 2px 8px rgba(0,0,0,0.07);
   font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
@@ -616,7 +651,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="phdCompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="phdCompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 46 total PhD students</div>
+            <div class="completion-desc">out of 39 total PhD students</div>
           </div>
           <div></div>
         </div>
@@ -632,7 +667,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="ms1CompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="ms1CompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 8 students (entered Fall 2025)</div>
+            <div class="completion-desc">out of 11 students (entered Fall 2026)</div>
           </div>
           <div class="completion-card">
             <div class="completion-prog-label">2nd Year MS · Profile Completion</div>
@@ -641,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="ms2CompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="ms2CompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 13 students (entered Fall 2024)</div>
+            <div class="completion-desc">out of 8 students (entered Fall 2025)</div>
           </div>
         </div>
       </div>
@@ -656,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="mdsh1CompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh1CompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 55 students (entered Fall 2025)</div>
+            <div class="completion-desc">out of 58 students (entered Fall 2026)</div>
           </div>
           <div class="completion-card">
             <div class="completion-prog-label">2nd Year MDSH · Profile Completion</div>
@@ -665,7 +700,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="mdsh2CompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh2CompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 44 students (entered Fall 2024)</div>
+            <div class="completion-desc">out of 55 students (entered Fall 2025)</div>
           </div>
         </div>
       </div>
@@ -698,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <!-- Disclaimer + Filter Bar -->
-    <div style="background:#fffbe6; border:1px solid #ffe58f; border-radius:8px; padding:0.65rem 1rem; margin-bottom:1.1rem; font-size:0.88rem; color:#7c5c00; display:flex; align-items:flex-start; gap:0.5rem;">
+    <div style="background:#fffbe6; border:1px solid #ffe58f; padding:0.65rem 1rem; margin-bottom:1.1rem; font-size:0.88rem; color:#7c5c00; display:flex; align-items:flex-start; gap:0.5rem;">
       <span style="font-size:1rem; flex-shrink:0;">⚠️</span>
       <span>The following statistics only reflect responses from the completed surveys above. This is <strong>not</strong> a complete overview of all students in the program. Note responses are self reported, errors may occur. </span>
     </div>
@@ -771,9 +806,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;white-space:nowrap;margin-top:0.2rem;">
               <label for="donutYearFrom" style="font-weight:600;color:#2774AE;font-size:0.72rem;">From</label>
-              <select id="donutYearFrom" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <select id="donutYearFrom" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;background:#fff;color:#333;cursor:pointer;"></select>
               <label for="donutYearTo" style="font-weight:600;color:#2774AE;font-size:0.72rem;">To</label>
-              <select id="donutYearTo" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <select id="donutYearTo" style="font-size:0.72rem;padding:0.15rem 0.35rem;border:1px solid #d0d7df;background:#fff;color:#333;cursor:pointer;"></select>
             </div>
           </div>
           <div class="chart-canvas-wrap" style="height:200px;">
@@ -789,9 +824,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:#555;white-space:nowrap;margin-top:0.2rem;">
               <label for="trendYearFrom" style="font-weight:600;color:#2774AE;">From</label>
-              <select id="trendYearFrom" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <select id="trendYearFrom" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;background:#fff;color:#333;cursor:pointer;"></select>
               <label for="trendYearTo" style="font-weight:600;color:#2774AE;">To</label>
-              <select id="trendYearTo" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;border-radius:6px;background:#fff;color:#333;cursor:pointer;"></select>
+              <select id="trendYearTo" style="font-size:0.75rem;padding:0.2rem 0.4rem;border:1px solid #d0d7df;background:#fff;color:#333;cursor:pointer;"></select>
             </div>
           </div>
           <div class="chart-canvas-wrap" style="height:220px;">
@@ -851,12 +886,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Advisor type definitions -->
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
-      <div style="background:#f8fafc; border-left:4px solid #2774AE; border-radius:0 8px 8px 0; padding:1rem 1.25rem;">
-        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:#2774AE; text-transform:uppercase; margin-bottom:0.35rem;">Academic Advisor</div>
+      <div style="background:#f8fafc; border-left:4px solid #e8a000; padding:1rem 1.25rem;">
+        <div style="font-family:'Fira Code','Menlo','Monaco',monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.02em; color:#b8830a; margin-bottom:0.35rem;">Academic Advisor</div>
         <div style="font-size:0.88rem; color:#333; line-height:1.6;">Assigned initially to assist students with course requirements in their earlier years. All PhD, MS, and MDSH students are assigned an academic advisor upon enrollment.</div>
       </div>
-      <div style="background:#f8fafc; border-left:4px solid #FFD100; border-radius:0 8px 8px 0; padding:1rem 1.25rem;">
-        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:#b8960c; text-transform:uppercase; margin-bottom:0.35rem;">Research Advisor</div>
+      <div style="background:#f8fafc; border-left:4px solid #2774AE; padding:1rem 1.25rem;">
+        <div style="font-family:'Fira Code','Menlo','Monaco',monospace; font-size:0.68rem; font-weight:700; letter-spacing:0.02em; color:#2774AE; margin-bottom:0.35rem;">Research Advisor</div>
         <div style="font-size:0.88rem; color:#333; line-height:1.6;">A faculty member who supervises a student's thesis or dissertation research. Typically selected after a student identifies their research area and focus. Primarily associated with PhD students and research-track programs.</div>
       </div>
     </div>
@@ -869,10 +904,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="chart-headline">Most Common Advisors</div>
           </div>
           <div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;margin-top:0.25rem;">
-            <button id="advisorFilterAll" class="adv-filter-btn adv-filter-active" data-filter="all" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #2774AE;background:#2774AE;color:#fff;border-radius:6px;cursor:pointer;white-space:nowrap;">All</button>
-            <button id="advisorFilterResearch" class="adv-filter-btn" data-filter="research" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #2774AE;background:#fff;color:#2774AE;border-radius:6px;cursor:pointer;white-space:nowrap;">Research</button>
-            <button id="advisorFilterAcademic" class="adv-filter-btn" data-filter="academic" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #e8a000;background:#fff;color:#e8a000;border-radius:6px;cursor:pointer;white-space:nowrap;">Academic</button>
-            <button id="advisorViewToggle" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #aaa;background:#fff;color:#555;border-radius:6px;cursor:pointer;white-space:nowrap;">Show List</button>
+            <button id="advisorFilterAll" class="adv-filter-btn adv-filter-active" data-filter="all" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #2774AE;background:#2774AE;color:#fff;cursor:pointer;white-space:nowrap;">All</button>
+            <button id="advisorFilterResearch" class="adv-filter-btn" data-filter="research" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #2774AE;background:#fff;color:#2774AE;cursor:pointer;white-space:nowrap;">Research</button>
+            <button id="advisorFilterAcademic" class="adv-filter-btn" data-filter="academic" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #e8a000;background:#fff;color:#e8a000;cursor:pointer;white-space:nowrap;">Academic</button>
+            <button id="advisorViewToggle" style="font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid #aaa;background:#fff;color:#555;cursor:pointer;white-space:nowrap;">Show List</button>
           </div>
         </div>
         <div id="advisorChartWrap">
@@ -1008,17 +1043,10 @@ document.addEventListener('DOMContentLoaded', function () {
   function makeStackedHBar(canvasId, labels, datasets) {
     var ctx = el(canvasId);
     if (!ctx) return;
-    if (chartInstances[canvasId] && chartInstances[canvasId].data.datasets.length === datasets.length) {
-      var ch = chartInstances[canvasId];
-      ch.data.labels = labels;
-      datasets.forEach(function (d, i) {
-        ch.data.datasets[i].data  = d.data;
-        ch.data.datasets[i].label = d.label;
-        ch.data.datasets[i].backgroundColor = d.color;
-      });
-      ch.update('none');
-      return;
-    }
+    // Always rebuild (rather than mutate + `update('none')`) — the advisor
+    // filter toggles between 1-dataset (Research-only / Academic-only) and
+    // 2-dataset (both) views with the same canvas, and reusing the chart
+    // instance across those switches left stale bar colors behind.
     if (chartInstances[canvasId]) chartInstances[canvasId].destroy();
     chartInstances[canvasId] = new Chart(ctx, {
       type: 'bar',
@@ -1080,12 +1108,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Completion rates
     function fillCompletion(pctId, fracId, barId, resp, total) {
       var p = total > 0 ? Math.round(resp / total * 100) : 0;
-      el(pctId).textContent  = p + '%';
+      // Clamp the displayed % at 100 — respondent counts can briefly exceed
+      // the denominator right after a cohort rollover, until the roster
+      // totals above and the live directory data (student_stats.json,
+      // regenerated separately by make_profiles.R) fall back in sync.
+      el(pctId).textContent  = Math.min(p, 100) + '%';
       el(fracId).textContent = resp + ' / ' + total;
       el(barId).style.width  = Math.min(p, 100) + '%';
       return p;
     }
-    function setMini(id, pct) { if (el(id)) el(id).textContent = pct + '%'; }
+    function setMini(id, pct) { if (el(id)) el(id).textContent = Math.min(pct, 100) + '%'; }
     var T  = window.TOTALS;
     var Y1 = window.COHORT_1ST_YEAR;
     var Y2 = window.COHORT_2ND_YEAR;
@@ -1114,7 +1146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var mdshPct = tMdsh > 0 ? Math.round((cMdsh1 + cMdsh2) / tMdsh * 100) : 0;
     setTimeout(function () {
       [['phdFill', phdPct], ['msFill', msPct], ['mdshFill', mdshPct], ['overallFill', overallPct]]
-        .forEach(function (p) { var f = document.getElementById(p[0]); if (f) f.style.width = p[1] + '%'; });
+        .forEach(function (p) { var f = document.getElementById(p[0]); if (f) f.style.width = Math.min(p[1], 100) + '%'; });
     }, 80);
 
     // Toggle button for completion details

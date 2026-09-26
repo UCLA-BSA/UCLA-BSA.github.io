@@ -31,12 +31,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
 <link href="../images/icon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -48,18 +44,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-92ce099e2bf66d6000d869af7dee5acc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -74,12 +58,55 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Font: Fira Code (titles/headings only; body keeps the Quarto/Cosmo default) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
 <!-- this script builds an email only when rendered -->
 <!-- emails are not directly contained in the .html file -->
 <script type="text/javascript">
 function scrambleIt(domain, user) {
   document.write('<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>');
 }
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Header-height CSS variable (site-wide — not something you need to
+     edit)
+     ════════════════════════════════════════════════════════════════════
+     Quarto's own JS measures the floating navbar's real (dynamic)
+     height and sets it as an inline `padding-top` directly on `<body>`
+     — that's the one source of truth for "how much space is reserved
+     above the page content for the fixed header," and it changes with
+     the header's own content (a bigger logo, nav links wrapping to a
+     second row on a narrow screen, etc.). `.hero-banner`/`.page-hero`
+     bands (styles.css) need that exact number, as a negative margin,
+     to sit flush under the transparent floating nav with no gap.
+
+     Rather than re-measuring the header ourselves (which can race
+     against Quarto's own measurement and read a stale value), this
+     just watches `<body>`'s `style` attribute directly with a
+     MutationObserver and mirrors whatever padding-top Quarto set into
+     a `--bsa-header-h` CSS variable — so it can never drift out of
+     sync, regardless of load order or timing.
+
+     This script sits in `<head>` (via include-in-header), which runs
+     before `<body>` exists yet — so the observer setup is deferred to
+     DOMContentLoaded rather than attached immediately. -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+  function syncHeaderHeight() {
+    var padTop = document.body.style.paddingTop;
+    if (padTop) {
+      document.documentElement.style.setProperty('--bsa-header-h', padTop);
+    }
+  }
+  syncHeaderHeight();
+  new MutationObserver(syncHeaderHeight)
+    .observe(document.body, { attributes: true, attributeFilter: ['style'] });
+  window.addEventListener('resize', syncHeaderHeight);
+});
 </script>
 
 
@@ -94,11 +121,14 @@ function scrambleIt(domain, user) {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/bsa_logo.png" alt="" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Biostatistics Student Association at UCLA</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -109,7 +139,7 @@ function scrambleIt(domain, user) {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about/about.html"> 
+    <a class="nav-link" href="../index.html#about"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -160,32 +190,37 @@ function scrambleIt(domain, user) {
 </header>
 
 
+<style>
+.quarto-title-block { display: none !important; }
+</style>
+
+<!-- ── Events banner — full-bleed, darkened. EDITABLE: swap the <img src>
+     below for any other photo in ../images/events/. -->
+<div class="page-hero events-banner">
+  <img src="../images/events/event_main.jpg" alt="">
+  <div class="events-banner-title">Events</div>
+</div>
+
 <div class="events-page">
 
   <!-- Header -->
   <div class="events-section-header">
-    <h1>BSA Events</h1>
-    <p>Stay connected with our community through talks, socials, and townhalls.</p>
+    <p>RSVP to Upcoming Events and follow us on Instagram for up to date detail.</p>
   </div>
 
   <!-- Year filter (populated by JS) -->
   <div class="events-year-filter" id="yearFilter"></div>
 
-  <!-- Carousel -->
-  <div class="events-carousel-outer">
-    <button class="carousel-arrow" id="prevArrow" aria-label="Previous" disabled="">
-      <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    </button>
-    <div class="events-track-container">
-      <div class="events-track" id="eventsTrack"></div>
-    </div>
-    <button class="carousel-arrow" id="nextArrow" aria-label="Next">
-      <svg width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-    </button>
+  <!-- Grid — Upcoming Events (flat, paginated) -->
+  <div class="events-grid" id="eventsGrid"></div>
+
+  <!-- Load more — Upcoming Events only -->
+  <div class="events-load-more-wrap" id="loadMoreWrap">
+    <button class="btn btn-lg btn-pill-outline" id="loadMoreBtn" style="display:none;">Load More</button>
   </div>
 
-  <!-- Dot indicators -->
-  <div class="carousel-dots" id="carouselDots"></div>
+  <!-- Accordion — Past Events, one collapsible section per academic year -->
+  <div id="eventsAccordion" style="display:none;"></div>
 
 </div>
 
@@ -202,16 +237,13 @@ function scrambleIt(domain, user) {
 <script>
 (function () {
   /* ── Config ─────────────────────────────── */
-  var CARD_WIDTH = 280;   // px (must match CSS flex-basis)
-  var CARD_GAP   = 24;    // px (1.5rem)
-  var STEP       = CARD_WIDTH + CARD_GAP;
+  var PAGE_SIZE = 6;   // cards revealed initially, and per "Load More" click
 
   /* ── State ──────────────────────────────── */
   var allEvents      = [];
   var filteredEvents = [];
-  var currentIndex   = 0;
   var activeFilter   = 'upcoming';
-  var visibleCount   = 1;
+  var visibleCount   = PAGE_SIZE;
 
   /* ── Today's date string (YYYY-MM-DD) ────── */
   var today = new Date().toISOString().split('T')[0];
@@ -226,6 +258,25 @@ function scrambleIt(domain, user) {
 
   function getCatClass(cat) {
     return catClass[(cat || '').toLowerCase()] || 'cat-default';
+  }
+
+  /* ── Category → solid color (for the photo date-badge) ──── */
+  var catSolid = {
+    'lunch and learn': '#2e7d32',
+    'townhall':        '#1565c0',
+    'social':          '#e65100',
+    'workshop':        '#6a1b9a'
+  };
+
+  function getCatSolid(cat) {
+    return catSolid[(cat || '').toLowerCase()] || '#003B5C';
+  }
+
+  /* ── Strip HTML + truncate, for the card's description snippet ──── */
+  function truncate(html, max) {
+    var plain = (html || '').replace(/<[^>]*>/g, '').trim();
+    if (plain.length <= max) return plain;
+    return plain.slice(0, max).trim() + '…';
   }
 
   /* ── Placeholder SVG icon ────────────────── */
@@ -292,6 +343,16 @@ function scrambleIt(domain, user) {
     return MONTHS[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
   }
 
+  // Day-number + "Mon YYYY" pair for the card's photo date-badge
+  function dateBadgeParts(raw) {
+    var iso = normalizeDate(raw);
+    if (!iso) return null;
+    var parts = iso.split('-');
+    if (parts.length < 3) return null;
+    var y = parts[0], m = parseInt(parts[1], 10), d = parseInt(parts[2], 10);
+    return { day: (d < 10 ? '0' : '') + d, month: MONTHS[m - 1] + ' ' + y };
+  }
+
   /* ── Photo helper ────────────────────────── */
   function photoHTML(photo, cls, placeholderSvgSize) {
     var size = placeholderSvgSize || 72;
@@ -314,34 +375,54 @@ function scrambleIt(domain, user) {
     card.setAttribute('role', 'button');
     card.setAttribute('aria-label', 'View details for ' + ev.title);
 
+    var catSolid  = getCatSolid(ev.category);
+    var dateParts = dateBadgeParts(ev.date);
+
+    // Left rail: date on top, location pinned to the bottom — same
+    // colored block for both, one per category (see getCatSolid).
+    var dateRailHTML = '<div class="card-date-rail" style="background:' + catSolid + ';">' +
+      (dateParts
+        ? '<div class="card-date-day">' + dateParts.day + '</div>' +
+          '<div class="card-date-month">' + dateParts.month + '</div>'
+        : '') +
+      (ev.location ? '<div class="card-date-location">' + ev.location + '</div>' : '') +
+    '</div>';
+
     var photoSection = (!ev.photo || ev.photo === 'placeholder')
       ? '<div class="card-photo-placeholder">' + placeholderIcon + '</div>'
       : '<div class="card-photo-wrap"><img src="' + ev.photo + '" alt="' + ev.title + '" loading="lazy"/></div>';
 
-    var dateStr = ev.date ? formatDate(ev.date) : '';
-    var dateNorm = normalizeDate(ev.date);
-    var catCls  = getCatClass(ev.category);
+    var descText = ev.description ? truncate(ev.description, 90) : '';
+    var timeHTML = ev.time ? '<p class="card-time">' + ev.time + '</p>' : '';
 
-    var metaHTML = '';
-    if (ev.location) {
-      metaHTML += '<div class="card-meta-item">' +
-        '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' +
-        ev.location + '</div>';
-    }
-    if (dateStr) {
-      var dateTimeStr = dateStr + (ev.time ? ' · ' + ev.time : '');
-      metaHTML += '<div class="card-meta-item">' +
-        '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>' +
-        dateTimeStr + '</div>';
-    }
+    // "Register Now" always renders (RSVP link comes from the CSV's `link`
+    // column); with no link yet, it shows disabled rather than going nowhere.
+    var hasLink = !!ev.link;
+    var registerHTML = '<a href="' + (hasLink ? ev.link : '#') +
+      '" class="card-register-btn' + (hasLink ? '' : ' card-register-btn-disabled') + '"' +
+      (hasLink ? ' target="_blank" rel="noopener noreferrer"' : ' aria-disabled="true" tabindex="-1"') +
+      '>Register Now</a>';
 
     card.innerHTML =
-      photoSection +
-      '<div class="card-body-inner">' +
-        '<span class="card-category-badge ' + catCls + '">' + (ev.category || 'Event') + '</span>' +
-        '<p class="card-title">' + ev.title + '</p>' +
-        (metaHTML ? '<div class="card-meta">' + metaHTML + '</div>' : '') +
+      dateRailHTML +
+      '<div class="card-main">' +
+        photoSection +
+        '<div class="card-body-inner">' +
+          '<span class="card-category-eyebrow" style="color:' + catSolid + ';">' + (ev.category || 'Event') + '</span>' +
+          '<p class="card-title">' + ev.title + '</p>' +
+          timeHTML +
+          (descText ? '<p class="card-desc">' + descText + '</p>' : '') +
+          '<div class="card-cta-row">' +
+            registerHTML +
+            '<span class="card-readmore">Read More &rarr;</span>' +
+          '</div>' +
+        '</div>' +
       '</div>';
+
+    var registerBtn = card.querySelector('.card-register-btn');
+    if (registerBtn && hasLink) {
+      registerBtn.addEventListener('click', function (e) { e.stopPropagation(); });
+    }
 
     card.addEventListener('click', function () { openModal(ev); });
     card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(ev); } });
@@ -406,67 +487,139 @@ function scrambleIt(domain, user) {
     document.body.style.overflow = '';
   }
 
-  /* ── Carousel rendering ───────────────────── */
-  function calcVisible() {
-    var container = document.querySelector('.events-track-container');
-    if (!container) return 1;
-    return Math.max(1, Math.floor((container.offsetWidth + CARD_GAP) / STEP));
-  }
-
-  function renderTrack() {
-    var track = document.getElementById('eventsTrack');
-    track.innerHTML = '';
-    filteredEvents.forEach(function (ev) {
-      track.appendChild(buildCard(ev));
+  /* ── Grid rendering, with a staggered fade-in (reuses the site-wide
+     .reveal-fade look — see styles.css — just triggered immediately on
+     render instead of via scroll, since the grid sits high on the page). */
+  function revealCards(cards) {
+    cards.forEach(function (card, i) {
+      card.style.transitionDelay = (Math.min(i, 8) * 0.07) + 's';
     });
-    currentIndex = 0;
-    renderDots();
-    updateCarousel();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        cards.forEach(function (card) { card.classList.add('is-visible'); });
+      });
+    });
   }
 
-  function renderDots() {
-    var dots    = document.getElementById('carouselDots');
-    var visible = calcVisible();
-    var total   = Math.max(0, filteredEvents.length - visible + 1);
-    dots.innerHTML = '';
-    for (var i = 0; i < total; i++) {
-      var btn = document.createElement('button');
-      btn.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      btn.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      (function (idx) { btn.addEventListener('click', function () { goTo(idx); }); })(i);
-      dots.appendChild(btn);
+  // Group events by academic_year, most-recent-year first (and by date
+  // descending within each year) — used for the Past Events accordion.
+  function groupByYear(events) {
+    var order = [], byYear = {};
+    events.forEach(function (ev) {
+      var y = ev.academic_year || 'Unknown';
+      if (!byYear[y]) { byYear[y] = []; order.push(y); }
+      byYear[y].push(ev);
+    });
+    order.sort(function (a, b) { return academicYearKey(b) - academicYearKey(a); });
+    return order.map(function (y) { return { year: y, events: byYear[y] }; });
+  }
+
+  function render() {
+    var grid       = document.getElementById('eventsGrid');
+    var loadMore    = document.getElementById('loadMoreWrap');
+    var accordion   = document.getElementById('eventsAccordion');
+
+    if (activeFilter === 'past') {
+      grid.style.display = 'none';
+      grid.innerHTML = '';
+      loadMore.style.display = 'none';
+      accordion.style.display = '';
+      renderAccordion(accordion);
+    } else {
+      accordion.style.display = 'none';
+      accordion.innerHTML = '';
+      grid.style.display = '';
+      renderFlatGrid(grid, loadMore);
     }
   }
 
-  function updateCarousel() {
-    var track   = document.getElementById('eventsTrack');
-    var prev    = document.getElementById('prevArrow');
-    var next    = document.getElementById('nextArrow');
-    var dots    = document.querySelectorAll('.carousel-dot');
-    var visible = calcVisible();
-    var maxIdx  = Math.max(0, filteredEvents.length - visible);
+  // Upcoming Events — flat grid, paginated 6-at-a-time via "Load More".
+  function renderFlatGrid(grid, loadMoreWrap) {
+    grid.innerHTML = '';
 
-    currentIndex = Math.max(0, Math.min(currentIndex, maxIdx));
-    track.style.transform = 'translateX(-' + (currentIndex * STEP) + 'px)';
+    if (filteredEvents.length === 0) {
+      grid.innerHTML = '<p class="events-empty"> No upcoming events yet. Follow us on isntagram for more up to date info. </p>';
+      loadMoreWrap.style.display = 'none';
+      return;
+    }
 
-    prev.disabled = (currentIndex === 0);
-    next.disabled = (currentIndex >= maxIdx);
+    loadMoreWrap.style.display = '';
+    var slice    = filteredEvents.slice(0, visibleCount);
+    var newCards = [];
 
-    dots.forEach(function (d, i) {
-      d.classList.toggle('active', i === currentIndex);
+    slice.forEach(function (ev) {
+      var card = buildCard(ev);
+      card.classList.add('reveal-fade');
+      grid.appendChild(card);
+      newCards.push(card);
     });
+
+    revealCards(newCards);
+
+    var loadMoreBtn = document.getElementById('loadMoreBtn');
+    loadMoreBtn.style.display = (visibleCount < filteredEvents.length) ? '' : 'none';
   }
 
-  function goTo(idx) {
-    currentIndex = idx;
-    updateCarousel();
+  // Past Events — one collapsible section per academic year (most recent
+  // year open by default; the rest collapsed until clicked).
+  function renderAccordion(container) {
+    container.innerHTML = '';
+
+    if (filteredEvents.length === 0) {
+      container.innerHTML = '<p class="events-empty">🗂️ No past events to show.</p>';
+      return;
+    }
+
+    var groups = groupByYear(filteredEvents);
+
+    groups.forEach(function (group, gi) {
+      var isOpen = (gi === 0);
+
+      var section = document.createElement('div');
+      section.className = 'events-year-group';
+
+      var header = document.createElement('button');
+      header.className = 'events-year-toggle' + (isOpen ? ' open' : '');
+      header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      header.innerHTML =
+        '<span>AY ' + group.year + '</span>' +
+        '<span class="events-year-toggle-count">' + group.events.length + ' event' + (group.events.length === 1 ? '' : 's') + '</span>' +
+        '<svg class="events-year-toggle-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+
+      var panel = document.createElement('div');
+      panel.className = 'events-year-panel' + (isOpen ? ' open' : '');
+
+      var innerGrid = document.createElement('div');
+      innerGrid.className = 'events-grid';
+      var cards = [];
+      group.events.forEach(function (ev) {
+        var card = buildCard(ev);
+        card.classList.add('reveal-fade');
+        innerGrid.appendChild(card);
+        cards.push(card);
+      });
+      panel.appendChild(innerGrid);
+
+      header.addEventListener('click', function () {
+        var nowOpen = !panel.classList.contains('open');
+        panel.classList.toggle('open', nowOpen);
+        header.classList.toggle('open', nowOpen);
+        header.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+        if (nowOpen) revealCards(cards);
+      });
+
+      section.appendChild(header);
+      section.appendChild(panel);
+      container.appendChild(section);
+
+      if (isOpen) revealCards(cards);
+    });
   }
 
   /* ── Filter ──────────────────────────────── */
   var FILTERS = [
     { key: 'upcoming', label: 'Upcoming Events' },
-    { key: 'past',     label: 'Past Events' },
-    { key: 'all',      label: 'All Events' }
+    { key: 'past',     label: 'Past Events' }
   ];
 
   function renderFilter() {
@@ -478,12 +631,20 @@ function scrambleIt(domain, user) {
       btn.textContent = f.label;
       btn.addEventListener('click', function () {
         activeFilter = f.key;
+        visibleCount = PAGE_SIZE;
         document.querySelectorAll('.year-filter-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
         applyFilter();
       });
       container.appendChild(btn);
     });
+  }
+
+  // Sort key for an event's academic_year ("25-26" → 25), for grouping
+  // past events most-recent-year-first.
+  function academicYearKey(ay) {
+    var m = /^(\d{2})/.exec(ay || '');
+    return m ? parseInt(m[1], 10) : -1;
   }
 
   function applyFilter() {
@@ -499,41 +660,20 @@ function scrambleIt(domain, user) {
         if (!nb) return -1;
         return na < nb ? -1 : 1;
       });
-    } else if (activeFilter === 'past') {
+    } else {
       filteredEvents = allEvents.filter(function (ev) {
         var nd = normalizeDate(ev.date);
         return nd && nd < today;
       });
       filteredEvents.sort(function (a, b) {
+        var ya = academicYearKey(a.academic_year), yb = academicYearKey(b.academic_year);
+        if (ya !== yb) return yb - ya;
         var na = normalizeDate(a.date), nb = normalizeDate(b.date);
         return na > nb ? -1 : 1;
       });
-    } else {
-      filteredEvents = allEvents.slice();
-      filteredEvents.sort(function (a, b) {
-        var na = normalizeDate(a.date), nb = normalizeDate(b.date);
-        if (!na && !nb) return 0;
-        if (!na) return 1;
-        if (!nb) return -1;
-        return na < nb ? -1 : 1;
-      });
     }
 
-    if (filteredEvents.length === 0) {
-      var track = document.getElementById('eventsTrack');
-      track.innerHTML = '';
-      document.getElementById('carouselDots').innerHTML = '';
-      document.getElementById('prevArrow').disabled = true;
-      document.getElementById('nextArrow').disabled = true;
-      var emptyMsg = activeFilter === 'upcoming'
-        ? '📅 No upcoming events yet — check back soon!'
-        : activeFilter === 'past'
-        ? '🗂️ No past events to show.'
-        : '📭 No events found.';
-      track.innerHTML = '<p class="events-empty">' + emptyMsg + '</p>';
-      return;
-    }
-    renderTrack();
+    render();
   }
 
   /* ── Init ─────────────────────────────────── */
@@ -547,20 +687,10 @@ function scrambleIt(domain, user) {
       if (e.key === 'Escape') closeModal();
     });
 
-    /* Wire up carousel arrows */
-    document.getElementById('prevArrow').addEventListener('click', function () {
-      if (currentIndex > 0) { currentIndex--; updateCarousel(); }
-    });
-    document.getElementById('nextArrow').addEventListener('click', function () {
-      var visible = calcVisible();
-      var maxIdx  = Math.max(0, filteredEvents.length - visible);
-      if (currentIndex < maxIdx) { currentIndex++; updateCarousel(); }
-    });
-
-    /* Recalculate on resize */
-    window.addEventListener('resize', function () {
-      renderDots();
-      updateCarousel();
+    /* Wire up "Load More" */
+    document.getElementById('loadMoreBtn').addEventListener('click', function () {
+      visibleCount += PAGE_SIZE;
+      renderFlatGrid(document.getElementById('eventsGrid'), document.getElementById('loadMoreWrap'));
     });
 
     /* Load CSV */
@@ -575,157 +705,52 @@ function scrambleIt(domain, user) {
         applyFilter();
       })
       .catch(function (err) {
-        document.getElementById('eventsTrack').innerHTML =
+        document.getElementById('eventsGrid').innerHTML =
           '<p class="events-empty">🔧 Events are being updated — check back soon!</p>';
         console.warn('Events load error:', err);
       });
   }
 
-  /* ── Important Dates ────────────────────── */
-  (function () {
-    var idToday = new Date().toISOString().split('T')[0];
-
-    function idNorm(raw) { return normalizeDate(raw); }
-
-    function idFormatDate(raw) { return formatDate(raw); }
-
-    function idDaysUntil(raw) {
-      var iso = idNorm(raw);
-      return Math.ceil((new Date(iso + 'T00:00:00') - new Date()) / 86400000);
-    }
-
-    function idUrgency(raw) {
-      var d = idDaysUntil(raw);
-      if (d <= 3)  return 'urgency-red';
-      if (d <= 7)  return 'urgency-orange';
-      if (d <= 14) return 'urgency-yellow';
-      return 'urgency-green';
-    }
-
-    function idParseCSV(raw) {
-      // reuse shared parseCSV — already handles quoted fields
-      return parseCSV(raw);
-    }
-
-    function idRender(items) {
-      var grid    = document.getElementById('importantDatesList');
-      var counter = document.getElementById('importantDatesCount');
-      if (!grid) return;
-
-      // Keep only rows with a title + date that haven't passed
-      var upcoming = items.filter(function(d) {
-        return d.title && d.date && idNorm(d.date) >= idToday;
-      });
-      upcoming.sort(function(a, b) { return idNorm(a.date) < idNorm(b.date) ? -1 : 1; });
-
-      // Update stat counter
-      if (counter) counter.textContent = upcoming.length || '—';
-
-      if (upcoming.length === 0) {
-        grid.innerHTML = '<p class="id-empty">No upcoming deadlines right now — check back soon.</p>';
-        return;
-      }
-
-      // Urgency → banner gradient (matches .urgency-* colours)
-      var urgencyGradient = {
-        'urgency-red':    'linear-gradient(90deg,#ef5350,#c62828)',
-        'urgency-orange': 'linear-gradient(90deg,#FF9800,#e65100)',
-        'urgency-yellow': 'linear-gradient(90deg,#FFC107,#f9a825)',
-        'urgency-green':  'linear-gradient(90deg,#66BB6A,#2e7d32)'
-      };
-
-      // Build one card per deadline
-      grid.innerHTML = upcoming.map(function(d) {
-        var uc  = idUrgency(d.date);
-        var day = idDaysUntil(d.date);
-        var tag = day === 0 ? 'Today!' : day === 1 ? 'Tomorrow' : 'in ' + day + ' days';
-        var grad = urgencyGradient[uc] || urgencyGradient['urgency-green'];
-
-        var titleHTML = d.link
-          ? '<a href="' + d.link + '" target="_blank" rel="noopener" class="id-card-title-link">' + d.title + ' ↗</a>'
-          : '<span class="id-card-title-text">' + d.title + '</span>';
-
-        var ctaHTML = d.link
-          ? '<a href="' + d.link + '" target="_blank" rel="noopener" class="id-card-cta">Open Form ↗</a>'
-          : '';
-
-        return '<div class="id-card">' +
-          '<div class="id-card-banner" style="background:' + grad + ';"></div>' +
-          '<div class="id-card-body">' +
-            '<div class="id-urgency-badge ' + uc + '">' + tag + '</div>' +
-            '<div class="id-card-title">' + titleHTML + '</div>' +
-            '<div class="id-card-date">' + idFormatDate(d.date) + '</div>' +
-            ctaHTML +
-          '</div>' +
-        '</div>';
-      }).join('');
-    }
-
-    fetch('./important-dates.csv')
-      .then(function(r) { return r.text(); })
-      .then(function(text) { idRender(idParseCSV(text)); })
-      .catch(function() {
-        var list = document.getElementById('importantDatesList');
-        if (list) list.innerHTML = '<li class="important-dates-empty">Could not load dates.</li>';
-      });
-  })();
-
   document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
-<!-- ══════════════════════════════════════════════════════════════════════════
-     IMPORTANT DATES — data loaded from important-dates.csv
-     CSV columns: title, link (optional), date (M/D/YY or YYYY-MM-DD)
-     Cards are auto-coloured by urgency: red ≤3d · orange ≤7d · yellow ≤14d · green 14d+
-     ══════════════════════════════════════════════════════════════════════════ -->
-<div class="important-dates-section" id="important_dates">
-  <div class="id-wrap">
-
-    <!-- Header: title + live deadline count -->
-    <div class="id-top">
-      <div class="id-top-left">
-        <div class="id-logo-tag">BSA · Key Deadlines</div>
-        <div class="id-big-title">Important Dates</div>
-        <p class="id-subtitle">Upcoming deadlines, forms, and academic dates for the UCLA Biostatistics community. Urgency colours update automatically based on today's date.</p>
-      </div>
-      <div class="id-stat">
-        <div class="id-stat-num" id="importantDatesCount">—</div>
-        <div class="id-stat-label">Upcoming</div>
-      </div>
-    </div>
-
-    <!-- Cards injected here by JS idRender() -->
-    <div class="id-cards-grid" id="importantDatesList">
-      <p class="id-loading">Loading…</p>
-    </div>
-
-  </div>
-</div>
 <div class="recurring-section">
   <h2 class="recurring-title anchored">Recurring Events</h2>
-  <div class="recurring-row">
-    <div class="recurring-text">
-      <div class="recurring-badge cat-lunch-learn">Lunch and Learn</div>
-      <h3 class="anchored">Lunch &amp; Learn</h3>
-      <p>Our Our Lunch &amp; Lunch series is a monthly event during the Fall and Winter Quarters that brings biostatistics students and faculty together for informal seminar events over lunch. In the past, we have hosted Internship Panels, Student Research Talks, LinkedIn 101, and Faculty Flash Talks. <br><br> If you are interested in helping or have any ideas to be featured in Lunch &amp; Learn, contact Cindy Pang and Darren Lin for information. </p>
-    </div>
-    <div class="recurring-image-wrap">
-      <div class="recurring-image-placeholder">
-        <img src="images/lunchlearn_3.JPG" alt="Lunch and Learn" class="recurring-img">
+  <div class="recurring-rows">
+
+    <div class="recurring-row">
+      <div class="recurring-image">
+        <img src="../images/events/lunchlearn_3.JPG" alt="Lunch and Learn">
+      </div>
+      <div class="recurring-box">
+        <span class="recurring-box-eyebrow" style="color:#8fd19e;">Lunch and Learn</span>
+        <div class="recurring-box-title">Lunch &amp; Learn</div>
+        <p class="recurring-box-desc">Events hosted during the Fall and Winter Quarters that brings biostatistics students and faculty together for informal seminar events over lunch. In the past, we have hosted Internship Panels, Student Research Talks, LinkedIn 101, and Faculty Flash Talks. Interested in helping or have an idea to feature? Contact Cindy Pang and Darren Lin.</p>
       </div>
     </div>
-  </div>
-  <div class="recurring-row recurring-row-reverse">
-    <div class="recurring-image-wrap">
-      <div class="recurring-image-placeholder">
-        <svg width="64" height="64" viewbox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+
+    <div class="recurring-row recurring-row-reverse">
+      <div class="recurring-image">
+        <img src="../images/events/lunchlearn_4.JPG" alt="Townhall">
+      </div>
+      <div class="recurring-box recurring-box-gold">
+        <span class="recurring-box-eyebrow">Townhall</span>
+        <div class="recurring-box-title">Townhall</div>
+        <p class="recurring-box-desc">A quarterly student event that gives biostatistics students an opportunity to get updates on BSA projects over snacks, and a space to voice concerns and feedback for BSA to advocate for within our department.</p>
       </div>
     </div>
-    <div class="recurring-text">
-      <div class="recurring-badge cat-townhall">Townhall</div>
-      <h3 class="anchored">Townhall</h3>
-      <p>Townhall is a quarterly student event that gives biostatistics students an opportunity to get updates on BSA projects over some free food. Further, this event gives students a space to voice concerns and feedbacks for BSA to be advocating for within our department.</p>
+
+    <div class="recurring-row">
+      <div class="recurring-image">
+        <img src="../images/events/alumni_mixer2.jpg" alt="Alumni Mixer">
+      </div>
+      <div class="recurring-box">
+        <span class="recurring-box-eyebrow" style="color:#FFD100;">Social</span>
+        <div class="recurring-box-title">Alumni Mixer</div>
+        <p class="recurring-box-desc">Our annual Alumni Mixer &amp; Panel gathers students, faculty, and alumni for a night of networking and food! Alumni are given opportunities to share their career advice and connect with current students.</p>
+      </div>
     </div>
+
   </div>
 </div>
 
