@@ -49,10 +49,9 @@ var TOTALS = {
 /* ── Hero ──────────────────────────────────────────────────────────────── */
 .stats-hero {
   padding: 3rem 0 2rem;
-  border-bottom: 3px solid #FFD100;
   margin-bottom: 2.5rem;
 }
-.stats-hero-tag  { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #2774AE; margin-bottom: 0.5rem; }
+.stats-hero-tag  { font-family: "Fira Code", "Menlo", "Monaco", monospace; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #2774AE; margin-bottom: 0.5rem; }
 .stats-hero-title{ font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: #003B5C; margin: 0 0 0.5rem; line-height: 1.1; }
 .stats-hero-sub  { font-size: 1rem; color: #555; max-width: 600px; margin: 0; line-height: 1.7; }
 .stats-last-updated { font-size: 0.78rem; color: #999; margin-top: 0.7rem; }
@@ -76,10 +75,10 @@ var TOTALS = {
 }
 .kpi-card::before {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-  background: var(--kpi-accent, #FFD100);
+  background: var(--kpi-accent, #2774AE);
 }
 .kpi-num   { font-size: 2.4rem; font-weight: 900; color: #FFD100; line-height: 1; margin-bottom: 0.35rem; }
-.kpi-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #a8c4d8; }
+.kpi-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px; color: #a8c4d8; }
 .kpi-card.phd    { --kpi-accent: #2774AE; }
 .kpi-card.ms     { --kpi-accent: #005587; }
 .kpi-card.mdsh   { --kpi-accent: #00a693; }
@@ -103,8 +102,8 @@ var TOTALS = {
 .chart-card.full { grid-column: 1 / -1; }
 .chart-card.dark { background: #003B5C; border-color: #003B5C; }
 .chart-title {
-  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 2px; color: #2774AE; margin: 0 0 0.3rem;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.5px; color: #2774AE; margin: 0 0 0.3rem;
 }
 .chart-card.dark .chart-title { color: #FFD100; }
 .chart-headline {
@@ -127,7 +126,8 @@ var TOTALS = {
   display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0 1.5rem;
 }
 .section-divider-label {
-  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
   color: #2774AE; white-space: nowrap;
 }
 .section-divider-line { flex: 1; height: 1.5px; background: #e6ecf2; }
@@ -148,11 +148,11 @@ var TOTALS = {
 }
 .completion-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: #FFD100;
+  background: #2774AE;
 }
 .completion-prog-label {
-  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 2.5px; color: #FFD100; margin-bottom: 0.8rem;
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 1px; color: #FFD100; margin-bottom: 0.8rem;
 }
 .completion-main {
   display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem;
@@ -163,7 +163,7 @@ var TOTALS = {
   height: 8px; background: rgba(255,255,255,0.12); border-radius: 99px; overflow: hidden;
 }
 .completion-bar-fill {
-  height: 100%; background: linear-gradient(90deg, #2774AE, #FFD100);
+  height: 100%; background: linear-gradient(90deg, #2774AE, #005587);
   border-radius: 99px; transition: width 0.8s ease;
 }
 .completion-desc {
@@ -200,7 +200,7 @@ var TOTALS = {
 .cpill-total .cpill-fill { background: #003B5C; }
 .cpill-item > :not(.cpill-fill) { position: relative; z-index: 1; }
 .cpill-label { font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.7);
-               text-transform: uppercase; letter-spacing: 1.5px; }
+               letter-spacing: 0.5px; }
 .cpill-val   { font-size: 1.15rem; font-weight: 900; color: #FFD100; }
 .cpill-item.cpill-details {
   flex: 0 0 auto; padding: 0.65rem 1.1rem; cursor: pointer;
@@ -225,7 +225,7 @@ var TOTALS = {
   margin-bottom: 1.75rem; padding: 0.9rem 1.25rem;
   background: #f4f7fb; border-radius: 12px; border: 1.5px solid #e6ecf2;
 }
-.filter-label { font-size: 0.75rem; font-weight: 700; color: #667; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+.filter-label { font-size: 0.75rem; font-weight: 700; color: #667; letter-spacing: 0.3px; white-space: nowrap; }
 .filter-btns  { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .filter-btn {
   padding: 0.38rem 1.05rem; border-radius: 99px; border: 1.5px solid #d1dce8;
@@ -243,7 +243,8 @@ var TOTALS = {
 /* ── Completion group headers ────────────────────────────────────────────── */
 .completion-group { margin-bottom: 0.75rem; }
 .completion-group-label {
-  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px;
+  font-family: "Fira Code", "Menlo", "Monaco", monospace;
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
   color: #7aa8bf; margin-bottom: 0.45rem; padding-left: 0.1rem;
 }
 
@@ -712,11 +713,11 @@ document.addEventListener('DOMContentLoaded', function () {
     <!-- Advisor type definitions -->
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
       <div style="background:#f8fafc; border-left:4px solid #2774AE; border-radius:0 8px 8px 0; padding:1rem 1.25rem;">
-        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:#2774AE; text-transform:uppercase; margin-bottom:0.35rem;">Academic Advisor</div>
+        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.02em; color:#2774AE; margin-bottom:0.35rem;">Academic Advisor</div>
         <div style="font-size:0.88rem; color:#333; line-height:1.6;">Assigned initially to assist students with course requirements in their earlier years. All PhD, MS, and MDSH students are assigned an academic advisor upon enrollment.</div>
       </div>
-      <div style="background:#f8fafc; border-left:4px solid #FFD100; border-radius:0 8px 8px 0; padding:1rem 1.25rem;">
-        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.08em; color:#b8960c; text-transform:uppercase; margin-bottom:0.35rem;">Research Advisor</div>
+      <div style="background:#f8fafc; border-left:4px solid #8b5cf6; border-radius:0 8px 8px 0; padding:1rem 1.25rem;">
+        <div style="font-size:0.7rem; font-weight:700; letter-spacing:0.02em; color:#7c3aed; margin-bottom:0.35rem;">Research Advisor</div>
         <div style="font-size:0.88rem; color:#333; line-height:1.6;">A faculty member who supervises a student's thesis or dissertation research. Typically selected after a student identifies their research area and focus. Primarily associated with PhD students and research-track programs.</div>
       </div>
     </div>

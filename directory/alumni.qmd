@@ -6,66 +6,66 @@ css: styles.css
 ---
 
 ```{=html}
+<style>
+.quarto-title-block, h1.title { display: none !important; }
+</style>
+```
+
+```{=html}
+<!-- ── Alumni banner — full-bleed, darkened. EDITABLE: swap the <img src>
+     below for any other photo in ../images/directory/alumni/. -->
+<div class="page-hero alumni-banner">
+  <img src="../images/directory/alumni/alumni_main.jpg" alt="">
+  <div class="alumni-banner-title">Alumni Directory</div>
+</div>
+
 <div class="alumni-landing">
-  <div class="alumni-hero">
-    <div>
-      <div class="section-label">UCLA Biostatistics Community</div>
-      <h1 class="alumni-hero-title">Alumni Directory</h1>
-      <p class="alumni-hero-desc">
-        Meet the graduates who continue to shape biostatistics, data science,
-        public health, and related fields. This directory will grow as more
-        program cohorts are added.
-      </p>
-    </div>
-    <a href="directory.html" class="btn btn-outline-primary alumni-back-link">&larr; Student Directory</a>
-  </div>
 
-  <section class="alumni-program-section" aria-labelledby="alumni-programs-title">
-    <div class="section-label">Browse by Program</div>
-    <h2 id="alumni-programs-title" class="section-title-bar">Alumni Profiles</h2>
-    <div class="program-cards-grid alumni-program-cards">
-      <a href="ms-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/ms.jpg" alt="Master of Science alumni" />
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Master of Science</div>
-            <div class="prog-card-title">MS Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
-      <a href="mdsh-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/mdsh.jpg" alt="Master of Data Science in Health alumni" />
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Master of Data Science in Health</div>
-            <div class="prog-card-title">MDSH Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
-      <a href="phd-alumni.html">
-        <div class="directory-program-card">
-          <img src="./images/directory_home/phd.jpeg" alt="Doctor of Philosophy alumni" />
-          <div class="prog-card-overlay">
-            <div class="prog-card-tag">Doctor of Philosophy</div>
-            <div class="prog-card-title">PhD Alumni</div>
-            <div class="prog-card-cta">Explore profiles →</div>
-          </div>
-        </div>
-      </a>
+  <a href="directory.html" class="btn btn-outline-primary alumni-back-link">&larr; Student Directory</a>
+
+  <p class="alumni-intro-desc">
+    Meet our alumni! This directory started collecting in 2026, it will grow
+    as more cohorts graduate.
+  </p>
+
+  <!-- ── Program rows — image + overlapping color-block text, alternating
+       sides. EDITABLE: swap each <img src> and the copy in each box. -->
+  <section class="alumni-program-rows">
+
+    <div class="alumni-program-row">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_ms.jpg" alt="Master of Science alumni">
+      </div>
+      <div class="alumni-program-box">
+        <div class="alumni-program-box-title">MS Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Master of Science (Starting with class of 2026)</p>
+        <a href="ms-alumni.html" class="btn btn-lg btn-pill">Explore &rarr;</a>
+      </div>
     </div>
+
+    <div class="alumni-program-row alumni-program-row-reverse">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_mdsh.jpg" alt="Master of Data Science in Health alumni">
+      </div>
+      <div class="alumni-program-box alumni-program-box-gold">
+        <div class="alumni-program-box-title">MDSH Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Master of Data Science in Health (Starting with class of 2026)</p>
+        <a href="mdsh-alumni.html" class="btn btn-lg btn-pill">Explore &rarr;</a>
+      </div>
+    </div>
+
+    <div class="alumni-program-row">
+      <div class="alumni-program-image">
+        <img src="../images/directory/alumni/alumni_phd.jpg" alt="Doctor of Philosophy alumni">
+      </div>
+      <div class="alumni-program-box">
+        <div class="alumni-program-box-title">PhD Alumni</div>
+        <p class="alumni-program-box-desc">Meet the Alumni for Doctor of Philosophy (Starting with class of 2026)</p>
+        <a href="phd-alumni.html" class="btn btn-lg btn-pill">Explore &rarr;</a>
+      </div>
+    </div>
+
   </section>
 
-  <section class="alumni-note">
-    <div class="alumni-note-mark" aria-hidden="true">BSA</div>
-    <div>
-      <h2>Stay connected</h2>
-      <p>
-        Additional alumni cohorts and programs will be added here as their
-        profiles become available.
-      </p>
-    </div>
-  </section>
 </div>
 ```

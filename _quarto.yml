@@ -10,11 +10,16 @@ project:
 website:
   title: "Biostatistics Student Association at UCLA"
   favicon: images/icon.png
+  search: false
   navbar:
+    # EDITABLE: swap this file to change the logo shown in the header.
+    # Just replace images/bsa_logo.png with a new image of the same
+    # name, or point this at a different path — no CSS change needed.
+    logo: images/bsa_logo.png
     left:
       - href: index.qmd
         text: Home
-      - href: about/about.qmd
+      - href: index.qmd#about
         text: About
       - href: directory/directory.qmd
         text: Student Directory

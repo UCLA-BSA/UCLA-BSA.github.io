@@ -12,221 +12,159 @@ css: styles.css
 ```
 
 ```{=html}
-<div class="directory-landing">
+<!-- ════════════════════════════════════════════════════════════════════
+     ✏️  PINNED ZOOM-MORPH HERO — EDITABLE
+     ════════════════════════════════════════════════════════════════════
+     `.dir-hero-image img` below is the photo used for the effect —
+     EDITABLE: swap its `src` for any other photo (e.g. from
+     ../images/directory/) to change which one is shown. See the "PINNED
+     ZOOM-MORPH HERO" section in directory/styles.css for how the
+     grow/darken/text-crossfade effect itself works, and the small
+     script at the bottom of this page for what drives it.
+     ════════════════════════════════════════════════════════════════════ -->
+<div class="dir-hero-pin" id="dirHeroPin">
+  <div class="dir-hero-sticky">
 
-  <!-- Hero section: text left, photo right -->
-  <div class="directory-hero">
-    <div class="directory-hero-text">
-      <div class="section-label">Student Directory</div>
-      <h2 class="directory-hero-title section-title-bar">The Students</h2>
-      <p class="directory-hero-desc">
-        Meet the students of UCLA Biostatistics! Our community spans three
-        graduate programs: the <strong>Master of Science in Biostatistics</strong>,
-        the <strong>Master of Data Science in Health (MDSH)</strong>, and the
-        <strong>Doctor of Philosophy in Biostatistics</strong>. 
-      </p>
-    </div>
-    <div class="directory-hero-photo">
-      <div class="slideshow-container">
-        
-        <div class="slide active">
-          <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics at JSM 25" />
-        </div>
-        <div class="slide">
-          <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
-        </div>
-        <div class="slide">
-          <img src="./images/directory_home/ms.jpg" alt="MS Students" />
-        </div>
-        <div class="slide">
-          <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
-        </div>
-        
-        <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="slide-btn slide-next" onclick="changeSlide(1)">&#10095;</button>
-        
-        <div class="slideshow-dots">
-          <span class="dot active" onclick="goToSlide(0)"></span>
-          <span class="dot" onclick="goToSlide(1)"></span>
-          <span class="dot" onclick="goToSlide(2)"></span>
-          <span class="dot" onclick="goToSlide(3)"></span>
-        </div>
-
-      </div> </div>
-  </div>
-
-  <!-- Program cards -->
-  <!-- Current Students -->
-  <div style="margin-bottom: 1.25rem; margin-top: 0.5rem;">
-    <div class="section-label">Browse by Program</div>
-    <h3 class="section-title-bar" style="font-size:1.6rem;">Current Students</h3>
-  </div>
-  <div class="program-cards-grid">
-    <a href="phd-students.html">
-      <div class="directory-program-card">
-        <img src="./images/directory_home/phd.jpeg" alt="PhD Students" />
-        <div class="prog-card-overlay">
-          <div class="prog-card-tag">Doctor of Philosophy</div>
-          <div class="prog-card-title">PhD Students</div>
-          <div class="prog-card-cta">Explore →</div>
-        </div>
-      </div>
-    </a>
-    <a href="ms-students.html">
-      <div class="directory-program-card">
-        <img src="./images/directory_home/ms.jpg" alt="MS Students" />
-        <div class="prog-card-overlay">
-          <div class="prog-card-tag">Master of Science</div>
-          <div class="prog-card-title">MS Students</div>
-          <div class="prog-card-cta">Explore →</div>
-        </div>
-      </div>
-    </a>
-    <a href="mdsh-students.html">
-      <div class="directory-program-card">
-        <img src="./images/directory_home/mdsh.jpg" alt="MDSH Students" />
-        <div class="prog-card-overlay">
-          <div class="prog-card-tag">Master of Data Science in Health</div>
-          <div class="prog-card-title">MDSH Students</div>
-          <div class="prog-card-cta">Explore →</div>
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <!-- ── Stats Banner ───────────────────────────────────────────────────── -->
-  <div class="stats-banner">
-
-    <!-- dot-grid background decoration -->
-    <div class="stats-banner-dots" aria-hidden="true"></div>
-    <!-- gold top bar -->
-    <div class="stats-banner-gold" aria-hidden="true"></div>
-
-    <div class="stats-banner-inner">
-
-      <!-- Left: headline + description + CTA -->
-      <div class="stats-banner-left">
-        <div class="stats-banner-tag">DATA · INSIGHTS</div>
-        <h2 class="stats-banner-title">By The Numbers</h2>
-        <p class="stats-banner-desc">
-          Explore anonymized, self-reported statistics from our students —
-          academic backgrounds, research areas, geographic origins, and more.
-        </p>
-        <a href="../stats/stats.html" class="stats-banner-cta">
-          View Student Statistics <span class="stats-cta-arrow">→</span>
-        </a>
-      </div>
-
-      <!-- Right: floating stat chips -->
-      <div class="stats-banner-right" aria-hidden="true">
-        <div class="stat-chip chip-1">
-          <div class="chip-num">166</div>
-          <div class="chip-label">Total Students</div>
-        </div>
-        <div class="stat-chip chip-2">
-          <div class="chip-num">46</div>
-          <div class="chip-label">PhD Students</div>
-        </div>
-        <div class="stat-chip chip-3">
-          <div class="chip-num">99</div>
-          <div class="chip-label">MDSH Students</div>
-        </div>
-        <div class="stat-chip chip-4">
-          <div class="chip-num">21</div>
-          <div class="chip-label">MS Students</div>
-        </div>
-        <div class="stat-chip chip-5">
-          <div class="chip-num">3</div>
-          <div class="chip-label">Programs</div>
-        </div>
-      </div>
-
+    <div class="dir-hero-image">
+      <img src="../images/directory/directory_main_mdsh.jpg" alt="">
+      <div class="dir-hero-image-overlay"></div>
     </div>
 
-    <!-- Mobile-only stat strip -->
-    <div class="stats-mobile-strip">
-      <div class="mobile-stat"><span class="ms-num">166</span><span class="ms-label">Students</span></div>
-      <div class="mobile-stat-div"></div>
-      <div class="mobile-stat"><span class="ms-num">46</span><span class="ms-label">PhD</span></div>
-      <div class="mobile-stat-div"></div>
-      <div class="mobile-stat"><span class="ms-num">99</span><span class="ms-label">MDSH</span></div>
-      <div class="mobile-stat-div"></div>
-      <div class="mobile-stat"><span class="ms-num">21</span><span class="ms-label">MS</span></div>
+    <!-- Initial state: one centered word, fades out as you scroll
+         (see .dir-hero-intro in directory/styles.css). EDITABLE: the
+         word below. -->
+    <div class="dir-hero-intro">
+      <div class="dir-hero-intro-word">Students</div>
+    </div>
+
+    <!-- End state (crossfades in as you scroll through the pin):
+         "Student Directory" on the left, the three programs listed to
+         its right (styled like the About page's newsletter list) —
+         each a real link straight to that program's directory page
+         (these replace the old "Browse by Program" card-grid section
+         that used to sit below). -->
+    <div class="dir-hero-final">
+      <div class="dir-hero-final-row">
+        <div class="dir-hero-final-title">Student<br>Directory</div>
+        <ul class="dir-hero-programs">
+          <li><a href="phd-students.html">PhD Students <span class="dir-hero-program-arrow">Explore →</span></a></li>
+          <li><a href="ms-students.html">MS Students <span class="dir-hero-program-arrow">Explore →</span></a></li>
+          <li><a href="mdsh-students.html">MDSH Students <span class="dir-hero-program-arrow">Explore →</span></a></li>
+        </ul>
+      </div>
+      <div class="dir-hero-footnote">↓ Scroll down for alumni &amp; student statistics</div>
     </div>
 
   </div>
-
-  <!-- Alumni -->
-  <section class="alumni-preview">
-    <div class="alumni-preview-copy">
-      <div class="section-label">Beyond UCLA</div>
-      <h3 class="section-title-bar" style="font-size:1.6rem;">Alumni</h3>
-      <p>
-        Our alumni carry UCLA Biostatistics into research, public health,
-        industry, and beyond. Explore graduate profiles and stay connected as
-        the alumni directory grows.
-      </p>
-      <a href="alumni.html" class="alumni-preview-link">Explore the Alumni Directory <span aria-hidden="true">→</span></a>
-    </div>
-    <a href="alumni.html" class="alumni-preview-image" aria-label="Explore the Alumni Directory">
-      <img src="./images/directory_home/main.jpeg" alt="UCLA Biostatistics students and alumni" />
-    </a>
-  </section>
-  
 </div>
 
+<div class="directory-landing">
+
+  <!-- ── Student Statistics — image left / text right. EDITABLE: swap the
+       <img src> below for any other photo. -->
+  <section class="dir-split">
+    <div class="dir-split-image reveal-grow">
+      <img src="../images/directory/directory_student_stat.jpeg" alt="UCLA Biostatistics students">
+    </div>
+    <div class="dir-split-text">
+      <div class="dir-split-title reveal-fade">Student Statistics</div>
+      <p class="dir-split-desc reveal-fade">
+        Explore anonymized, self-reported statistics from our students. This includes
+        stats on their academic backgrounds, research areas, and more.
+      </p>
+      <a href="../stats/stats.html" class="btn btn-lg btn-pill reveal-fade">View Student Statistics</a>
+    </div>
+  </section>
+
+  <!-- ── Alumni — same layout, inverted (text left / image right).
+       EDITABLE: swap the <img src> below for any other photo. -->
+  <section class="dir-split dir-split-reverse">
+    <div class="dir-split-image reveal-grow">
+      <img src="../images/directory/directory_alumni.jpg" alt="UCLA Biostatistics alumni panel">
+    </div>
+    <div class="dir-split-text">
+      <div class="dir-split-title reveal-fade">Alumni</div>
+      <p class="dir-split-desc reveal-fade">
+        Explore our alumni profiles. This list started collecting from the class of 2026. 
+      </p>
+      <a href="alumni.html" class="btn btn-lg btn-pill reveal-fade">Explore the Alumni Directory</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Pinned-hero scroll driver — sets a --progress CSS variable (0 to 1)
+     on #dirHeroPin as you scroll through it; directory/styles.css's
+     "PINNED ZOOM-MORPH HERO" section reads that variable to do the
+     actual grow/darken/text-crossfade. Dividing by 0.8 below means the
+     morph finishes with 20% of the pinned scroll distance left over,
+     so the fully-zoomed state holds for a moment instead of instantly
+     handing off to the next section. Safe to leave alone.
+     ════════════════════════════════════════════════════════════════════ -->
 <script>
-(function() {
-  var current = 0;
-  var slides, dots, timer;
+(function () {
+  var pin = document.getElementById('dirHeroPin');
+  if (!pin) return;
+  var ticking = false;
 
-  function init() {
-    slides = document.querySelectorAll('.slide');
-    dots = document.querySelectorAll('.dot');
-    if (!slides || !slides.length) return;
-    startTimer();
+  function update() {
+    var rect = pin.getBoundingClientRect();
+    var scrollable = pin.offsetHeight - window.innerHeight;
+    var raw = scrollable > 0 ? (-rect.top) / scrollable : 0;
+    var progress = Math.min(Math.max(raw / 0.8, 0), 1);
+    pin.style.setProperty('--progress', progress.toFixed(3));
+    ticking = false;
   }
 
-  function showSlide(n) {
-    // Safety check for empty arrays
-    if (!slides[current] || !dots[current]) return;
-
-    // Remove active classes
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-
-    // Calculate next index
-    current = (n + slides.length) % slides.length;
-
-    // Add active classes
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
   }
 
-  function startTimer() {
-    // Change slide every 5 seconds
-    timer = setInterval(function() { 
-      showSlide(current + 1); 
-    }, 5000);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
+```
+
+<!-- ════════════════════════════════════════════════════════════════════
+     Scroll-reveal trigger — same one used on the Home page. Adds
+     `.is-visible` to each `.reveal-grow`/`.reveal-fade` element (the
+     Student Statistics / Alumni photos and text below the hero) the
+     first time it scrolls into view; directory/styles.css's
+     ".dir-split" section + the site-wide `.reveal-grow`/`.reveal-fade`
+     rules handle the actual grow/fade transition. Safe to leave alone.
+     ════════════════════════════════════════════════════════════════════ -->
+```{=html}
+<script>
+(function () {
+  var targets = document.querySelectorAll('.reveal-grow, .reveal-fade');
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  function startObserving() {
+    targets.forEach(function (el) { io.observe(el); });
   }
 
-  function resetTimer() {
-    clearInterval(timer);
-    startTimer(); // Restarts the 5s countdown after a manual click
+  if (window.scrollY > 0) {
+    startObserving();
+  } else {
+    window.addEventListener('scroll', startObserving, { once: true, passive: true });
   }
-
-  // Global functions for the HTML onclick events
-  window.changeSlide = function(dir) { 
-    showSlide(current + dir); 
-    resetTimer(); 
-  };
-
-  window.goToSlide = function(n) { 
-    showSlide(n); 
-    resetTimer(); 
-  };
-
-  document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
 ```
