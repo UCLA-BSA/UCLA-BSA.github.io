@@ -2,8 +2,8 @@ name: Update and Build Biostatistics Student Directory
 
 on:
   schedule:
-    # Runs weekly on Sunday around 11:59 pm
-    - cron: '59 6 * * 0'
+    # Runs daily at 06:59 UTC (11:59 pm Pacific during daylight saving time).
+    - cron: '59 6 * * *'
   workflow_dispatch:
     inputs:
       force_redownload:
@@ -116,11 +116,99 @@ jobs:
           '
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        
-      - name: Render Quarto site
-        run: quarto render
-        
+
+      # Quarto only writes the pages it renders. Start from the current site so
+      # unaffected pages remain available when this run renders a small subset.
+      - name: Check out the current published site
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: .previous-site
+          token: ${{ steps.generate_token.outputs.token }}
+          fetch-depth: 1
+
+      - name: Restore the current published site
+        run: rsync -a --delete --exclude='.git' .previous-site/ docs/
+
+      - name: Detect directory changes
+        id: changes
+        shell: bash
+        run: |
+          changed_profiles="$RUNNER_TEMP/changed-profiles.txt"
+          deleted_profiles="$RUNNER_TEMP/deleted-profiles.txt"
+
+          {
+            git diff --name-only --diff-filter=ACMR -- directory/profiles
+            git ls-files --others --exclude-standard -- directory/profiles
+          } | sort -u > "$changed_profiles"
+          git diff --name-only --diff-filter=D -- directory/profiles > "$deleted_profiles"
+
+          profiles_changed=false
+          if [[ -s "$changed_profiles" || -s "$deleted_profiles" ]]; then
+            profiles_changed=true
+          fi
+          echo "profiles_changed=$profiles_changed" >> "$GITHUB_OUTPUT"
+
+          # The statistics JSON is generated on every run but is not tracked on
+          # main. Its contents are embedded in the dashboard HTML, so compare
+          # against that deployed page to avoid rebuilding it unnecessarily.
+          stats_changed=false
+          stats_marker="var STUDENT_DATA = $(cat stats/student_stats.json);</script>"
+          if [[ ! -f docs/stats/stats.html ]] || ! grep -Fq "$stats_marker" docs/stats/stats.html; then
+            stats_changed=true
+          fi
+          echo "stats_changed=$stats_changed" >> "$GITHUB_OUTPUT"
+
+          if [[ "$profiles_changed" == "true" || "$stats_changed" == "true" ]] \
+            || [[ "${{ github.event.inputs.force_publish }}" == "true" ]] \
+            || [[ "${{ github.event.inputs.force_redownload }}" == "true" ]]; then
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Sync directory images into the site output
+        if: ${{ steps.changes.outputs.should_publish == 'true' }}
+        run: rsync -a directory/images/ docs/directory/images/
+
+      - name: Render changed Quarto pages
+        if: ${{ steps.changes.outputs.profiles_changed == 'true' || steps.changes.outputs.stats_changed == 'true' }}
+        shell: bash
+        run: |
+          changed_profiles="$RUNNER_TEMP/changed-profiles.txt"
+          deleted_profiles="$RUNNER_TEMP/deleted-profiles.txt"
+          render_targets=()
+
+          # Remove output for profiles deleted by the source generator.
+          while IFS= read -r profile; do
+            [[ -z "$profile" ]] && continue
+            output="docs/${profile%.qmd}.html"
+            rm -f "$output"
+            rm -rf "${output%.html}_files"
+          done < "$deleted_profiles"
+
+          if [[ "${{ steps.changes.outputs.profiles_changed }}" == "true" ]]; then
+            while IFS= read -r profile; do
+              [[ -z "$profile" ]] && continue
+              [[ -f "$profile" ]] && render_targets+=("$profile")
+            done < "$changed_profiles"
+
+            # Listings depend on the set and metadata of profile files.
+            render_targets+=(directory/*.qmd)
+          fi
+
+          if [[ "${{ steps.changes.outputs.stats_changed }}" == "true" ]]; then
+            render_targets+=(stats/stats.qmd)
+          fi
+
+          # Render targets one at a time: with a multi-file invocation Quarto
+          # resolves later relative paths from the first document's directory.
+          for target in "${render_targets[@]}"; do
+            quarto render "$target"
+          done
+
       - name: Build directory index
+        if: ${{ steps.changes.outputs.profiles_changed == 'true' }}
         run: Rscript directory/build_directory_index.R
 
       - name: Commit profiles and directory index
@@ -128,8 +216,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add directory/profiles/
-          git add about/directory-index.js
+          git add -A directory/profiles about/directory-index.js
           
           if git diff --cached --quiet; then
             echo "No changes to commit"
@@ -152,31 +239,11 @@ jobs:
             directory/.image_cache.json
           key: directory-images-${{ github.run_id }}
 
-      - name: Commit and push .qmd profiles
-        id: commit_profiles
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          
-          # Only stage the profile files
-          git add directory/profiles/*.qmd
-          
-          # Check if there are any STAGED changes (ignores the modified images)
-          if git diff --cached --quiet; then
-            echo "No profile changes to commit"
-          else
-            git commit -m "Auto-update student directory profiles"
-            git pull --rebase origin main --autostash
-            git push origin main
-            echo "changes_pushed=true" >> $GITHUB_OUTPUT
-          fi
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-
       - name: Publish to GitHub Pages (Action)
-        if: ${{ steps.commit_index.outputs.changes_pushed == 'true' || steps.commit_profiles.outputs.changes_pushed == 'true' || github.event.inputs.force_publish == 'true' }}
+        if: ${{ steps.changes.outputs.should_publish == 'true' }}
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          render: false
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
