@@ -1,0 +1,33 @@
+---
+title: "**Charlotte Lee**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Donatello Telesca
+image: /directory/images/mdsh/IMG_3572 - Charlotte Lee.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Donatello Telesca"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/charlotteylee/
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Donatello Telesca  
+**Cohort:** Fall 2025  
+
+
+
+
+
+
+
+
+
+
+

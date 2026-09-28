@@ -1,0 +1,39 @@
+---
+title: "**Ruitian (Lucas) Yang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Andrew Holbrook
+image: /directory/images/mdsh/me - Ruitian Yang.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/ruitian-yang-3a8b08335/
+      target: _blank
+    - icon: github
+      href: https://github.com/Lucas-YANG10
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","lucasyang");</script>
+
+### Education:
+
+
+
+**BS in Data Science**, 2026  
+The Chinese University of Hong Kong, Shenzhen — China
+
+### Bio:
+
+Hello everyone! 
+I am interested in statistical machine learning, interpretable AI, and algorithm designing. My research experience includes time-series forecasting, UAV anomaly detection, and image-based nutrition estimation. During my algorithm internship at Cardinal Operations, I developed predictive models and improved the accuracy and efficiency of forecasting pipelines. I enjoy building reliable models and designing rigorous evaluations, and I am excited to apply these skills to problems in healthcare.
+Beyond that, I do like movies, hiking, traveling, and photographing. Feel free to contact me :)

@@ -1,0 +1,34 @@
+---
+title: "**Adriana Wiggins**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/ms/Screenshot 2026-09-28 122733 - Adriana Wiggins.png
+categories: ["Program: MS", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/adriana-wiggins-022264294/
+      target: _blank
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","awigg");</script>
+
+### Education:
+
+
+
+**BA in Statistics**, 2026  
+Carleton College
+
+### Bio:
+
+I'm interested in longitudinal and high dimensional data, missing data, Bayes, and clinical trial research. I've conducted research at Jonsson Comprehensive Cancer Center, Memorial Sloan Kettering Cancer Center, and currently conduct research at City of Hope. I enjoy coffee shops, live music, and watching sports.
