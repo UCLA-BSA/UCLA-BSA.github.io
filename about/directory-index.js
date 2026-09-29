@@ -22,6 +22,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Darryl Nagal": "mdsh/darryl-nagal-mdsh-50",
   "Emma Elliott": "mdsh/emma-elliott-mdsh-126",
   "Fauzan Budi Prasetya": "mdsh/fauzan-budi-prasetya-mdsh-15",
+  "Felix Hsieh": "mdsh/felix-hsieh-mdsh-144",
   "Filippo Monti": "phd/filippo-monti-phd-104",
   "Guanxu Yao": "mdsh/guanxu-yao-mdsh-101",
   "Guanzheng Yu": "mdsh/guanzheng-yu-mdsh-142",
