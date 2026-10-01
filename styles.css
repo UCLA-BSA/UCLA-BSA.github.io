@@ -66,6 +66,7 @@ h1, h2, h3, h4, h5, h6,
 #quarto-header.fixed-top {
   background: transparent;
   box-shadow: none;
+  z-index: 1100;
 }
 
 #quarto-header .navbar {
@@ -129,9 +130,9 @@ h1, h2, h3, h4, h5, h6,
   display: none !important;
 }
 
-/* Mobile hamburger toggle — not needed, since the nav pill below is
-   forced to always stay visible (`.navbar-collapse{display:flex}`),
-   so there's nothing left for it to open/close. */
+/* Keep the standard Bootstrap toggle hidden only while the desktop nav pill
+   fits. The mobile rule below restores it and lets Bootstrap manage the
+   expanded menu accessibly. */
 #quarto-header .navbar-toggler {
   display: none !important;
 }
@@ -193,14 +194,79 @@ h1, h2, h3, h4, h5, h6,
   color: #fff !important;
 }
 
-@media (max-width: 700px) {
-  #quarto-header .navbar { padding: 1rem 1rem 0; }
-  #quarto-header .navbar-logo { height: 32px; }
+@media (max-width: 820px) {
+  #quarto-header .navbar { padding: 0.75rem 1rem 0; }
+  #quarto-header .navbar-container { position: relative; gap: 0.5rem; }
+  #quarto-header .navbar-logo { height: 36px; }
 
-  /* Small screens: let the pill wrap instead of overflowing, since
-     the hamburger toggle is turned off (see .navbar-toggler above). */
-  #quarto-header .navbar-container { flex-wrap: wrap; row-gap: 0.6rem; }
-  #quarto-header .navbar-collapse { flex-wrap: wrap; max-width: 100%; }
+  /* On narrow screens, use a proper tap-sized hamburger instead of forcing
+     every navigation item into one shrinking row. */
+  #quarto-header .navbar-toggler {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 44px;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: #003B5C;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
+  }
+
+  #quarto-header .navbar-toggler:focus-visible,
+  #quarto-header .nav-link:focus-visible {
+    outline: 3px solid #FFD100;
+    outline-offset: 3px;
+  }
+
+  #quarto-header .navbar-collapse {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    left: 0;
+    width: auto;
+    max-width: none;
+    padding: 0.5rem;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+  }
+
+  #quarto-header .navbar-collapse.show,
+  #quarto-header .navbar-collapse.collapsing {
+    display: block !important;
+  }
+
+  #quarto-header .navbar-nav,
+  #quarto-header .navbar-nav.ms-auto {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 !important;
+    gap: 0.25rem;
+  }
+
+  #quarto-header .navbar-nav.ms-auto {
+    margin-top: 0.35rem !important;
+    padding-top: 0.35rem;
+    border-top: 1px solid rgba(0, 59, 92, 0.14);
+  }
+
+  #quarto-header .nav-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.7rem 0.9rem !important;
+    border-radius: 10px;
+  }
+
+  #quarto-header .navbar-nav.ms-auto .nav-link {
+    justify-content: center;
+    padding: 0.75rem 0.9rem !important;
+    border-radius: 10px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -441,4 +507,3 @@ body {
   border-color: #003B5C;
   text-decoration: none;
 }
-
