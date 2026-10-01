@@ -293,6 +293,8 @@
   .dir-hero-intro { display: none; }
   .dir-hero-final { position: static; opacity: 1; transform: none; left: auto; width: auto; max-width: none; text-align: left; padding: 1.5rem 1.25rem 0; }
   .dir-hero-final-row { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 1rem; }
+  .dir-hero-programs { flex: 1 1 auto; width: 100%; max-width: 26rem; }
+  .dir-hero-programs li a { min-height: 48px; align-items: center; }
 }
 
 /* ══════════════════════════════════════════════════════════════════
