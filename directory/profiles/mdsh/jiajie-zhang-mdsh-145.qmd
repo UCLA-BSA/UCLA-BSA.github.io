@@ -1,0 +1,31 @@
+---
+title: "**Jiajie (Stephen) Zhang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Donatello Telesca
+image: /directory/images/mdsh/Headshot_bot - Jiajie Zhang.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Donatello Telesca"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Donatello Telesca  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","jiajiez");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2026  
+University of California, Santa Barbara — Santa Barbara, CA
+
+### Bio:
+
+My interests include statistical methodology, particularly Bayesian and nonparametric methods, machine learning, and applications to biomedical and clinical data. Outside of academics, I enjoy exploring new places, playing video games, and spending time with my two cats.

@@ -34,6 +34,7 @@ window.BSA_DIRECTORY_INDEX = {
   "James Papadopoulos": "phd/james-papadopoulos-phd-26",
   "Jasen Zhang": "phd/jasen-zhang-phd-116",
   "Jenna Pham": "mdsh/jenna-pham-mdsh-134",
+  "Jiajie Zhang": "mdsh/jiajie-zhang-mdsh-145",
   "Jiale Ni": "ms/jiale-ni-ms-27",
   "Jian Huang": "ms/jian-huang-ms-105",
   "Jiaqi Zhou": "ms/jiaqi-zhou-ms-99",
