@@ -1,6 +1,11 @@
 name: Update and Build Biostatistics Student Directory
 
 on:
+  # Publish all site changes (including static files such as newsletters)
+  # as soon as they reach the production branch.
+  push:
+    branches:
+      - main
   schedule:
     # Runs daily at 06:59 UTC (11:59 pm Pacific during daylight saving time).
     - cron: '59 6 * * *'
@@ -159,8 +164,17 @@ jobs:
           fi
           echo "stats_changed=$stats_changed" >> "$GITHUB_OUTPUT"
 
-          if [[ "$profiles_changed" == "true" || "$stats_changed" == "true" ]] \
-            || [[ "${{ github.event.inputs.force_publish }}" == "true" ]] \
+          # A main-branch push, or an explicitly forced publish, must rebuild
+          # every page and copy every static asset. Scheduled directory runs
+          # stay incremental when there are no relevant changes.
+          full_site_build=false
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]] \
+            || [[ "${{ github.event.inputs.force_publish }}" == "true" ]]; then
+            full_site_build=true
+          fi
+          echo "full_site_build=$full_site_build" >> "$GITHUB_OUTPUT"
+
+          if [[ "$full_site_build" == "true" || "$profiles_changed" == "true" || "$stats_changed" == "true" ]] \
             || [[ "${{ github.event.inputs.force_redownload }}" == "true" ]]; then
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
           else
@@ -171,10 +185,15 @@ jobs:
         if: ${{ steps.changes.outputs.should_publish == 'true' }}
         run: rsync -a directory/images/ docs/directory/images/
 
-      - name: Render changed Quarto pages
-        if: ${{ steps.changes.outputs.profiles_changed == 'true' || steps.changes.outputs.stats_changed == 'true' }}
+      - name: Render Quarto site
+        if: ${{ steps.changes.outputs.full_site_build == 'true' || steps.changes.outputs.profiles_changed == 'true' || steps.changes.outputs.stats_changed == 'true' }}
         shell: bash
         run: |
+          if [[ "${{ steps.changes.outputs.full_site_build }}" == "true" ]]; then
+            quarto render
+            exit 0
+          fi
+
           changed_profiles="$RUNNER_TEMP/changed-profiles.txt"
           deleted_profiles="$RUNNER_TEMP/deleted-profiles.txt"
           render_targets=()

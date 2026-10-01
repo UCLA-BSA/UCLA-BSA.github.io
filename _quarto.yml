@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  # Newsletter URLs are generated in index.qmd's JavaScript, so register the
+  # PDFs as site resources instead of relying on Quarto to discover the links.
+  resources:
+    - about/newsletter/articles/**
   #pre-render: directory/make_profiles.R # comment out if you don't need to create student profiles each time
   render:
     - "!*.md"
