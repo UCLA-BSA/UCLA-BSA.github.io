@@ -1,0 +1,34 @@
+---
+title: "**Tania (Tania Adrianzen) Alvarez Adrianzen**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Hua Zhou
+image: /directory/images/mdsh/IMG_0330 - TANIA ALVAREZ ADRIANZEN.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/tania-adrianzen-400375336
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Hua Zhou  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","taadrianzen");</script>
+
+### Education:
+
+
+
+**BS in Data Analytics**, 2025  
+SNHU — Manchester, NH
+
+### Bio:
+
+I’m originally from Peru and moved to the U.S. as a teenager, calling San Francisco home for many years. During the pandemic, I moved to Southern California, fell in love with the area, and decided to make it my home. My background has taken me through business, technology, and client-facing roles. I’ve always loved math, but I never realized how many ways it could be used to make an impact, especially in healthcare. After my mom experienced a serious health issue and I spent nearly a month by her side in the hospital, my perspective on healthcare completely changed. That experience gave me a new sense of purpose and inspired me to earn my B.S. in Data Analytics and a career in healthcare. I’m so passionate about the MDSH program and this new chapter. Outside of school, I love spending time at the beach, watching sunsets, swimming, snowboarding, and spending time with my dogs.

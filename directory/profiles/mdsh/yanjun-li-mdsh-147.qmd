@@ -1,0 +1,31 @@
+---
+title: "**Yanjun (ERIC) Li**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/微信图片_20260423200038_3_826 - YANJUN LI.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","yanjun26");</script>
+
+### Education:
+
+
+
+**financial mathematics**  
+XJTLU — SUZHOU, JIANGSHU, China
+
+
+
+

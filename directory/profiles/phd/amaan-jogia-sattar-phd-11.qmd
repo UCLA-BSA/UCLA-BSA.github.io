@@ -1,0 +1,39 @@
+---
+title: "**Amaan Jogia-Sattar**"
+subtitle: "PhD Student"
+description: "Cohort: Fall 2026"
+
+advisor: Brunilda Balliu
+image: /directory/images/phd/amaan-jogia-sattar-ms-2024 - Amaan Jogia-Sattar.png
+categories: ["Program: PhD", "Cohort: Fall 2026", "Advisor: Brunilda Balliu"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://linkedin.com/in/amaanjsattar
+      target: _blank
+    - icon: github
+      href: https://github.com/amaanjsattar
+      target: _blank
+---
+
+
+### PhD Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Brunilda Balliu  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","amaanjsattar");</script>
+
+### Education:
+
+
+
+**BA in Public Health**, 2024  
+University of California, Berkeley — Berkeley, CA
+
+### Bio:
+
+I am a first-year PhD student in the Department of Biostatistics at UCLA, where I am advised by Dr. Brunilda Balliu. I previously completed my MS in Biostatistics in the same department, working with Drs. Brunilda Balliu and Thomas Belin. My research focuses on statistical methodology for modeling dynamic genetic effects in longitudinal single-cell multi-omic data. I am especially interested in nonlinear and functional representations of genetic effects over cellular trajectories, statistical approaches that accommodate cellular heterogeneity and branching biological processes, and the integration of dynamic regulatory signals across gene expression and chromatin accessibility.
+
+Outside of academics, I enjoy playing tennis, going on walks, and spending time with my dog, Louie.
