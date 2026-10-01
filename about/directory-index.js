@@ -78,6 +78,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Timothy Shen": "phd/timothy-shen-phd-9",
   "Tomoki Okuno": "phd/tomoki-okuno-phd-53",
   "Tong Zhu": "phd/tong-zhu-phd-60",
+  "Twinkle Bansal": "mdsh/twinkle-bansal-mdsh-150",
   "Xiang Chen": "phd/xiang-chen-phd-114",
   "Xihe Yu": "mdsh/xihe-yu-mdsh-20",
   "Xinghua Tao": "phd/xinghua-tao-phd-78",
