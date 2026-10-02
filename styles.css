@@ -207,7 +207,9 @@ h1, h2, h3, h4, h5, h6,
     justify-content: center;
     width: 48px;
     height: 44px;
-    margin-left: auto;
+    order: -1;
+    margin-left: 0;
+    margin-right: 0.25rem;
     padding: 0;
     border: 0;
     border-radius: 12px;
@@ -225,9 +227,9 @@ h1, h2, h3, h4, h5, h6,
     display: none !important;
     position: absolute;
     top: calc(100% + 0.6rem);
-    right: 0;
+    right: auto;
     left: 0;
-    width: auto;
+    width: min(20rem, calc(100vw - 2rem));
     max-width: none;
     padding: 0.5rem;
     border-radius: 18px;
@@ -343,7 +345,8 @@ h1, h2, h3, h4, h5, h6,
   margin-top: calc(-1 * var(--bsa-header-h, 64px));
 }
 
-.hero-banner video {
+.hero-banner video,
+.hero-banner img {
   width: 100%;
   display: block;
 }
