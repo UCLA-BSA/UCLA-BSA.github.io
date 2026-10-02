@@ -1,0 +1,32 @@
+---
+title: "**Twinkle Bansal**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Hua Zhou
+image: /directory/images/mdsh/headshot - TWINKLE BANSAL.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Hua Zhou"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Hua Zhou  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","twbansal");</script>
+
+### Education:
+
+
+
+**BS in Bioinformatics**, 2024  
+University of California, Davis — Davis, CA
+
+### Bio:
+
+I'm a UC Davis graduate with a B.S. in Bioinformatics, and worked at UC Berkeley's Hariharan Lab in the MCB department for two years using bioinformatics to learn more about the evolutionary history of growth-related genes. I joined the MDSH program to learn how to leverage my informatics background towards translational genomics datasets. I'm especially interested in research involving human genetics and evolution.
+In my free time I love to be in the outdoors and read fiction.
