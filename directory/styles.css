@@ -287,11 +287,14 @@
      showing (no scroll-driven state to wait for). */
   .dir-hero-pin { height: auto; margin-top: 0; }
   .dir-hero-sticky { position: static; height: auto; display: block; background: #003B5C; padding-bottom: 0.5rem; }
-  .dir-hero-image { position: static; width: 100%; height: 260px; border-radius: 0; }
+  /* Keep the darkening layer contained to the photo. Without this positioned
+     parent, its absolute overlay can stretch over the program links and
+     absorb taps on mobile browsers. */
+  .dir-hero-image { position: relative; width: 100%; height: 260px; border-radius: 0; }
   .dir-hero-image img { transform: none; }
   .dir-hero-image-overlay { background: rgba(0, 0, 0, 0.35); }
   .dir-hero-intro { display: none; }
-  .dir-hero-final { position: static; opacity: 1; transform: none; left: auto; width: auto; max-width: none; text-align: left; padding: 1.5rem 1.25rem 0; }
+  .dir-hero-final { position: relative; z-index: 1; opacity: 1; transform: none; left: auto; width: auto; max-width: none; text-align: left; padding: 1.5rem 1.25rem 0; }
   .dir-hero-final-row { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 1rem; }
   .dir-hero-programs { flex: 1 1 auto; width: 100%; max-width: 26rem; }
   .dir-hero-programs li a { min-height: 48px; align-items: center; }
