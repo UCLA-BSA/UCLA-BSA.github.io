@@ -21,6 +21,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Daniel Gilchrist": "phd/daniel-gilchrist-phd-137",
   "Darren Lin": "phd/darren-lin-phd-49",
   "Darryl Nagal": "mdsh/darryl-nagal-mdsh-50",
+  "Elyssa Gonzalez": "mdsh/elyssa-gonzalez-mdsh-151",
   "Emma Elliott": "mdsh/emma-elliott-mdsh-126",
   "Fauzan Budi Prasetya": "mdsh/fauzan-budi-prasetya-mdsh-15",
   "Felix Hsieh": "mdsh/felix-hsieh-mdsh-144",

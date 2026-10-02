@@ -1,0 +1,34 @@
+---
+title: "**Elyssa Gonzalez**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Catherine M. Crespi
+image: /directory/images/mdsh/Elyssa Gonzalez Headshot - ELYSSA GONZALEZ.JPEG
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Catherine M. Crespi"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/elyssa-gonzalez-69442027a
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Catherine M. Crespi  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","egonzalez07");</script>
+
+### Education:
+
+
+
+**BS in Cognitive Science, Specialization in Neuroscience**, 2025  
+University of California, San Diego — La Jolla, CA
+
+
+
+
