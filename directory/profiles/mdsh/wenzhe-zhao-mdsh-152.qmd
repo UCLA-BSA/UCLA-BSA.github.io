@@ -1,0 +1,31 @@
+---
+title: "**Wenzhe Zhao**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Gang Li
+image: /directory/images/mdsh/61be8a9f6c2a8735080d3d741ba27f - WENDY ZHAO.JPG
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Gang Li"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Gang Li  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","wzhao0331");</script>
+
+### Education:
+
+
+
+**BA in Business Economic**, 2025  
+University of California, Riverside — Riverside, CA US
+
+
+
+
