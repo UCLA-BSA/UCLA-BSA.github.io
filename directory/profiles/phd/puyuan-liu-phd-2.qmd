@@ -1,6 +1,6 @@
 ---
 title: "**Puyuan Liu**"
-subtitle: "PhD Student"
+subtitle: "PhD Candidate"
 description: "Cohort: Fall 2025"
 
 advisor: Damla Senturk
@@ -16,7 +16,7 @@ about:
 ---
 
 
-### PhD Student, Biostatistics
+### PhD Candidate, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Damla Senturk  
 **Cohort:** Fall 2025  
