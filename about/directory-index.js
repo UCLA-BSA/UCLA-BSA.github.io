@@ -98,6 +98,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Zian Zhuang": "phd/zian-zhuang-phd-28",
   "Zichen Liu": "phd/zichen-liu-phd-16",
   "Zihan Teng": "mdsh/zihan-teng-mdsh-58",
-  "Zihong Huang": "mdsh/zihong-huang-mdsh-56"
+  "Zihong Huang": "mdsh/zihong-huang-mdsh-56",
+  "Zixuan Ming": "mdsh/zixuan-ming-mdsh-153"
 };
 

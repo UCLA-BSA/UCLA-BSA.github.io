@@ -1,0 +1,33 @@
+---
+title: "**Zixuan (Callie) Ming**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/证件照 - ZIXUAN MING.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: camera
+      href: https://Ins：https://www.instagram.com/liyzxim?stkn=MW1oN3JnaWsxM3UwNg%3D%3D&utm_source=qr
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","liyzxim1419");</script>
+
+
+
+
+
+
+
+### Bio:
+
+Passionate about baking, staying active, and spending time with my cats. I thrive on exploring new ideas, taking on new experiences, and constantly learning.
