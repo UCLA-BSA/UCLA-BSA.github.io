@@ -1,10 +1,10 @@
 ---
 title: "**Yuxi Song**"
-subtitle: "PhD Student"
+subtitle: "PhD Candidate"
 description: "Cohort: Fall 2024"
 
 advisor: Gang Li
-image: /directory/images/anon.jpg
+image: /directory/images/phd/yuxi - Yuxi Song.jpg
 categories: ["Program: PhD", "Cohort: Fall 2024", "Advisor: Gang Li"]
 about:
   template: trestles
@@ -13,11 +13,11 @@ about:
 ---
 
 
-### PhD Student, Biostatistics
+### PhD Candidate, Biostatistics
 University of California, Los Angeles  
 **Research Advisor(s):** Gang Li  
 **Cohort:** Fall 2024  
-
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","lucillesong");</script>
 
 ### Education:
 

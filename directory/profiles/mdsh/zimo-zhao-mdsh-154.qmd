@@ -1,0 +1,31 @@
+---
+title: "**Zimo (Rea Zhao) Zhao**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/证件照 - ZIMO ZHAO.jpeg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+
+
+### Education:
+
+
+
+**BS in Economics and Data Science**, 2026  
+University of Southern California — Los Angeles, CA
+
+
+
+

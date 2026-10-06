@@ -1,0 +1,31 @@
+---
+title: "**Yaozhong (Yaz) Hu**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/mdsh/AD1F4F34-8E00-49F2-AA0E-8838AB4CA3A8 - YAOZHONG HU.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.com","yazh");</script>
+
+### Education:
+
+
+
+**BS in Mathematics**, 2026  
+University of Washington Bothell — Bothell,WA
+
+
+
+

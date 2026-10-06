@@ -1,5 +1,5 @@
 ---
-title: "**Suning (Nyla) Zhao**"
+title: "**Suning Zhao**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
 
@@ -9,7 +9,10 @@ categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Jin Zhou", "Advisor
 about:
   template: trestles
   image-shape: round
-
+  links:
+    - icon: linkedin
+      href: https://linkedin.com/in/suning-z-220303261
+      target: _blank
 ---
 
 
