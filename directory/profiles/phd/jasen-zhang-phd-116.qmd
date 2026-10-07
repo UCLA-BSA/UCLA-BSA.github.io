@@ -13,6 +13,9 @@ about:
     - icon: linkedin
       href: https://www.linkedin.com/in/jasen-zhang/
       target: _blank
+    - icon: github
+      href: https://github.com/jasenzhang1
+      target: _blank
 ---
 
 
@@ -34,6 +37,6 @@ Johns Hopkins University — Baltimore, MD
 
 My research interests broadly span stochastic processes, machine learning, and computational approaches to model noisy datasets. 
 
-I'm originally from New Jersey and moved to California for grad school. I enjoy a nice workout, tennis, pickleball, poker, and playing guitar covers of my favorite songs. Previously, I also did content creation for modular origami.
+I'm from New Jersey and moved to California for grad school. I enjoy a nice workout, tennis, pickleball, poker, and DJing for my friends. Previously, I also did content creation for modular origami.
 
 Always down to chat about my academic journey or shared interests.

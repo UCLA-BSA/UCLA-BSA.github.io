@@ -1,0 +1,31 @@
+---
+title: "**Jeslyne Chuang**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Andrew Holbrook
+image: /directory/images/mdsh/headshot (1) - JESLYNE CHUANG.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Andrew Holbrook"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Andrew Holbrook  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","jeslyne");</script>
+
+### Education:
+
+
+
+**BS in Statistics and Data Science**, 2026  
+University of California, Santa Barbara — Santa Barbara, CA
+
+
+
+

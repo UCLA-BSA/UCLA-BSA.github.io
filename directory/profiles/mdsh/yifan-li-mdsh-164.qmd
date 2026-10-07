@@ -1,0 +1,30 @@
+---
+title: "**Yifan (Evan) Li**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Gang Li
+image: /directory/images/anon.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Gang Li"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Gang Li  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","yifanli28");</script>
+
+
+
+
+
+
+
+
+
+

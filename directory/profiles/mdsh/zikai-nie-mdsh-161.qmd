@@ -1,0 +1,31 @@
+---
+title: "**Zikai (Zackary) Nie**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Jin Zhou
+image: /directory/images/mdsh/F015F0DE-BB51-440D-B7FB-A82097202645 - Zikai Nie.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Jin Zhou"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Jin Zhou  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","niezikai1");</script>
+
+### Education:
+
+
+
+**BE in Artificial Intelligence**, 2026  
+Xidian University — Xi'an, People's Republic of China
+
+
+
+
