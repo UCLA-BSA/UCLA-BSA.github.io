@@ -86,6 +86,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Twinkle Bansal": "mdsh/twinkle-bansal-mdsh-150",
   "Tzung Fang Jiang": "mdsh/tzung-fang-jiang-mdsh-158",
   "Wenzhe Zhao": "mdsh/wenzhe-zhao-mdsh-152",
+  "Xi Wu": "ms/xi-wu-ms-165",
   "Xiang Chen": "phd/xiang-chen-phd-114",
   "Xihe Yu": "mdsh/xihe-yu-mdsh-20",
   "Xinghua Tao": "phd/xinghua-tao-phd-78",
