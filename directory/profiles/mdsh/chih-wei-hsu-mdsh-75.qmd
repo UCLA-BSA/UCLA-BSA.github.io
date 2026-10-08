@@ -3,9 +3,9 @@ title: "**Chih-Wei (Frank) Hsu**"
 subtitle: "MDSH Student"
 description: "Cohort: Fall 2025"
 
-advisor: Not Listed
+advisor: Christina Ramirez
 image: /directory/images/mdsh/Hsu Chih Wei 2 half - Frank HSU.JPG
-categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Christina Ramirez"]
 about:
   template: trestles
   image-shape: round
@@ -21,7 +21,7 @@ about:
 
 ### MDSH Student, Biostatistics
 University of California, Los Angeles  
-**Advisor(s):** Not Listed  
+**Academic Advisor(s):** Christina Ramirez  
 **Cohort:** Fall 2025  
 **Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","frankhsu33");</script>
 
@@ -29,9 +29,9 @@ University of California, Los Angeles
 
 
 
-**BS in Psychology & Information Management**, 2024  
+**BS in Information Management  &  Psychology**, 2024  
 National Cheng Kung University — Tainan, Taiwan
 
 ### Bio:
 
-I am a data science student interested in applying data-driven approaches to real-world problems in healthcare and finance. I enjoy working with complex datasets, exploring patterns, and translating data into meaningful insights.
+I am a Master of Data Science in Health student at UCLA with a background in psychology, information management, and AI. My experience spans machine learning, deep learning, NLP, LLMs, predictive modeling, and data analytics, with applications in both healthcare and finance. I’m especially interested in clinical analytics, financial modeling, and quantitative research.
