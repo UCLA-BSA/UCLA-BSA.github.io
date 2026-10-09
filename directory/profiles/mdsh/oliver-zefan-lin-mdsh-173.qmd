@@ -1,0 +1,37 @@
+---
+title: "**Oliver Zefan (Oliver) Lin**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Michele Guindani
+image: /directory/images/mdsh/Lin highres - Oliver Lin.png
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Michele Guindani"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/oliverlinn
+      target: _blank
+    - icon: github
+      href: https://github.com/olielinn
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Research Advisor(s):** Michele Guindani  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","olin");</script>
+
+### Education:
+
+
+
+**BA in Psychology & Cognitive Science**, 2025  
+University of California, Berkeley — Berkeley, CA
+
+### Bio:
+
+I'm interested in biostatistics, machine learning, and how they can be applied to biomedical research, especially in areas like neuroscience, biotech, and drug development. Outside of academics, I enjoy skiing, hiking, making lattes, and exploring different wines.
