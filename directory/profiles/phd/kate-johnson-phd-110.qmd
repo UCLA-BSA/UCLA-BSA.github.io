@@ -9,7 +9,10 @@ categories: ["Program: PhD", "Cohort: Fall 2025", "Advisor: Not Listed"]
 about:
   template: trestles
   image-shape: round
-
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/katejohnson122/
+      target: _blank
 ---
 
 
@@ -17,7 +20,7 @@ about:
 University of California, Los Angeles  
 **Advisor(s):** Not Listed  
 **Cohort:** Fall 2025  
-
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","katejk");</script>
 
 ### Education:
 
@@ -27,6 +30,6 @@ University of California, San Diego — San Diego, CA
 **BS in Statistics**, 2022  
 University of California, Davis — Davis, CA
 
+### Bio:
 
-
-
+I’m interested in understanding how genetic and environmental factors contribute to psychiatric and cognitive disorders, through adolescence and into late adulthood. I am also interested in chronic disease burden, sleep disorders effects on cognition, and women's health. Methods and stats-wise I'm also interested in longitudinal and SIR/ economic modelling, causal inference methods, and clinical trials.

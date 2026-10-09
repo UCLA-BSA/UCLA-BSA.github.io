@@ -1,0 +1,31 @@
+---
+title: "**Jeremy Su**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2026"
+
+advisor: Falco J. Bargagli Stoffi
+image: /directory/images/ms/BSA(1) - JEREMY SU.jpg
+categories: ["Program: MS", "Cohort: Fall 2026", "Advisor: Falco J. Bargagli Stoffi"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Falco J. Bargagli Stoffi  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","jersu39");</script>
+
+### Education:
+
+
+
+**BA in Data Science**, 2026  
+Pitzer College — Claremont, CA
+
+
+
+

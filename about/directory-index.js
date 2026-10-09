@@ -39,6 +39,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Jasmine Cheng": "mdsh/jasmine-cheng-mdsh-148",
   "Jenna Jabourian": "ms/jenna-jabourian-ms-166",
   "Jenna Pham": "mdsh/jenna-pham-mdsh-134",
+  "Jeremy Su": "ms/jeremy-su-ms-169",
   "Jeslyne Chuang": "mdsh/jeslyne-chuang-mdsh-163",
   "Jiajie Zhang": "mdsh/jiajie-zhang-mdsh-145",
   "Jiale Ni": "ms/jiale-ni-ms-27",
@@ -54,6 +55,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Kate Johnson": "phd/kate-johnson-phd-110",
   "Kelsey Ishimoto": "phd/kelsey-ishimoto-phd-25",
   "Kyle Wu": "phd/kyle-wu-phd-80",
+  "Leiton Pinto": "mdsh/leiton-pinto-mdsh-167",
   "Ludi Zhou": "mdsh/ludi-zhou-mdsh-62",
   "Matthew Kostelny": "mdsh/matthew-kostelny-mdsh-37",
   "Mayra Cortez": "mdsh/mayra-cortez-mdsh-132",
@@ -65,6 +67,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Peixuan Zang": "mdsh/peixuan-zang-mdsh-131",
   "Ping Yu Lin": "mdsh/ping-yu-lin-mdsh-113",
   "Puyuan Liu": "phd/puyuan-liu-phd-2",
+  "Qiman Yang": "mdsh/qiman-yang-mdsh-168",
   "Rica Mae Pitogo": "mdsh/rica-mae-pitogo-mdsh-5",
   "Richard Williams": "phd/richard-williams-phd-71",
   "Rithy Techavoan Yean": "mdsh/rithy-techavoan-yean-mdsh-89",
@@ -86,6 +89,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Tong Zhu": "phd/tong-zhu-phd-60",
   "Twinkle Bansal": "mdsh/twinkle-bansal-mdsh-150",
   "Tzung Fang Jiang": "mdsh/tzung-fang-jiang-mdsh-158",
+  "Weijun Meng": "mdsh/weijun-meng-mdsh-171",
   "Wenzhe Zhao": "mdsh/wenzhe-zhao-mdsh-152",
   "Xi Wu": "ms/xi-wu-ms-165",
   "Xiang Chen": "phd/xiang-chen-phd-114",
@@ -112,6 +116,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Zihong Huang": "mdsh/zihong-huang-mdsh-56",
   "Zikai Nie": "mdsh/zikai-nie-mdsh-161",
   "Zimo Zhao": "mdsh/zimo-zhao-mdsh-154",
-  "Zixuan Ming": "mdsh/zixuan-ming-mdsh-153"
+  "Zixuan Ming": "mdsh/zixuan-ming-mdsh-153",
+  "Ziyang Huang": "mdsh/ziyang-huang-mdsh-170"
 };
 
