@@ -1,0 +1,31 @@
+---
+title: "**Jiayi (Torres) Jin**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2026"
+
+advisor: Donatello Telesca
+image: /directory/images/anon.jpg
+categories: ["Program: MS", "Cohort: Fall 2026", "Advisor: Donatello Telesca"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Donatello Telesca  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("outlook.com","jason_jin18");</script>
+
+### Education:
+
+
+
+**BS in Biology**, 2026  
+University of California, Davis — Davis, CA
+
+
+
+
