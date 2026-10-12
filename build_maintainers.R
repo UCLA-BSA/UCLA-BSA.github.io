@@ -9,7 +9,7 @@
 #
 # The CSV has two columns:
 #   page        — the .qmd file path (e.g. stats/stats.qmd)
-#   maintainer  — the person's name  (e.g. Timothy Shen)
+#   maintainer  — the display name
 # ============================================================
 
 library(jsonlite)
@@ -25,7 +25,7 @@ csv$html_path <- ifelse(
   paste0("/", sub("\\.qmd$", "", csv$page))
 )
 
-# Build named list { "/stats/stats": "Timothy Shen", ... }
+# Build a route-to-maintainer lookup.
 lookup <- setNames(as.list(csv$maintainer), csv$html_path)
 json   <- toJSON(lookup, auto_unbox = TRUE, pretty = FALSE)
 
@@ -42,4 +42,3 @@ cat("Injected", nrow(csv), "maintainer entries into footer.html\n")
 for (i in seq_len(nrow(csv))) {
   cat(sprintf("  %-40s -> %s\n", csv$html_path[i], csv$maintainer[i]))
 }
-

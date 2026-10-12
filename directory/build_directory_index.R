@@ -30,7 +30,7 @@ for (prog_type in prog_types) {
     # Strip the program, cohort year, and optional duplicate index.
     name_slug <- sub("-(phd|ms|mdsh)-[0-9]{4}(-[0-9]+)?$", "", stem)  # e.g. "bob-jones"
 
-    # Convert slug to Title Case ("bob-jones" -> "Bob Jones")
+    # Convert a hyphenated slug to title case.
     full_name <- paste(
       sapply(strsplit(name_slug, "-")[[1]], function(w) {
         paste0(toupper(substr(w, 1, 1)), substr(w, 2, nchar(w)))

@@ -304,7 +304,7 @@ standardize_university <- function(x) {
 standardize_advisor <- function(x) {
   case_when(
     is.na(x) ~ NA_character_,
-    str_detect(x, regex("^li$", ignore_case = TRUE)) ~ "Gang Li", # for now assume "Li" means Gang Li, adjust later for Sijia Li if it pops up
+    str_detect(x, regex("^li$", ignore_case = TRUE)) ~ "Gang Li", # interpret an unqualified "Li" using the default matching rule
     str_detect(x, regex("\\bholbrook\\b", ignore_case = TRUE)) ~ "Andrew Holbrook",
     str_detect(x, regex("\\bballiu\\b", ignore_case = TRUE)) ~ "Brunilda Balliu",
     str_detect(x, regex("\\bcrespi\\b", ignore_case = TRUE)) ~ "Catherine M. Crespi",
