@@ -22,15 +22,15 @@ for (prog_type in prog_types) {
   html_files <- list.files(folder, pattern = "\\.html$", full.names = FALSE)
 
   for (fname in html_files) {
-    stem <- sub("\\.html$", "", fname)  # e.g. "darren-lin-phd-50"
+    stem <- sub("\\.html$", "", fname)  # e.g. "bob-jones-phd-2026" or "bob-jones-phd-2026-1"
 
-    # Must match: {name-slug}-{phd|ms|mdsh}-{number}
-    if (!grepl("^.+-(phd|ms|mdsh)-\\d+$", stem)) next
+    # Must match: {name-slug}-{phd|ms|mdsh}-{cohort-year}[-duplicate-index]
+    if (!grepl("^.+-(phd|ms|mdsh)-[0-9]{4}(-[0-9]+)?$", stem)) next
 
-    # Strip the -type-number suffix to get the name slug
-    name_slug <- sub("-(phd|ms|mdsh)-\\d+$", "", stem)  # e.g. "darren-lin"
+    # Strip the program, cohort year, and optional duplicate index.
+    name_slug <- sub("-(phd|ms|mdsh)-[0-9]{4}(-[0-9]+)?$", "", stem)  # e.g. "bob-jones"
 
-    # Convert slug to Title Case ("darren-lin" -> "Darren Lin")
+    # Convert slug to Title Case ("bob-jones" -> "Bob Jones")
     full_name <- paste(
       sapply(strsplit(name_slug, "-")[[1]], function(w) {
         paste0(toupper(substr(w, 1, 1)), substr(w, 2, nchar(w)))
@@ -55,4 +55,3 @@ js <- paste0(
 )
 
 writeLines(js, out_file)
-

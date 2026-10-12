@@ -338,7 +338,6 @@ df_clean <- df %>%
   
   # cleaning names
   mutate(
-    unique_id = row_number(), # id to assign to each person's file
     first = str_to_title(first),
     first = str_replace_all(first, "(?<=')([a-z])", function(m) toupper(m)),
     last  = str_to_title(last),
@@ -351,9 +350,23 @@ df_clean <- df %>%
     preferred = ifelse(!is.na(preferred), paste("(", preferred, ") ", sep = ""), "")
   ) %>%
   mutate(
-    filename = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{str_to_lower(unique_id)}"),
-    filename = str_replace_all(filename, "[^a-z0-9 -]", ""),
-    filename = str_replace_all(filename, "\\s+", "-"),
+    profile_slug = glue("{str_to_lower(first)}-{str_to_lower(last)}-{str_to_lower(current_program)}-{start_year}"),
+    profile_slug = str_replace_all(profile_slug, "[^a-z0-9 -]", ""),
+    profile_slug = str_replace_all(profile_slug, "\\s+", "-")
+  ) %>%
+  group_by(profile_slug) %>%
+  mutate(
+    # The first matching name keeps the cohort-year URL; later responses
+    # receive -1, -2, etc. to avoid overwriting that profile.
+    duplicate_index = row_number() - 1L,
+    filename = if_else(
+      duplicate_index == 0L,
+      profile_slug,
+      paste0(profile_slug, "-", duplicate_index)
+    )
+  ) %>%
+  ungroup() %>%
+  mutate(
     filename = ifelse(alumni == FALSE | is.na(alumni),
                       paste0(here("directory/profiles/"), program_lower, "/", filename, ".qmd"),
                       paste0(here("directory/profiles/"), alumni_dir, "/", filename, ".qmd")
