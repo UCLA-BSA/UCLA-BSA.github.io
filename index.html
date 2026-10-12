@@ -760,6 +760,13 @@ window.BSA_ABOUT = {
     }
   });
 
+  // These elements are inserted after the page's scroll-reveal observer is
+  // initialized, so reveal them explicitly once they are in the document.
+  window.requestAnimationFrame(function () {
+    document.querySelectorAll('#boardPanels .reveal-fade, #newsletterIssues .reveal-fade')
+      .forEach(function (el) { el.classList.add('is-visible'); });
+  });
+
   }
 
   // Wait for the current directory map; if it cannot be loaded, keep the
