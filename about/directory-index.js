@@ -97,6 +97,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Wenzhe Zhao": "mdsh/wenzhe-zhao-mdsh-152",
   "Xi Wu": "ms/xi-wu-ms-165",
   "Xiang Chen": "phd/xiang-chen-phd-114",
+  "Xiaodi Wang": "ms/xiaodi-wang-ms-176",
   "Xihe Yu": "mdsh/xihe-yu-mdsh-20",
   "Xinghua Tao": "phd/xinghua-tao-phd-78",
   "Xinrui Fu": "mdsh/xinrui-fu-mdsh-155",
