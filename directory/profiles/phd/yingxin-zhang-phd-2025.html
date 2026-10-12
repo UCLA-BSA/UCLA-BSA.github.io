@@ -296,6 +296,26 @@ Peking University — Beijing, China</p>
     href = '../../ms-students.html';
     label = 'Back to MS Students';
   }
+
+  // Link every displayed profile category directly to the matching directory filter.
+  // This keeps the links working even when the profile is not adjacent to its
+  // directory listing in the published site.
+  if (href) {
+    for (var j = 0; j < cats.length; j++) {
+      var category = cats[j];
+      var categoryText = category.textContent.trim();
+      if (!categoryText) continue;
+
+      var categoryLink = document.createElement('a');
+      categoryLink.href = href + '#category=' + encodeURIComponent(categoryText);
+      categoryLink.setAttribute('aria-label', 'Show ' + categoryText + ' in the directory');
+      while (category.firstChild) {
+        categoryLink.appendChild(category.firstChild);
+      }
+      category.appendChild(categoryLink);
+    }
+  }
+
   if (href) {
     var btn = document.createElement('a');
     btn.href = href;
