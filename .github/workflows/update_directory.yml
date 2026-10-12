@@ -228,7 +228,9 @@ jobs:
 
       - name: Build directory index
         if: ${{ steps.changes.outputs.profiles_changed == 'true' }}
-        run: Rscript directory/build_directory_index.R
+        run: |
+          Rscript directory/build_directory_index.R
+          cp about/directory-index.js docs/about/directory-index.js
 
       - name: Commit profiles and directory index
         id: commit_index

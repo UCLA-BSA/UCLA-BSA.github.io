@@ -521,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="completion-frac" id="mdsh1CompleteFrac"></div>
             </div>
             <div class="completion-bar-track"><div class="completion-bar-fill" id="mdsh1CompleteBar" style="width:0%"></div></div>
-            <div class="completion-desc">out of 58 students (entered Fall 2026)</div>
+            <div class="completion-desc">out of 60 students (entered Fall 2026)</div>
           </div>
           <div class="completion-card">
             <div class="completion-prog-label">2nd Year MDSH · Profile Completion</div>
