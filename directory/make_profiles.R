@@ -127,22 +127,31 @@ if (download_files == TRUE) {
   df <- googlesheets4::read_sheet(spreadsheet_url, range = "A:AE")
   alumni_df <- googlesheets4::read_sheet(alumni_url)
   
-  # convert year to plain text
-  normalize_year_value <- function(value) {
+  # writexl only supports atomic columns. Google Sheets occasionally returns a
+  # response column as a list (for example, a program-entry year of "2017").
+  # Flatten list responses to plain text before saving the local workbook.
+  normalize_excel_cell <- function(value) {
     if (is.null(value) || length(value) == 0 || all(is.na(value))) {
       return(NA_character_)
     }
-    as.character(value[[1]])
+
+    values <- unlist(value, recursive = TRUE, use.names = FALSE)
+    values <- values[!is.na(values)]
+
+    if (length(values) == 0) {
+      return(NA_character_)
+    }
+
+    paste(as.character(values), collapse = "; ")
   }
 
-  df <- df %>%
-    mutate(across(
-      all_of(c(
-        "Bachelor's Degree Year of Graduation",
-        "Master's Degree Year of Graduation"
-      )),
-      ~ purrr::map_chr(.x, normalize_year_value)
-    ))
+  normalize_list_columns <- function(data) {
+    data %>%
+      mutate(across(where(is.list), ~ purrr::map_chr(.x, normalize_excel_cell)))
+  }
+
+  df <- normalize_list_columns(df)
+  alumni_df <- normalize_list_columns(alumni_df)
 
   writexl::write_xlsx(df, student_directory_form)
   writexl::write_xlsx(alumni_df, alumni_directory_form)
