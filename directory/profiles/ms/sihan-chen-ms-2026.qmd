@@ -1,0 +1,31 @@
+---
+title: "**Sihan Chen**"
+subtitle: "MS Student"
+description: "Cohort: Fall 2026"
+
+advisor: Not Listed
+image: /directory/images/ms/IMG_0154 - SIHAN CHEN.jpeg
+categories: ["Program: MS", "Cohort: Fall 2026", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MS Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2026  
+
+
+### Education:
+
+
+
+**BS in Statistics**, 2026  
+University of Michigan — Ann Arbor, Los Angeles
+
+### Bio:
+
+I like cooking, playing tennis and climbing rock
