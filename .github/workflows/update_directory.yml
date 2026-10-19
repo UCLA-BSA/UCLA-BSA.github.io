@@ -7,8 +7,8 @@ on:
     branches:
       - main
   schedule:
-    # Runs daily at 06:59 UTC (11:59 pm Pacific during daylight saving time).
-    - cron: '59 6 * * *'
+    # Runs weekly on Sunday at 06:59 UTC (11:59 pm Pacific during daylight saving time).
+    - cron: '59 6 * * 0'
   workflow_dispatch:
     inputs:
       force_redownload:

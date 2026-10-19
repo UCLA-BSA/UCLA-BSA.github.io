@@ -70,6 +70,8 @@ For a photo to be included, the form response must contain a Google Drive file l
 
 The script standardizes common school and advisor names. Add recurring variants to `standardize_university()` or `standardize_advisor()` in `make_profiles.R` instead of making the same correction in generated profiles.
 
+For current MS and MDSH students, the profile generator hides a master's entry only when its graduation year is the student's calculated program graduation year (or later). This prevents an in-progress UCLA degree from appearing as completed while retaining previously earned master's degrees. Ensure the form's master's graduation year reflects the actual degree year.
+
 ## Automation configuration
 
 The workflow requires these repository secrets:

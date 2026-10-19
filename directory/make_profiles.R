@@ -485,7 +485,16 @@ df_clean <- df %>%
       ""
     )
   ) %>%
-  mutate(masters_edu = ifelse(masters_edu != "" & masters_grad >= 2026 & !is.na(masters_grad), "", masters_edu),
+  # A current MS/MDSH student's expected UCLA degree is not prior education.
+  # Hide only an uncompleted degree whose year is their program's calculated
+  # graduation year (or later); completed master's degrees remain visible.
+  mutate(masters_edu = ifelse(
+           !alumni & program_lower %in% c("ms", "mdsh") &
+             !is.na(masters_grad) & !is.na(graduation_year) &
+             masters_grad >= graduation_year,
+           "",
+           masters_edu
+         ),
          education_label = ifelse(masters_edu != "" | bach_edu != "", "### Education:", ""),
          bio_label = ifelse(bio != "", "### Bio:", "")) %>%
   separate_wider_delim(
