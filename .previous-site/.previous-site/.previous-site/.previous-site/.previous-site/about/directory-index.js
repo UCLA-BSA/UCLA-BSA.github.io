@@ -82,6 +82,7 @@ window.BSA_DIRECTORY_INDEX = {
   "Shayan Rassouli": "mdsh/shayan-rassouli-mdsh-2026",
   "Shihao Liang": "mdsh/shihao-liang-mdsh-2026",
   "Siddhant Patel": "ms/siddhant-patel-ms-2025",
+  "Sihan Chen": "ms/sihan-chen-ms-2026",
   "Sihong Yao": "ms/sihong-yao-ms-2025",
   "Siqing Gong": "mdsh/siqing-gong-mdsh-2025",
   "Sofia Landinez": "mdsh/sofia-landinez-mdsh-2025",
