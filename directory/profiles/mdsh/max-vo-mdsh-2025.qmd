@@ -1,0 +1,37 @@
+---
+title: "**Max Vo**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2025"
+
+advisor: Not Listed
+image: /directory/images/mdsh/prof_headshot - Max Vo.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2025", "Advisor: Not Listed"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/maxvoh
+      target: _blank
+    - icon: github
+      href: https://github.com/maxxhvo
+      target: _blank
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Advisor(s):** Not Listed  
+**Cohort:** Fall 2025  
+**Email:**<script type="text/javascript">scrambleIt("g.ucla.edu","maxhvo");</script>
+
+### Education:
+
+
+
+**BS in Quantitative Psychology**  
+University of California, Davis
+
+### Bio:
+
+My current research interests are in clinical NLP and epidemiological modelling.
