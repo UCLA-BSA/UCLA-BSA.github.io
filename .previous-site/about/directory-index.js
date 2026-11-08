@@ -3,6 +3,7 @@
 window.BSA_DIRECTORY_INDEX = {
   "Abraham Liu": "phd/abraham-liu-phd-2023",
   "Adriana Wiggins": "ms/adriana-wiggins-ms-2026",
+  "Alex Gaither": "mdsh/alex-gaither-mdsh-2026",
   "Amaan Jogia Sattar": "phd/amaan-jogia-sattar-phd-2026",
   "Andrew Chuang": "phd/andrew-chuang-phd-2024",
   "Anela Leyan Wang": "phd/anela-leyan-wang-phd-2025",
