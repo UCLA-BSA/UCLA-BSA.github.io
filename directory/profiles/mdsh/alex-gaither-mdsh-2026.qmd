@@ -1,0 +1,31 @@
+---
+title: "**Alex Gaither**"
+subtitle: "MDSH Student"
+description: "Cohort: Fall 2026"
+
+advisor: Catherine Ann Sugar
+image: /directory/images/mdsh/6M4A6193 - ALEX GAITHER.jpg
+categories: ["Program: MDSH", "Cohort: Fall 2026", "Advisor: Catherine Ann Sugar"]
+about:
+  template: trestles
+  image-shape: round
+
+---
+
+
+### MDSH Student, Biostatistics
+University of California, Los Angeles  
+**Academic Advisor(s):** Catherine Ann Sugar  
+**Cohort:** Fall 2026  
+**Email:**<script type="text/javascript">scrambleIt("ucla.edu","agaither");</script>
+
+### Education:
+
+
+
+**BS in Mathematics**, 2025  
+University of California, Santa Barbara — Goleta, CA
+
+
+
+
